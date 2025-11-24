@@ -1,14 +1,747 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
-</head>
-<body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
-</body>
-</html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefinitiAI | Predictable Growth System</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- UPDATED: Using UMD build for reliable global access -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<body class="overflow-x-hidden">
+    <!-- Navbar -->
+    <nav class="fixed top-6 left-0 right-0 mx-auto w-[92%] max-w-7xl z-50 nav-glass rounded-full px-6 h-[72px] flex items-center justify-between transition-all duration-300">
+        <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+            <!-- UPDATED: Desktop logo reduced by ~20% (h-12 to h-10) -->
+            <img src="https://refiniti.ai/wp-content/uploads/2025/11/Refiniti-AI-Vertical-Logo.png" alt="Refiniti AI" class="h-6 md:h-10 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='flex'">
+            <div id="fallback-logo" class="hidden items-center gap-2">
+                <div class="w-8 h-8 bg-gradient-to-br from-[#00CFFF] to-[#0080FF] rounded-lg flex items-center justify-center">
+                    <i data-lucide="activity" class="text-black w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-white">Refiniti<span class="text-[#00CFFF]">AI</span></span>
+            </div>
+        </div>
+        <div class="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+            <a href="#system" class="text-sm font-medium text-white hover:text-[#00CFFF] transition-colors">Process</a>
+            <a href="#product-suite" class="text-sm font-medium text-white hover:text-[#00CFFF] transition-colors">Engine</a>
+            <a href="#how-it-works" class="text-sm font-medium text-white hover:text-[#00CFFF] transition-colors">Difference</a>
+            <a href="#results" class="text-sm font-medium text-white hover:text-[#00CFFF] transition-colors">Results</a>
+            <a href="#faq" class="text-sm font-medium text-white hover:text-[#00CFFF] transition-colors">FAQ</a>
+        </div>
+        <div class="hidden md:flex items-center gap-6">
+            <button onclick="openBookingModal()" class="btn-primary px-6 py-2.5 rounded-full font-semibold text-black text-sm hover:shadow-[0_0_15px_rgba(0,207,255,0.4)]">See if you Qualify</button>
+        </div>
+        <div class="md:hidden text-white cursor-pointer" onclick="toggleMobileMenu()">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-40 transform translate-x-full pt-32 px-6 md:hidden flex flex-col gap-6">
+        <a href="#system" onclick="toggleMobileMenu()" class="text-2xl font-medium text-white border-b border-white/10 pb-4">Process</a>
+        <a href="#product-suite" onclick="toggleMobileMenu()" class="text-2xl font-medium text-white border-b border-white/10 pb-4">Engine</a>
+        <a href="#how-it-works" onclick="toggleMobileMenu()" class="text-2xl font-medium text-white border-b border-white/10 pb-4">Difference</a>
+        <a href="#results" onclick="toggleMobileMenu()" class="text-2xl font-medium text-white border-b border-white/10 pb-4">Results</a>
+        <a href="#faq" onclick="toggleMobileMenu()" class="text-2xl font-medium text-white border-b border-white/10 pb-4">FAQ</a>
+        <button onclick="toggleMobileMenu(); openBookingModal()" class="w-full btn-primary py-4 rounded-lg font-bold text-lg mt-4 shadow-[0_0_20px_rgba(0,207,255,0.2)]">See if you Qualify</button>
+        <div class="absolute top-8 right-8 cursor-pointer" onclick="toggleMobileMenu()">
+             <i data-lucide="x" class="w-8 h-8 text-white"></i>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 md:pt-32 overflow-hidden">
+        <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <!-- Floating Icons (Hidden on small screens to prevent clutter) -->
+            <div class="floating-icon top-[20%] left-[15%] text-[#00CFFF] hidden md:block" style="animation-delay: 0s;"><i data-lucide="cpu" class="w-8 h-8"></i></div>
+            <div class="floating-icon top-[30%] right-[20%] text-[#00CFFF] hidden md:block" style="animation-delay: 2s;"><i data-lucide="zap" class="w-6 h-6"></i></div>
+            <div class="floating-icon bottom-[30%] left-[25%] text-[#0080FF]" style="animation-delay: 4s;"><i data-lucide="bar-chart-2" class="w-8 h-8 md:w-10 md:h-10"></i></div>
+            <div class="floating-icon bottom-[20%] right-[15%] text-[#00CFFF]" style="animation-delay: 1s;"><i data-lucide="target" class="w-6 h-6 md:w-8 md:h-8"></i></div>
+            <div class="floating-icon top-[15%] right-[35%] text-[#0080FF]" style="animation-delay: 3s;"><i data-lucide="database" class="w-6 h-6"></i></div>
+            
+            <!-- Decorative Lines -->
+            <div class="absolute top-[22%] left-[17%] w-[100px] md:w-[200px] h-[1px] bg-gradient-to-r from-[#00CFFF]/30 to-transparent transform rotate-12 opacity-30"></div>
+            <div class="absolute top-[32%] right-[22%] w-[100px] md:w-[150px] h-[1px] bg-gradient-to-l from-[#00CFFF]/30 to-transparent transform -rotate-12 opacity-30"></div>
+            <div class="absolute bottom-[32%] left-[27%] w-[150px] md:w-[250px] h-[1px] bg-gradient-to-r from-[#0080FF]/30 to-transparent transform -rotate-6 opacity-30"></div>
+        </div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#00CFFF] opacity-10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 flex flex-col items-center w-full">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-6 md:mb-8 animate-fade-in-up hover:border-[#00CFFF]/30 transition-colors cursor-default">
+                <div class="w-2 h-2 bg-[#00CFFF] rounded-full animate-pulse"></div>
+                <span class="text-[10px] md:text-xs font-medium text-white uppercase tracking-wider">Accepting New Partners for Q4</span>
+            </div>
+            
+            <!-- Responsive Text Size: text-3xl on mobile, text-7xl on desktop, break-words to prevent overflow -->
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-extrabold leading-tight md:leading-[1.1] mb-6 text-white w-full break-words">
+                A Complete Growth System That <br class="hidden md:block">
+                <span class="text-glow-anim block md:inline mt-2 md:mt-0">Scales Your Business — Predictably</span>
+            </h1>
+            
+            <p class="text-base md:text-xl text-white max-w-2xl mx-auto mb-10 leading-relaxed px-2 md:px-0">
+                Enterprise-level marketing, automation, and creative funnels—delivered to Small Businesses and fast-growing teams. Finally—a Clear, Simple System to Grow Your Business. Fix Your Funnel. Grow Your Revenue. Scale With Confidence.
+            </p>
+
+            <!-- Button Stack: Column on mobile, Row on desktop -->
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6 w-full justify-center px-4 md:px-0">
+                <button onclick="openBookingModal()" class="w-full md:w-auto btn-primary px-8 py-4 rounded-full font-bold text-lg shadow-[0_0_20px_rgba(0,207,255,0.3)] hover:shadow-[0_0_40px_rgba(0,207,255,0.5)] transition-all transform hover:-translate-y-1">
+                    See if you Qualify
+                </button>
+                <a href="#system" class="w-full md:w-auto group flex items-center justify-center gap-2 text-white hover:text-[#00CFFF] transition-colors font-medium py-3 md:py-0">
+                    Explore the System 
+                    <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+                </a>
+            </div>
+            
+            <!-- Trusted By Carousel -->
+            <div class="mt-16 md:mt-24 py-8 md:py-12 border-t border-white/5 w-full overflow-hidden">
+                <p class="text-[10px] md:text-xs text-white uppercase tracking-widest mb-6 md:mb-8 text-center">Trusted by leaders in</p>
+                <div class="marquee-container">
+                    <div class="marquee-track">
+                        <div class="marquee-item">
+                             <img src="https://refiniti.ai/wp-content/uploads/2025/11/Logo-Trusted-By-Refiniti-1.png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
+                        </div>
+                        <div class="marquee-item">
+                             <img src="https://refiniti.ai/wp-content/uploads/2025/11/Logo-Trusted-By-Refiniti-1.png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
+                        </div>
+                        <div class="marquee-item">
+                             <img src="https://refiniti.ai/wp-content/uploads/2025/11/Logo-Trusted-By-Refiniti-1.png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
+                        </div>
+                        <div class="marquee-item">
+                             <img src="https://refiniti.ai/wp-content/uploads/2025/11/Logo-Trusted-By-Refiniti-1.png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- System Overview -->
+    <!-- UPDATED: Reduced padding py-24 -> py-12 md:py-24 -->
+    <section id="system" class="py-12 md:py-24 bg-[#08080A] border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">The Single Path to <span class="text-white">Maximized ROI.</span></h2>
+                <p class="text-white text-lg">We eliminate complexity. Our proprietary loop transforms your business narrative into a high-converting machine.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#333] to-transparent -z-10 transform -translate-y-1/2"></div>
+
+                <!-- Phase 1 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group cursor-default border border-white/5 hover:border-[#00CFFF]/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                    <div class="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-[#00CFFF]/20 transition-colors group-hover:scale-110 duration-300">
+                        <i data-lucide="scan-search" class="w-7 h-7 text-white group-hover:text-[#00CFFF] transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 flex items-center gap-2">
+                        <span class="text-[#00CFFF] text-sm font-mono bg-[#00CFFF]/10 px-2 py-0.5 rounded">01</span> Diagnose
+                    </h3>
+                    <p class="text-white text-sm leading-relaxed">Deep-dive brand & strategy audit to identify gaps and clarify positioning.</p>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group cursor-default border border-white/5 hover:border-[#00CFFF]/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                    <div class="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-[#00CFFF]/20 transition-colors group-hover:scale-110 duration-300">
+                        <i data-lucide="workflow" class="w-7 h-7 text-white group-hover:text-[#00CFFF] transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 flex items-center gap-2">
+                        <span class="text-[#00CFFF] text-sm font-mono bg-[#00CFFF]/10 px-2 py-0.5 rounded">02</span> Funnel
+                    </h3>
+                    <p class="text-white text-sm leading-relaxed">Automated AI pipeline construction that nurtures and converts leads.</p>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group cursor-default border border-white/5 hover:border-[#00CFFF]/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                    <div class="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-[#00CFFF]/20 transition-colors group-hover:scale-110 duration-300">
+                        <i data-lucide="trending-up" class="w-7 h-7 text-white group-hover:text-[#00CFFF] transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 flex items-center gap-2">
+                        <span class="text-[#00CFFF] text-sm font-mono bg-[#00CFFF]/10 px-2 py-0.5 rounded">03</span> Scale
+                    </h3>
+                    <p class="text-white text-sm leading-relaxed">Continuous ROI optimization and budget scaling based on real-time data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 1: Diagnose -->
+    <!-- UPDATED: Reduced padding py-32 -> py-16 md:py-32 -->
+    <section id="diagnose" class="py-16 md:py-32 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1">
+                <span class="text-[#00CFFF] font-mono text-sm tracking-widest mb-4 block">PHASE I</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">The Strategic Foundation.</h2>
+                <p class="text-white text-lg mb-8 leading-relaxed">
+                    You can't scale a broken foundation. We deploy AI-driven analysis to identify critical gaps in your brand strategy. Diagnosis ensures your ecosystem is built on clarity, not assumptions.
+                </p>
+                <div class="space-y-4 mb-10">
+                    <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-default">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-[#00CFFF] mt-1 shrink-0"></i>
+                        <div>
+                            <h4 class="font-semibold text-white">Eliminate Messaging Confusion</h4>
+                            <p class="text-sm text-white">Drastically reduce CPA by speaking clearly.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-default">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-[#00CFFF] mt-1 shrink-0"></i>
+                        <div>
+                            <h4 class="font-semibold text-white">Validated Target Profiles</h4>
+                            <p class="text-sm text-white">Know exactly who is buying, backed by data.</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="openBookingModal()" class="inline-flex items-center gap-2 text-[#00CFFF] font-semibold hover:gap-4 transition-all group">
+                    Get the Strategy Blueprint <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="order-1 lg:order-2 relative">
+                <!-- CHANGED: Replaced aspect-square with fixed height on mobile -->
+                <div class="h-[500px] md:h-auto md:aspect-square bg-[#08080A] rounded-3xl border border-white/10 p-8 relative overflow-hidden flex items-center justify-center group hover:border-[#00CFFF]/20 transition-colors">
+                      <div class="absolute inset-0 bg-gradient-to-r from-black via-[#00CFFF]/5 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                      
+                      <!-- Funnel Diagram Container (Adjusted gaps for mobile/desktop) -->
+                      <div class="flex flex-col md:flex-row items-center gap-6 md:gap-4 relative z-10 w-full justify-center">
+                         
+                        <!-- Input Stage -->
+                        <div class="flex flex-col gap-3 items-center opacity-60">
+                            <div class="w-12 h-12 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="users" class="text-white w-6 h-6"></i></div>
+                            <div class="h-8 w-[1px] bg-white/10 hidden md:block"></div>
+                            <!-- Arrow Down on Mobile -->
+                            <div class="md:hidden py-2"><i data-lucide="arrow-down" class="text-white/20"></i></div>
+                            <div class="w-12 h-12 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="filter" class="text-white w-6 h-6"></i></div>
+                        </div>
+                         
+                        <!-- Connectors -->
+                        <div class="hidden md:block"><i data-lucide="chevrons-right" class="text-[#00CFFF] w-8 h-8 animate-pulse opacity-50"></i></div>
+                        <div class="md:hidden py-2"><i data-lucide="arrow-down" class="text-[#00CFFF] w-8 h-8 animate-pulse opacity-50"></i></div>
+
+                        <!-- CENTER: Refiniti Engine (Larger) -->
+                        <div class="engine-box">
+                            <i data-lucide="brain-circuit" class="engine-brain"></i>
+                            <span class="engine-text">Refiniti Engine</span>
+                            <div class="engine-line"></div>
+                        </div>
+
+                        <!-- Connectors -->
+                        <div class="hidden md:block"><i data-lucide="chevrons-right" class="text-[#00CFFF] w-8 h-8 animate-pulse opacity-50"></i></div>
+                        <div class="md:hidden py-2"><i data-lucide="arrow-down" class="text-[#00CFFF] w-8 h-8 animate-pulse opacity-50"></i></div>
+                         
+                        <!-- Output Stage with Counter -->
+                        <div class="roi-counter-box">
+                            <div class="w-16 h-16 rounded-full bg-[#00CFFF] flex items-center justify-center shadow-[0_0_20px_rgba(0,207,255,0.4)] mb-3 transition-transform hover:scale-110">
+                                <i data-lucide="dollar-sign" class="text-black font-bold w-8 h-8"></i>
+                            </div>
+                            <!-- Dynamic ROI Counter -->
+                            <div id="revenue-counter" class="roi-number">$0</div>
+                            <div class="roi-label">Generated Value</div>
+                        </div>
+
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: SITE AUDIT TOOL -->
+    <section id="site-audit" class="py-16 md:py-24 bg-[#08080A] relative border-y border-white/5 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,207,255,0.05)_0%,rgba(0,0,0,0)_70%)]"></div>
+        <div class="max-w-3xl mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00CFFF]/10 border border-[#00CFFF]/20 text-[#00CFFF] text-xs font-mono tracking-widest mb-4">
+                <div class="w-2 h-2 bg-[#00CFFF] rounded-full animate-pulse"></div>
+                AI POWERED
+            </div>
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Instant Site Audit</h2>
+            <p class="text-gray-400 mb-8 max-w-xl mx-auto">Enter your URL to generate a preliminary Refiniti conversion analysis. Our AI simulates a visitor journey to find bottlenecks.</p>
+            
+            <!-- Input Area -->
+            <div class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto mb-12 relative">
+                <input type="text" id="audit-url" placeholder="www.yourwebsite.com" class="flex-1 bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white focus:outline-none focus:border-[#00CFFF] transition-colors text-center md:text-left">
+                <button onclick="runSiteAudit()" class="btn-primary px-8 py-4 rounded-full font-bold shadow-[0_0_20px_rgba(0,207,255,0.3)] hover:shadow-[0_0_30px_rgba(0,207,255,0.5)] transition-all">
+                    Scan Website
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div id="audit-loading" class="hidden flex-col items-center justify-center gap-4 py-8">
+                <div class="w-full max-w-md h-1 bg-gray-800 rounded-full overflow-hidden relative">
+                    <div class="absolute top-0 left-0 h-full bg-[#00CFFF] animate-[progress_2s_ease-in-out_infinite] w-1/2"></div>
+                </div>
+                <p class="text-[#00CFFF] font-mono text-sm animate-pulse">Analyzing structure... Checking conversion points...</p>
+            </div>
+
+            <!-- Results State -->
+            <div id="audit-results" class="hidden glass-panel p-8 rounded-3xl border border-[#00CFFF]/30 text-left animate-fade-in-up">
+                <div class="flex flex-col md:flex-row items-center gap-8 mb-8 border-b border-white/10 pb-8">
+                    <div class="score-circle shrink-0">
+                        <span class="text-3xl font-bold text-white" id="audit-score">0</span>
+                        <span class="text-[10px] text-[#00CFFF] uppercase">Score</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2" id="audit-headline">Audit Complete</h3>
+                        <p class="text-sm text-gray-400" id="audit-summary">Analysis of your domain indicates potential friction in the user journey.</p>
+                    </div>
+                </div>
+                <div class="space-y-4 mb-8" id="audit-points">
+                    <!-- Points injected here -->
+                </div>
+                <div class="flex justify-center">
+                    <button onclick="openBookingModal()" class="text-[#00CFFF] font-bold hover:text-white transition-colors flex items-center gap-2">
+                        Get Full Technical Report <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <style>
+            @keyframes progress { 0% { left: -50%; } 100% { left: 100%; } }
+        </style>
+    </section>
+
+    <!-- Phase 2: Funnel (Updated with Taller Engine Visual for Mobile) -->
+    <!-- UPDATED: Reduced padding py-32 -> py-16 md:py-32 -->
+    <section id="funnel" class="py-16 md:py-32 bg-[#0C0C0E] border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+             <div class="relative">
+                <!-- Mobile: Fixed height h-[700px] to ensure visibility. Desktop: Aspect Video or Auto -->
+                <div class="h-[500px] md:h-auto md:aspect-square bg-gradient-to-br from-[#111] to-black rounded-3xl border border-white/10 p-8 flex flex-col relative overflow-hidden group">
+                      <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+                      
+                      <!-- Chat Container: Adjusted height to fit new mobile container -->
+                      <div id="chat-container" class="relative z-10 flex flex-col gap-4 w-full max-w-md mx-auto h-[400px] md:h-[320px] overflow-y-auto chat-container-scroll pr-2 pb-4 mb-16">
+                        <!-- JS will inject messages here -->
+                      </div>
+
+                      <!-- Gemini Input Area -->
+                      <div class="ai-input-container">
+                          <div class="ai-input-box">
+                              <input type="text" id="ai-prompt-input" class="ai-input" placeholder="Describe your marketing problem... (e.g. High CPA, Low Leads)" onkeydown="handleEnter(event)">
+                              <!-- CHANGED: Added type="button", shrink-0, and switched icon to 'send' -->
+                              <button type="button" class="ai-send-btn shrink-0" onclick="sendToGemini()" id="ai-send-btn">
+                                  <i data-lucide="send" class="w-4 h-4"></i>
+                              </button>
+                          </div>
+                      </div>
+                </div>
+            </div>
+            <div>
+                <span class="text-[#00CFFF] font-mono text-sm tracking-widest mb-4 block">PHASE II</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Automated Conversion Pipeline.</h2>
+                <p class="text-white text-lg mb-8 leading-relaxed">
+                    Manual funnels leak profit. We leverage AI to engineer, deploy, and automate a multi-channel funnel that converts your strategy into predictable revenue, adjusting to real-time data.
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                    <div class="glass-panel p-5 rounded-xl border-l-2 border-l-[#00CFFF] hover:bg-white/5 transition-colors">
+                        <h4 class="font-bold text-white mb-1">7-Day Deployment</h4>
+                        <p class="text-xs text-white">From blueprint to live traffic.</p>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-l-2 border-l-[#00CFFF] hover:bg-white/5 transition-colors">
+                        <h4 class="font-bold text-white mb-1">Auto-Qualification</h4>
+                        <p class="text-xs text-white">AI scores leads before you talk.</p>
+                    </div>
+                </div>
+
+                <button onclick="openBookingModal()" class="inline-flex items-center gap-2 text-[#00CFFF] font-semibold hover:gap-4 transition-all">
+                    Automate My Funnel <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 3: Scale (Updated with Before/After Slider) -->
+    <!-- UPDATED: Reduced padding py-32 -> py-16 md:py-32 -->
+    <section id="scale" class="py-16 md:py-32 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1">
+                <span class="text-[#00CFFF] font-mono text-sm tracking-widest mb-4 block">PHASE III</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Exponential ROI Optimization.</h2>
+                <p class="text-white text-lg mb-8 leading-relaxed">
+                    Growth plateau is the enemy. We move beyond basic A/B testing. This phase is the non-stop refinement of all assets driven purely by real-time ROI metrics.
+                </p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-center gap-3 text-white">
+                        <i data-lucide="check" class="text-[#00CFFF] w-5 h-5"></i>
+                        Minimized Customer Acquisition Cost (CAC)
+                    </li>
+                    <li class="flex items-center gap-3 text-white">
+                        <i data-lucide="check" class="text-[#00CFFF] w-5 h-5"></i>
+                        Maximized Return on Ad Spend (ROAS)
+                    </li>
+                    <li class="flex items-center gap-3 text-white">
+                        <i data-lucide="check" class="text-[#00CFFF] w-5 h-5"></i>
+                        Data-Driven Budget Allocation
+                    </li>
+                </ul>
+                <button onclick="openBookingModal()" class="inline-flex items-center gap-2 text-[#00CFFF] font-semibold hover:gap-4 transition-all">
+                    Maximize My ROI <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+            
+            <!-- New Before/After Slider Visual -->
+            <div class="order-1 lg:order-2 relative">
+                <div class="slider-container" id="comparison-slider">
+                    <!-- After (Refiniti) - Bottom Layer -->
+                    <div class="slider-layer layer-after">
+                        <div class="graph-after"></div>
+                         <!-- SVG Growth Curve -->
+                         <svg class="absolute bottom-0 left-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                             <path d="M0,100 Q20,90 40,50 T100,10 L100,100 Z" fill="url(#growthGradient)" opacity="0.3" />
+                             <path d="M0,100 Q20,90 40,50 T100,10" fill="none" stroke="#00FF9C" stroke-width="1" />
+                             <defs>
+                                 <linearGradient id="growthGradient" x1="0" x2="0" y1="0" y2="1">
+                                     <stop offset="0%" stop-color="#00FF9C" stop-opacity="0.5"/>
+                                     <stop offset="100%" stop-color="#00FF9C" stop-opacity="0"/>
+                                 </linearGradient>
+                             </defs>
+                         </svg>
+                        <div class="label-badge label-after">Refiniti Optimized</div>
+                        <div class="absolute bottom-10 right-10 text-right">
+                            <div class="text-3xl font-bold text-[#00FF9C]">+240%</div>
+                            <div class="text-xs text-white uppercase tracking-wider">Revenue Growth</div>
+                        </div>
+                    </div>
+
+                    <!-- Before (Unoptimized) - Top Layer -->
+                    <div class="slider-layer layer-before" id="slider-foreground">
+                        <div class="graph-before"></div>
+                        <!-- SVG Flat Line -->
+                        <svg class="absolute bottom-0 left-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                             <path d="M0,80 L20,82 L40,78 L60,81 L80,79 L100,80" fill="none" stroke="#ff4444" stroke-width="1" stroke-dasharray="2 1" />
+                        </svg>
+                        <div class="label-badge label-before">Unoptimized</div>
+                        <div class="absolute bottom-10 left-10">
+                            <div class="text-3xl font-bold text-white">1.2%</div>
+                            <div class="text-xs text-white uppercase tracking-wider">Avg. Conversion</div>
+                        </div>
+                    </div>
+
+                    <!-- Handle -->
+                    <div class="slider-handle" id="slider-handle">
+                        <i data-lucide="chevrons-left-right" class="w-5 h-5 text-black"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Product Suite Section (Fixed Visual & Mobile Height) -->
+    <!-- UPDATED: Reduced padding py-24 -> py-12 md:py-24 -->
+    <section id="product-suite" class="py-12 md:py-24 bg-[#050507] border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left: Service List -->
+            <div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">The Complete <br>Growth Engine.</h2>
+                <p class="text-white text-lg mb-10 leading-relaxed">
+                    From acquisition to retention, we provide a unified ecosystem of premium services designed to work in harmony for maximum ROI.
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="flex gap-4 group cursor-default">
+                        <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#00CFFF]/50 transition-colors"><i data-lucide="megaphone" class="text-[#00CFFF] w-6 h-6"></i></div>
+                        <div><h3 class="text-xl font-bold text-white group-hover:text-[#00CFFF]">Multi-Channel Acquisition</h3><p class="text-sm text-white">Social Media Marketing, PPC, & SEO Strategies.</p></div>
+                    </div>
+                    <div class="flex gap-4 group cursor-default">
+                        <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#00CFFF]/50 transition-colors"><i data-lucide="palette" class="text-[#00CFFF] w-6 h-6"></i></div>
+                        <div><h3 class="text-xl font-bold text-white group-hover:text-[#00CFFF]">Creative & Brand Intelligence</h3><p class="text-sm text-white">Branding, High-End Video Production & Content.</p></div>
+                    </div>
+                    <div class="flex gap-4 group cursor-default">
+                        <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#00CFFF]/50 transition-colors"><i data-lucide="server" class="text-[#00CFFF] w-6 h-6"></i></div>
+                        <div><h3 class="text-xl font-bold text-white group-hover:text-[#00CFFF]">Digital Infrastructure</h3><p class="text-sm text-white">Web Development, CRM Setup, & Automations.</p></div>
+                    </div>
+                    <div class="flex gap-4 group cursor-default">
+                        <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#00CFFF]/50 transition-colors"><i data-lucide="repeat" class="text-[#00CFFF] w-6 h-6"></i></div>
+                        <div><h3 class="text-xl font-bold text-white group-hover:text-[#00CFFF]">Lifecycle Retention</h3><p class="text-sm text-white">Email & SMS Marketing flows to maximize LTV.</p></div>
+                    </div>
+                    <div class="flex gap-4 group cursor-default">
+                        <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#00CFFF]/50 transition-colors"><i data-lucide="pie-chart" class="text-[#00CFFF] w-6 h-6"></i></div>
+                        <div><h3 class="text-xl font-bold text-white group-hover:text-[#00CFFF]">Data & Strategy</h3><p class="text-sm text-white">Advanced Analytics & Strategic Consulting.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Fixed Funnel Visualization (IMAGE REPLACEMENT) -->
+            <div class="relative">
+                <!-- Mobile Height: h-[400px], Desktop: h-[800px] -->
+                <div class="glass-panel p-0 rounded-3xl border border-white/10 shadow-2xl overflow-hidden h-[400px] md:h-[800px] w-full flex items-center justify-center">
+                      <div class="w-full h-full flex items-center justify-center relative">
+                        <img src="https://refiniti.ai/wp-content/uploads/2025/11/Refiniti-AI-Wormhole-2.jpg" alt="RefinitiAI Growth Engine Visualization" class="growth-image" onerror="this.style.display='none';">
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Refiniti Works Section -->
+    <!-- UPDATED: Reduced padding py-24 -> py-12 md:py-24 -->
+    <section id="how-it-works" class="py-12 md:py-24 bg-[#08080A] relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">See How Refiniti Works for <span class="text-[#00CFFF]">You</span></h2>
+                <p class="text-white">Different challenges, same transformation.</p>
+            </div>
+
+            <!-- Tabs (Pill Style) -->
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-12 items-center">
+                <button class="process-pill active tab-btn w-full md:w-auto justify-center" onclick="switchTab('acquisition', this)"><i data-lucide="target"></i> Acquisition</button>
+                <button class="process-pill tab-btn w-full md:w-auto justify-center" onclick="switchTab('behavior', this)"><i data-lucide="activity"></i> Behavior</button>
+                <button class="process-pill tab-btn w-full md:w-auto justify-center" onclick="switchTab('conversion', this)"><i data-lucide="check-circle"></i> Conversion</button>
+            </div>
+
+            <!-- Comparison Cards Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="comparison-container">
+                <!-- Left Card (Reality) -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/5 bg-[#111]/80 relative overflow-hidden comparison-card">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-red-500/50"></div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="frown" class="text-white w-6 h-6"></i>
+                        <h3 class="text-xl font-bold text-white">The Reality</h3>
+                    </div>
+                    <div class="bg-[#1a1a1a] p-4 rounded-xl border border-white/5 mb-6">
+                        <p class="text-sm text-white mb-2 font-mono text-xs uppercase">You Say:</p>
+                        <p class="text-white text-sm italic" id="reality-quote">"I'm spending thousands on ads but getting unqualified leads that go nowhere."</p>
+                    </div>
+                    <div class="bg-red-500/10 p-4 rounded-xl border border-red-500/20">
+                        <p class="text-sm text-red-400 font-bold mb-1">Result:</p>
+                        <p class="text-white text-sm" id="reality-result">High CPA, low-quality leads, wasted budget.</p>
+                    </div>
+                </div>
+
+                <!-- Right Card (Refiniti) -->
+                <div class="glass-panel p-8 rounded-3xl border border-[#00CFFF]/30 bg-[#00CFFF]/5 relative overflow-hidden comparison-card">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-[#00CFFF]"></div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="sparkles" class="text-[#00CFFF] w-6 h-6"></i>
+                        <h3 class="text-xl font-bold text-white">With Refiniti</h3>
+                    </div>
+                    <div class="bg-[#00CFFF]/10 p-4 rounded-xl border border-[#00CFFF]/20 mb-6">
+                        <p class="text-sm text-[#00CFFF] mb-2 font-mono text-xs uppercase">Refiniti Does:</p>
+                        <p class="text-white text-sm italic" id="refiniti-quote">"AI audits audience data to target intent-based users, filtering out low-quality clicks."</p>
+                    </div>
+                    <div class="bg-green-500/10 p-4 rounded-xl border border-green-500/20">
+                        <p class="text-sm text-green-400 font-bold mb-1">Result:</p>
+                        <p class="text-white text-sm" id="refiniti-result">CPA drops by 40%, lead quality skyrockets.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Added ID for anchoring) -->
+    <!-- UPDATED: Reduced padding py-24 -> py-12 md:py-24 -->
+    <section id="results" class="py-12 md:py-24 bg-[#08080A]">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Enterprise-Grade Results.</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 rounded-2xl bg-[#111] border border-white/5 hover:border-white/10 transition-colors">
+                    <div class="flex gap-1 mb-4 text-[#00CFFF]">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-white text-sm mb-6 leading-relaxed">"RefinitiAI didn't just run ads; they rebuilt our entire acquisition logic. Our CAC dropped 40% in week three."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-700"></div>
+                        <div>
+                            <p class="text-white text-sm font-bold">Sarah J.</p>
+                            <p class="text-[#666] text-xs">CMO, TechFlow</p>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Card 2 -->
+                <div class="p-8 rounded-2xl bg-[#111] border border-white/5 hover:border-white/10 transition-colors">
+                    <div class="flex gap-1 mb-4 text-[#00CFFF]">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-white text-sm mb-6 leading-relaxed">"The Diagnose phase was eye-opening. We realized we were targeting the wrong audience for years."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-700"></div>
+                        <div>
+                            <p class="text-white text-sm font-bold">Marcus R.</p>
+                            <p class="text-[#666] text-xs">Founder, ScaleUp Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Card 3 -->
+                <div class="p-8 rounded-2xl bg-[#111] border border-white/5 hover:border-white/10 transition-colors">
+                    <div class="flex gap-1 mb-4 text-[#00CFFF]">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-white text-sm mb-6 leading-relaxed">"Finally, a system that works. No fluff, just automated funnels and clear ROI. Our monthly leads have tripled."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-700"></div>
+                        <div>
+                            <p class="text-white text-sm font-bold">Elena D.</p>
+                            <p class="text-[#666] text-xs">Director, FinServe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (Added) -->
+    <!-- UPDATED: Reduced padding py-24 -> py-12 md:py-24 -->
+    <section id="faq" class="py-12 md:py-24 bg-[#08080A] border-t border-white/5">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center text-white">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" onclick="toggleFAQ(this)">
+                        <span>How is RefinitiAI different from an agency?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-content">
+                        Traditional agencies throw hours at problems. We deploy a proprietary AI system. We focus on building assets (funnels, automations) that you own, rather than renting you hours.
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" onclick="toggleFAQ(this)">
+                        <span>What is the typical timeline for results?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-content">
+                        The Diagnose phase typically takes 5-7 days. Funnel buildout is another 7 days. You can expect live traffic and initial data within 14 days of onboarding.
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" onclick="toggleFAQ(this)">
+                        <span>Is this suitable for B2B or B2C?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-content">
+                        Both. The "Diagnose-Funnel-Scale" logic applies universally. We adapt the tactics (LinkedIn vs. Meta, Webinars vs. Direct Sales) based on the initial diagnosis.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <!-- UPDATED: Reduced padding py-32 -> py-16 md:py-32 -->
+    <section id="cta" class="py-16 md:py-32 relative overflow-hidden bg-[#000]">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,207,255,0.15)_0%,rgba(0,0,0,0)_70%)]"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tighter-custom text-white">Ready to Implement Your<br>AI Growth System?</h2>
+            <p class="text-xl text-white mb-10 max-w-2xl mx-auto">RefinitiAI is the only system built on precision, not guesswork. Secure your spot now.</p>
+            
+            <button onclick="openBookingModal()" class="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-lg text-black transition-all duration-200 bg-[#00CFFF] rounded-full hover:bg-[#33DDFF] hover:scale-105 focus:outline-none ring-offset-2 focus:ring-2 ring-[#00CFFF]">
+                See if you Qualify
+                <div class="absolute -inset-3 rounded-full bg-[#00CFFF] opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-200"></div>
+            </button>
+            
+            <p class="mt-6 text-xs text-white uppercase tracking-widest">Limited Availability for Q4</p>
+        </div>
+    </section>
+    
+    <!-- Urgency Floating Bar -->
+    <div class="fixed bottom-6 left-6 right-6 z-50 max-w-xl mx-auto animate-float-delayed">
+        <div class="urgency-glass rounded-full px-6 py-3 flex items-center justify-between gap-4">
+             <div class="flex items-center gap-3">
+                 <div class="relative flex h-3 w-3">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00CFFF] opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-[#00CFFF]"></span>
+                </div>
+                <span class="text-sm font-semibold text-white tracking-wide">High Demand: <span class="text-[#00CFFF]">Only 3 Spots Left</span> for <span id="current-month">November</span></span>
+             </div>
+             <button onclick="openBookingModal()" class="text-xs font-bold text-black bg-[#00CFFF] px-4 py-1.5 rounded-full hover:bg-white transition-colors">Claim Spot</button>
+        </div>
+    </div>
+
+    <!-- PILL FOOTER (Updated Socials to Horizontal on Mobile) -->
+    <!-- UPDATED: Reduced padding py-20 -> py-10 md:py-20 -->
+    <footer class="relative py-10 md:py-20 bg-transparent text-white">
+        <!-- UPDATED: Reduced px-6 -> px-2 md:px-6 for wider mobile footer -->
+        <div class="max-w-7xl mx-auto px-2 md:px-6">
+            <div class="footer-pill flex flex-col md:flex-row justify-between items-start gap-12">
+                
+                <!-- Left: Logo & Tagline -->
+                <div class="flex flex-col gap-6 max-w-sm">
+                    <img src="https://refiniti.ai/wp-content/uploads/2025/11/Refiniti-AI-Vertical-Logo.png" alt="Refiniti AI" class="h-10 md:h-12 w-auto object-contain self-start">
+                    <p class="text-sm text-white leading-relaxed">
+                        Built for ambitious teams. The only AI growth system that diagnoses, automates, and scales revenue with mathematical precision.
+                    </p>
+                    <!-- UPDATED: Copyright hidden on mobile, visible on desktop -->
+                    <p class="text-xs text-gray-400 mt-4 hidden md:block">© 2025 RefinitiAI. All rights reserved.</p>
+                </div>
+
+                <!-- Center: Links -->
+                <div class="flex gap-16">
+                    <div>
+                        <h4 class="font-bold text-gray-400 uppercase text-xs tracking-wider mb-4">Product</h4>
+                        <a href="#system" class="footer-link">Process</a>
+                        <a href="#product-suite" class="footer-link">Engine</a>
+                        <a href="#how-it-works" class="footer-link">Difference</a>
+                        <a href="#results" class="footer-link">Results</a>
+                        <a href="#faq" class="footer-link">FAQ</a>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-400 uppercase text-xs tracking-wider mb-4">Company</h4>
+                        <a href="#" class="footer-link">Roadmap</a>
+                        <a href="#" class="footer-link">Helpdesk</a>
+                        <a href="#" class="footer-link">Blog</a>
+                        <a href="#" class="footer-link">Affiliate</a>
+                    </div>
+                </div>
+
+                <!-- Right: Socials (Row on Mobile, Column on Desktop) -->
+                <div class="flex flex-row md:flex-col gap-4">
+                    <a href="#" class="footer-social-icon"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="footer-social-icon"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="footer-social-icon"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="footer-social-icon"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+                </div>
+
+                <!-- UPDATED: Copyright shown at the bottom on mobile only -->
+                <div class="md:hidden w-full pt-8 border-t border-white/10 text-center">
+                    <p class="text-xs text-gray-400">© 2025 RefinitiAI. All rights reserved.</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/80">
+        <div class="relative w-full max-w-4xl h-[90vh] bg-[#08080A] rounded-2xl border border-white/10 shadow-2xl overflow-hidden mx-4 modal-iframe-container modal-content">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 z-50 text-white hover:text-[#00CFFF] transition-colors bg-black/50 rounded-full p-2">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <iframe
+                src="https://api.leadconnectorhq.com/widget/form/Ihk0NkhG1jvLRtfbL5xL"
+                style="width:100%;height:100%;border:none;border-radius:17px"
+                id="inline-Ihk0NkhG1jvLRtfbL5xL" 
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Marketing Form - Claim Offer"
+                data-height="648"
+                data-layout-iframe-id="inline-Ihk0NkhG1jvLRtfbL5xL"
+                data-form-id="Ihk0NkhG1jvLRtfbL5xL"
+                title="Marketing Form - Claim Offer">
+            </iframe>
+            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+        </div>
+    </div>
