@@ -4,34 +4,57 @@ const SECURE_FUNCTION_URL = "https://gemini-secure-handler-lnqiwbygjq-wn.a.run.a
 // -------------------------------------
 
 let isChatInteractive = false;
-const chatContainer = document.getElementById('chat-container');
+let chatContainer; // Declare globally, assign in DOMContentLoaded
+let simulationIntervalId; // To store the interval ID for the simulation
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 // --- TABS LOGIC ---
 const comparisons = {
     acquisition: {
-        reality: { quote: "\"I'm spending thousands on ads but getting unqualified leads that go nowhere.\"", result: "High CPA, low-quality leads, wasted budget." },
-        refiniti: { quote: "\"AI audits audience data to target intent-based users, filtering out low-quality clicks.\"", result: "CPA drops by 40%, lead quality skyrockets." }
+        quote: "\"I'm spending thousands on ads but getting unqualified leads that go nowhere.\"",
+        result: "High CPA, low-quality leads, wasted budget.",
+        refinitiQuote: "\"AI audits audience data to target intent-based users, filtering out low-quality clicks.\"",
+        refinitiResult: "CPA drops by 40%, lead quality skyrockets.",
+        chat: [
+            { role: 'client', text: "Our ad spend is through the roof, but our leads aren't converting." },
+            { role: 'refiniti', text: "That's a common acquisition problem. We'll audit your targeting and creative." },
+            { role: 'client', text: "So, you're saying we're attracting the wrong people?" },
+            { role: 'refiniti', text: "Precisely. Our AI will refine your audience to attract high-intent users." },
+            { role: 'client', text: "Amazing! Our lead quality has never been better." },
+            { role: 'refiniti', text: "Focused acquisition leads to predictable, profitable growth. Always." }
+        ]
     },
     behavior: {
-        reality: { quote: "\"Traffic comes to the site, looks around for 10 seconds, and bounces without engaging.\"", result: "80% Bounce Rate, zero engagement." },
-        refiniti: { quote: "\"Landing pages dynamically adapt headlines and creative based on the user's ad source.\"", result: "Time on site +300%, bounce rate plummets." }
+        quote: "\"Traffic comes to the site, looks around for 10 seconds, and bounces without engaging.\"",
+        result: "80% Bounce Rate, zero engagement.",
+        refinitiQuote: "\"Landing pages dynamically adapt headlines and creative based on the user's ad source.\"",
+        refinitiResult: "Time on site +300%, bounce rate plummets.",
+        chat: [
+            { role: 'client', text: "People visit our site, but they just leave without doing anything." },
+            { role: 'refiniti', text: "That indicates a behavioral disconnect. We need to optimize their journey." },
+            { role: 'client', text: "How do you get them to stay and engage?" },
+            { role: 'refiniti', text: "Dynamic content and clear calls to action, personalized for each visitor." },
+            { role: 'client', text: "Our engagement metrics are through the roof now!" },
+            { role: 'refiniti', text: "Engaged users are converting users. It's the core of smart funnels." }
+        ]
     },
     conversion: {
-        reality: { quote: "\"They add to cart or book a call, but then ghost us. Manual follow-up is too slow.\"", result: "Lead goes cold, revenue lost." },
-        refiniti: { quote: "\"Instant AI-triggered SMS & Email sequences nurture leads the second they show interest.\"", result: "Conversion rate doubles, revenue scales." }
+        quote: "\"They add to cart or book a call, but then ghost us. Manual follow-up is too slow.\"",
+        result: "Lead goes cold, revenue lost.",
+        refinitiQuote: "\"Instant AI-triggered SMS & Email sequences nurture leads the second they show interest.\"",
+        refinitiResult: "Conversion rate doubles, revenue scales.",
+        chat: [
+            { role: 'client', text: "We get leads, but they never close. Our team can't keep up." },
+            { role: 'refiniti', text: "That's a conversion velocity issue. We automate follow-up instantly." },
+            { role: 'client', text: "You mean, no more lost leads because of slow responses?" },
+            { role: 'refiniti', text: "Exactly. AI triggers personalized sequences the moment interest is shown." },
+            { role: 'client', text: "Our conversion rate just doubled! This is incredible." },
+            { role: 'refiniti', text: "Automated, intelligent nurturing closes more deals, faster. That's Refiniti." }
+        ]
     }
 };
 
-// --- CHAT SIMULATION DATA ---
-const chatMessages = [
-    { role: 'client', text: "We’ve had steady traffic for months, but conversions are stuck at 1%." },
-    { role: 'refiniti', text: "That’s a classic funnel issue. Let’s diagnose the offer." },
-    { role: 'client', text: "Alright, makes sense. What happens once we fix that?" },
-    { role: 'refiniti', text: "Conversions climb and CPA drops. Scaling becomes predictable." },
-    { role: 'client', text: "Wow, conversions jumped to 4.8%!" },
-    { role: 'refiniti', text: "Exactly. Fix the funnel → lift conversions → scale profitably." }
-];
+let currentChatMessages = comparisons.acquisition.chat; // Default chat messages
 
 // --- 1. GLOBAL UI FUNCTIONS ---
 
@@ -76,12 +99,21 @@ window.switchTab = function(tabName, btn) {
     const container = document.getElementById('comparison-container');
     container.style.opacity = '0';
     setTimeout(() => {
-        document.getElementById('reality-quote').textContent = data.reality.quote;
-        document.getElementById('reality-result').textContent = data.reality.result;
-        document.getElementById('refiniti-quote').textContent = data.refiniti.quote;
-        document.getElementById('refiniti-result').textContent = data.refiniti.result;
+        document.getElementById('reality-quote').textContent = data.quote;
+        document.getElementById('reality-result').textContent = data.result;
+        document.getElementById('refiniti-quote').textContent = data.refinitiQuote;
+        document.getElementById('refiniti-result').textContent = data.refinitiResult;
         container.style.opacity = '1';
     }, 200);
+
+    // Update chat for the new tab
+    currentChatMessages = data.chat;
+    isChatInteractive = false; // Reset interactive mode
+    if (chatContainer) {
+        chatContainer.dataset.mode = 'simulation';
+        clearInterval(simulationIntervalId); // Stop any ongoing simulation
+        runSimulationChat(); // Start simulation for the new tab
+    }
 }
 
 // --- CORE HELPER FUNCTIONS ---
@@ -180,15 +212,15 @@ async function appendMessage(role, text, typeEffect = false) {
 
 // --- CHAT SIMULATION LOGIC FUNCTION ---
 async function runSimulationChat() {
-    if(chatContainer.dataset.mode === 'interactive') return;
     chatContainer.innerHTML = ''; 
-    for (const msg of chatMessages) {
-        if(chatContainer.dataset.mode === 'interactive') break;
+    for (const msg of currentChatMessages) {
+        if(chatContainer.dataset.mode === 'interactive') break; // Stop if mode changes
         await appendMessage(msg.role, msg.text);
         await new Promise(r => setTimeout(r, 1500));
     }
     if(chatContainer.dataset.mode !== 'interactive') {
-        setTimeout(runSimulationChat, 3000); 
+        // Only restart simulation if still in simulation mode
+        simulationIntervalId = setTimeout(runSimulationChat, 3000); 
     }
 }
 
@@ -273,7 +305,9 @@ window.sendToGemini = async function() {
     // 1. Switch to Interactive Mode and Show User Message
     if (!isChatInteractive) {
         isChatInteractive = true;
+        chatContainer.dataset.mode = 'interactive'; // Set to interactive mode
         chatContainer.innerHTML = '';
+        clearInterval(simulationIntervalId); // Stop the simulation when entering interactive mode
     }
     inputField.value = '';
     await appendMessage('client', userText);
@@ -322,6 +356,7 @@ window.sendToGemini = async function() {
 
 // --- 4. Initialization Logic (Runs when the script is loaded) ---
 function initializeSiteLogic() {
+    chatContainer = document.getElementById('chat-container'); // Assign chatContainer here
     // FIX for 'd is not defined'
     const d = new Date(); 
     
@@ -360,9 +395,6 @@ function initializeSiteLogic() {
     }
 
     // Chat Simulation Logic
-    const chatMessages = [ /* ... messages ... */ ]; // Placeholder, defined globally at top
-
-    // Use data attribute to track state
     if (chatContainer) {
         chatContainer.dataset.mode = 'simulation';
         runSimulationChat(); // Start Simulation on Load
