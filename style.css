@@ -7,6 +7,10 @@
             --color-neon-purple: #BC13FE;
             --color-neon-blue: #00CFFF;
             --color-deep-space: #0f0518;
+            --color-success: #3fb950;
+            --color-error: #ff7b72;
+            --color-border: #30363d;
+            --color-input-bg: #0d1117;
         }
         
         body {
@@ -295,22 +299,184 @@
             opacity: 1;
             pointer-events: auto;
         }
-        .modal-iframe-container iframe {
-            border-radius: 12px !important;
-            background-color: #08080A !important; /* Match bg for seamless look */
+        
+        /* New Custom Form Styles */
+        .custom-form-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #0d1117; /* Dark background matching the image */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #c9d1d9;
         }
+        
+        .custom-form-container h2 {
+            color: #ffffff;
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .custom-form-container label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #e6edf3;
+        }
+
+        .custom-form-container .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .custom-form-container .input-group {
+            flex-grow: 1;
+        }
+
+        .custom-form-container input[type="text"],
+        .custom-form-container input[type="email"],
+        .custom-form-container input[type="number"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            background-color: #010409;
+            color: #ffffff;
+            font-size: 1em;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .custom-form-container input:focus {
+            border-color: #00CFFF;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 207, 255, 0.2);
+        }
+
+        /* Services Needed Styling (Multi-Select) */
+        .services-group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .service-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 10px;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            background-color: #0d1117;
+            text-align: center;
+            height: 100px;
+        }
+
+        .service-option:hover {
+            border-color: #8b949e;
+            background-color: #161b22;
+        }
+
+        .service-option i {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #8b949e;
+            transition: color 0.2s;
+        }
+
+        .service-option span {
+            font-size: 0.85em;
+            font-weight: 500;
+            color: #c9d1d9;
+        }
+
+        /* Selected State */
+        .service-option.selected {
+            border-color: #00CFFF;
+            background-color: rgba(0, 207, 255, 0.1);
+        }
+
+        .service-option.selected i,
+        .service-option.selected span {
+            color: #00CFFF;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            margin-top: 30px;
+            background-color: #00CFFF;
+            color: #000;
+            border: none;
+            border-radius: 99px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 207, 255, 0.3);
+        }
+
+        .submit-btn:hover {
+            background-color: #33DDFF;
+            transform: translateY(-1px);
+            box-shadow: 0 0 25px rgba(0, 207, 255, 0.5);
+        }
+
+        .error-message { color: #ff7b72; margin-top: 10px; text-align: center; font-size: 0.9em; }
+        .success-message { color: #3fb950; margin-top: 10px; text-align: center; font-size: 0.9em; }
+
         /* Ensure modal content scrolls if form is long */
         .modal-content {
             max-height: 90vh;
             overflow-y: auto;
+            background: transparent !important; /* Override white bg */
+            border: none !important;
+            box-shadow: none !important;
         }
-        /* Custom scrollbar for modal */
-        .modal-content::-webkit-scrollbar {
-            width: 6px;
+        
+        /* Modal Container fixes */
+        .modal-iframe-container {
+             background: transparent !important;
+             border: none !important;
+             box-shadow: none !important;
+             display: flex;
+             justify-content: center;
+             align-items: center;
         }
-        .modal-content::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 3px;
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .custom-form-container {
+                padding: 20px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .services-group {
+                grid-template-columns: 1fr;
+            }
+            .service-option {
+                flex-direction: row;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+                justify-content: flex-start;
+            }
+            .service-option i {
+                margin-bottom: 0;
+            }
         }
 
         /* NEW: Process Pill Navigation */

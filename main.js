@@ -196,9 +196,9 @@ async function appendMessage(role, text, typeEffect = false) {
                     setTimeout(type, 10);
                 } else {
                     div.innerHTML = div.textContent
-                        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')
-                        .replace(/#cta/g, '<a href="#" onclick="openBookingModal(); return false;" class="text-[#00CFFF] underline hover:text-white font-bold">Schedule Audit</a>')
-                        .replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g, '<a href="mailto:$1" class="text-[#00CFFF] underline hover:text-white">$1</a>');
+                        .replace(/\*\*(.*?)\*\*/g, '<strong class=\"text-white\">$1</strong>')
+                        .replace(/#cta/g, '<a href=\"#\" onclick=\"openBookingModal(); return false;\" class=\"text-[#00CFFF] underline hover:text-white font-bold\">Schedule Audit</a>')
+                        .replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g, '<a href=\"mailto:$1\" class=\"text-[#00CFFF] underline hover:text-white\">$1</a>');
                     resolve();
                 }
             }
@@ -268,10 +268,10 @@ window.runSiteAudit = async function() {
              const div = document.createElement('div');
              div.className = 'flex gap-4';
              div.innerHTML = `
-                 <div class="shrink-0 mt-1"><i data-lucide="alert-triangle" class="w-5 h-5 text-[#00CFFF]"></i></div>
+                 <div class=\"shrink-0 mt-1\"><i data-lucide=\"alert-triangle\" class=\"w-5 h-5 text-[#00CFFF]\"></i></div>
                  <div>
-                     <h4 class="font-bold text-white text-sm">${point.title}</h4>
-                     <p class="text-gray-400 text-xs leading-relaxed">${point.desc}</p>
+                     <h4 class=\"font-bold text-white text-sm\">${point.title}</h4>
+                     <p class=\"text-gray-400 text-xs leading-relaxed\">${point.desc}</p>
                  </div>
              `;
              pointsContainer.appendChild(div);
@@ -285,7 +285,7 @@ window.runSiteAudit = async function() {
         
         document.getElementById('audit-score').innerText = "42";
         document.getElementById('audit-headline').innerText = "ERROR: Connection Failed";
-        document.getElementById('audit-points').innerHTML = `<p class="text-red-400">${fallbackMessage}</p>`;
+        document.getElementById('audit-points').innerHTML = `<p class=\"text-red-400\">${fallbackMessage}</p>`;
         if(window.lucide) lucide.createIcons();
     }
 
@@ -354,6 +354,99 @@ window.sendToGemini = async function() {
     }
 }
 
+// --- NEW: Custom Form Submission Logic ---
+function initializeCustomForm() {
+    const form = document.getElementById('betaAccessForm');
+    const serviceContainer = document.getElementById('servicesNeededContainer');
+    const hiddenServiceInput = document.getElementById('service_needed');
+    const messageElement = document.getElementById('message');
+    const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/itcUlMQJDKPVgPxLNDGk/webhook-trigger/57552fa2-ef08-48d1-af2d-d2f6a5d87719';
+
+    if (!form || !serviceContainer || !hiddenServiceInput || !messageElement) return;
+
+    // --- 1. Multi-Select Logic ---
+    serviceContainer.addEventListener('click', function(event) {
+        let target = event.target.closest('.service-option');
+        if (target) {
+            target.classList.toggle('selected');
+            updateHiddenServiceInput();
+        }
+    });
+
+    function updateHiddenServiceInput() {
+        const selectedServices = Array.from(serviceContainer.querySelectorAll('.service-option.selected'))
+            .map(option => option.getAttribute('data-value'));
+        
+        // Join the selected services into a comma-separated string for GHL
+        hiddenServiceInput.value = selectedServices.join(', ');
+    }
+
+
+    // --- 2. Form Submission Logic ---
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Stop default HTML submission
+
+        // Clear previous messages
+        messageElement.textContent = 'Submitting...';
+        messageElement.style.color = '#c9d1d9'; 
+
+        // Get data from the form inputs
+        const formData = new FormData(form);
+        const data = {};
+        
+        // Convert form data into a simple object matching the GHL field names
+        formData.forEach((value, key) => {
+            // Only include fields that have a name attribute
+            if(key) {
+                data[key] = value;
+            }
+        });
+
+        // Ensure the services field is updated right before submission
+        updateHiddenServiceInput();
+        data['service_needed'] = hiddenServiceInput.value;
+
+
+        // Send the data to the Webhook URL
+        fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Send data as JSON
+            },
+            body: JSON.stringify(data) 
+        })
+        .then(response => {
+            // Note: Webhooks usually return a 200 or 202 status on receipt, 
+            // even if the GHL workflow fails later. We check if the connection was successful.
+            if (response.ok || response.status === 200 || response.status === 202) {
+                messageElement.textContent = 'Application Submitted Successfully! Check your email.';
+                messageElement.style.color = '#3fb950';
+                form.reset();
+                // Remove 'selected' class from service options after successful submission
+                serviceContainer.querySelectorAll('.service-option').forEach(el => el.classList.remove('selected'));
+                updateHiddenServiceInput(); // Clear the hidden input value
+                
+                // Close modal after delay
+                setTimeout(() => {
+                     window.closeBookingModal();
+                     messageElement.textContent = '';
+                }, 3000);
+            } else {
+                // This means the Webhook URL or server had an issue
+                messageElement.textContent = 'Submission Failed. Server connection error.';
+                messageElement.style.color = '#ff7b72';
+                console.error('Webhook response status:', response.status);
+            }
+        })
+        .catch(error => {
+            messageElement.textContent = 'Network Error. Could not connect to Webhook.';
+            messageElement.style.color = '#ff7b72';
+            console.error('Fetch error:', error);
+        });
+    });
+}
+
+
 // --- 4. Initialization Logic (Runs when the script is loaded) ---
 function initializeSiteLogic() {
     chatContainer = document.getElementById('chat-container'); // Assign chatContainer here
@@ -399,6 +492,9 @@ function initializeSiteLogic() {
         chatContainer.dataset.mode = 'simulation';
         runSimulationChat(); // Start Simulation on Load
     }
+    
+    // Initialize Custom Form
+    initializeCustomForm();
 
     // Initialize Icons safely (moved from DOMContentLoaded)
     if (window.lucide) {
