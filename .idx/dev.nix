@@ -7,6 +7,7 @@
   packages = [
     pkgs.nodejs_20
     pkgs.python3
+    pkgs.nodePackages.tailwindcss
   ];
   # Sets environment variables in the workspace
   env = {};
@@ -15,6 +16,7 @@
     extensions = [
       # "vscodevim.vim"
       "google.gemini-cli-vscode-ide-companion"
+      "bradlc.vscode-tailwindcss"
     ];
     # Enable previews and customize configuration
     previews = {
