@@ -1,21 +1,47 @@
-## Blueprint
+# Project Blueprint
 
-### Overview
+## Overview
 
-This project is a modern, framework-less web application designed to showcase RefinitiAI, an AI-powered growth system. It features a responsive design, interactive elements, and a clean aesthetic. The application aims to provide a clear and simple system for businesses to grow their revenue predictably.
+This project is a framework-less web application designed to showcase various case studies. It utilizes modern HTML, CSS, and JavaScript features, including Web Components for reusable UI elements, modern CSS for responsive design, and ES Modules for organized JavaScript. The application is intended to run within the Firebase Studio environment.
 
-### Current State & Features
+## Detailed Outline
 
-*   **HTML Structure:** The `index.html` file defines the main structure of the web page, including a navigation bar, hero section, system overview, product suite, "How it Works" section, testimonials, FAQ, and a final call to action. It now correctly links to the generated `dist/style.css` and has the Tailwind CSS CDN removed.
-*   **CSS Styling:** The `style.css` file contains the Tailwind CSS directives and now includes a `/* stylelint-disable at-rule-no-unknown */` comment to suppress IDE linter errors related to `@tailwind` and `@theme` rules. The `dist/style.css` is successfully generated, containing all the compiled Tailwind styles.
-*   **JavaScript Interactivity:** The `main.js` file handles interactive elements such as the mobile menu toggle, a dynamic revenue counter, a site audit tool, a before/after slider for the "Scale" section, and a booking modal.
-*   **Tailwind CSS Integration:** Tailwind CSS is fully integrated. `tailwind.config.js` is configured, `style.css` includes the directives, and the `package.json` `build:css` script successfully compiles Tailwind. The Nix environment (`.idx/dev.nix`) now correctly includes `pkgs.nodePackages.tailwindcss` and the `bradlc.vscode-tailwindcss` extension for improved IDE support.
-*   **Google Fonts:** The project uses "Inter" and "Space Grotesk" from Google Fonts for typography.
-*   **Lucide Icons:** SVG icons are loaded from Lucide for various UI elements.
-*   **Firebase Integration:** The `mcp.json` file has been updated to include Firebase server configurations.
+### Initial Version
 
-### Plan for Current Change: Suppress IDE Linter Errors for Tailwind CSS
+The initial version of the application consists of an `index.html` file as the main entry point, with `style.css` for styling and `main.js` for JavaScript logic. It includes several pages: `case-study.html`, `privacy-policy.html`, `terms-conditions.html`, `schedule-meeting.html`, and `legal-modal.js`, `header.js`, `footer.js` for common components.
 
-1.  **Add `stylelint-disable` comment to `style.css`:** Added `/* stylelint-disable at-rule-no-unknown */` to the top of `style.css` to prevent the IDE's CSS linter from flagging `@tailwind` and `@theme` rules as errors.
-2.  **Run `npm run build:css`:** Executed the `build:css` script to ensure the `dist/style.css` is up-to-date after the `style.css` modification.
-3.  **Outcome:** The IDE linter errors for `@tailwind` and `@theme` rules are now suppressed, improving the editing experience without affecting the functionality or appearance of the website.
+### Current Features
+
+*   **Responsive Design:** Uses modern CSS features to adapt to different screen sizes.
+*   **Modular JavaScript:** Organizes code using ES Modules for better maintainability.
+*   **Web Components:** Utilizes custom elements for reusable UI components.
+*   **Firebase Integration:** Recognizes standard Firebase integration patterns.
+*   **Case Studies Page (`case-study.html`):** Displays various projects with videos and PDF presentations.
+    *   **Queenie Couture Video:** Embeds a video.
+    *   **Website Showcases:** Displays images for various websites.
+    *   **PDF Presentations:** Integrates PDF.js for displaying PDF documents within the page.
+
+### Current Requested Change: Enhanced Case Studies Page with Slideshows, Custom Video Controls, and PDF Error Handling
+
+#### Plan:
+
+1.  **Update `blueprint.md`:** Ensure this blueprint reflects the latest changes and plans. (Already done with this step).
+2.  **Dynamic "Queenie Couture" Thumbnail (5-second mark):**
+    *   Modify `case-study.html` to include a canvas element and a play button overlay for the video thumbnail.
+    *   Modify `main.js` (or create a new JS file) to:
+        *   Load the "Queenie Couture" video.
+        *   Seek to the 5-second mark.
+        *   Draw that frame onto a hidden canvas.
+        *   Set that canvas as the background image or a visible element over the video before playback.
+        *   Ensure the video only plays when the user clicks a play button overlay.
+3.  **Fix Website and PDF Slideshows:**
+    *   Review existing JavaScript for slideshows in `main.js` and `case-study.html`.
+    *   Ensure correct initialization and functionality for both website and PDF slideshows.
+4.  **Improved PDF Loading with "Not Found" Message:**
+    *   Enhance the `loadPdf` function in `main.js` (or `case-study.html` if it's inline) to:
+        *   Attempt to load the PDF.
+        *   If loading fails, display a clear "PDF not found" message within the presentation slide's content area.
+5.  **Remove "Our Work" Text:**
+    *   Remove the `<h1>` element containing "Our Work" from `case-study.html`.
+6.  **Remove `display: flex` from `.item-container`:**
+    *   Remove `display: flex;` from the `.item-container` CSS rule in `style.css`.

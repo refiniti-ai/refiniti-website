@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work - Refiniti AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Box-Sizing for better responsiveness */
+        html {
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        /* Base styles for responsiveness */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .case-study-main {
+            min-height: calc(100vh - 120px);
+            padding: 5rem 1rem;
+            max-width: 90rem;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-color-primary);
+            margin-top: 4rem;
+            margin-bottom: 3rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            position: relative;
+            margin: auto;
+        }
+
+        .website-slide {
+            display: none;
+        }
+
+        .slider-nav {
+            text-align: center;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.6s ease;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin: 0 15px;
+            border: 2px solid #00FFFF;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,207,255,0.8);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #555;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            border: 2px solid #00FFFF;
+        }
+
+        .active, .dot:hover {
+            background-color: #00FFFF;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        .desktop-enclosure {
+            background: none;
+            border-radius: 15px;
+            box-shadow: none;
+            padding: 0;
+            margin-bottom: 3rem;
+            position: relative;
+            border: none;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .single-row-item {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+        }
+
+        .item-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-color-primary);
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .item-container {
+            background-color: #333;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 2.5rem;
+            position: relative;
+            border: 20px solid #222;
+            box-sizing: content-box;
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 400px;
+        }
+
+        .item-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 10px;
+            background-color: #444;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            bottom: -10px;
+            z-index: -1;
+        }
+
+        .content-wrapper {
+            padding: 1rem;
+            position: relative;
+            height: 550px;
+            flex-direction: column;
+            background-color: #000;
+            border-radius: 5px;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+        }
+
+        .case-study-iframe {
+            flex-grow: 1;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: #f0f0f0;
+        }
+
+        #premium-lending-iframe {
+            transform: scale(0.7);
+            transform-origin: top left;
+            width: calc(100% / 0.7);
+        }
+        
+        #wrapper-premium-lending {
+            overflow: hidden;
+        }
+
+        .video-grid-container {
+            display: grid;
+            grid-template-columns: 1fr; /* 1 column on small screens */
+            gap: 2rem;
+            width: 100%;
+            justify-items: center;
+        }
+
+        .video-grid-container .item-container {
+            border: none;
+            padding: 0;
+            background-color: transparent;
+            box-shadow: none;
+            min-height: auto;
+        }
+
+        .video-grid-container .item-container::before {
+            content: none;
+        }
+
+        .video-grid-container .content-wrapper {
+            height: auto;
+            padding: 0;
+            background-color: transparent;
+            overflow: hidden;
+        }
+
+        .video-responsive-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 5px;
+            background-color: #000;
+        }
+
+        .video-responsive-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
+            color: #00FFFF;
+            cursor: pointer;
+            background: linear-gradient(45deg, #00BFFF, #00FFFF);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease-in-out;
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), inset 0 0 10px rgba(0, 255, 255, 0.5);
+            border: 2px solid #00FFFF;
+        }
+
+        .play-button:hover {
+            background: linear-gradient(45deg, #00FFFF, #00BFFF);
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.9), inset 0 0 15px rgba(0, 255, 255, 0.7);
+        }
+
+        .play-button.playing {
+            opacity: 0;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .video-responsive-container:hover .video-controls {
+            opacity: 1;
+        }
+
+        .play-pause-btn {
+            background: none;
+            border: none;
+            color: #00FFFF;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            flex-grow: 1;
+            height: 8px;
+            background: #555;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .progress {
+            height: 100%;
+            background: #00FFFF;
+            width: 0;
+            border-radius: 4px;
+        }
+
+        .time-display {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .speed-controls {
+            position: relative;
+            margin-left: 10px;
+        }
+
+        .speed-btn {
+            background: none;
+            border: none;
+            color: #00FFFF;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .speed-options {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid #00FFFF;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .speed-options span {
+            display: block;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .speed-options span:hover {
+            background: #00FFFF;
+            color: #000;
+        }
+
+
+        @media (min-width: 768px) {
+            .video-grid-container {
+                grid-template-columns: 1fr 1fr; /* 2 columns on medium and larger screens */
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            #wrapper-premium-lending {
+                height: 400px;
+            }
+            #premium-lending-iframe {
+                height: calc(400px / 0.7);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #wrapper-premium-lending {
+                height: 550px;
+            }
+            #premium-lending-iframe {
+                height: calc(550px / 0.7);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <refiniti-header></refiniti-header>
+
+    <main class="case-study-main">
+        <h1 class="text-4xl md:text-5xl font-bold text-center mb-12 text-white">Our Work</h1>
+        
+        <h2 class="section-heading">Websites</h2>
+        <div class="slideshow-container">
+            <div class="website-slide fade">
+                <div class="single-row-item">
+                    <h2 class="item-title">Geopoint AI</h2>
+                    <div class="item-container rounded-lg overflow-hidden" id="container-geopoint">
+                        <div class="content-wrapper rounded-lg overflow-hidden" id="wrapper-geopoint">
+                            <iframe src="https://ai.geopointdata.com/" class="case-study-iframe" scrolling="yes" onerror="this.style.display='none'; console.error('Failed to load iframe content:', this.src);"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="website-slide fade">
+                <div class="single-row-item">
+                    <h2 class="item-title">Refiniti AI</h2>
+                    <div class="item-container rounded-lg overflow-hidden" id="container-refiniti">
+                        <div class="content-wrapper rounded-lg overflow-hidden" id="wrapper-refiniti">
+                            <iframe src="https://www.refiniti.ai/" class="case-study-iframe" scrolling="yes" onerror="this.style.display='none'; console.error('Failed to load iframe content:', this.src);"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="website-slide fade">
+                <div class="single-row-item">
+                    <h2 class="item-title">Premium Lending</h2>
+                    <div class="item-container rounded-lg overflow-hidden" id="container-premium-lending">
+                        <div class="content-wrapper rounded-lg overflow-hidden" id="wrapper-premium-lending">
+                            <iframe id="premium-lending-iframe" src="https://website-0dccfa9b.zyq.has.mybluehost.me/" class="case-study-iframe" scrolling="yes" onerror="this.style.display='none'; console.error('Failed to load iframe content:', this.src);"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="website-slide fade">
+                <div class="single-row-item">
+                    <h2 class="item-title">Longevity Plan AI</h2>
+                    <div class="item-container rounded-lg overflow-hidden" id="container-longevity">
+                        <div class="content-wrapper rounded-lg overflow-hidden" id="wrapper-longevity">
+                            <iframe src="https://longevity-plan-ai-221268-cad8b.web.app/" class="case-study-iframe" scrolling="yes" onerror="this.style.display='none'; console.error('Failed to load iframe content:', this.src);"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-nav">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <div class="slider-dots"></div>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
+
+        <h2 class="section-heading">Videos</h2>
+        <div class="desktop-enclosure video-grid-container">
+            <div class="single-row-item">
+                <h2 class="item-title">GeoPoint Final Animation</h2>
+                <div class="item-container rounded-lg overflow-hidden">
+                    <div class="content-wrapper rounded-lg overflow-hidden">
+                        <div class="video-responsive-container">
+                            <video class="case-study-video">
+                                <source src="Videos/GeoPoint Final Animtion (Video).mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                            <div class="video-controls">
+                                <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="time-display">0:00 / 0:00</div>
+                                <div class="speed-controls">
+                                    <button class="speed-btn">1x</button>
+                                    <div class="speed-options">
+                                        <span data-speed="1">1x</span>
+                                        <span data-speed="1.25">1.25x</span>
+                                        <span data-speed="1.5">1.5x</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-row-item">
+                <h2 class="item-title">Nisus Final Animation</h2>
+                <div class="item-container rounded-lg overflow-hidden">
+                    <div class="content-wrapper rounded-lg overflow-hidden">
+                        <div class="video-responsive-container">
+                            <video class="case-study-video">
+                                <source src="Videos/Nisus Final Animtion (Video).mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                             <div class="video-controls">
+                                <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="time-display">0:00 / 0:00</div>
+                                <div class="speed-controls">
+                                    <button class="speed-btn">1x</button>
+                                    <div class="speed-options">
+                                        <span data-speed="1">1x</span>
+                                        <span data-speed="1.25">1.25x</span>
+                                        <span data-speed="1.5">1.5x</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-row-item">
+                <h2 class="item-title">Premium Lending Video</h2>
+                <div class="item-container rounded-lg overflow-hidden">
+                    <div class="content-wrapper rounded-lg overflow-hidden">
+                        <div class="video-responsive-container">
+                            <video class="case-study-video">
+                                <source src="Videos/Premium Lending.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                             <div class="video-controls">
+                                <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="time-display">0:00 / 0:00</div>
+                                <div class="speed-controls">
+                                    <button class="speed-btn">1x</button>
+                                    <div class="speed-options">
+                                        <span data-speed="1">1x</span>
+                                        <span data-speed="1.25">1.25x</span>
+                                        <span data-speed="1.5">1.5x</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-row-item">
+                <h2 class="item-title">Queenie Couture Video</h2>
+                <div class="item-container rounded-lg overflow-hidden">
+                    <div class="content-wrapper rounded-lg overflow-hidden">
+                        <div class="video-responsive-container">
+                            <video id="queenie-video" class="case-study-video" poster="Images/Queenie-thumbnail.jpg">
+                                <source src="Videos/Queenie Qouture.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                             <div class="video-controls">
+                                <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="time-display">0:00 / 0:00</div>
+                                <div class="speed-controls">
+                                    <button class="speed-btn">1x</button>
+                                    <div class="speed-options">
+                                        <span data-speed="1">1x</span>
+                                        <span data-speed="1.25">1.25x</span>
+                                        <span data-speed="1.5">1.5x</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <refiniti-footer></refiniti-footer>
+
+    <script src="header.js" type="module"></script>
+    <script src="footer.js" type="module"></script>
+    <script src="main.js" type="module"></script>
+    <script src="legal-modal.js" type="module"></script>
+    <script>
+        let slideIndex = 1;
+        let slides = document.getElementsByClassName("website-slide");
+        let dotsContainer = document.querySelector(".slider-dots");
+
+        for (let i = 0; i < slides.length; i++) {
+            dotsContainer.innerHTML += `<span class="dot" onclick="currentSlide(${i + 1})"></span>`;
+        }
+
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+
+        document.querySelectorAll('.video-responsive-container').forEach(container => {
+            const video = container.querySelector('video');
+            const playButton = container.querySelector('.play-button');
+            const videoControls = container.querySelector('.video-controls');
+            const playPauseBtn = videoControls.querySelector('.play-pause-btn');
+            const progressBar = videoControls.querySelector('.progress-bar');
+            const progress = videoControls.querySelector('.progress');
+            const timeDisplay = videoControls.querySelector('.time-display');
+            const speedBtn = videoControls.querySelector('.speed-btn');
+            const speedOptions = videoControls.querySelector('.speed-options');
+
+            function formatTime(time) {
+                const minutes = Math.floor(time / 60);
+                const seconds = Math.floor(time % 60);
+                return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            }
+
+            playButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                video.play();
+            });
+
+            playPauseBtn.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+
+            video.addEventListener('play', () => {
+                playButton.classList.add('playing');
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            });
+
+            video.addEventListener('pause', () => {
+                playButton.classList.remove('playing');
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+            
+            video.addEventListener('loadedmetadata', () => {
+                timeDisplay.textContent = `${formatTime(0)} / ${formatTime(video.duration)}`;
+            });
+
+            video.addEventListener('timeupdate', () => {
+                const percentage = (video.currentTime / video.duration) * 100;
+                progress.style.width = `${percentage}%`;
+                timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+            });
+
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const width = progressBar.clientWidth;
+                const percentage = x / width;
+                video.currentTime = video.duration * percentage;
+            });
+            
+            speedBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                speedOptions.style.display = speedOptions.style.display === 'block' ? 'none' : 'block';
+            });
+
+            speedOptions.addEventListener('click', (e) => {
+                if (e.target.tagName === 'SPAN') {
+                    const speed = e.target.dataset.speed;
+                    video.playbackRate = speed;
+                    speedBtn.textContent = `${speed}x`;
+                    speedOptions.style.display = 'none';
+                }
+            });
+
+        });
+        
+        document.addEventListener('click', () => {
+             document.querySelectorAll('.speed-options').forEach(options => {
+                options.style.display = 'none';
+            });
+        });
+
+        const queenieVideo = document.getElementById('queenie-video');
+        if(queenieVideo) {
+            queenieVideo.addEventListener('loadedmetadata', () => {
+                queenieVideo.currentTime = 3;
+                queenieVideo.pause();
+            });
+        }
+
+    </script>
+</body>
+</html>

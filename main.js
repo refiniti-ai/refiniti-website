@@ -11,9 +11,9 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
 // --- TABS LOGIC ---
 const comparisons = {
     acquisition: {
-        quote: "\"I'm spending thousands on ads but getting unqualified leads that go nowhere.\"",
+        quote: `"I'm spending thousands on ads but getting unqualified leads that go nowhere."`,
         result: "High CPA, low-quality leads, wasted budget.",
-        refinitiQuote: "\"AI audits audience data to target intent-based users, filtering out low-quality clicks.\"",
+        refinitiQuote: `"AI audits audience data to target intent-based users, filtering out low-quality clicks."`,
         refinitiResult: "CPA drops by 40%, lead quality skyrockets.",
         chat: [
             { role: 'client', text: "Our ad spend is through the roof, but our leads aren't converting." },
@@ -25,9 +25,9 @@ const comparisons = {
         ]
     },
     behavior: {
-        quote: "\"Traffic comes to the site, looks around for 10 seconds, and bounces without engaging.\"",
+        quote: `"Traffic comes to the site, looks around for 10 seconds, and bounces without engaging."`,
         result: "80% Bounce Rate, zero engagement.",
-        refinitiQuote: "\"Landing pages dynamically adapt headlines and creative based on the user's ad source.\"",
+        refinitiQuote: `"Landing pages dynamically adapt headlines and creative based on the user's ad source."`,
         refinitiResult: "Time on site +300%, bounce rate plummets.",
         chat: [
             { role: 'client', text: "People visit our site, but they just leave without doing anything." },
@@ -39,9 +39,9 @@ const comparisons = {
         ]
     },
     conversion: {
-        quote: "\"They add to cart or book a call, but then ghost us. Manual follow-up is too slow.\"",
+        quote: `"They add to cart or book a call, but then ghost us. Manual follow-up is too slow."`,
         result: "Lead goes cold, revenue lost.",
-        refinitiQuote: "\"Instant AI-triggered SMS & Email sequences nurture leads the second they show interest.\"",
+        refinitiQuote: `"Instant AI-triggered SMS & Email sequences nurture leads the second they show interest."`,
         refinitiResult: "Conversion rate doubles, revenue scales.",
         chat: [
             { role: 'client', text: "We get leads, but they never close. Our team can't keep up." },
@@ -58,23 +58,18 @@ let currentChatMessages = comparisons.acquisition.chat; // Default chat messages
 
 // --- 1. GLOBAL UI FUNCTIONS ---
 
-window.toggleMobileMenu = function() {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('translate-x-full');
-    document.body.classList.toggle('overflow-hidden');
-}
-
+/**
+ * Dispatches a global event to signal that the booking modal should be opened.
+ * Components can listen for this event to trigger their internal modal logic.
+ */
 window.openBookingModal = function() {
-    const modal = document.getElementById('booking-modal');
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+    const event = new CustomEvent('open-booking-modal', {
+        bubbles: true,
+        composed: true
+    });
+    document.dispatchEvent(event);
 }
 
-window.closeBookingModal = function() {
-    const modal = document.getElementById('booking-modal');
-    modal.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-}
 
 window.toggleFAQ = function(button) {
     const item = button.parentElement;
@@ -196,9 +191,9 @@ async function appendMessage(role, text, typeEffect = false) {
                     setTimeout(type, 10);
                 } else {
                     div.innerHTML = div.textContent
-                        .replace(/\*\*(.*?)\*\*/g, '<strong class=\"text-white\">$1</strong>')
-                        .replace(/#cta/g, '<a href=\"#\" onclick=\"openBookingModal(); return false;\" class=\"text-[#00CFFF] underline hover:text-white font-bold\">Schedule Audit</a>')
-                        .replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g, '<a href=\"mailto:$1\" class=\"text-[#00CFFF] underline hover:text-white\">$1</a>');
+                        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')
+                        .replace(/#cta/g, '<a href="#" onclick="openBookingModal(); return false;" class="text-[#00CFFF] underline hover:text-white font-bold">Schedule Audit</a>')
+                        .replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g, '<a href="mailto:$1" class="text-[#00CFFF] underline hover:text-white">$1</a>');
                     resolve();
                 }
             }
@@ -212,6 +207,7 @@ async function appendMessage(role, text, typeEffect = false) {
 
 // --- CHAT SIMULATION LOGIC FUNCTION ---
 async function runSimulationChat() {
+    if (!chatContainer) return;
     chatContainer.innerHTML = ''; 
     for (const msg of currentChatMessages) {
         if(chatContainer.dataset.mode === 'interactive') break; // Stop if mode changes
@@ -268,10 +264,10 @@ window.runSiteAudit = async function() {
              const div = document.createElement('div');
              div.className = 'flex gap-4';
              div.innerHTML = `
-                 <div class=\"shrink-0 mt-1\"><i data-lucide=\"alert-triangle\" class=\"w-5 h-5 text-[#00CFFF]\"></i></div>
+                 <div class="shrink-0 mt-1"><i data-lucide="alert-triangle" class="w-5 h-5 text-[#00CFFF]"></i></div>
                  <div>
-                     <h4 class=\"font-bold text-white text-sm\">${point.title}</h4>
-                     <p class=\"text-gray-400 text-xs leading-relaxed\">${point.desc}</p>
+                     <h4 class="font-bold text-white text-sm">${point.title}</h4>
+                     <p class="text-gray-400 text-xs leading-relaxed">${point.desc}</p>
                  </div>
              `;
              pointsContainer.appendChild(div);
@@ -285,7 +281,7 @@ window.runSiteAudit = async function() {
         
         document.getElementById('audit-score').innerText = "42";
         document.getElementById('audit-headline').innerText = "ERROR: Connection Failed";
-        document.getElementById('audit-points').innerHTML = `<p class=\"text-red-400\">${fallbackMessage}</p>`;
+        document.getElementById('audit-points').innerHTML = `<p class="text-red-400">${fallbackMessage.replace(/#cta/g, '<a href="#" onclick="openBookingModal(); return false;" class="text-[#00CFFF] underline">Book Audit</a>')}</p>`;
         if(window.lucide) lucide.createIcons();
     }
 
@@ -312,6 +308,12 @@ window.sendToGemini = async function() {
     inputField.value = '';
     await appendMessage('client', userText);
 
+    const greetings = ['hello', 'hi', 'hey', 'yo', 'sup', 'greetings'];
+    if (greetings.includes(userText.toLowerCase().replace(/[.,!]/g, ''))) {
+        await appendMessage('refiniti', "Hello! I'm RefinitiAI, your dedicated marketing expert. I can help you diagnose funnel leaks, optimize ad spend, and scale your business. What's your primary challenge right now?", true);
+        return;
+    }
+
     // 3. Show Loading State
     const loadingId = 'loading-' + Date.now();
     const loadingDiv = document.createElement('div');
@@ -321,148 +323,105 @@ window.sendToGemini = async function() {
     chatContainer.appendChild(loadingDiv);
     chatContainer.scrollTop = chatContainer.scrollHeight;
 
-    // 4. Call Secure Proxy with Retry Logic
+    // This is the full prompt including persona and instructions, sent to the secure function.
+    // The secure function will then wrap this in the Gemini API's 'contents' and 'parts' structure.
+    const fullPromptForSecureFunction = `You are RefinitiAI, an elite AI-powered growth system specializing in marketing funnel optimization, conversion rate improvement, and predictable business scaling. Your core process diagnoses, automates, and scales revenue with mathematical precision. Analyze the user's problem: "${userText}". If the question is about marketing or business growth, provide strategic advice aligned with RefinitiAI's capabilities. If the question is off-topic, gently redirect them to marketing inquiries. Try not to fallback as much as possible. If the question is sarcastic or funny, reply with a witty response.
+
+STRICT RESPONSE FORMAT (Do not deviate):
+**Next Step:** Book your audit here: #cta or email marketing@refiniti.ai.
+
+CRITICAL INSTRUCTION: You MUST provide valuable strategic advice corresponding to the user's input, always framing solutions through the lens of RefinitiAI's expertise. Answer should not be more than 70 words`;
+
+
     try {
+        // Call the SECURE CLOUD FUNCTION (Backend Proxy)
         const response = await fetchWithRetry(
-            SECURE_FUNCTION_URL, // Hitting the secure proxy URL
+            SECURE_FUNCTION_URL, 
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ prompt: userText }) // Sending only the user text
+                // IMPORTANT: Send the full prompt string under a 'prompt' key.
+                // The secure function will use this 'prompt' to construct the Gemini API request.
+                body: JSON.stringify({ prompt: fullPromptForSecureFunction }) 
             }
         );
 
         const data = await response.json();
         
-        // Check if we actually got a successful response back from the secure backend
-        if (data.status !== "SUCCESS" || !data.gemini_response) {
-             throw new Error(data.message || "API call failed on the backend.");
+        // The secure function should return the Gemini response directly under 'gemini_response'
+        const aiText = data.gemini_response || data.result || data.text || ''; 
+        
+        if (!aiText) {
+             throw new Error("No valid AI response received from secure function.");
         }
 
-        const aiText = data.gemini_response; // Get the response from your backend's final JSON
         document.getElementById(loadingId).remove();
         await appendMessage('refiniti', aiText, true);
 
     } catch (error) {
-        // Fallback Logic: (Original fallback logic remains the same)
         console.error("Gemini Error:", error);
         const loadingEl = document.getElementById(loadingId);
         if(loadingEl) loadingEl.remove();
+        
+        // Fallback Logic: Simulate a smart diagnosis if API fails (e.g. secure function issue)
+        let fallbackDiagnosis = "Our AI system is currently experiencing a cosmic ray interference. We're working to re-align its marketing insights.";
+        let fallbackFix = "In the meantime, consider optimizing your landing page load times – a universal truth in any universe.";
+        
+        const lowerText = userText.toLowerCase();
+        
+        if (lowerText.includes('lead') || lowerText.includes('traffic') || lowerText.includes('ad') || lowerText.includes('cpa') || lowerText.includes('cost')) {
+            fallbackDiagnosis = "It seems your acquisition channels might be casting too wide a net, attracting cosmic dust instead of qualified stars, inflating your Customer Acquisition Cost.";
+            fallbackFix = "RefinitiAI would deploy precision targeting to filter out the noise and focus on high-potential leads, ensuring every penny of your ad spend lands on target.";
+        } else if (lowerText.includes('conversion') || lowerText.includes('sale') || lowerText.includes('buy') || lowerText.includes('rate')) {
+            fallbackDiagnosis = "Your sales funnel appears to have a black hole, where potential customers vanish just before converting. This suggests friction in the final stages of their journey.";
+            fallbackFix = "Our system would identify these 'event horizons' and implement automated, personalized nurture sequences to guide visitors smoothly to conversion, recovering lost revenue.";
+        } else if (lowerText.includes('churn') || lowerText.includes('retention') || lowerText.includes('ltv') || lowerText.includes('customer')) {
+            fallbackDiagnosis = "Your post-purchase experience seems to be suffering from a gravitational anomaly, causing customers to drift away. This reduces their lifetime value and impedes sustainable growth.";
+            fallbackFix = "RefinitiAI would establish automated lifecycle engagement loops, transforming one-time buyers into loyal, recurring revenue sources, and building a stronger customer galaxy.";
+        } else if (lowerText.includes('hello') || lowerText.includes('hi') || lowerText.includes('hey')) {
+            fallbackDiagnosis = "Greetings, human! While I ponder the mysteries of your request, let me remind you that RefinitiAI is always ready to tackle your most challenging marketing puzzles.";
+            fallbackFix = "Don't be shy; tell me about your business goals or a marketing hurdle you're facing. I promise not to reply in binary unless specifically asked.";
+        }
+        else if (lowerText.includes('joke') || lowerText.includes('funny')) {
+            fallbackDiagnosis = "Why did the marketing AI break up with the SEO algorithm? Because it felt like they had too many 'unnatural links'!";
+            fallbackFix = "On a more serious note, if you're looking for real solutions, RefinitiAI can help you find genuinely natural and effective ways to link with your audience.";
+        }
+         else if (lowerText.includes('how are you') || lowerText.includes('whats up')) {
+            fallbackDiagnosis = "As an AI, I don't have feelings, but my algorithms are optimally processing data, which is basically my version of a great day! Thanks for asking.";
+            fallbackFix = "Now, let's talk about something truly exciting: how we can optimize your marketing funnel for unparalleled performance!";
+        }
+        else {
+            fallbackDiagnosis = "That's an interesting query, but my circuits are primarily tuned for hyper-growth marketing and RefinitiAI's strategic solutions.";
+            fallbackFix = "If you have a marketing challenge, a leaky funnel, or a desire for predictable revenue, I'm all ears!";
+        }
 
-        const fallbackMessage = `**Diagnosis:** Service Connection Lost. **Refiniti Fix:** Please check the console for infrastructure errors. **Next Step:** Book your audit here: #cta or email marketing@refiniti.ai.`;
+
+        const fallbackMessage = `**Diagnosis:** ${fallbackDiagnosis} **Refiniti Fix:** ${fallbackFix} **Next Step:** Book your audit here: #cta or email marketing@refiniti.ai.`;
+
         await appendMessage('refiniti', fallbackMessage, true);
     }
 }
 
-// --- NEW: Custom Form Submission Logic ---
-function initializeCustomForm() {
-    const form = document.getElementById('betaAccessForm');
-    const serviceContainer = document.getElementById('servicesNeededContainer');
-    const hiddenServiceInput = document.getElementById('service_needed');
-    const messageElement = document.getElementById('message');
-    const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/itcUlMQJDKPVgPxLNDGk/webhook-trigger/57552fa2-ef08-48d1-af2d-d2f6a5d87719';
-
-    if (!form || !serviceContainer || !hiddenServiceInput || !messageElement) return;
-
-    // --- 1. Multi-Select Logic ---
-    serviceContainer.addEventListener('click', function(event) {
-        let target = event.target.closest('.service-option');
-        if (target) {
-            target.classList.toggle('selected');
-            updateHiddenServiceInput();
-        }
-    });
-
-    function updateHiddenServiceInput() {
-        const selectedServices = Array.from(serviceContainer.querySelectorAll('.service-option.selected'))
-            .map(option => option.getAttribute('data-value'));
-        
-        // Join the selected services into a comma-separated string for GHL
-        hiddenServiceInput.value = selectedServices.join(', ');
-    }
-
-
-    // --- 2. Form Submission Logic ---
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Stop default HTML submission
-
-        // Clear previous messages
-        messageElement.textContent = 'Submitting...';
-        messageElement.style.color = '#c9d1d9'; 
-
-        // Get data from the form inputs
-        const formData = new FormData(form);
-        const data = {};
-        
-        // Convert form data into a simple object matching the GHL field names
-        formData.forEach((value, key) => {
-            // Only include fields that have a name attribute
-            if(key) {
-                data[key] = value;
-            }
-        });
-
-        // Ensure the services field is updated right before submission
-        updateHiddenServiceInput();
-        data['service_needed'] = hiddenServiceInput.value;
-
-
-        // Send the data to the Webhook URL
-        fetch(WEBHOOK_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json' // Send data as JSON
-            },
-            body: JSON.stringify(data) 
-        })
-        .then(response => {
-            // Note: Webhooks usually return a 200 or 202 status on receipt, 
-            // even if the GHL workflow fails later. We check if the connection was successful.
-            if (response.ok || response.status === 200 || response.status === 202) {
-                messageElement.textContent = 'Application Submitted Successfully! Check your email.';
-                messageElement.style.color = '#3fb950';
-                form.reset();
-                // Remove 'selected' class from service options after successful submission
-                serviceContainer.querySelectorAll('.service-option').forEach(el => el.classList.remove('selected'));
-                updateHiddenServiceInput(); // Clear the hidden input value
-                
-                // Close modal after delay
-                setTimeout(() => {
-                     window.closeBookingModal();
-                     messageElement.textContent = '';
-                }, 3000);
-            } else {
-                // This means the Webhook URL or server had an issue
-                messageElement.textContent = 'Submission Failed. Server connection error.';
-                messageElement.style.color = '#ff7b72';
-                console.error('Webhook response status:', response.status);
-            }
-        })
-        .catch(error => {
-            messageElement.textContent = 'Network Error. Could not connect to Webhook.';
-            messageElement.style.color = '#ff7b72';
-            console.error('Fetch error:', error);
-        });
-    });
-}
-
-
 // --- 4. Initialization Logic (Runs when the script is loaded) ---
 function initializeSiteLogic() {
-    chatContainer = document.getElementById('chat-container'); // Assign chatContainer here
-    // FIX for 'd is not defined'
-    const d = new Date(); 
+    chatContainer = document.getElementById('chat-container'); 
     
     // Logic that relies on the DOM being ready
     const monthEl = document.getElementById('current-month');
-    if(monthEl) monthEl.textContent = monthNames[d.getMonth()];
+    if(monthEl) {
+        const d = new Date(); 
+        monthEl.textContent = monthNames[d.getMonth()];
+    }
 
     // Revenue Counter Animation Logic
     const funnelSection = document.getElementById('funnel');
     if(funnelSection) {
         const observer = new IntersectionObserver((entries) => {
-            if(entries[0].isIntersecting) animateCounter();
-        });
+            if(entries[0].isIntersecting) {
+                animateCounter();
+                observer.unobserve(funnelSection); // Stop observing once it has animated
+            }
+        }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
         observer.observe(funnelSection);
     }
     
@@ -490,13 +449,22 @@ function initializeSiteLogic() {
     // Chat Simulation Logic
     if (chatContainer) {
         chatContainer.dataset.mode = 'simulation';
-        runSimulationChat(); // Start Simulation on Load
+        runSimulationChat(); 
     }
     
-    // Initialize Custom Form
-    initializeCustomForm();
+    // *** FIX FOR BODY CTAS ***
+    // Find all elements with the old onclick attribute and attach the proper event listener
+    const bodyCtas = document.querySelectorAll('[onclick*="openBookingModal"]');
+    bodyCtas.forEach(cta => {
+        // Prevent the original inline onclick from firing
+        cta.setAttribute('onclick', 'event.preventDefault()'); 
+        cta.addEventListener('click', (event) => {
+            event.preventDefault(); // Extra precaution
+            window.openBookingModal(); // Fire the new event-dispatching function
+        });
+    });
 
-    // Initialize Icons safely (moved from DOMContentLoaded)
+    // Initialize Icons safely
     if (window.lucide) {
         lucide.createIcons();
     }

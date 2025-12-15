@@ -5,52 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RefinitiAI | Predictable Growth System</title>
     <script src="main.js"></script>
+    <script type="module" src="legal-modal.js"></script> 
     <link rel="stylesheet" href="dist/style.css">
     <!-- UPDATED: Using UMD build for reliable global access -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<body class="overflow-x-hidden">
+    <body class="overflow-x-hidden">
     <!-- Navbar -->
-    <nav class="fixed top-6 left-0 right-0 mx-auto w-[92%] max-w-7xl z-50 nav-glass rounded-full px-6 h-[72px] flex items-center justify-between transition-all duration-300">
-        <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
-            <!-- UPDATED: Desktop logo reduced by ~20% (h-12 to h-10) -->
-            <img src="https://refiniti.ai/wp-content/uploads/2025/11/Refiniti-AI-Vertical-Logo.png" alt="Refiniti AI" class="h-6 md:h-10 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='flex'">
-            <div id="fallback-logo" class="hidden items-center gap-2">
-                <div class="w-8 h-8 bg-gradient-to-br from-[#00CFFF] to-[#0080FF] rounded-lg flex items-center justify-center">
-                    <i data-lucide="activity" class="text-black w-5 h-5"></i>
-                </div>
-                <span class="text-xl font-bold tracking-tight text-white">Refiniti<span class="text-[#00CFFF]">AI</span></span>
-            </div>
-        </div>
-        <div class="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
-            <a href="#system" class="text-sm font-medium text-white hover:text-[#00CFFF] transition-colors">Process</a>
-            <a href="#product-suite" class="text-sm font-medium text-white hover:text-[#00CFFF] transition-colors">Engine</a>
-            <a href="#how-it-works" class="text-sm font-medium text-white hover:text-[#00CFFF] transition-colors">Difference</a>
-            <a href="#results" class="text-sm font-medium text-white hover:text-[#00CFFF] transition-colors">Results</a>
-            <a href="#faq" class="text-sm font-medium text-white hover:text-[#00CFFF] transition-colors">FAQ</a>
-        </div>
-        <div class="hidden md:flex items-center gap-6">
-            <button onclick="openBookingModal()" class="btn-primary px-6 py-2.5 rounded-full font-semibold text-black text-sm hover:shadow-[0_0_15px_rgba(0,207,255,0.4)]">See if you Qualify</button>
-        </div>
-        <div class="md:hidden text-white cursor-pointer" onclick="toggleMobileMenu()">
-            <i data-lucide="menu" class="w-6 h-6"></i>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-black z-40 transform translate-x-full pt-32 px-6 md:hidden flex flex-col gap-6">
-        <a href="#system" onclick="toggleMobileMenu()" class="text-2xl font-medium text-white border-b border-white/10 pb-4">Process</a>
-        <a href="#product-suite" onclick="toggleMobileMenu()" class="text-2xl font-medium text-white border-b border-white/10 pb-4">Engine</a>
-        <a href="#how-it-works" onclick="toggleMobileMenu()" class="text-2xl font-medium text-white border-b border-white/10 pb-4">Difference</a>
-        <a href="#results" onclick="toggleMobileMenu()" class="text-2xl font-medium text-white border-b border-white/10 pb-4">Results</a>
-        <a href="#faq" onclick="toggleMobileMenu()" class="text-2xl font-medium text-white border-b border-white/10 pb-4">FAQ</a>
-        <button onclick="toggleMobileMenu(); openBookingModal()" class="w-full btn-primary py-4 rounded-lg font-bold text-lg mt-4 shadow-[0_0_20px_rgba(0,207,255,0.2)]">See if you Qualify</button>
-        <div class="absolute top-8 right-8 cursor-pointer" onclick="toggleMobileMenu()">
-             <i data-lucide="x" class="w-8 h-8 text-white"></i>
-        </div>
-    </div>
+    <script type="module" src="header.js"></script>
+<refiniti-header></refiniti-header>
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-24 md:pt-32 overflow-hidden">
@@ -103,16 +68,16 @@
                 <div class="marquee-container">
                     <div class="marquee-track">
                         <div class="marquee-item">
-                             <img src="https://refiniti.ai/wp-content/uploads/2025/11/Logo-Trusted-By-Refiniti-1.png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
+                             <img src="Images/Logo Trusted By Refiniti (1).png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
                         </div>
                         <div class="marquee-item">
-                             <img src="https://refiniti.ai/wp-content/uploads/2025/11/Logo-Trusted-By-Refiniti-1.png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
+                             <img src="Images/Logo Trusted By Refiniti (1).png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
                         </div>
                         <div class="marquee-item">
-                             <img src="https://refiniti.ai/wp-content/uploads/2025/11/Logo-Trusted-By-Refiniti-1.png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
+                             <img src="Images/Logo Trusted By Refiniti (1).png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
                         </div>
                         <div class="marquee-item">
-                             <img src="https://refiniti.ai/wp-content/uploads/2025/11/Logo-Trusted-By-Refiniti-1.png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
+                             <img src="Images/Logo Trusted By Refiniti (1).png" alt="Trusted Partners" class="h-32 md:h-64 w-auto object-contain">
                         </div>
                     </div>
                 </div>
@@ -467,7 +432,7 @@
                 <!-- Mobile Height: h-[400px], Desktop: h-[800px] -->
                 <div class="glass-panel p-0 rounded-3xl border border-white/10 shadow-2xl overflow-hidden h-[400px] md:h-[800px] w-full flex items-center justify-center">
                       <div class="w-full h-full flex items-center justify-center relative">
-                        <img src="https://refiniti.ai/wp-content/uploads/2025/11/Refiniti-AI-Wormhole-2.jpg" alt="RefinitiAI Growth Engine Visualization" class="growth-image" onerror="this.style.display='none';">
+                        <img src="/Images/Refiniti-AI-Wormhole-2.jpg" alt="RefinitiAI Growth Engine Visualization" class="growth-image" onerror="this.style.display='none';">
                       </div>
                 </div>
             </div>
@@ -665,84 +630,6 @@
         </div>
     </div>
 
-    <!-- PILL FOOTER (Updated Socials to Horizontal on Mobile) -->
-    <!-- UPDATED: Reduced padding py-20 -> py-10 md:py-20 -->
-    <footer class="relative py-10 md:py-20 bg-transparent text-white">
-        <!-- UPDATED: Reduced px-6 -> px-2 md:px-6 for wider mobile footer -->
-        <div class="max-w-7xl mx-auto px-2 md:px-6">
-            <div class="footer-pill flex flex-col md:flex-row justify-between items-start gap-12">
-                
-                <!-- Left: Logo & Tagline -->
-                <div class="flex flex-col gap-6 max-w-sm">
-                    <img src="https://refiniti.ai/wp-content/uploads/2025/11/Refiniti-AI-Vertical-Logo.png" alt="Refiniti AI" class="h-10 md:h-12 w-auto object-contain self-start">
-                    <p class="text-sm text-white leading-relaxed">
-                        Built for ambitious teams. The only AI growth system that diagnoses, automates, and scales revenue with mathematical precision.
-                    </p>
-                    <!-- UPDATED: Copyright hidden on mobile, visible on desktop -->
-                    <p class="text-xs text-gray-400 mt-4 hidden md:block">© 2025 RefinitiAI. All rights reserved.</p>
-                </div>
-
-                <!-- Center: Links -->
-                <div class="flex gap-16">
-                    <div>
-                        <h4 class="font-bold text-gray-400 uppercase text-xs tracking-wider mb-4">Product</h4>
-                        <a href="#system" class="footer-link">Process</a>
-                        <a href="#product-suite" class="footer-link">Engine</a>
-                        <a href="#how-it-works" class="footer-link">Difference</a>
-                        <a href="#results" class="footer-link">Results</a>
-                        <a href="#faq" class="footer-link">FAQ</a>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-gray-400 uppercase text-xs tracking-wider mb-4">Company</h4>
-                        <a href="#" class="footer-link">Roadmap</a>
-                        <a href="#" class="footer-link">Helpdesk</a>
-                        <a href="#" class="footer-link">Blog</a>
-                        <a href="#" class="footer-link">Affiliate</a>
-                    </div>
-                </div>
-
-                <!-- Right: Socials (Row on Mobile, Column on Desktop) -->
-                <div class="flex flex-row md:flex-col gap-4">
-                    <a href="#" class="footer-social-icon"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                    <a href="#" class="footer-social-icon"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                    <a href="#" class="footer-social-icon"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                    <a href="#" class="footer-social-icon"><i data-lucide="youtube" class="w-5 h-5"></i></a>
-                </div>
-
-                <!-- UPDATED: Copyright shown at the bottom on mobile only -->
-                <div class="md:hidden w-full pt-8 border-t border-white/10 text-center">
-                    <p class="text-xs text-gray-400">© 2025 RefinitiAI. All rights reserved.</p>
-                </div>
-
-            </div>
-        </div>
-    </footer>
-
-    <!-- Booking Modal -->
-    <div id="booking-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/80">
-        <div class="relative w-full max-w-4xl h-[90vh] bg-[#08080A] rounded-2xl border border-white/10 shadow-2xl overflow-hidden mx-4 modal-iframe-container modal-content">
-            <button onclick="closeBookingModal()" class="absolute top-4 right-4 z-50 text-white hover:text-[#00CFFF] transition-colors bg-black/50 rounded-full p-2">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            <iframe
-    src="https://api.leadconnectorhq.com/widget/form/Ihk0NkhG1jvLRtfbL5xL"
-    style="width:100%;height:100%;border:none;border-radius:17px"
-    id="inline-Ihk0NkhG1jvLRtfbL5xL" 
-    data-layout="{'id':'INLINE'}"
-    data-trigger-type="alwaysShow"
-    data-trigger-value=""
-    data-activation-type="alwaysActivated"
-    data-activation-value=""
-    data-deactivation-type="neverDeactivate"
-    data-deactivation-value=""
-    data-form-name="Marketing Form - Claim Offer"
-    data-height="676"
-    data-layout-iframe-id="inline-Ihk0NkhG1jvLRtfbL5xL"
-    data-form-id="Ihk0NkhG1jvLRtfbL5xL"
-    title="Marketing Form - Claim Offer"
-        >
-</iframe>
-<script src="https://link.msgsndr.com/js/form_embed.js"></script>
-            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
-            </div>
+    <script type="module" src="footer.js"></script>
+<refiniti-footer></refiniti-footer>
     </div>
