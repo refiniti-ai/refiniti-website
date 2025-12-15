@@ -8,6 +8,7 @@
     pkgs.nodejs_20
     pkgs.python3
     pkgs.nodePackages.tailwindcss
+    pkgs.git-lfs
   ];
   # Sets environment variables in the workspace
   env = {};
