@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "tailwindcss -i ./style.css -o ./dist/style.css --minify",
-    "tailwind:init": "tailwindcss init"
+    "tailwind:init": "tailwindcss init",
     "tailwind:watch": "tailwindcss -i ./style.css -o ./dist/style.css --watch"
   },
   "keywords": [],
