@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "tailwind:init": "tailwindcss init",
-    "build": "tailwindcss -i ./src/style.css -o ./dist/style.css --minify"
+    "build": "npx tailwindcss -i ./src/style.css -o ./dist/style.css --minify"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1"
