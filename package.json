@@ -1,4 +1,4 @@
 "scripts": {
   "tailwind:init": "tailwindcss init",
-  "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+  "build": "tailwindcss -i ./src/style.css -o ./dist/style.css --minify"
 },
