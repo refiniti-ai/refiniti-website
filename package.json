@@ -1,20 +1,4 @@
-{
-  "name": "refiniti-website",
-  "version": "1.0.0",
-  "description": "A simple HTML/JS/CSS starter template",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwindcss -i ./style.css -o ./dist/style.css --minify",
-    "tailwind:init": "tailwindcss init",
-    "tailwind:watch": "tailwindcss -i ./style.css -o ./dist/style.css --watch"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "autoprefixer": "^10.4.22",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.17"
-  }
-}
+"scripts": {
+  "tailwind:init": "tailwindcss init",
+  "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+},
