@@ -27,17 +27,18 @@
     <!-- Favicon -->
     <link rel="icon" href="Images/Refiniti Favicon.png" type="image/png">
 
-    <script src="main.js"></script>
-    <script type="module" src="legal-modal.js"></script> 
     <link rel="stylesheet" href="dist/style.css">
+    <script src="main.js"></script>
+    <script type="module" src="header.js"></script>
+    <script type="module" src="legal-modal.js"></script> 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <body class="overflow-x-hidden">
+    </head>
+<body class="overflow-x-hidden">
     <!-- Navbar -->
-    <script type="module" src="header.js"></script>
-<refiniti-header></refiniti-header>
+    <refiniti-header></refiniti-header>
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-24 md:pt-32 overflow-hidden">
@@ -644,5 +645,6 @@
     </div>
 
     <script type="module" src="footer.js"></script>
-<refiniti-footer></refiniti-footer>
-    </div>
+    <refiniti-footer></refiniti-footer>
+</body>
+</html>

@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script type="module" src="header.js"></script>
     <style>
         /* Global Box-Sizing for better responsiveness */
         html {
@@ -47,6 +49,29 @@
             background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
             color: #ffffff;
             line-height: 1.6;
+        }
+
+        .case-study-background {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -10;
+            background: radial-gradient(circle at 10% 20%, rgba(0, 207, 255, 0.25), transparent 35%),
+                        radial-gradient(circle at 80% 30%, rgba(8, 8, 10, 0.8), rgba(0, 0, 0, 0.9) 60%);
+        }
+
+        .case-study-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.95));
+            mix-blend-mode: screen;
+        }
+
+        .case-study-background .floating-icon {
+            opacity: 0.3;
+            filter: drop-shadow(0 0 8px rgba(0, 207, 255, 0.4));
         }
 
         .case-study-main {
@@ -416,6 +441,14 @@
     </style>
 </head>
 <body>
+    <div class="case-study-background" aria-hidden="true">
+        <div class="floating-icon top-[15%] left-[10%] text-[#00CFFF] hidden md:block" style="animation-delay: 0s;"><i data-lucide="cpu" class="w-8 h-8"></i></div>
+        <div class="floating-icon top-[25%] right-[12%] text-[#00CFFF]" style="animation-delay: 1.5s;"><i data-lucide="zap" class="w-7 h-7"></i></div>
+        <div class="floating-icon bottom-[15%] left-[20%] text-[#0080FF]" style="animation-delay: 3s;"><i data-lucide="bar-chart-2" class="w-9 h-9 md:w-12 md:h-12"></i></div>
+        <div class="floating-icon bottom-[25%] right-[18%] text-[#00CFFF]" style="animation-delay: 2s;"><i data-lucide="target" class="w-6 h-6 md:w-8 md:h-8"></i></div>
+        <div class="floating-icon top-[35%] right-[35%] text-[#0080FF]" style="animation-delay: 4s;"><i data-lucide="database" class="w-7 h-7"></i></div>
+        <div class="floating-icon bottom-[35%] left-[40%] text-[#00CFFF]" style="animation-delay: 5s;"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+    </div>
     <refiniti-header></refiniti-header>
 
     <main class="case-study-main">
@@ -436,10 +469,10 @@
 
             <div class="website-slide fade">
                 <div class="single-row-item">
-                    <h2 class="item-title">Refiniti AI</h2>
-                    <div class="item-container rounded-lg overflow-hidden" id="container-refiniti">
-                        <div class="content-wrapper rounded-lg overflow-hidden" id="wrapper-refiniti">
-                            <iframe src="https://www.refiniti.ai/" class="case-study-iframe" scrolling="yes" onerror="this.style.display='none'; console.error('Failed to load iframe content:', this.src);"></iframe>
+                    <h2 class="item-title">Nisus Real Estate</h2>
+                    <div class="item-container rounded-lg overflow-hidden" id="container-nisus">
+                        <div class="content-wrapper rounded-lg overflow-hidden" id="wrapper-nisus">
+                            <iframe src="https://nisus-real-estate.web.app/" class="case-study-iframe" scrolling="yes" onerror="this.style.display='none'; console.error('Failed to load iframe content:', this.src);"></iframe>
                         </div>
                     </div>
                 </div>
@@ -597,7 +630,6 @@
 
     <refiniti-footer></refiniti-footer>
 
-    <script src="header.js" type="module"></script>
     <script src="footer.js" type="module"></script>
     <script src="main.js" type="module"></script>
     <script src="legal-modal.js" type="module"></script>
@@ -723,6 +755,13 @@
             });
         }
 
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
     </script>
 </body>
 </html>

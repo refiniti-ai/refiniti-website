@@ -66,14 +66,23 @@ class RefinitiHeader extends HTMLElement {
                         display: flex;
                         align-items: center;
                         position: absolute;
-                        left: 50%;
+                        left: 55%;
                         transform: translateX(-50%);
                         white-space: nowrap;
+                        gap: 1.25rem;
+                    }
+                }
+
+                @media (min-width: 1000px) {
+                    .nav-links-container {
+                        left: 53%;
+                        gap: 1.5rem;
                     }
                 }
 
                 @media (min-width: 1100px) {
                     .nav-links-container {
+                        left: 50%;
                         gap: 2rem;
                     }
                 }
@@ -179,6 +188,7 @@ class RefinitiHeader extends HTMLElement {
                     .logo-img { height: 2.5rem; }
                     nav { padding-left: 1.5rem; padding-right: 1.5rem; }
                 }
+            </style>
             <nav class="fixed top-6 left-0 right-0 mx-auto w-[92%] max-w-7xl z-50 nav-glass rounded-full px-4 h-[72px] flex items-center justify-between transition-all">
                 <a href="index.html" class="logo-anchor cursor-pointer">
                     <img src="Images/Refiniti-AI-Vertical-Logo (1).png" alt="Refiniti AI" class="logo-img">
