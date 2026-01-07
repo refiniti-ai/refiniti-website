@@ -306,10 +306,10 @@
                                         </tr>
                                         <tr class="investment-row">
                                             <td data-label="Tier"><span>Tier 3: Full Scale Dominance</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
-                                            <td data-label="Cost (Initial)" class="text-green-accent">$8,350</td>
-                                            <td data-label="Cost (Monthly)" class="text-green-accent">$500/mo</td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$7,850</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent">$499/month</td>
                                             <td data-label="Action">
-                                                <button class="choose-plan-btn bg-cyan-accent text-black font-bold py-2 px-3 rounded text-xs hover:bg-cyan-accent/80 transition-colors whitespace-nowrap" data-price="8350" data-plan="Tier 3">Choose Tier 3</button>
+                                                <button class="choose-plan-btn bg-cyan-accent text-black font-bold py-2 px-3 rounded text-xs hover:bg-cyan-accent/80 transition-colors whitespace-nowrap" data-price="7850" data-plan="Tier 3">Choose Tier 3</button>
                                             </td>
                                         </tr>
                                         <tr class="hidden-breakdown hidden">
@@ -317,9 +317,9 @@
                                                 <div class="breakdown-content">
                                                     <p class="text-sm text-white/60 mb-3 italic">Includes all Tier 2 initial services plus:</p>
                                                     <ul class="space-y-3">
-                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="target" class="w-5 h-5 text-white/70"></i>Ads Management Setup (Meta/Google)</span> <span class="text-green-accent">$2,000</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="target" class="w-5 h-5 text-white/70"></i>Ads Management Setup (Meta/Google)</span> <span class="text-green-accent">$1,500</span></li>
                                                         <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="instagram" class="w-5 h-5 text-white/70"></i>Social Media Content Management</span> <span class="text-green-accent">$1,000</span></li>
-                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="bar-chart-2" class="w-5 h-5 text-white/70"></i>Monthly Management & Scaling</span> <span class="text-green-accent">$500/mo</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="bar-chart-2" class="w-5 h-5 text-white/70"></i>Monthly Management & Scaling</span> <span class="text-green-accent">$499/month</span></li>
                                                     </ul>
                                                 </div>
                                             </td>
@@ -428,9 +428,9 @@
                     </div>
                     <!-- Accept Agreement Button Inside Container -->
                     <div class="text-center mt-12 pt-12 border-t border-white/5">
-                        <a href="#investment-summary" class="bg-cyan-accent text-black font-bold py-4 px-8 rounded-lg text-lg hover:bg-cyan-accent/80 transition-colors shadow-[0_0_25px_rgba(0,207,255,0.6)] inline-block mx-8">
+                        <button id="final-accept-btn" class="bg-cyan-accent text-black font-bold py-4 px-8 rounded-lg text-lg hover:bg-cyan-accent/80 transition-colors shadow-[0_0_25px_rgba(0,207,255,0.6)] inline-block mx-8">
                             Accept Agreement
-                        </a>
+                        </button>
                         <p class="text-white/50 text-sm italic mt-6">Select a plan in the Investment Summary above to initialize the agreement.</p>
                     </div>
                 </div>
@@ -527,10 +527,14 @@
                     if (summaryInitial) summaryInitial.textContent = `$${parseInt(price).toLocaleString()}`;
                     if (summaryMonthly) {
                         let m = "0";
+                        let suffix = "/mo";
                         if (plan === "Tier 1") m = "99";
                         else if (plan === "Tier 2") m = "149";
-                        else if (plan === "Tier 3") m = "500";
-                        summaryMonthly.textContent = `$${m}/mo`;
+                        else if (plan === "Tier 3") {
+                            m = "499";
+                            suffix = "/month";
+                        }
+                        summaryMonthly.textContent = `$${m}${suffix}`;
                     }
                     
                     // Update hidden inputs
@@ -540,16 +544,22 @@
             });
 
             // Trigger modal from summary button
+            const finalAcceptBtn = document.getElementById('final-accept-btn');
+            const handleAcceptClick = () => {
+                if (!initialCostInput.value) {
+                    alert('Please select a plan tier from the investment table first.');
+                    return;
+                }
+                if (agreementModal) {
+                    agreementModal.classList.remove('hidden');
+                }
+            };
+
             if (summaryAcceptBtn) {
-                summaryAcceptBtn.addEventListener('click', () => {
-                    if (!initialCostInput.value) {
-                        alert('Please select a plan tier from the investment table first.');
-                        return;
-                    }
-                    if (agreementModal) {
-                        agreementModal.classList.remove('hidden');
-                    }
-                });
+                summaryAcceptBtn.addEventListener('click', handleAcceptClick);
+            }
+            if (finalAcceptBtn) {
+                finalAcceptBtn.addEventListener('click', handleAcceptClick);
             }
 
             // Default to Tier 1 on load
