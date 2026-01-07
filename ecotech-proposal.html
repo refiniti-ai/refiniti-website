@@ -328,7 +328,9 @@
                                             <td data-label="Tier">Full Suite Total (Cumulative)</td>
                                             <td data-label="Cost (Initial)" class="text-green-accent" id="selected-initial-total">$0</td>
                                             <td data-label="Cost (Monthly)" class="text-green-accent" id="selected-monthly-total">$0</td>
-                                            <td></td>
+                                            <td data-label="Action">
+                                                <button id="summary-accept-btn" class="bg-green-accent text-black font-bold py-2 px-4 rounded text-xs hover:bg-green-accent/80 transition-colors whitespace-nowrap">Accept Agreement</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -379,6 +381,47 @@
                                         </ul>
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- Performance Target Roadmap -->
+                            <div class="mt-12 bg-white/5 rounded-2xl p-6 border border-white/10">
+                                <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                    <i data-lucide="line-chart" class="text-cyan-accent w-6 h-6"></i>
+                                    Performance Target Roadmap
+                                </h4>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left text-sm border-separate border-spacing-y-2">
+                                        <thead class="text-white/50">
+                                            <tr>
+                                                <th class="pb-2 pl-4">Optimization Tier</th>
+                                                <th class="pb-2">Capture Rate</th>
+                                                <th class="pb-2">Response Time</th>
+                                                <th class="pb-2">Est. ROI Uplift</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-white/5 rounded-lg overflow-hidden">
+                                                <td class="py-4 pl-4 font-semibold text-cyan-accent">Tier 1: Foundational</td>
+                                                <td class="py-4">+15% - 20%</td>
+                                                <td class="py-4">&lt; 15 Mins</td>
+                                                <td class="py-4 text-green-accent font-bold">1.5x - 2x</td>
+                                            </tr>
+                                            <tr class="bg-white/5 rounded-lg overflow-hidden">
+                                                <td class="py-4 pl-4 font-semibold text-cyan-accent">Tier 2: Advanced AI</td>
+                                                <td class="py-4">+35% - 45%</td>
+                                                <td class="py-4">&lt; 2 Mins</td>
+                                                <td class="py-4 text-green-accent font-bold">3x - 4x</td>
+                                            </tr>
+                                            <tr class="bg-white/5 rounded-lg overflow-hidden">
+                                                <td class="py-4 pl-4 font-semibold text-cyan-accent">Tier 3: Full Scale</td>
+                                                <td class="py-4">+60% - 80%</td>
+                                                <td class="py-4">Instant</td>
+                                                <td class="py-4 text-green-accent font-bold">5x - 8x</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="mt-4 text-xs text-white/40 italic">*Historical projections based on automation implementations for San Diego contractors.</p>
                             </div>
                         </div>
 
@@ -452,13 +495,14 @@
                 });
             });
 
-            // Choose Plan Logic & Modal Trigger
+            // Choose Plan Logic
             const chooseBtns = document.querySelectorAll('.choose-plan-btn');
             const initialCostInput = document.getElementById('initial-cost');
             const selectedPlanInput = document.getElementById('selected-plan');
             const agreementModal = document.getElementById('agreement-modal');
             const summaryInitial = document.getElementById('selected-initial-total');
             const summaryMonthly = document.getElementById('selected-monthly-total');
+            const summaryAcceptBtn = document.getElementById('summary-accept-btn');
 
             chooseBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
@@ -492,13 +536,27 @@
                     // Update hidden inputs
                     if (initialCostInput) initialCostInput.value = price;
                     if (selectedPlanInput) selectedPlanInput.value = plan;
+                });
+            });
 
-                    // Open agreement modal immediately
+            // Trigger modal from summary button
+            if (summaryAcceptBtn) {
+                summaryAcceptBtn.addEventListener('click', () => {
+                    if (!initialCostInput.value) {
+                        alert('Please select a plan tier from the investment table first.');
+                        return;
+                    }
                     if (agreementModal) {
                         agreementModal.classList.remove('hidden');
                     }
                 });
-            });
+            }
+
+            // Default to Tier 1 on load
+            const defaultTierBtn = document.querySelector('.choose-plan-btn[data-plan="Tier 1"]');
+            if (defaultTierBtn) {
+                defaultTierBtn.click();
+            }
     
             // Value Counter Animation
             const revenueCounter = document.getElementById('revenue-counter');
