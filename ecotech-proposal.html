@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefinitiAI | Proposal for Ecotech</title>
+    <script type="module" src="legal-modal.js"></script> 
+    <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="proposal.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .section-padding {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .choose-plan-btn {
+            min-width: 100px;
+        }
+        @media (max-width: 767px) {
+            .section-padding {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+            .ref-engine-visual {
+                height: 200px !important;
+            }
+            .engine-box {
+                padding: 0.5rem !important;
+            }
+            .engine-text {
+                font-size: 0.75rem !important;
+            }
+            .choose-plan-btn {
+                min-width: 80px;
+                padding: 6px 10px !important;
+            }
+        }
+        .faq-item {
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .faq-content {
+            padding: 0 1rem 1rem 1rem;
+        }
+        .breakdown-content {
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+        }
+        .disclaimer-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden text-white">
+
+    <div class="background-container" id="background-container"></div>
+
+    <div id="password-modal">
+        <div class="password-box">
+            <h2 class="text-2xl font-bold mb-4">Access Proposal</h2>
+            <p class="mb-6">Please enter the password to view this document.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" class="w-full rounded-lg p-3 text-center mb-4" placeholder="Password">
+                <p id="password-error" class="mb-4">Incorrect password. Please try again.</p>
+                <button type="submit" class="w-full bg-cyan-accent text-black font-bold py-3 rounded-lg hover:bg-cyan-accent/80 transition-colors">View</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <!-- Proposal Content -->
+        <main class="py-24 md:py-32">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="content-container">
+                    <div class="text-center mb-16">
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight md:leading-[1.1] mb-6 text-white">
+                            Proposal for <span class="text-glow-anim">Ecotech Windows & Doors</span>
+                        </h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                            A comprehensive growth strategy to optimize lead quality, automate workflows, and scale your San Diego home service business.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-12">
+                        <div class="md:pr-8">
+                            <h3 class="text-2xl font-bold text-white mb-4">The Refiniti Growth Engine</h3>
+                            <p class="leading-relaxed mb-6">
+                                Lior, Refiniti.ai is pleased to submit this multi-tiered proposal for G & G Indoor Services and Ecotech Windows & Doors. 
+                            </p>
+                            <p class="mb-6">
+                                Based on our meeting, we've identified key "low-hanging fruits" like your broken GMB link and slow website performance, alongside long-term scaling strategies using AI qualification and automated follow-ups to ensure no lead is left behind.
+                            </p>
+                        </div>
+                        <div class="ref-engine-visual h-[250px] md:h-auto bg-black/20 rounded-3xl border border-white/10 p-4 relative overflow-hidden flex items-center justify-center group hover:border-cyan-accent/20 transition-colors py-4">
+                            <div class="absolute inset-0 bg-gradient-to-r from-black via-cyan-accent/5 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            <div class="flex flex-row items-center gap-2 relative z-10 w-full justify-center scale-75 md:scale-90">
+                                <div class="flex flex-col gap-2 items-center opacity-60">
+                                    <div class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="users" class="text-white w-5 h-5"></i></div>
+                                    <div class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="filter" class="text-white w-5 h-5"></i></div>
+                                </div>
+                                <div><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="engine-box p-3">
+                                    <i data-lucide="brain-circuit" class="engine-brain w-6 h-6"></i>
+                                    <span class="engine-text text-sm">Refiniti Engine</span>
+                                </div>
+                                <div><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="roi-counter-box">
+                                    <div class="w-12 h-12 rounded-full bg-cyan-accent flex items-center justify-center shadow-[0_0_15px_rgba(0,207,255,0.4)] mb-2 transition-transform hover:scale-110">
+                                        <i data-lucide="dollar-sign" class="text-black font-bold w-6 h-6"></i>
+                                    </div>
+                                    <div id="revenue-counter" class="roi-number text-green-accent text-lg">$0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-16 py-8">
+
+                        <!-- Phase 1: Low-Hanging Fruit -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Tier 1: Foundational Optimization (Low-Hanging Fruit)</h3>
+                            <p class="mb-6">Focus: Fixing critical infrastructure issues and establishing a high-converting baseline for immediate ROI.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">CRM Basic Setup (Go High Level)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="refresh-cw" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Migration to Go High Level CRM for centralized lead management.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="database" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Basic lead database organization and communication flow setup.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">GMB (Google My Business) Optimization</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Fixing the broken Google Map link and merging location data.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="star" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Review management strategy to leverage your existing 100+ reviews.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Landing Page Optimization & VCL</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="zap" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Improving page speed (targeting 80-90+) and accessibility fixes.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="layout" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>2 High-Performance Landing Pages optimized for conversion.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="video" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Video Conversion Letter (VCL) production to build immediate trust.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 2: Advanced Optimization -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Tier 2: Advanced Growth & AI Qualification</h3>
+                            <p class="mb-6">Focus: Automating workflows, qualifying leads with AI, and expanding reach through targeted outbound and PR.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">CRM Advanced Optimization & AI Chat</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="bot" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Advanced AI Chat for 24/7 qualification and booking.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="calendar" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Service Calendar & Product integration for automated scheduling.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Pipeline Automation & PR</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="git-branch" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Automated pipeline stages and custom communication flows.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="newspaper" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>PR placements in lifestyle home magazines to build trust.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Payment Integration & Qualification</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="credit-card" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Stripe integration for deposit-based appointment booking.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="mail" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Cold email and mailer strategy for targeted outreach.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 3: Paid Media -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Tier 3: Paid Media & Social Dominance</h3>
+                            <p class="mb-6">Focus: Scaling lead flow through hyper-targeted ads and establishing "Intent-Based Branding" through video content.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Ads Management (Meta & Google)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="facebook" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Facebook/Instagram ads targeting homeowners with high-converting creative.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="search" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Google Ads and Local Services Ads (LSA) optimization.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Social Media Management & VSLs</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="video" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Video Sales Letters (VSLs) to build trust and qualify commitment.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="share-2" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Consistent social posting focusing on Trust, FOMO, and Urgency.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Investment Table -->
+                        <div class="section-padding" id="investment-summary">
+                            <h3 class="text-2xl font-bold text-white mb-6">Investment Summary</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Tier</th>
+                                            <th>Cost (Initial)</th>
+                                            <th>Cost (Monthly)</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="investment-row">
+                                            <td data-label="Tier"><span>Tier 1: Foundational Optimization</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$2,850</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent">$99/mo</td>
+                                            <td data-label="Action">
+                                                <button class="choose-plan-btn bg-cyan-accent text-black font-bold py-2 px-3 rounded text-xs hover:bg-cyan-accent/80 transition-colors whitespace-nowrap" data-price="2850" data-plan="Tier 1">Choose Tier 1</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="4">
+                                                <div class="breakdown-content">
+                                                    <ul class="space-y-3">
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="database" class="w-5 h-5 text-white/70"></i>CRM Basic Setup (GHL)</span> <span class="text-green-accent">$1,000</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-white/70"></i>GMB Optimization & Map Fix</span> <span class="text-green-accent">$500</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="layout" class="w-5 h-5 text-white/70"></i>Landing Page Opt. (2 LPs)</span> <span class="text-green-accent">$600</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="video" class="w-5 h-5 text-white/70"></i>VCL Video Production</span> <span class="text-green-accent">$750</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-white/70"></i>Monthly CRM Subscription</span> <span class="text-green-accent">$99/mo</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="investment-row">
+                                            <td data-label="Tier"><span>Tier 2: Advanced Growth & AI</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$5,350</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent">$149/mo</td>
+                                            <td data-label="Action">
+                                                <button class="choose-plan-btn bg-cyan-accent text-black font-bold py-2 px-3 rounded text-xs hover:bg-cyan-accent/80 transition-colors whitespace-nowrap" data-price="5350" data-plan="Tier 2">Choose Tier 2</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="4">
+                                                <div class="breakdown-content">
+                                                    <p class="text-sm text-white/60 mb-3 italic">Includes all Tier 1 initial services plus:</p>
+                                                    <ul class="space-y-3">
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="bot" class="w-5 h-5 text-white/70"></i>Advanced AI Chat & Qualification</span> <span class="text-green-accent">$500</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="calendar" class="w-5 h-5 text-white/70"></i>Service Calendar & Product Int.</span> <span class="text-green-accent">$750</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="git-branch" class="w-5 h-5 text-white/70"></i>Pipeline & Payment Automation</span> <span class="text-green-accent">$750</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="newspaper" class="w-5 h-5 text-white/70"></i>PR Placement Strategy</span> <span class="text-green-accent">$500</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="trending-up" class="w-5 h-5 text-white/70"></i>Advanced Maintenance</span> <span class="text-green-accent">$149/mo</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="investment-row">
+                                            <td data-label="Tier"><span>Tier 3: Full Scale Dominance</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$8,350</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent">$500/mo</td>
+                                            <td data-label="Action">
+                                                <button class="choose-plan-btn bg-cyan-accent text-black font-bold py-2 px-3 rounded text-xs hover:bg-cyan-accent/80 transition-colors whitespace-nowrap" data-price="8350" data-plan="Tier 3">Choose Tier 3</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="4">
+                                                <div class="breakdown-content">
+                                                    <p class="text-sm text-white/60 mb-3 italic">Includes all Tier 2 initial services plus:</p>
+                                                    <ul class="space-y-3">
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="target" class="w-5 h-5 text-white/70"></i>Ads Management Setup (Meta/Google)</span> <span class="text-green-accent">$2,000</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="instagram" class="w-5 h-5 text-white/70"></i>Social Media Content Management</span> <span class="text-green-accent">$1,000</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="bar-chart-2" class="w-5 h-5 text-white/70"></i>Monthly Management & Scaling</span> <span class="text-green-accent">$500/mo</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="font-bold bg-white/5">
+                                            <td data-label="Tier">Full Suite Total (Cumulative)</td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent" id="selected-initial-total">$0</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent" id="selected-monthly-total">$0</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="disclaimer-box">
+                                <p><strong>Note:</strong> Cold calling services are also available to supplement your lead generation strategy. Estimated cost is TBD based on volume and scope of the campaign.</p>
+                            </div>
+                        </div>
+
+                        <!-- Strategy Section -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">The Ecotech Strategy: "No Lead Left Behind"</h3>
+                            <p class="mb-6">Our mission is to eliminate wasted ad spend and ensure every lead is captured, qualified, and scheduled immediately.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Immediate Follow-Up Protocol</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="clock" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Replacing the 2-3 hour manual follow-up with instant AI engagement.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="headphones" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Leveraging our Guadalajara call center for high-performance lead handling.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Intent-Based Branding (VSL)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="eye" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Tracking video watch time (15s/30s) to identify serious interest.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Building a "wall of trust" through verified reviews and job-site videos.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Data-Driven Acquisition</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="database" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Utilizing proprietary San Diego ownership data for high-intent cold outreach.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="target" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Zip-code level targeting for your specific services (HVAC, Windows, Insulation).</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Accept Agreement Button Inside Container -->
+                    <div class="text-center mt-12 pt-12 border-t border-white/5">
+                        <a href="#investment-summary" class="bg-cyan-accent text-black font-bold py-4 px-8 rounded-lg text-lg hover:bg-cyan-accent/80 transition-colors shadow-[0_0_25px_rgba(0,207,255,0.6)] inline-block mx-8">
+                            Accept Agreement
+                        </a>
+                        <p class="text-white/50 text-sm italic mt-6">Select a plan in the Investment Summary above to initialize the agreement.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Agreement Modal -->
+    <div id="agreement-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h2 class="text-2xl font-bold mb-6 text-center">Accept Contract Agreement</h2>
+            <form id="agreement-form" class="space-y-4">
+                <div>
+                    <label for="full-name" class="block text-white text-sm font-semibold mb-2">Full Name</label>
+                    <input type="text" id="full-name" name="fullName" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <input type="hidden" id="initial-cost" name="initialCost">
+                <input type="hidden" id="selected-plan" name="selectedPlan">
+                <div class="flex items-start">
+                    <input type="checkbox" id="consent" name="consent" class="mt-1 mr-2 accent-cyan-accent" required>
+                    <label for="consent" class="text-sm text-white/80">I initialize and agree to the contract.</label>
+                </div>
+                <button type="submit" class="w-full bg-green-accent text-black font-bold py-3 rounded-lg mt-6 hover:bg-green-accent/80 transition-colors">Accept</button>
+            </form>        
+        </div>
+    </div>
+
+    <script type="module" src="footer.js"></script>
+    <refiniti-footer hide-product></refiniti-footer>
+
+    <script src="password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // FAQ & Table Toggles
+            const faqTriggers = document.querySelectorAll('.faq-trigger');
+            faqTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const faqItem = trigger.closest('.faq-item');
+                    faqItem.classList.toggle('open');
+                });
+            });
+    
+            const investmentRows = document.querySelectorAll('.investment-row');
+            investmentRows.forEach(row => {
+                row.addEventListener('click', (e) => {
+                    // Don't toggle if the "Choose" button was clicked
+                    if (e.target.classList.contains('choose-plan-btn')) return;
+
+                    const icon = row.querySelector('i[data-lucide="chevron-down"]');
+                    const breakdownRow = row.nextElementSibling;
+                    if (breakdownRow && breakdownRow.classList.contains('hidden-breakdown')) {
+                        breakdownRow.classList.toggle('hidden');
+                        if(icon) {
+                            icon.style.transform = breakdownRow.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                        }
+                    }
+                });
+            });
+
+            // Choose Plan Logic & Modal Trigger
+            const chooseBtns = document.querySelectorAll('.choose-plan-btn');
+            const initialCostInput = document.getElementById('initial-cost');
+            const selectedPlanInput = document.getElementById('selected-plan');
+            const agreementModal = document.getElementById('agreement-modal');
+            const summaryInitial = document.getElementById('selected-initial-total');
+            const summaryMonthly = document.getElementById('selected-monthly-total');
+
+            chooseBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent row toggle
+                    
+                    const price = btn.getAttribute('data-price');
+                    const plan = btn.getAttribute('data-plan');
+                    
+                    // Reset all buttons
+                    chooseBtns.forEach(b => {
+                        b.classList.remove('bg-green-accent');
+                        b.classList.add('bg-cyan-accent');
+                        b.textContent = 'Choose ' + b.getAttribute('data-plan');
+                    });
+
+                    // Highlight selected
+                    btn.classList.remove('bg-cyan-accent');
+                    btn.classList.add('bg-green-accent');
+                    btn.textContent = 'Selected';
+
+                    // Update summary row totals
+                    if (summaryInitial) summaryInitial.textContent = `$${parseInt(price).toLocaleString()}`;
+                    if (summaryMonthly) {
+                        let m = "0";
+                        if (plan === "Tier 1") m = "99";
+                        else if (plan === "Tier 2") m = "149";
+                        else if (plan === "Tier 3") m = "500";
+                        summaryMonthly.textContent = `$${m}/mo`;
+                    }
+                    
+                    // Update hidden inputs
+                    if (initialCostInput) initialCostInput.value = price;
+                    if (selectedPlanInput) selectedPlanInput.value = plan;
+
+                    // Open agreement modal immediately
+                    if (agreementModal) {
+                        agreementModal.classList.remove('hidden');
+                    }
+                });
+            });
+    
+            // Value Counter Animation
+            const revenueCounter = document.getElementById('revenue-counter');
+            const animateCounter = (element, start, end, duration) => {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    element.innerHTML = `$${Math.floor(progress * (end - start) + start).toLocaleString()}`;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            };
+    
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(revenueCounter, 0, 15000, 2000); 
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+    
+            if (revenueCounter) {
+                observer.observe(revenueCounter);
+            }
+    
+            // Floating Icons
+            const container = document.getElementById('background-container');
+            if (container) {
+                const icons = ['cpu', 'database', 'shield-check', 'server', 'pen-tool', 'bar-chart-2'];
+                const numIcons = 15;
+    
+                for (let i = 0; i < numIcons; i++) {
+                    const iconWrapper = document.createElement('div');
+                    iconWrapper.classList.add('floating-icon');
+                    
+                    const iconEl = document.createElement('i');
+                    const iconName = icons[Math.floor(Math.random() * icons.length)];
+                    iconEl.setAttribute('data-lucide', iconName);
+                    
+                    iconWrapper.appendChild(iconEl);
+    
+                    const size = Math.random() * 30 + 15; 
+                    iconWrapper.style.width = `${size}px`;
+                    iconWrapper.style.height = `${size}px`;
+                    iconWrapper.style.top = `${Math.random() * 100}vh`;
+                    iconWrapper.style.left = `${Math.random() * 100}vw`;
+                    iconWrapper.style.animationDuration = `${Math.random() * 25 + 20}s`; 
+                    iconWrapper.style.animationDelay = `${Math.random() * -45}s`; 
+    
+                    container.appendChild(iconWrapper);
+                }
+            }
+            
+            lucide.createIcons();
+        });
+    
+        window.initializeAgreementModal = () => {
+            const agreementModal = document.getElementById('agreement-modal');
+            const modalCloseBtn = document.querySelector('.modal-close-btn');
+            const agreementForm = document.getElementById('agreement-form');
+    
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', () => {
+                    agreementModal.classList.add('hidden');
+                });
+            }
+    
+            if (agreementModal) {
+                agreementModal.addEventListener('click', (e) => {
+                    if (e.target === agreementModal) {
+                        agreementModal.classList.add('hidden');
+                    }
+                });
+            }
+    
+            if (agreementForm) {
+                agreementForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+    
+                    const fullName = document.getElementById('full-name').value;
+                    const email = document.getElementById('email').value;
+                    const consent = document.getElementById('consent').checked;
+                    const initialCost = document.getElementById('initial-cost').value;
+                    const selectedPlan = document.getElementById('selected-plan').value;
+    
+                    if (!consent) {
+                        alert('You must agree to the contract to proceed.');
+                        return;
+                    }
+    
+                    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/itcUlMQJDKPVgPxLNDGk/webhook-trigger/d1ef27fc-6f13-47a1-8632-8af5962e0e3e';
+    
+                    try {
+                        const response = await fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                fullName: fullName,
+                                email: email,
+                                initialCost: initialCost,
+                                selectedPlan: selectedPlan,
+                                consent: consent,
+                                proposalType: 'Ecotech'
+                            }),
+                        });
+    
+                        if (response.ok) {
+                            alert('Agreement accepted successfully!');
+                            agreementModal.classList.add('hidden');
+                            agreementForm.reset();
+                        } else {
+                            alert('Failed to accept agreement. Please try again.');
+                        }
+                    } catch (error) {
+                        console.error('Error submitting agreement:', error);
+                        alert('An error occurred. Please try again later.');
+                    }
+                });
+            }
+        };
+    </script>    
+</body>
+</html>

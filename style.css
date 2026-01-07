@@ -124,8 +124,9 @@ p { color: var(--color-text-secondary); }
 
 /* Refiniti Engine Box (Phase 2) */
 .engine-box {
-    width: 250px;
-    height: 200px;
+    width: 100%;
+    max-width: 250px;
+    height: 180px;
     background: rgba(8, 8, 10, 0.6);
     border: 1px solid rgba(0, 207, 255, 0.3);
     border-radius: 20px;
@@ -139,6 +140,12 @@ p { color: var(--color-text-secondary); }
     transition: all 0.3s ease;
     text-align: center;
     z-index: 10;
+    padding: 1rem;
+}
+@media (min-width: 768px) {
+    .engine-box {
+        height: 200px;
+    }
 }
 .engine-box:hover {
     border-color: #00CFFF;

@@ -1,0 +1,308 @@
+/* proposal.css */
+
+body {
+    background-color: #0C0C0C;
+    color: white;
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background-image: 
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 207, 255, 0.1), hsla(0, 0%, 100%, 0)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke-width='2' stroke='rgba(255,255,255,0.05)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+}
+
+.floating-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 207, 255, 0.08);
+    border: 1px solid rgba(0, 207, 255, 0.1);
+    border-radius: 50%;
+    color: rgba(0, 207, 255, 0.7);
+    animation: float 20s infinite ease-in-out;
+}
+
+.floating-icon i {
+    transform: none !important; 
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(15deg); }
+}
+
+.content-container {
+    background: rgba(12, 12, 12, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2rem 3rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.proposal-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.proposal-table th,
+.proposal-table td {
+    padding: 16px 20px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.proposal-table thead {
+    background-color: #00CFFF;
+    color: black;
+}
+
+.proposal-table thead th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.proposal-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.proposal-table tbody td {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.proposal-table tbody tr:first-child td {
+    border-top: none;
+}
+
+.investment-row {
+    cursor: pointer;
+}
+
+.investment-row:hover {
+    background-color: rgba(0, 207, 255, 0.05) !important;
+}
+
+.investment-row td:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hidden-breakdown.hidden {
+    display: none;
+}
+
+.hidden-breakdown td {
+    padding: 0 !important;
+}
+
+.breakdown-content {
+    background-color: rgba(0, 207, 255, 0.04);
+    padding: 20px 24px;
+    border-top: 1px solid rgba(0, 207, 255, 0.1);
+}
+
+.faq-item.open .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-item .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.faq-item.open .faq-content {
+    max-height: 500px; /* Adjust as needed */
+    transition: max-height 0.5s ease-in;
+}
+
+.faq-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    color: white;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+}
+
+.text-cyan-accent {
+    color: #00CFFF;
+    font-weight: 600;
+}
+
+.bg-cyan-accent {
+    background-color: #00CFFF;
+}
+
+.text-green-accent {
+    color: #00FFAB;
+    font-weight: 600;
+}
+
+/* NEWLY ADDED for button visibility */
+.bg-green-accent {
+    background-color: #00FFAB !important;
+}
+
+/* Password Modal */
+#password-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.password-box {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+#password-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+#password-error {
+    color: #ff4d4d;
+    margin-top: 10px;
+    display: none;
+}
+
+.ref-engine-visual {
+    align-self: stretch;
+}
+
+/* Agreement Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex; /* Crucial for centering */
+    align-items: center;
+    justify-content: center;
+    z-index: 1001; /* Higher than password modal */
+}
+
+.modal-content {
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 207, 255, 0.2);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    color: white;
+}
+
+/* Ensure hidden class always wins */
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 767px) {
+    .content-container {
+        padding: 1.5rem;
+    }
+
+    .proposal-table thead {
+        display: none;
+    }
+
+    .proposal-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .proposal-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .proposal-table td:first-child {
+        border-top: none;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .proposal-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 1rem;
+        color: #9ca3af;
+    }
+
+    .investment-row td:first-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .ref-engine-visual {
+        display: none;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+}

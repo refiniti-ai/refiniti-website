@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefinitiAI | Proposal</title>
+    <script type="module" src="legal-modal.js"></script> 
+    <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="proposal.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="overflow-x-hidden text-white">
+
+    <div class="background-container" id="background-container"></div>
+
+    <div id="password-modal">
+        <div class="password-box">
+            <h2 class="text-2xl font-bold mb-4">Access Proposal</h2>
+            <p class="mb-6">Please enter the password to view this document.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" class="w-full rounded-lg p-3 text-center" placeholder="Password">
+                <p id="password-error">Incorrect password. Please try again.</p>
+                <button type="submit" class="w-full bg-cyan-accent text-black font-bold py-3 rounded-lg mt-4 hover:bg-cyan-accent/80 transition-colors">View</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <!-- Proposal Content -->
+        <main class="py-24 md:py-32">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="content-container">
+                    <div class="text-center mb-16">
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight md:leading-[1.1] mb-6 text-white">
+                            Proposal for <span class="text-glow-anim">CFI Opportunity Fund 1</span>
+                        </h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                            An integrated plan for a unified digital ecosystem and a high-performance lead generation rebuild.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-12">
+                        <div class="md:pr-8">
+                            <h3 class="text-2xl font-bold text-white mb-4">The Refiniti Engine</h3>
+                            <p class="leading-relaxed mb-6">
+                                Dustin and Gavin, Refiniti.ai is pleased to submit this integrated proposal for the development of the Estate Transfer Advocate infrastructure and the Home Buyer Team lead generation engine. 
+                            </p>
+                            <p>
+                                This plan is designed to maximize "SEO juice" and conversion while maintaining strict capital separation for CFI Opportunity Fund 1. Our proprietary engine combines data-driven strategies with high-converting creative to deliver a predictable stream of qualified leads.
+                            </p>
+                        </div>
+                        <div class="ref-engine-visual h-[350px] md:h-auto bg-black/20 rounded-3xl border border-white/10 p-4 relative overflow-hidden flex items-center justify-center group hover:border-cyan-accent/20 transition-colors py-8">
+                            <div class="absolute inset-0 bg-gradient-to-r from-black via-cyan-accent/5 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            <div class="flex flex-col md:flex-row items-center gap-2 relative z-10 w-full justify-center scale-90">
+                                <div class="flex flex-col gap-3 items-center opacity-60">
+                                    <div class="w-12 h-12 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="users" class="text-white w-6 h-6"></i></div>
+                                    <div class="h-8 w-[1px] bg-white/10 hidden md:block"></div>
+                                    <div class="md:hidden py-2"><i data-lucide="arrow-down" class="text-white/20"></i></div>
+                                    <div class="w-12 h-12 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="filter" class="text-white w-6 h-6"></i></div>
+                                </div>
+                                <div class="hidden md:block"><i data-lucide="chevrons-right" class="text-cyan-accent w-8 h-8 animate-pulse opacity-50"></i></div>
+                                <div class="md:hidden py-2"><i data-lucide="arrow-down" class="text-cyan-accent w-8 h-8 animate-pulse opacity-50"></i></div>
+                                <div class="engine-box">
+                                    <i data-lucide="brain-circuit" class="engine-brain"></i>
+                                    <span class="engine-text">Refiniti Engine</span>
+                                    <div class="engine-line"></div>
+                                </div>
+                                <div class="hidden md:block"><i data-lucide="chevrons-right" class="text-cyan-accent w-8 h-8 animate-pulse opacity-50"></i></div>
+                                <div class="md:hidden py-2"><i data-lucide="arrow-down" class="text-cyan-accent w-8 h-8 animate-pulse opacity-50"></i></div>
+                                <div class="roi-counter-box">
+                                    <div class="w-16 h-16 rounded-full bg-cyan-accent flex items-center justify-center shadow-[0_0_20px_rgba(0,207,255,0.4)] mb-3 transition-transform hover:scale-110">
+                                        <i data-lucide="dollar-sign" class="text-black font-bold w-8 h-8"></i>
+                                    </div>
+                                    <div id="revenue-counter" class="roi-number text-green-accent">$0</div>
+                                    <div class="roi-label">Generated Value</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-12">
+
+                        <!-- Phase 1 Section -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Phase 1: Website Infrastructure & Conversion Assets</h3>
+                            <p class="mb-6">Focus: Building a high-authority directory and referral engine. This foundational phase establishes the digital real estate required to generate and convert high-quality leads.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Estate Transfer Advocate Website</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="gem" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Monetization Hubs for Agency, Cash Buyer, and Legal referrals.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="file-text" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Interactive Estate Analysis Tool to capture high-quality leads.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="book-open" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Rich Content Library with guides to establish authority.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Subdomain & Animation Layer</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="layers" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Clean SEO separation and branding with a dedicated subdomain.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="wind" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Fluid, professional animations to enhance user experience.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Landing Page Suite</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="target" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Pages for Estate Transfer Advocate and Home Buyer Team funnels.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="video" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Each page optimized with compelling copy and VSLs to maximize conversions.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 2 Section -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Phase 2: Performance Lead Generation</h3>
+                            <p class="mb-6">Focus: Rebuilding the lead engine for distressed and probate assets with a "no-waste" ad spend strategy to drive measurable ROI through targeted, data-driven campaigns.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">SEO & Subdomain Setup</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="search" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>In-depth keyword research for high-intent traffic.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="code" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>On-page optimization, technical SEO, and schema markup.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Targeted Funnels & VSLs</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="mouse-pointer-click" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>High-converting funnels with Video Sales Letters and lead magnets.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="users" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Each funnel tailored to a specific audience segment to resonate and drive action.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Investment Table -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6">Investment Summary</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Cost (Initial)</th>
+                                            <th>Cost (Monthly)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="investment-row">
+                                            <td data-label="Item"><span>Website Infrastructure & Assets</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$4,000</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent">$200/mo</td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="3">
+                                                <div class="breakdown-content">
+                                                    <ul class="space-y-3">
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="gem" class="w-5 h-5 text-white/70"></i>Estate Transfer Advocate Website</span> <span class="text-green-accent">$2,500</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="target" class="w-5 h-5 text-white/70"></i>Landing Page Suite</span> <span class="text-green-accent">$1,500</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-white/70"></i>Monthly Maintenance, SEO & Hosting</span> <span class="text-green-accent">$200/mo</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="investment-row">
+                                            <td data-label="Item"><span>Performance Lead Generation</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$2,000</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent">$350/mo</td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="3">
+                                                <div class="breakdown-content">
+                                                    <ul class="space-y-3">
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="search" class="w-5 h-5 text-white/70"></i>SEO & Subdomain Setup</span> <span class="text-green-accent">$500</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="mouse-pointer-click" class="w-5 h-5 text-white/70"></i>Targeted Funnels</span> <span class="text-green-accent">$500</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="video" class="w-5 h-5 text-white/70"></i>VSL</span> <span class="text-green-accent">$1,500</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="trending-up" class="w-5 h-5 text-white/70"></i>Monthly Performance & Campaign Opt.</span> <span class="text-green-accent">$350/mo</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="font-bold bg-white/5">
+                                            <td data-label="Item">Totals</td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$6,000</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent">$550/mo</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Strategy Section -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Refiniti Strategy: "Zero-Waste" Execution</h3>
+                            <p class="mb-6">Our core philosophy is to maximize efficiency. Every dollar is tracked, every campaign is optimized, and every decision is data-driven to ensure we meet and exceed our targets.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Platform Evaluation</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="file-check" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Audit Gary’s Platform to potentially reduce infrastructure costs.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="dollar-sign" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Ensure any leveraged platform maintains SEO authority and performance.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">The VSL Factor</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="filter" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Use high-impact Video Sales Letters as a primary filter.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="user-check" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Ensure only the most motivated, high-quality sellers reach your desk.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Open/Shut Protocol</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="power-off" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Establish strict "Kill Switches" on all ad sets to protect capital.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="trending-up" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Shut down underperforming campaigns immediately and reallocate budget to winners.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ad Spend Table -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-6">Ad Spend & Performance Targets</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Phase</th>
+                                            <th>Monthly Spend</th>
+                                            <th>Target CPL</th>
+                                            <th>Expected Leads</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="investment-row">
+                                            <td data-label="Phase"><span>Testing (Month 1-2)</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Monthly Spend" class="text-green-accent">$300 – $1,500</td>
+                                            <td data-label="Target CPL" class="text-green-accent">$150</td>
+                                            <td data-label="Expected Leads" class="text-cyan-accent">6 – 10</td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="4">
+                                                <div class="breakdown-content">
+                                                    <p>Initial phase to gather data and establish baseline metrics.</p>
+                                                    <ul class="space-y-2 text-sm mt-3">
+                                                        <li class="flex justify-between"><span>Est. CPC:</span> <span class="text-green-accent">$5 - $15</span></li>
+                                                        <li class="flex justify-between"><span>Targeting:</span> <span>Broad (lookalike audiences, interest targeting)</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="investment-row">
+                                            <td data-label="Phase"><span>Optimization (Month 3)</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Monthly Spend" class="text-green-accent">$2,400</td>
+                                            <td data-label="Target CPL" class="text-green-accent">$120</td>
+                                            <td data-label="Expected Leads" class="text-cyan-accent">20 – 25</td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="4">
+                                                <div class="breakdown-content">
+                                                    <p>Refining campaigns based on initial data to improve efficiency.</p>
+                                                    <ul class="space-y-2 text-sm mt-3">
+                                                        <li class="flex justify-between"><span>Est. CPC:</span> <span class="text-green-accent">$4 - $10</span></li>
+                                                        <li class="flex justify-between"><span>Targeting:</span> <span>Narrow (retargeting, high-intent keywords)</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="investment-row">
+                                            <td data-label="Phase"><span>Stabilized State</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Monthly Spend" class="text-green-accent">$3K – $4.5K</td>
+                                            <td data-label="Target CPL" class="text-green-accent">$80 – $100</td>
+                                            <td data-label="Expected Leads" class="text-cyan-accent">30 – 45</td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="4">
+                                                <div class="breakdown-content">
+                                                    <p>Scaling successful campaigns to maximize lead flow at a predictable cost.</p>
+                                                    <ul class="space-y-2 text-sm mt-3">
+                                                        <li class="flex justify-between"><span>Est. CPC:</span> <span class="text-green-accent">$3 - $8</span></li>
+                                                        <li class="flex justify-between"><span>Targeting:</span> <span>Blended (optimized mix of all effective strategies)</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-16">
+                <button id="accept-agreement-btn" class="bg-cyan-accent text-black font-bold py-4 px-8 rounded-lg text-lg hover:bg-cyan-accent/80 transition-colors shadow-[0_0_25px_rgba(0,207,255,0.6)]">
+                    Accept Agreement
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+
+<!-- Agreement Modal -->
+<div id="agreement-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <button class="modal-close-btn">&times;</button>
+        <h2 class="text-2xl font-bold mb-6 text-center">Accept Contract Agreement</h2>
+        <form id="agreement-form" class="space-y-4">
+            <div>
+                <label for="full-name" class="block text-white text-sm font-semibold mb-2">Full Name</label>
+                <input type="text" id="full-name" name="fullName" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+            </div>
+            <div>
+                <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
+                <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+            </div>
+            <input type="hidden" id="initial-cost" name="initialCost">
+            <div class="flex items-start">
+                <input type="checkbox" id="consent" name="consent" class="mt-1 mr-2 accent-cyan-accent" required>
+                <label for="consent" class="text-sm text-white/80">I initialize and agree to the contract.</label>
+            </div>
+            <button type="submit" class="w-full bg-green-accent text-black font-bold py-3 rounded-lg mt-6 hover:bg-green-accent/80 transition-colors">Accept</button>
+        </form>        
+    </div>
+</div>
+
+        </main>
+
+        <script type="module" src="footer.js"></script>
+        <refiniti-footer hide-product></refiniti-footer>
+    </div>
+
+    <script src="password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // FAQ & Table Toggles
+            const faqTriggers = document.querySelectorAll('.faq-trigger');
+            faqTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const faqItem = trigger.closest('.faq-item');
+                    faqItem.classList.toggle('open');
+                });
+            });
+    
+            const investmentRows = document.querySelectorAll('.investment-row');
+            investmentRows.forEach(row => {
+                row.addEventListener('click', () => {
+                    const icon = row.querySelector('i[data-lucide="chevron-down"]');
+                    const breakdownRow = row.nextElementSibling;
+                    if (breakdownRow && breakdownRow.classList.contains('hidden-breakdown')) {
+                        breakdownRow.classList.toggle('hidden');
+                        if(icon) {
+                            icon.style.transform = breakdownRow.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                        }
+                    }
+                });
+            });
+    
+            // Value Counter Animation
+            const revenueCounter = document.getElementById('revenue-counter');
+            const animateCounter = (element, start, end, duration) => {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    element.innerHTML = `$${Math.floor(progress * (end - start) + start).toLocaleString()}`;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            };
+    
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(revenueCounter, 0, 24680, 2000); 
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+    
+            if (revenueCounter) {
+                observer.observe(revenueCounter);
+            }
+    
+            // Floating Icons
+            const container = document.getElementById('background-container');
+            if (container) {
+                const icons = ['cpu', 'database', 'shield-check', 'server', 'pen-tool', 'bar-chart-2'];
+                const numIcons = 15;
+    
+                for (let i = 0; i < numIcons; i++) {
+                    const iconWrapper = document.createElement('div');
+                    iconWrapper.classList.add('floating-icon');
+                    
+                    const iconEl = document.createElement('i');
+                    const iconName = icons[Math.floor(Math.random() * icons.length)];
+                    iconEl.setAttribute('data-lucide', iconName);
+                    
+                    iconWrapper.appendChild(iconEl);
+    
+                    const size = Math.random() * 30 + 15; // Adjusted size
+                    iconWrapper.style.width = `${size}px`;
+                    iconWrapper.style.height = `${size}px`;
+                    iconWrapper.style.top = `${Math.random() * 100}vh`;
+                    iconWrapper.style.left = `${Math.random() * 100}vw`;
+                    iconWrapper.style.animationDuration = `${Math.random() * 25 + 20}s`; 
+                    iconWrapper.style.animationDelay = `${Math.random() * -45}s`; 
+    
+                    container.appendChild(iconWrapper);
+                }
+            }
+            
+            lucide.createIcons();
+        });
+    
+        // Global function to initialize agreement modal, called after password entry
+        window.initializeAgreementModal = () => {
+            const acceptAgreementBtn = document.getElementById('accept-agreement-btn');
+            const agreementModal = document.getElementById('agreement-modal');
+            const modalCloseBtn = document.querySelector('.modal-close-btn');
+            const agreementForm = document.getElementById('agreement-form');
+            const initialCostInput = document.getElementById('initial-cost');
+    
+            // Function to get initial cost from the table
+            const getInitialCost = () => {
+                const totalRow = document.querySelector('.proposal-table tbody .font-bold');
+                if (totalRow) {
+                    const costCell = totalRow.querySelector('td[data-label="Cost (Initial)"]');
+                    if (costCell) {
+                        const costText = costCell.textContent;
+                        // Extract only the numerical value, removing '$' and ','
+                        return parseInt(costText.replace(/[^0-9]/g, ''));
+                    }
+                }
+                return 0; // Default to 0 if not found
+            };
+    
+            // Open modal
+            if (acceptAgreementBtn) { // Ensure button exists before adding listener
+                acceptAgreementBtn.addEventListener('click', () => {
+                    initialCostInput.value = getInitialCost(); // Set the hidden field value
+                    agreementModal.classList.remove('hidden');
+                });
+            }
+    
+            // Close modal
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', () => {
+                    agreementModal.classList.add('hidden');
+                });
+            }
+    
+            // Close modal if overlay is clicked
+            if (agreementModal) {
+                agreementModal.addEventListener('click', (e) => {
+                    if (e.target === agreementModal) {
+                        agreementModal.classList.add('hidden');
+                    }
+                });
+            }
+    
+            // Form submission
+            if (agreementForm) {
+                agreementForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+    
+                    const fullName = document.getElementById('full-name').value;
+                    const email = document.getElementById('email').value;
+                    const consent = document.getElementById('consent').checked;
+                    const initialCost = document.getElementById('initial-cost').value;
+    
+                    if (!consent) {
+                        alert('You must agree to the contract to proceed.');
+                        return;
+                    }
+    
+                    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/itcUlMQJDKPVgPxLNDGk/webhook-trigger/d1ef27fc-6f13-47a1-8632-8af5962e0e3e';
+    
+                    try {
+                        const response = await fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                fullName: fullName,
+                                email: email,
+                                initialCost: initialCost, // Pass the cost
+                                consent: consent,
+                            }),
+                        });
+    
+                        if (response.ok) {
+                            alert('Agreement accepted successfully!');
+                            agreementModal.classList.add('hidden');
+                            agreementForm.reset();
+                        } else {
+                            alert('Failed to accept agreement. Please try again.');
+                        }
+                    } catch (error) {
+                        console.error('Error submitting agreement:', error);
+                        alert('An error occurred. Please try again later.');
+                    }
+                });
+            }
+        };
+    </script>    
+</body>
+</html>

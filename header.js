@@ -45,14 +45,38 @@ class RefinitiHeader extends HTMLElement {
                 
                 .logo-anchor {
                     text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    z-index: 10;
                 }
 
                 .hidden { display: none; }
                 
-                .gap-8 { gap: 2rem; }
-                .absolute { position: absolute; }
-                .left-1\\/2 { left: 50%; }
-                .transform { transform: translate(-50%, 0); }
+                .gap-8 { gap: 1.5rem; }
+                @media (min-width: 1024px) {
+                    .gap-8 { gap: 2rem; }
+                }
+
+                .nav-links-container {
+                    display: none;
+                }
+
+                @media (min-width: 850px) {
+                    .nav-links-container {
+                        display: flex;
+                        align-items: center;
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        white-space: nowrap;
+                    }
+                }
+
+                @media (min-width: 1100px) {
+                    .nav-links-container {
+                        gap: 2rem;
+                    }
+                }
 
                 .nav-link {
                     font-size: 0.875rem;
@@ -144,30 +168,33 @@ class RefinitiHeader extends HTMLElement {
                 .hamburger-btn.open .line-2 { opacity: 0; }
                 .hamburger-btn.open .line-3 { transform: translateY(-7px) rotate(-45deg); }
 
+                @media (min-width: 850px) {
+                    .hamburger-btn {
+                        display: none;
+                    }
+                }
+
                 @media (min-width: 768px) {
-                    .md\\:flex { display: flex; }
-                    .md\\:hidden { display: none; }
-                    .hamburger-btn { display: none; }
+                    .md\:flex { display: flex; }
                     .logo-img { height: 2.5rem; }
                     nav { padding-left: 1.5rem; padding-right: 1.5rem; }
                 }
-            </style>
             <nav class="fixed top-6 left-0 right-0 mx-auto w-[92%] max-w-7xl z-50 nav-glass rounded-full px-4 h-[72px] flex items-center justify-between transition-all">
-                <a href="index.html" class="logo-anchor flex-shrink-0 flex items-center cursor-pointer">
+                <a href="index.html" class="logo-anchor cursor-pointer">
                     <img src="Images/Refiniti-AI-Vertical-Logo (1).png" alt="Refiniti AI" class="logo-img">
                 </a>
-                <div class="hidden md:flex items-center gap-8 absolute left-1/2 transform">
+                <div class="nav-links-container gap-8">
                     <a href="index.html#system" class="nav-link">Process</a>
                     <a href="index.html#product-suite" class="nav-link">Engine</a>
                     <a href="index.html#how-it-works" class="nav-link">Difference</a>
                     <a href="index.html#results" class="nav-link">Results</a>
                     <a href="index.html#faq" class="nav-link">FAQ</a>
                 </div>
-                <div class="hidden md:flex items-center">
-                    <button class="btn-primary" id="desktop-cta">See if you Qualify</button>
-                </div>
-                <div class="md:hidden">
-                     <button class="hamburger-btn" id="mobile-menu-button" aria-label="Menu">
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex">
+                        <button class="btn-primary" id="desktop-cta">See if you Qualify</button>
+                    </div>
+                    <button class="hamburger-btn" id="mobile-menu-button" aria-label="Menu">
                         <span class="line line-1"></span>
                         <span class="line line-2"></span>
                         <span class="line line-3"></span>

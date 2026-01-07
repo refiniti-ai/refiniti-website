@@ -414,15 +414,15 @@ function initializeSiteLogic() {
     }
 
     // Revenue Counter Animation Logic
-    const funnelSection = document.getElementById('funnel');
-    if(funnelSection) {
+    const diagnoseSection = document.getElementById('diagnose');
+    if(diagnoseSection) {
         const observer = new IntersectionObserver((entries) => {
             if(entries[0].isIntersecting) {
                 animateCounter();
-                observer.unobserve(funnelSection); // Stop observing once it has animated
+                observer.unobserve(diagnoseSection); // Stop observing once it has animated
             }
-        }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
-        observer.observe(funnelSection);
+        }, { threshold: 0.3 }); // Trigger when 30% of the element is visible
+        observer.observe(diagnoseSection);
     }
     
     // Before/After Slider Logic

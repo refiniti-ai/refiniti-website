@@ -26,7 +26,7 @@ class LegalModal extends HTMLElement {
                     position: relative;
                     width: 100%;
                     max-width: 800px; /* Wider for legal content */
-                    background-color: transparent; /* CHANGED: Removed black background */
+                    background-color: #08080A; /* Set consistent background color */
                     border-radius: 1rem;
                     border: 1px solid rgba(255, 255, 255, 0.1);
                     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
@@ -69,7 +69,7 @@ class LegalModal extends HTMLElement {
                     margin-top: auto; /* Push to bottom */
                     text-align: center;
                     border-top: 1px solid rgba(255, 255, 255, 0.1);
-                    padding: 1rem 2rem;
+                    padding: 0.75rem 1rem;
                     flex-shrink: 0; /* Prevent footer from shrinking */
                 }
                 .full-page-link {
@@ -89,7 +89,7 @@ class LegalModal extends HTMLElement {
                         height: 95vh; /* Taller on small mobile */
                         border-radius: 0.5rem;
                     }
-                    .modal-footer { padding: 0.75rem 1.25rem; }
+                    .modal-footer { padding: 0.75rem 1rem; }
                 }
             </style>
             <div class="overlay" id="legal-overlay">
@@ -135,7 +135,8 @@ class LegalModal extends HTMLElement {
                     style.textContent = `
                         refiniti-header { display: none !important; }
                         refiniti-footer { display: none !important; }
-                        main { padding-top: 2rem !important; }
+                        main { padding-top: 0 !important; padding-bottom: 0 !important; }
+                        section { padding-top: 3rem !important; padding-bottom: 1.5rem !important; }
                     `;
                     iframeDoc.head.appendChild(style);
                 }
