@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefinitiAI | Proposal for NC Fitness</title>
+    <script type="module" src="legal-modal.js"></script> 
+    <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="proposal.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .section-padding {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .choose-plan-btn {
+            min-width: 100px;
+        }
+        @media (max-width: 767px) {
+            .section-padding {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+            .ref-engine-visual {
+                height: 200px !important;
+            }
+            .engine-box {
+                padding: 0.5rem !important;
+            }
+            .engine-text {
+                font-size: 0.75rem !important;
+            }
+            .choose-plan-btn {
+                min-width: 80px;
+                padding: 6px 10px !important;
+            }
+        }
+        .faq-item {
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .faq-content {
+            padding: 0 1rem 1rem 1rem;
+        }
+        .breakdown-content {
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+        }
+        .disclaimer-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden text-white">
+
+    <div class="background-container" id="background-container"></div>
+
+    <div id="password-modal">
+        <div class="password-box">
+            <h2 class="text-2xl font-bold mb-4">Access Proposal</h2>
+            <p class="mb-6">Please enter the password to view this document.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" class="w-full rounded-lg p-3 text-center mb-4" placeholder="Password">
+                <p id="password-error" class="mb-4">Incorrect password. Please try again.</p>
+                <button type="submit" class="w-full bg-cyan-accent text-black font-bold py-3 rounded-lg hover:bg-cyan-accent/80 transition-colors">View</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <!-- Proposal Content -->
+        <main class="py-24 md:py-32">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="content-container">
+                    <div class="text-center mb-16">
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight md:leading-[1.1] mb-6 text-white">
+                            Proposal for <span class="text-glow-anim">NC Fitness</span>
+                        </h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                            A high-velocity growth strategy to rescue 5,000+ leads, automate retention, and scale your fitness community.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-12">
+                        <div class="md:pr-8">
+                            <h3 class="text-2xl font-bold text-white mb-4">Strategy: Lead Rescue & High-Velocity Setup</h3>
+                            <p class="leading-relaxed mb-6">
+                                Dwayne, our goal isn't just to get you new leads; it's to <strong>stop the bleeding</strong> and monetize the 5,000 leads you already have sitting in your CRM.
+                            </p>
+                            <p class="mb-6">
+                                By shifting away from expensive, static websites and focusing on high-converting <strong>Growth Landing Pages</strong>, we lower your barrier to entry while getting you into an ecosystem designed for revenue, not just "visibility."
+                            </p>
+                            <div class="flex items-center gap-4 text-green-accent font-bold">
+                                <i data-lucide="trending-down" class="w-6 h-6"></i>
+                                <span>80% reduction in ad management fees compared to current agency.</span>
+                            </div>
+                        </div>
+                        <div class="ref-engine-visual h-[250px] md:h-auto bg-black/20 rounded-3xl border border-white/10 p-4 relative overflow-hidden flex items-center justify-center group hover:border-cyan-accent/20 transition-colors py-4">
+                            <div class="absolute inset-0 bg-gradient-to-r from-black via-cyan-accent/5 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            <div class="flex flex-row items-center gap-2 relative z-10 w-full justify-center scale-75 md:scale-90">
+                                <div class="flex flex-col gap-2 items-center opacity-60">
+                                    <div class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="users" class="text-white w-5 h-5"></i></div>
+                                    <div class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="filter" class="text-white w-5 h-5"></i></div>
+                                </div>
+                                <div><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="engine-box p-3">
+                                    <i data-lucide="brain-circuit" class="engine-brain w-6 h-6"></i>
+                                    <span class="engine-text text-sm">Refiniti Engine</span>
+                                </div>
+                                <div><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="roi-counter-box">
+                                    <div class="w-12 h-12 rounded-full bg-cyan-accent flex items-center justify-center shadow-[0_0_15px_rgba(0,207,255,0.4)] mb-2 transition-transform hover:scale-110">
+                                        <i data-lucide="dollar-sign" class="text-black font-bold w-6 h-6"></i>
+                                    </div>
+                                    <div id="revenue-counter" class="roi-number text-green-accent text-lg">$0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-16 py-8">
+
+                        <!-- Phase 1: Foundation -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Tier 1: Foundational Lead Rescue</h3>
+                            <p class="mb-6">Focus: Organizing your existing 5,000 leads and launching targeted pages for the January fitness rush.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">GHL Foundation (Lead Rescue)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="refresh-cw" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Rescue 5k leads, Tagging, and SMS/Email Automation setup.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="database" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Centralized CRM management to stop lead leakage.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Growth Trio Landing Pages</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="layout" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>3 Custom Landing Pages (Main Gym, Football, Basketball).</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="zap" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Optimized for conversion and mobile-first fitness traffic.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 2: High-Velocity Bundle -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Tier 2: High-Velocity Growth (Recommended)</h3>
+                            <p class="mb-6">Focus: Dominating the market with AI-driven video assets and aggressive Meta ad campaigns.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">The Closer: Animated AI VSSL</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="video" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>High-impact Video Sales Letter to build trust before they step into the gym.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="bot" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>AI-enhanced visual storytelling tailored to your fitness brand.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Ad Catalyst: Meta Ads Management</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="facebook" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Hyper-local targeting for North Carolina gym-goers.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="bar-chart-2" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Full setup and weekly management for maximum ROI.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Retention Toolset</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="credit-card" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Payment Fail Automation:</strong> Instant SMS/Email for failed cards.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="heart" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Member Love Workflow:</strong> Automated touchpoints on Day 1, 7, and 30.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Investment Table -->
+                        <div class="section-padding" id="investment-summary">
+                            <h3 class="text-2xl font-bold text-white mb-6">Investment Summary</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Tier</th>
+                                            <th>Cost (Initial)</th>
+                                            <th>Cost (Monthly)</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="investment-row">
+                                            <td data-label="Tier"><span>Tier 1: Foundational Setup</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$1,250</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent">$148/mo</td>
+                                            <td data-label="Action">
+                                                <button class="choose-plan-btn bg-cyan-accent text-black font-bold py-2 px-3 rounded text-xs hover:bg-cyan-accent/80 transition-colors whitespace-nowrap" data-price="1250" data-plan="Tier 1">Choose Tier 1</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="4">
+                                                <div class="breakdown-content">
+                                                    <ul class="space-y-3">
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="database" class="w-5 h-5 text-white/70"></i>GHL Foundation (Rescue 5k leads)</span> <span class="text-green-accent">$500</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="layout" class="w-5 h-5 text-white/70"></i>Growth Trio (3 Landing Pages)</span> <span class="text-green-accent">$750</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-white/70"></i>CRM Management Fee</span> <span class="text-green-accent">$99/mo</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="server" class="w-5 h-5 text-white/70"></i>LPs Hosting & Maintenance</span> <span class="text-green-accent">$49/mo</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="investment-row">
+                                            <td data-label="Tier"><span>Tier 2: High-Velocity Bundle</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$1,498</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent">$347/mo</td>
+                                            <td data-label="Action">
+                                                <button class="choose-plan-btn bg-cyan-accent text-black font-bold py-2 px-3 rounded text-xs hover:bg-cyan-accent/80 transition-colors whitespace-nowrap" data-price="1498" data-plan="Tier 2">Choose Tier 2</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="4">
+                                                <div class="breakdown-content">
+                                                    <p class="text-sm text-white/60 mb-3 italic">Refiniti Special: GHL Setup ($500 value) included for $0 in this bundle.</p>
+                                                    <ul class="space-y-3">
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="layout" class="w-5 h-5 text-white/70"></i>Growth Trio (3 Landing Pages)</span> <span class="text-green-accent">$750</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="video" class="w-5 h-5 text-white/70"></i>Animated AI VSSL (The Closer)</span> <span class="text-green-accent">$499</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="target" class="w-5 h-5 text-white/70"></i>Meta Ads Setup (Ad Catalyst)</span> <span class="text-green-accent">$249</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="database" class="w-5 h-5 text-white/70"></i>GHL Setup (Rescue Bundle)</span> <span class="text-green-accent">$0</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="trending-up" class="w-5 h-5 text-white/70"></i>Total Monthly Management</span> <span class="text-green-accent">$347/mo</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="font-bold bg-white/5">
+                                            <td data-label="Tier">Selected Proposal Total</td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent" id="selected-initial-total">$0</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent" id="selected-monthly-total">$0</td>
+                                            <td data-label="Action">
+                                                <button id="summary-accept-btn" class="bg-green-accent text-black font-bold py-2 px-4 rounded text-xs hover:bg-green-accent/80 transition-colors whitespace-nowrap">Accept Agreement</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="disclaimer-box">
+                                <p><strong>Strategic Insight:</strong> Comparing your current $1,500/mo management fee to our $347/mo. You are saving over $1,100 a month while providing more assets (Landing pages, AI videos, and a CRM).</p>
+                            </div>
+                        </div>
+
+                        <!-- Strategy Section -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">The Refiniti Method for NC Fitness</h3>
+                            <p class="mb-6">Our mission is to turn your existing database into a revenue engine while lowering your overhead.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">The Funnel Visualizer</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="eye" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Showing you exactly where every lead goes—and how they turn into revenue.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="map" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Transparent mapping of the "Admission Process" for your gym.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">The "Trojan Horse" Offer</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Positions Refiniti as a partner invested in your recovery, not just another bill.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="gift" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Zero-cost GHL setup when bundled with growth assets.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Retention-First Infrastructure</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="clock" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Immediate text alerts for failed member payments.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="users" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Automated member onboarding to build community from Day 1.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Performance Target Roadmap -->
+                            <div class="mt-12 bg-white/5 rounded-2xl p-6 border border-white/10">
+                                <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                    <i data-lucide="line-chart" class="text-cyan-accent w-6 h-6"></i>
+                                    Projected Growth Roadmap
+                                </h4>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left text-sm border-separate border-spacing-y-2">
+                                        <thead class="text-white/50">
+                                            <tr>
+                                                <th class="pb-2 pl-4">Phase</th>
+                                                <th class="pb-2">Lead Recovery</th>
+                                                <th class="pb-2">Response Time</th>
+                                                <th class="pb-2">Monthly Savings</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-white/5 rounded-lg overflow-hidden">
+                                                <td class="py-4 pl-4 font-semibold text-cyan-accent">Month 1: Rescue</td>
+                                                <td class="py-4">5,000 Leads Tagged</td>
+                                                <td class="py-4">&lt; 5 Mins</td>
+                                                <td class="py-4 text-green-accent font-bold">$1,100+</td>
+                                            </tr>
+                                            <tr class="bg-white/5 rounded-lg overflow-hidden">
+                                                <td class="py-4 pl-4 font-semibold text-cyan-accent">Month 2: Scale</td>
+                                                <td class="py-4">+25% Conversion</td>
+                                                <td class="py-4">Instant</td>
+                                                <td class="py-4 text-green-accent font-bold">$1,100+</td>
+                                            </tr>
+                                            <tr class="bg-white/5 rounded-lg overflow-hidden">
+                                                <td class="py-4 pl-4 font-semibold text-cyan-accent">Month 3: Optimize</td>
+                                                <td class="py-4">Automated Retention</td>
+                                                <td class="py-4">24/7 AI</td>
+                                                <td class="py-4 text-green-accent font-bold">$1,100+</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="mt-4 text-xs text-white/40 italic">*Savings calculated against your current $1,500/mo ad management fee.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Accept Agreement Button Inside Container -->
+                    <div class="text-center mt-12 pt-12 border-t border-white/5">
+                        <button id="final-accept-btn" class="bg-cyan-accent text-black font-bold py-4 px-8 rounded-lg text-lg hover:bg-cyan-accent/80 transition-colors shadow-[0_0_25px_rgba(0,207,255,0.6)] inline-block mx-8">
+                            Accept Agreement
+                        </button>
+                        <p class="text-white/50 text-sm italic mt-6">Select a plan in the Investment Summary above to initialize the agreement.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Agreement Modal -->
+    <div id="agreement-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h2 class="text-2xl font-bold mb-6 text-center">Accept Contract Agreement</h2>
+            <form id="agreement-form" class="space-y-4">
+                <div>
+                    <label for="full-name" class="block text-white text-sm font-semibold mb-2">Full Name</label>
+                    <input type="text" id="full-name" name="fullName" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <input type="hidden" id="initial-cost" name="initialCost">
+                <input type="hidden" id="selected-plan" name="selectedPlan">
+                <div class="flex items-start">
+                    <input type="checkbox" id="consent" name="consent" class="mt-1 mr-2 accent-cyan-accent" required>
+                    <label for="consent" class="text-sm text-white/80">I initialize and agree to the contract.</label>
+                </div>
+                <button type="submit" class="w-full bg-green-accent text-black font-bold py-3 rounded-lg mt-6 hover:bg-green-accent/80 transition-colors">Accept</button>
+            </form>        
+        </div>
+    </div>
+
+    <script type="module" src="footer.js"></script>
+    <refiniti-footer hide-product></refiniti-footer>
+
+    <script src="password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // FAQ & Table Toggles
+            const faqTriggers = document.querySelectorAll('.faq-trigger');
+            faqTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const faqItem = trigger.closest('.faq-item');
+                    faqItem.classList.toggle('open');
+                });
+            });
+    
+            const investmentRows = document.querySelectorAll('.investment-row');
+            investmentRows.forEach(row => {
+                row.addEventListener('click', (e) => {
+                    // Don't toggle if the "Choose" button was clicked
+                    if (e.target.classList.contains('choose-plan-btn')) return;
+
+                    const icon = row.querySelector('i[data-lucide="chevron-down"]');
+                    const breakdownRow = row.nextElementSibling;
+                    if (breakdownRow && breakdownRow.classList.contains('hidden-breakdown')) {
+                        breakdownRow.classList.toggle('hidden');
+                        if(icon) {
+                            icon.style.transform = breakdownRow.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                        }
+                    }
+                });
+            });
+
+            // Choose Plan Logic
+            const chooseBtns = document.querySelectorAll('.choose-plan-btn');
+            const initialCostInput = document.getElementById('initial-cost');
+            const selectedPlanInput = document.getElementById('selected-plan');
+            const agreementModal = document.getElementById('agreement-modal');
+            const summaryInitial = document.getElementById('selected-initial-total');
+            const summaryMonthly = document.getElementById('selected-monthly-total');
+            const summaryAcceptBtn = document.getElementById('summary-accept-btn');
+
+            chooseBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent row toggle
+                    
+                    const price = btn.getAttribute('data-price');
+                    const plan = btn.getAttribute('data-plan');
+                    
+                    // Reset all buttons
+                    chooseBtns.forEach(b => {
+                        b.classList.remove('bg-green-accent');
+                        b.classList.add('bg-cyan-accent');
+                        b.textContent = 'Choose ' + b.getAttribute('data-plan');
+                    });
+
+                    // Highlight selected
+                    btn.classList.remove('bg-cyan-accent');
+                    btn.classList.add('bg-green-accent');
+                    btn.textContent = 'Selected';
+
+                    // Update summary row totals
+                    if (summaryInitial) summaryInitial.textContent = `$${parseInt(price).toLocaleString()}`;
+                    if (summaryMonthly) {
+                        let m = "0";
+                        if (plan === "Tier 1") m = "148";
+                        else if (plan === "Tier 2") m = "347";
+                        summaryMonthly.textContent = `$${m}/mo`;
+                    }
+                    
+                    // Update hidden inputs
+                    if (initialCostInput) initialCostInput.value = price;
+                    if (selectedPlanInput) selectedPlanInput.value = plan;
+                });
+            });
+
+            // Trigger modal from summary button
+            const finalAcceptBtn = document.getElementById('final-accept-btn');
+            const handleAcceptClick = () => {
+                if (!initialCostInput.value) {
+                    alert('Please select a plan tier from the investment table first.');
+                    return;
+                }
+                if (agreementModal) {
+                    agreementModal.classList.remove('hidden');
+                }
+            };
+
+            if (summaryAcceptBtn) {
+                summaryAcceptBtn.addEventListener('click', handleAcceptClick);
+            }
+            if (finalAcceptBtn) {
+                finalAcceptBtn.addEventListener('click', handleAcceptClick);
+            }
+
+            // Default to Tier 2 (Recommended) on load
+            const defaultTierBtn = document.querySelector('.choose-plan-btn[data-plan="Tier 2"]');
+            if (defaultTierBtn) {
+                defaultTierBtn.click();
+            }
+    
+            // Value Counter Animation
+            const revenueCounter = document.getElementById('revenue-counter');
+            const animateCounter = (element, start, end, duration) => {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    element.innerHTML = `$${Math.floor(progress * (end - start) + start).toLocaleString()}`;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            };
+    
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(revenueCounter, 0, 75000, 2000); // Mentioned he previously made 75k
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+    
+            if (revenueCounter) {
+                observer.observe(revenueCounter);
+            }
+    
+            // Floating Icons
+            const container = document.getElementById('background-container');
+            if (container) {
+                const icons = ['cpu', 'database', 'shield-check', 'server', 'pen-tool', 'bar-chart-2'];
+                const numIcons = 15;
+    
+                for (let i = 0; i < numIcons; i++) {
+                    const iconWrapper = document.createElement('div');
+                    iconWrapper.classList.add('floating-icon');
+                    
+                    const iconEl = document.createElement('i');
+                    const iconName = icons[Math.floor(Math.random() * icons.length)];
+                    iconEl.setAttribute('data-lucide', iconName);
+                    
+                    iconWrapper.appendChild(iconEl);
+    
+                    const size = Math.random() * 30 + 15; 
+                    iconWrapper.style.width = `${size}px`;
+                    iconWrapper.style.height = `${size}px`;
+                    iconWrapper.style.top = `${Math.random() * 100}vh`;
+                    iconWrapper.style.left = `${Math.random() * 100}vw`;
+                    iconWrapper.style.animationDuration = `${Math.random() * 25 + 20}s`; 
+                    iconWrapper.style.animationDelay = `${Math.random() * -45}s`; 
+    
+                    container.appendChild(iconWrapper);
+                }
+            }
+            
+            lucide.createIcons();
+        });
+    
+        window.initializeAgreementModal = () => {
+            const agreementModal = document.getElementById('agreement-modal');
+            const modalCloseBtn = document.querySelector('.modal-close-btn');
+            const agreementForm = document.getElementById('agreement-form');
+    
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', () => {
+                    agreementModal.classList.add('hidden');
+                });
+            }
+    
+            if (agreementModal) {
+                agreementModal.addEventListener('click', (e) => {
+                    if (e.target === agreementModal) {
+                        agreementModal.classList.add('hidden');
+                    }
+                });
+            }
+    
+            if (agreementForm) {
+                agreementForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+    
+                    const fullName = document.getElementById('full-name').value;
+                    const email = document.getElementById('email').value;
+                    const consent = document.getElementById('consent').checked;
+                    const initialCost = document.getElementById('initial-cost').value;
+                    const selectedPlan = document.getElementById('selected-plan').value;
+    
+                    if (!consent) {
+                        alert('You must agree to the contract to proceed.');
+                        return;
+                    }
+    
+                    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/itcUlMQJDKPVgPxLNDGk/webhook-trigger/d1ef27fc-6f13-47a1-8632-8af5962e0e3e';
+    
+                    try {
+                        const response = await fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                fullName: fullName,
+                                email: email,
+                                initialCost: initialCost,
+                                selectedPlan: selectedPlan,
+                                consent: consent,
+                                proposalType: 'NC Fitness'
+                            }),
+                        });
+    
+                        if (response.ok) {
+                            alert('Agreement accepted successfully!');
+                            agreementModal.classList.add('hidden');
+                            agreementForm.reset();
+                        } else {
+                            alert('Failed to accept agreement. Please try again.');
+                        }
+                    } catch (error) {
+                        console.error('Error submitting agreement:', error);
+                        alert('An error occurred. Please try again later.');
+                    }
+                });
+            }
+        };
+    </script>    
+</body>
+</html>
+

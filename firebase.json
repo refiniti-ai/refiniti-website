@@ -4,9 +4,7 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**",
-      "Videos/**",
-      "Documents/**"
+      "**/node_modules/**"
     ],
     "cleanUrls": true,
     "rewrites": [
@@ -25,6 +23,10 @@
       {
         "source": "/terms-conditions",
         "destination": "/terms-conditions.html"
+      },
+      {
+        "source": "/nisus-report",
+        "destination": "/nisus-report.html"
       },
       {
         "source": "**",

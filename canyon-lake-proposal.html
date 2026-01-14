@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefinitiAI | Proposal for Canyon Lake Mobile</title>
+    <script type="module" src="legal-modal.js"></script> 
+    <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="proposal.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .section-padding {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .choose-plan-btn {
+            min-width: 100px;
+        }
+        @media (max-width: 767px) {
+            .section-padding {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+            .ref-engine-visual {
+                height: 200px !important;
+            }
+            .engine-box {
+                padding: 0.5rem !important;
+            }
+            .engine-text {
+                font-size: 0.75rem !important;
+            }
+            .choose-plan-btn {
+                min-width: 80px;
+                padding: 6px 10px !important;
+            }
+        }
+        .faq-item {
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .faq-content {
+            padding: 0 1rem 1rem 1rem;
+        }
+        .breakdown-content {
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+        }
+        .disclaimer-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden text-white">
+
+    <div class="background-container" id="background-container"></div>
+
+    <div id="password-modal">
+        <div class="password-box">
+            <h2 class="text-2xl font-bold mb-4">Access Proposal</h2>
+            <p class="mb-6">Please enter the password to view this document.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" class="w-full rounded-lg p-3 text-center mb-4" placeholder="Password">
+                <p id="password-error" class="mb-4">Incorrect password. Please try again.</p>
+                <button type="submit" class="w-full bg-cyan-accent text-black font-bold py-3 rounded-lg hover:bg-cyan-accent/80 transition-colors">View</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <!-- Proposal Content -->
+        <main class="py-24 md:py-32">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="content-container">
+                    <div class="text-center mb-16">
+                        <p class="text-cyan-accent font-mono mb-4">PREPARED FOR: TONY SCHWARZMAN • 12/09/2025 • +1-480-882-8398</p>
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight md:leading-[1.1] mb-6 text-white">
+                            Full Service Funnel for <br><span class="text-glow-anim">Canyon Lake Mobile</span>
+                        </h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                            A comprehensive data-driven marketing initiative featuring omni-channel engagement, GHL automation, and cinematic VSL production.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-12">
+                        <div class="md:pr-8">
+                            <h3 class="text-2xl font-bold text-white mb-4">Project Overview</h3>
+                            <p class="leading-relaxed mb-6">
+                                This proposal outlines the campaign plan for the first phase of a marketing initiative for <strong>Canyon Lake Mobile</strong>. We will deliver a frictionless booking experience, real-time communication, and a trustworthy digital presence.
+                            </p>
+                            <p class="mb-6">
+                                The goal is to position Canyon Lake Mobile as the most transparent, reliable, and accessible mobile golf cart repair service in its area.
+                            </p>
+                            <div class="flex items-center gap-4 text-green-accent font-bold">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                                <span>Complete system integrity audit and critical bug fixes included.</span>
+                            </div>
+                        </div>
+                        <div class="ref-engine-visual h-[250px] md:h-auto bg-black/20 rounded-3xl border border-white/10 p-4 relative overflow-hidden flex items-center justify-center group hover:border-cyan-accent/20 transition-colors py-4">
+                            <div class="absolute inset-0 bg-gradient-to-r from-black via-cyan-accent/5 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            <div class="flex flex-row items-center gap-2 relative z-10 w-full justify-center scale-75 md:scale-90">
+                                <div class="flex flex-col gap-2 items-center opacity-60">
+                                    <div class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="wrench" class="text-white w-5 h-5"></i></div>
+                                    <div class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="calendar-check" class="text-white w-5 h-5"></i></div>
+                                </div>
+                                <div><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="engine-box p-3">
+                                    <i data-lucide="brain-circuit" class="engine-brain w-6 h-6"></i>
+                                    <span class="engine-text text-sm">Refiniti Engine</span>
+                                </div>
+                                <div><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="roi-counter-box">
+                                    <div class="w-12 h-12 rounded-full bg-cyan-accent flex items-center justify-center shadow-[0_0_15px_rgba(0,207,255,0.4)] mb-2 transition-transform hover:scale-110">
+                                        <i data-lucide="trending-up" class="text-black font-bold w-6 h-6"></i>
+                                    </div>
+                                    <div id="revenue-counter" class="roi-number text-green-accent text-lg">$0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-16 py-8">
+
+                        <!-- Phase 0: System Integrity -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Phase 0: Critical System Integrity (Fixed First)</h3>
+                            <p class="mb-6">Before scaling, we will stabilize your current infrastructure by resolving critical bugs and security vulnerabilities.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                                    <h4 class="font-bold text-cyan-accent mb-2 flex items-center gap-2"><i data-lucide="lock" class="w-4 h-4"></i>Security & Auth</h4>
+                                    <ul class="text-sm space-y-2 opacity-80">
+                                        <li>• Patch user deletion logic to prevent post-deletion login.</li>
+                                        <li>• Secure session management for clients and users.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                                    <h4 class="font-bold text-cyan-accent mb-2 flex items-center gap-2"><i data-lucide="layout-dashboard" class="w-4 h-4"></i>Dashboard & Reporting</h4>
+                                    <ul class="text-sm space-y-2 opacity-80">
+                                        <li>• Fix broken Review section in reports.</li>
+                                        <li>• Correct Average Inspection Score & Pending Payouts in Manager View.</li>
+                                        <li>• Repair broken View History page navigation.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                                    <h4 class="font-bold text-cyan-accent mb-2 flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4"></i>Operational Logic</h4>
+                                    <ul class="text-sm space-y-2 opacity-80">
+                                        <li>• Implement "No Past-Time Scheduling" validation.</li>
+                                        <li>• Enable job editing prior to "Start Job" trigger.</li>
+                                        <li>• Remove obstructive availability tooltips.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                                    <h4 class="font-bold text-cyan-accent mb-2 flex items-center gap-2"><i data-lucide="upload-cloud" class="w-4 h-4"></i>Media Pipeline</h4>
+                                    <ul class="text-sm space-y-2 opacity-80">
+                                        <li>• Optimize Video/Photo upload speeds.</li>
+                                        <li>• Strengthen database connections for reliable media storage.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main Deliverables -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Core Deliverables</h3>
+                            <p class="mb-6">Our multi-channel approach ensures maximum reach and conversion for Canyon Lake Mobile.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Inbound Marketing Funnel</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="layout" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Landing Page:</strong> High-conversion build with transparent pricing.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="video" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>VSL Production:</strong> 60–90s cinematic 2.5D video for trust-building.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="calendar" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Direct GHL Integration:</strong> Instant scheduling and pixel tracking.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">CRM & Marketing Automation (GHL)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="git-branch" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>18 Service Pipelines:</strong> Organized by service type for ROI management.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="zap" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Automated Workflows:</strong> Instant SMS on lead, confirmation reminders, and missed call text-back.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="bar-chart-2" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>KPI Dashboard:</strong> Live reporting on lead acquisition and sales pipeline.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Outbound Data Engine</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="database" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>10,000 Local Leads:</strong> Verified homeowner records for cold outreach and retargeting.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="facebook" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Meta Ads Setup:</strong> Hot/Warm/Cold campaigns with static and animated creatives.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="search" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Google Ads Suite:</strong> PPC, PMAX, and GMB optimization for local dominance.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Investment Table -->
+                        <div class="section-padding" id="investment-summary">
+                            <h3 class="text-2xl font-bold text-white mb-6">Investment Summary</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Package</th>
+                                            <th>Original Cost</th>
+                                            <th>Discounted Setup</th>
+                                            <th>Monthly (3-Mo)</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="investment-row border-2 border-cyan-accent/50 bg-cyan-accent/5">
+                                            <td data-label="Package">
+                                                <div class="flex flex-col">
+                                                    <span class="font-bold">Complete Growth Ecosystem</span>
+                                                    <span class="text-[10px] opacity-70 uppercase tracking-tighter">Full Funnel + CRM + VSL + 10k Leads</span>
+                                                </div>
+                                            </td>
+                                            <td data-label="Original Cost" class="line-through opacity-50">$5,400</td>
+                                            <td data-label="Discounted Setup" class="text-green-accent font-bold">$2,500</td>
+                                            <td data-label="Monthly (3-Mo)" class="text-green-accent font-bold">$500/mo</td>
+                                            <td data-label="Action">
+                                                <button class="choose-plan-btn bg-green-accent text-black font-bold py-2 px-3 rounded text-xs hover:bg-green-accent/80 transition-colors whitespace-nowrap" data-price="4000" data-plan="Complete Growth Ecosystem">Selected</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="font-bold bg-white/5">
+                                            <td data-label="Package">Total Proposal Value</td>
+                                            <td colspan="2" class="text-right pr-8 opacity-50 italic text-sm">Setup + 3 Months Support</td>
+                                            <td data-label="Total Value" class="text-cyan-accent text-xl" id="selected-initial-total">$4,000</td>
+                                            <td data-label="Action">
+                                                <button id="summary-accept-btn" class="bg-green-accent text-black font-bold py-2 px-4 rounded text-xs hover:bg-green-accent/80 transition-colors whitespace-nowrap">Accept Agreement</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="disclaimer-box">
+                                <p><strong>Strategic Insight:</strong> This discounted package of $4,000 (inclusive of $2,500 setup and 3 months of management) provides a $1,400 immediate savings. By fixing foundational system issues and launching your funnel simultaneously, we ensure your marketing dollars hit a conversion-ready platform from Day 1.</p>
+                                <p class="mt-4 text-[10px] opacity-50 uppercase tracking-widest">Confidential: Intended solely for Canyon Lake Mobile and its affiliates.</p>
+                            </div>
+                        </div>
+
+                        <!-- Ad Performance Section -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-6">Projected Ad Performance (California Market)</h3>
+                            <p class="mb-8 opacity-80">Industry benchmarks for high-intent mobile repair services in California homeowners' markets.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="bg-white/5 p-6 rounded-2xl border border-white/10 text-center">
+                                    <div class="text-cyan-accent mb-2"><i data-lucide="mouse-pointer-2" class="w-8 h-8 mx-auto"></i></div>
+                                    <div class="text-2xl font-bold">$3.50 - $5.25</div>
+                                    <div class="text-xs uppercase tracking-widest opacity-50">Target CPC (Cost Per Click)</div>
+                                </div>
+                                <div class="bg-white/5 p-6 rounded-2xl border border-white/10 text-center">
+                                    <div class="text-green-accent mb-2"><i data-lucide="target" class="w-8 h-8 mx-auto"></i></div>
+                                    <div class="text-2xl font-bold">12% - 18%</div>
+                                    <div class="text-xs uppercase tracking-widest opacity-50">Funnel Conversion Rate</div>
+                                </div>
+                                <div class="bg-white/5 p-6 rounded-2xl border border-white/10 text-center">
+                                    <div class="text-yellow-500 mb-2"><i data-lucide="users" class="w-8 h-8 mx-auto"></i></div>
+                                    <div class="text-2xl font-bold">$45 - $65</div>
+                                    <div class="text-xs uppercase tracking-widest opacity-50">Target CPL (Cost Per Lead)</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-12 bg-white/5 rounded-2xl p-6 border border-white/10">
+                                <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                                    <i data-lucide="line-chart" class="text-cyan-accent w-6 h-6"></i>
+                                    Growth Roadmap & Targets
+                                </h4>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left text-sm border-separate border-spacing-y-2">
+                                        <thead class="text-white/50">
+                                            <tr>
+                                                <th class="pb-2 pl-4">Phase</th>
+                                                <th class="pb-2">Primary Objective</th>
+                                                <th class="pb-2">Est. Monthly Leads</th>
+                                                <th class="pb-2">Expected ROI</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-white/5 rounded-lg overflow-hidden">
+                                                <td class="py-4 pl-4 font-semibold text-cyan-accent">Month 1: Stabilize</td>
+                                                <td class="py-4">System Fixes + Funnel Launch</td>
+                                                <td class="py-4">15 - 25</td>
+                                                <td class="py-4 text-green-accent font-bold">Initial Data</td>
+                                            </tr>
+                                            <tr class="bg-white/5 rounded-lg overflow-hidden">
+                                                <td class="py-4 pl-4 font-semibold text-cyan-accent">Month 2: Scale</td>
+                                                <td class="py-4">Ad Optimization + SMS Follow-up</td>
+                                                <td class="py-4">30 - 45</td>
+                                                <td class="py-4 text-green-accent font-bold">3.5x - 5x</td>
+                                            </tr>
+                                            <tr class="bg-white/5 rounded-lg overflow-hidden">
+                                                <td class="py-4 pl-4 font-semibold text-cyan-accent">Month 3: Dominate</td>
+                                                <td class="py-4">Market Share + 10k Data Outreach</td>
+                                                <td class="py-4">50+</td>
+                                                <td class="py-4 text-green-accent font-bold">6x - 8x</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="mt-4 text-xs text-white/40 italic">*California Golf Cart Repair Industry Projections. Actual results may vary based on local seasonality and ad spend.</p>
+                            </div>
+                        </div>
+
+                        <!-- Roadmap -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Implementation Timeline</h3>
+                            <div class="mt-8 space-y-4">
+                                <div class="flex gap-6 items-start">
+                                    <div class="w-24 text-cyan-accent font-bold pt-1">Week 1</div>
+                                    <div class="flex-1 bg-white/5 p-4 rounded-xl border border-white/10">
+                                        <h4 class="font-bold mb-1">System Audit & Landing Page Setup</h4>
+                                        <p class="text-sm opacity-70">Fixing critical bugs, building high-conversion pages, and GHL scheduling integration.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-6 items-start">
+                                    <div class="w-24 text-cyan-accent font-bold pt-1">Week 2</div>
+                                    <div class="flex-1 bg-white/5 p-4 rounded-xl border border-white/10">
+                                        <h4 class="font-bold mb-1">CRM Automation & VSL Production</h4>
+                                        <p class="text-sm opacity-70">Setting up 18 service pipelines, SMS workflows, and producing the cinematic VSL.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-6 items-start">
+                                    <div class="w-24 text-cyan-accent font-bold pt-1">Week 3+</div>
+                                    <div class="flex-1 bg-white/5 p-4 rounded-xl border border-white/10">
+                                        <h4 class="font-bold mb-1">Ads Launch & Data Acquisition</h4>
+                                        <p class="text-sm opacity-70">Launching Meta/Google campaigns and importing 10k homeowner records for scaling.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Accept Agreement Button Inside Container -->
+                    <div class="text-center mt-12 pt-12 border-t border-white/5">
+                        <button id="final-accept-btn" class="bg-cyan-accent text-black font-bold py-4 px-8 rounded-lg text-lg hover:bg-cyan-accent/80 transition-colors shadow-[0_0_25px_rgba(0,207,255,0.6)] inline-block mx-8">
+                            Accept Agreement
+                        </button>
+                        <p class="text-white/50 text-sm italic mt-6">Select a plan in the Investment Summary above to initialize the agreement.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Agreement Modal -->
+    <div id="agreement-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h2 class="text-2xl font-bold mb-6 text-center">Accept Contract Agreement</h2>
+            <form id="agreement-form" class="space-y-4">
+                <div>
+                    <label for="full-name" class="block text-white text-sm font-semibold mb-2">Full Name</label>
+                    <input type="text" id="full-name" name="fullName" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <input type="hidden" id="initial-cost" name="initialCost">
+                <input type="hidden" id="selected-plan" name="selectedPlan">
+                <div class="flex items-start">
+                    <input type="checkbox" id="consent" name="consent" class="mt-1 mr-2 accent-cyan-accent" required>
+                    <label for="consent" class="text-sm text-white/80">I initialize and agree to the contract.</label>
+                </div>
+                <button type="submit" class="w-full bg-green-accent text-black font-bold py-3 rounded-lg mt-6 hover:bg-green-accent/80 transition-colors">Accept</button>
+            </form>        
+        </div>
+    </div>
+
+    <script type="module" src="footer.js"></script>
+    <refiniti-footer hide-product></refiniti-footer>
+
+    <script src="password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // FAQ & Table Toggles
+            const faqTriggers = document.querySelectorAll('.faq-trigger');
+            faqTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const faqItem = trigger.closest('.faq-item');
+                    faqItem.classList.toggle('open');
+                });
+            });
+    
+            const investmentRows = document.querySelectorAll('.investment-row');
+            investmentRows.forEach(row => {
+                row.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('choose-plan-btn')) return;
+
+                    const icon = row.querySelector('i[data-lucide="chevron-down"]');
+                    const breakdownRow = row.nextElementSibling;
+                    if (breakdownRow && breakdownRow.classList.contains('hidden-breakdown')) {
+                        breakdownRow.classList.toggle('hidden');
+                        if(icon) {
+                            icon.style.transform = breakdownRow.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                        }
+                    }
+                });
+            });
+
+            // Choose Plan Logic
+            const chooseBtns = document.querySelectorAll('.choose-plan-btn');
+            const initialCostInput = document.getElementById('initial-cost');
+            const selectedPlanInput = document.getElementById('selected-plan');
+            const agreementModal = document.getElementById('agreement-modal');
+            const summaryInitial = document.getElementById('selected-initial-total');
+            const summaryMonthly = document.getElementById('selected-monthly-total');
+            const summaryAcceptBtn = document.getElementById('summary-accept-btn');
+
+            chooseBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    
+                    const price = btn.getAttribute('data-price');
+                    const plan = btn.getAttribute('data-plan');
+                    
+                    chooseBtns.forEach(b => {
+                        b.classList.remove('bg-green-accent');
+                        b.classList.add('bg-cyan-accent');
+                        b.textContent = 'Choose Package';
+                    });
+
+                    btn.classList.remove('bg-cyan-accent');
+                    btn.classList.add('bg-green-accent');
+                    btn.textContent = 'Selected';
+
+                    if (summaryInitial) summaryInitial.textContent = `$${parseInt(price).toLocaleString()}`;
+                    
+                    if (initialCostInput) initialCostInput.value = price;
+                    if (selectedPlanInput) selectedPlanInput.value = plan;
+                });
+            });
+
+            const finalAcceptBtn = document.getElementById('final-accept-btn');
+            const handleAcceptClick = () => {
+                if (!initialCostInput.value) {
+                    alert('Please select the package from the investment table first.');
+                    return;
+                }
+                if (agreementModal) {
+                    agreementModal.classList.remove('hidden');
+                }
+            };
+
+            if (summaryAcceptBtn) summaryAcceptBtn.addEventListener('click', handleAcceptClick);
+            if (finalAcceptBtn) finalAcceptBtn.addEventListener('click', handleAcceptClick);
+
+            // Default to package on load
+            const defaultTierBtn = document.querySelector('.choose-plan-btn[data-plan="Complete Growth Ecosystem"]');
+            if (defaultTierBtn) defaultTierBtn.click();
+    
+            // Value Counter Animation
+            const revenueCounter = document.getElementById('revenue-counter');
+            const animateCounter = (element, start, end, duration) => {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    element.innerHTML = `$${Math.floor(progress * (end - start) + start).toLocaleString()}`;
+                    if (progress < 1) window.requestAnimationFrame(step);
+                };
+                window.requestAnimationFrame(step);
+            };
+    
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(revenueCounter, 0, 42500, 2000); 
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+    
+            if (revenueCounter) observer.observe(revenueCounter);
+    
+            // Floating Icons
+            const container = document.getElementById('background-container');
+            if (container) {
+                const icons = ['wrench', 'calendar', 'shield-check', 'video', 'phone', 'bar-chart-2'];
+                const numIcons = 15;
+                for (let i = 0; i < numIcons; i++) {
+                    const iconWrapper = document.createElement('div');
+                    iconWrapper.classList.add('floating-icon');
+                    const iconEl = document.createElement('i');
+                    const iconName = icons[Math.floor(Math.random() * icons.length)];
+                    iconEl.setAttribute('data-lucide', iconName);
+                    iconWrapper.appendChild(iconEl);
+                    const size = Math.random() * 30 + 15; 
+                    iconWrapper.style.width = `${size}px`;
+                    iconWrapper.style.height = `${size}px`;
+                    iconWrapper.style.top = `${Math.random() * 100}vh`;
+                    iconWrapper.style.left = `${Math.random() * 100}vw`;
+                    iconWrapper.style.animationDuration = `${Math.random() * 25 + 20}s`; 
+                    iconWrapper.style.animationDelay = `${Math.random() * -45}s`; 
+                    container.appendChild(iconWrapper);
+                }
+            }
+            lucide.createIcons();
+        });
+    
+        window.initializeAgreementModal = () => {
+            const agreementModal = document.getElementById('agreement-modal');
+            const modalCloseBtn = document.querySelector('.modal-close-btn');
+            const agreementForm = document.getElementById('agreement-form');
+    
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', () => agreementModal.classList.add('hidden'));
+            if (agreementModal) {
+                agreementModal.addEventListener('click', (e) => {
+                    if (e.target === agreementModal) agreementModal.classList.add('hidden');
+                });
+            }
+    
+            if (agreementForm) {
+                agreementForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const fullName = document.getElementById('full-name').value;
+                    const email = document.getElementById('email').value;
+                    const consent = document.getElementById('consent').checked;
+                    const initialCost = document.getElementById('initial-cost').value;
+                    const selectedPlan = document.getElementById('selected-plan').value;
+    
+                    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/itcUlMQJDKPVgPxLNDGk/webhook-trigger/d1ef27fc-6f13-47a1-8632-8af5962e0e3e';
+    
+                    try {
+                        const response = await fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                fullName, email, initialCost, selectedPlan, consent,
+                                proposalType: 'Canyon Lake Mobile'
+                            }),
+                        });
+                        if (response.ok) {
+                            alert('Agreement accepted successfully!');
+                            agreementModal.classList.add('hidden');
+                            agreementForm.reset();
+                        } else {
+                            alert('Failed to accept agreement.');
+                        }
+                    } catch (error) {
+                        alert('An error occurred.');
+                    }
+                });
+            }
+        };
+    </script>    
+</body>
+</html>

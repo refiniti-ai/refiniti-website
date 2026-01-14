@@ -295,7 +295,9 @@ class RefinitiFooter extends HTMLElement {
                         
                         <div class="consent-group">
                             <input type="checkbox" id="sms_consent" name="sms_consent" class="consent-checkbox" required>
-                            <label for="sms_consent" class="consent-label">I consent to receive recurring SMS/MMS messages from Refiniti AI at the mobile number I provided. Message frequency may vary. Msg & data rates may apply. Text STOP to cancel or HELP for help.</label>
+                            <label for="sms_consent" class="consent-label">
+                                I consent to receive recurring SMS/MMS messages from Refiniti AI at the mobile number I provided. Message frequency may vary. Msg & data rates may apply. Text STOP to cancel or HELP for help. View our <a href="#" data-modal-trigger="privacy" style="color: #00CFFF; text-decoration: underline;">Privacy Policy</a> and <a href="#" data-modal-trigger="terms" style="color: #00CFFF; text-decoration: underline;">Terms & Conditions</a>.
+                            </label>
                         </div>
                         <button type="submit" style="padding: 0.75rem 0; background-color: #00CFFF; color: black; font-weight: bold; border-radius: 99px; border: none; cursor: pointer;">Submit Application</button>
                     </form>
@@ -421,14 +423,26 @@ class RefinitiFooter extends HTMLElement {
             const legalModal = shadow.getElementById('legal-modal-instance');
 
             if (legalModal) {
-                shadow.querySelector('[data-modal-trigger="privacy"]')?.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    legalModal.show('Privacy Policy', 'privacy-policy.html'); // Pass URL only
+                const triggerPrivacy = () => {
+                    legalModal.show('Privacy Policy', 'privacy-policy.html');
+                };
+
+                const triggerTerms = () => {
+                    legalModal.show('Terms & Conditions', 'terms-conditions.html');
+                };
+
+                shadow.querySelectorAll('[data-modal-trigger="privacy"]').forEach(el => {
+                    el.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        triggerPrivacy();
+                    });
                 });
 
-                shadow.querySelector('[data-modal-trigger="terms"]')?.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    legalModal.show('Terms & Conditions', 'terms-conditions.html'); // Pass URL only
+                shadow.querySelectorAll('[data-modal-trigger="terms"]').forEach(el => {
+                    el.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        triggerTerms();
+                    });
                 });
             } else {
                 console.error('Legal modal instance not found in footer shadow DOM.');

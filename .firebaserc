@@ -1,5 +1,7 @@
 {
-  "projects": {},
+  "projects": {
+    "default": "dynamic-mystery-478909-n1"
+  },
   "targets": {},
   "etags": {}
 }

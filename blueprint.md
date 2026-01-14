@@ -21,27 +21,20 @@ The initial version of the application consists of an `index.html` file as the m
     *   **Website Showcases:** Displays images for various websites.
     *   **PDF Presentations:** Integrates PDF.js for displaying PDF documents within the page.
 
-### Current Requested Change: Enhanced Case Studies Page with Slideshows, Custom Video Controls, and PDF Error Handling
+### Deployment
+
+*   **Platform:** Firebase Hosting
+*   **Project ID:** `dynamic-mystery-478909-n1`
+*   **Build Process:** Tailwind CSS is built using `npm run build` which generates `dist/style.css`.
+*   **Deployment Command:** `firebase deploy`
+
+### Current Requested Change: Push live to Firebase
 
 #### Plan:
 
-1.  **Update `blueprint.md`:** Ensure this blueprint reflects the latest changes and plans. (Already done with this step).
-2.  **Dynamic "Queenie Couture" Thumbnail (5-second mark):**
-    *   Modify `case-study.html` to include a canvas element and a play button overlay for the video thumbnail.
-    *   Modify `main.js` (or create a new JS file) to:
-        *   Load the "Queenie Couture" video.
-        *   Seek to the 5-second mark.
-        *   Draw that frame onto a hidden canvas.
-        *   Set that canvas as the background image or a visible element over the video before playback.
-        *   Ensure the video only plays when the user clicks a play button overlay.
-3.  **Fix Website and PDF Slideshows:**
-    *   Review existing JavaScript for slideshows in `main.js` and `case-study.html`.
-    *   Ensure correct initialization and functionality for both website and PDF slideshows.
-4.  **Improved PDF Loading with "Not Found" Message:**
-    *   Enhance the `loadPdf` function in `main.js` (or `case-study.html` if it's inline) to:
-        *   Attempt to load the PDF.
-        *   If loading fails, display a clear "PDF not found" message within the presentation slide's content area.
-5.  **Remove "Our Work" Text:**
-    *   Remove the `<h1>` element containing "Our Work" from `case-study.html`.
-6.  **Remove `display: flex` from `.item-container`:**
-    *   Remove `display: flex;` from the `.item-container` CSS rule in `style.css`.
+1.  **Fix Build Script:** Updated `package.json` to use `tailwindcss` command instead of a hardcoded path to `node_modules`.
+2.  **Fix CSS Links:** Updated HTML files to ensure they only reference the built `dist/style.css` instead of the source `style.css` which contains `@tailwind` directives.
+3.  **Build Assets:** Ran `npm run build` to generate the latest CSS.
+4.  **Configure Firebase:** Updated `.firebaserc` with the project ID `dynamic-mystery-478909-n1`.
+5.  **Deploy:** Ran `firebase deploy` to push the site live.
+6.  **Fix Asset Deployment:** Removed `Videos/` and `Documents/` from `firebase.json` ignore list to ensure case study assets are uploaded.

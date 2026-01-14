@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nisus Real Estate | Google Ads Performance Report</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="Images/Refiniti Favicon.png" type="image/png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #16161f;
+            --bg-card-hover: #1a1a25;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6b6b7a;
+            --accent-blue: #4285f4;
+            --accent-green: #34a853;
+            --accent-yellow: #fbbc04;
+            --accent-red: #ea4335;
+            --accent-cyan: #00cfff;
+            --gradient-blue: linear-gradient(135deg, #4285f4, #00cfff);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header */
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .brand-info h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        
+        .brand-info p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .report-meta {
+            text-align: right;
+        }
+        
+        .report-period {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            padding: 0.75rem 1.25rem;
+            border-radius: 99px;
+            border: 1px solid var(--border-color);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .report-period i {
+            color: var(--accent-cyan);
+        }
+        
+        .generated-date {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-header i {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-cyan);
+        }
+        
+        .section-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .kpi-card:hover {
+            border-color: rgba(0, 207, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+        
+        .kpi-card.blue::before { background: var(--accent-blue); }
+        .kpi-card.red::before { background: var(--accent-red); }
+        .kpi-card.green::before { background: var(--accent-green); }
+        .kpi-card.yellow::before { background: var(--accent-yellow); }
+        
+        .kpi-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1;
+        }
+        
+        .kpi-card.blue .kpi-value { color: var(--accent-blue); }
+        .kpi-card.red .kpi-value { color: var(--accent-red); }
+        .kpi-card.green .kpi-value { color: var(--accent-green); }
+        .kpi-card.yellow .kpi-value { color: var(--accent-yellow); }
+        
+        .kpi-detail {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .container { padding: 1rem; }
+            .kpi-value { font-size: 2rem; }
+            .report-header { flex-direction: column; }
+            .report-meta { text-align: left; }
+        }
+        
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+        
+        .data-table td {
+            padding: 1rem;
+            font-size: 0.875rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table tr:hover {
+            background: var(--bg-card-hover);
+        }
+        
+        .data-table .numeric {
+            font-family: 'JetBrains Mono', monospace;
+            text-align: right;
+        }
+        
+        .campaign-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-green);
+        }
+        
+        /* Progress Bars */
+        .progress-bar {
+            height: 24px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+        
+        .progress-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #000;
+            min-width: 40px;
+        }
+        
+        .progress-segment.mobile { background: var(--accent-blue); }
+        .progress-segment.tablet { background: var(--accent-red); }
+        .progress-segment.desktop { background: var(--accent-yellow); }
+        
+        /* Device Legend */
+        .device-legend {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+        
+        .legend-dot.mobile { background: var(--accent-blue); }
+        .legend-dot.tablet { background: var(--accent-red); }
+        .legend-dot.desktop { background: var(--accent-yellow); }
+        
+        /* Heatmap */
+        .heatmap-grid {
+            display: grid;
+            gap: 3px;
+        }
+        
+        .heatmap-cell {
+            aspect-ratio: 1;
+            border-radius: 4px;
+            min-height: 20px;
+        }
+        
+        .heatmap-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Search Terms */
+        .search-terms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .search-term {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 99px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+        
+        .search-term:hover {
+            border-color: var(--accent-cyan);
+            color: var(--text-primary);
+        }
+        
+        /* Change Indicators */
+        .change-positive {
+            color: var(--accent-green);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .change-negative {
+            color: var(--accent-red);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        /* Chart Containers */
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+        
+        .chart-container-sm {
+            position: relative;
+            height: 200px;
+        }
+        
+        /* Auction Insights */
+        .auction-bubble {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+        }
+        
+        .bubble-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .bubble-indicator.you { background: var(--accent-blue); color: #fff; }
+        .bubble-indicator.competitor1 { background: var(--accent-red); color: #fff; }
+        .bubble-indicator.competitor2 { background: var(--accent-yellow); color: #000; }
+        
+        .bubble-info {
+            flex: 1;
+        }
+        
+        .bubble-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .bubble-stats {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        
+        /* Footer */
+        .report-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo img {
+            height: 32px;
+        }
+        
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        
+        .powered-by {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-cyan);
+            font-weight: 500;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body { background: #fff; color: #000; }
+            .card { border: 1px solid #ddd; }
+            .kpi-card::before { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+        }
+        
+        /* Language Tabs */
+        .language-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+        
+        .lang-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .lang-tab:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: var(--text-primary);
+        }
+        
+        .lang-tab.active {
+            background: rgba(0, 207, 255, 0.15);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+        
+        .lang-tab i {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .lang-flag {
+            font-size: 1rem;
+        }
+        
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .lang-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .lang-badge.english {
+            background: rgba(66, 133, 244, 0.2);
+            color: #4285f4;
+        }
+        
+        .lang-badge.spanish {
+            background: rgba(251, 188, 4, 0.2);
+            color: #fbbc04;
+        }
+        
+        .lang-badge.portuguese {
+            background: rgba(52, 168, 83, 0.2);
+            color: #34a853;
+        }
+        
+        .lang-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        
+        @media (max-width: 768px) {
+            .lang-summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .lang-summary-item {
+            text-align: center;
+        }
+        
+        .lang-summary-label {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+        
+        .lang-summary-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .lang-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        
+        .data-table tfoot td {
+            border-top: 2px solid var(--border-color);
+            padding-top: 1rem;
+        }
+        
+        /* Language Performance Cards */
+        .lang-perf-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+        }
+        
+        .lang-perf-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .lang-perf-card.english { border-left: 3px solid var(--accent-blue); }
+        .lang-perf-card.spanish { border-left: 3px solid var(--accent-yellow); }
+        .lang-perf-card.portuguese { border-left: 3px solid var(--accent-green); }
+        .lang-perf-card.inactive { opacity: 0.5; }
+        
+        .lang-perf-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .lang-perf-flag {
+            font-size: 1.5rem;
+        }
+        
+        .lang-perf-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .lang-perf-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .lang-perf-stat {
+            text-align: center;
+        }
+        
+        .lang-perf-value {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .lang-perf-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .lang-perf-bar {
+            height: 6px;
+            background: var(--bg-primary);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .lang-perf-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+        
+        .lang-perf-percent {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        
+        /* Changes Section */
+        .changes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .change-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            gap: 1rem;
+        }
+        
+        .change-campaign {
+            flex: 1;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+        
+        .change-bar {
+            width: 120px;
+            height: 8px;
+            background: var(--bg-primary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .change-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+        
+        .change-bar-fill.positive { background: var(--accent-green); }
+        .change-bar-fill.negative { background: var(--accent-yellow); }
+        
+        .change-amount {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            min-width: 100px;
+            text-align: right;
+        }
+        
+        /* Ad Preview */
+        .ad-preview {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: #000;
+        }
+        
+        .ad-url {
+            font-size: 0.75rem;
+            color: #006621;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .ad-headline {
+            font-size: 1.125rem;
+            color: #1a0dab;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        
+        .ad-description {
+            font-size: 0.875rem;
+            color: #4d5156;
+            line-height: 1.5;
+        }
+        
+        .ad-sitelinks {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .ad-sitelink {
+            color: #1a0dab;
+            font-size: 0.8rem;
+        }
+        
+        .ad-stats {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .ad-stat {
+            text-align: center;
+        }
+        
+        .ad-stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--bg-primary);
+        }
+        
+        .ad-stat-label {
+            font-size: 0.7rem;
+            color: #666;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="report-header">
+            <div class="brand-section">
+                <div class="brand-logo">N</div>
+                <div class="brand-info">
+                    <h1>Nisus Real Estate</h1>
+                    <p>Google Ads Performance Report</p>
+                </div>
+            </div>
+            <div class="report-meta">
+                <div class="report-period">
+                    <i data-lucide="calendar"></i>
+                    <span>Jan 1 – 9, 2026</span>
+                </div>
+                <p class="generated-date">Generated by RefinitiAI on Jan 9, 2026</p>
+            </div>
+        </header>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card blue">
+                <div class="kpi-label">Total Clicks</div>
+                <div class="kpi-value">648</div>
+                <div class="kpi-detail">Unique ad interactions</div>
+            </div>
+            <div class="kpi-card red">
+                <div class="kpi-label">Impressions</div>
+                <div class="kpi-value">5.97K</div>
+                <div class="kpi-detail">Ad views delivered</div>
+            </div>
+            <div class="kpi-card green">
+                <div class="kpi-label">Conversions</div>
+                <div class="kpi-value">6.00</div>
+                <div class="kpi-detail">Goal completions</div>
+            </div>
+            <div class="kpi-card yellow">
+                <div class="kpi-label">Total Cost</div>
+                <div class="kpi-value">$1.04K</div>
+                <div class="kpi-detail">Ad spend this period</div>
+            </div>
+        </div>
+
+        <!-- Performance Trend -->
+        <div class="card">
+            <div class="section-header">
+                <i data-lucide="trending-up"></i>
+                <h2>Performance Trend</h2>
+            </div>
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Language Performance Overview -->
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="section-header">
+                <i data-lucide="languages"></i>
+                <h2>Performance by Language</h2>
+            </div>
+            <div class="grid-3" style="margin-bottom: 1.5rem;">
+                <div class="lang-perf-card english">
+                    <div class="lang-perf-header">
+                        <span class="lang-perf-flag">🇺🇸</span>
+                        <span class="lang-perf-name">English</span>
+                    </div>
+                    <div class="lang-perf-stats">
+                        <div class="lang-perf-stat">
+                            <span class="lang-perf-value">$340.79</span>
+                            <span class="lang-perf-label">Spend</span>
+                        </div>
+                        <div class="lang-perf-stat">
+                            <span class="lang-perf-value">75</span>
+                            <span class="lang-perf-label">Clicks</span>
+                        </div>
+                        <div class="lang-perf-stat">
+                            <span class="lang-perf-value">2</span>
+                            <span class="lang-perf-label">Conv.</span>
+                        </div>
+                    </div>
+                    <div class="lang-perf-bar">
+                        <div class="lang-perf-bar-fill" style="width: 32.8%; background: var(--accent-blue);"></div>
+                    </div>
+                    <span class="lang-perf-percent">32.8% of budget</span>
+                </div>
+                
+                <div class="lang-perf-card spanish">
+                    <div class="lang-perf-header">
+                        <span class="lang-perf-flag">🇪🇸</span>
+                        <span class="lang-perf-name">Spanish</span>
+                    </div>
+                    <div class="lang-perf-stats">
+                        <div class="lang-perf-stat">
+                            <span class="lang-perf-value">$699.53</span>
+                            <span class="lang-perf-label">Spend</span>
+                        </div>
+                        <div class="lang-perf-stat">
+                            <span class="lang-perf-value">573</span>
+                            <span class="lang-perf-label">Clicks</span>
+                        </div>
+                        <div class="lang-perf-stat">
+                            <span class="lang-perf-value">4</span>
+                            <span class="lang-perf-label">Conv.</span>
+                        </div>
+                    </div>
+                    <div class="lang-perf-bar">
+                        <div class="lang-perf-bar-fill" style="width: 67.2%; background: var(--accent-yellow);"></div>
+                    </div>
+                    <span class="lang-perf-percent">67.2% of budget</span>
+                </div>
+                
+                <div class="lang-perf-card portuguese inactive">
+                    <div class="lang-perf-header">
+                        <span class="lang-perf-flag">🇧🇷</span>
+                        <span class="lang-perf-name">Portuguese</span>
+                    </div>
+                    <div class="lang-perf-stats">
+                        <div class="lang-perf-stat">
+                            <span class="lang-perf-value">$0.00</span>
+                            <span class="lang-perf-label">Spend</span>
+                        </div>
+                        <div class="lang-perf-stat">
+                            <span class="lang-perf-value">0</span>
+                            <span class="lang-perf-label">Clicks</span>
+                        </div>
+                        <div class="lang-perf-stat">
+                            <span class="lang-perf-value">0</span>
+                            <span class="lang-perf-label">Conv.</span>
+                        </div>
+                    </div>
+                    <div class="lang-perf-bar">
+                        <div class="lang-perf-bar-fill" style="width: 0%;"></div>
+                    </div>
+                    <span class="lang-perf-percent">No active campaigns</span>
+                </div>
+            </div>
+            
+            <!-- Language Comparison Chart -->
+            <div class="chart-container-sm">
+                <canvas id="languageChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Two Column Section -->
+        <div class="grid-2">
+            <!-- Campaign Performance by Language -->
+            <div class="card">
+                <div class="section-header">
+                    <i data-lucide="layers"></i>
+                    <h2>Campaign Performance by Language</h2>
+                </div>
+                
+                <!-- Language Tabs -->
+                <div class="language-tabs">
+                    <button class="lang-tab active" onclick="switchLangTab('all', this)">
+                        <i data-lucide="globe"></i> All Languages
+                    </button>
+                    <button class="lang-tab" onclick="switchLangTab('english', this)">
+                        <span class="lang-flag">🇺🇸</span> English
+                    </button>
+                    <button class="lang-tab" onclick="switchLangTab('spanish', this)">
+                        <span class="lang-flag">🇪🇸</span> Spanish
+                    </button>
+                    <button class="lang-tab" onclick="switchLangTab('portuguese', this)">
+                        <span class="lang-flag">🇧🇷</span> Portuguese
+                    </button>
+                </div>
+                
+                <!-- All Campaigns -->
+                <div id="lang-all" class="lang-content active">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Campaign</th>
+                                <th>Language</th>
+                                <th class="numeric">Cost</th>
+                                <th class="numeric">Clicks</th>
+                                <th class="numeric">Conv.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="campaign-status">
+                                        <span class="status-dot"></span>
+                                        Search | NB | Investors/Property
+                                    </div>
+                                </td>
+                                <td><span class="lang-badge english">🇺🇸 EN</span></td>
+                                <td class="numeric">$251.54</td>
+                                <td class="numeric">43</td>
+                                <td class="numeric">1.00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="campaign-status">
+                                        <span class="status-dot"></span>
+                                        Búsqueda | Servicios | Español
+                                    </div>
+                                </td>
+                                <td><span class="lang-badge spanish">🇪🇸 ES</span></td>
+                                <td class="numeric">$245.97</td>
+                                <td class="numeric">242</td>
+                                <td class="numeric">0.00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="campaign-status">
+                                        <span class="status-dot"></span>
+                                        Búsqueda | Marca | Español
+                                    </div>
+                                </td>
+                                <td><span class="lang-badge spanish">🇪🇸 ES</span></td>
+                                <td class="numeric">$243.11</td>
+                                <td class="numeric">136</td>
+                                <td class="numeric">2.00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="campaign-status">
+                                        <span class="status-dot"></span>
+                                        Inversión desde LATAM | Search
+                                    </div>
+                                </td>
+                                <td><span class="lang-badge spanish">🇪🇸 ES</span></td>
+                                <td class="numeric">$210.45</td>
+                                <td class="numeric">195</td>
+                                <td class="numeric">2.00</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="campaign-status">
+                                        <span class="status-dot"></span>
+                                        Search | NB | Rental/Leasing
+                                    </div>
+                                </td>
+                                <td><span class="lang-badge english">🇺🇸 EN</span></td>
+                                <td class="numeric">$89.25</td>
+                                <td class="numeric">32</td>
+                                <td class="numeric">1.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- English Campaigns -->
+                <div id="lang-english" class="lang-content">
+                    <div class="lang-summary">
+                        <div class="lang-summary-item">
+                            <span class="lang-summary-label">Total Cost</span>
+                            <span class="lang-summary-value">$340.79</span>
+                        </div>
+                        <div class="lang-summary-item">
+                            <span class="lang-summary-label">Total Clicks</span>
+                            <span class="lang-summary-value">75</span>
+                        </div>
+                        <div class="lang-summary-item">
+                            <span class="lang-summary-label">Conversions</span>
+                            <span class="lang-summary-value">2.00</span>
+                        </div>
+                        <div class="lang-summary-item">
+                            <span class="lang-summary-label">Avg. CPC</span>
+                            <span class="lang-summary-value">$4.54</span>
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Campaign</th>
+                                <th class="numeric">Cost</th>
+                                <th class="numeric">Clicks</th>
+                                <th class="numeric">Conv.</th>
+                                <th class="numeric">CPC</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="campaign-status">
+                                        <span class="status-dot"></span>
+                                        Search | NB | Investors/Property
+                                    </div>
+                                </td>
+                                <td class="numeric">$251.54</td>
+                                <td class="numeric">43</td>
+                                <td class="numeric">1.00</td>
+                                <td class="numeric">$5.85</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="campaign-status">
+                                        <span class="status-dot"></span>
+                                        Search | NB | Rental/Leasing
+                                    </div>
+                                </td>
+                                <td class="numeric">$89.25</td>
+                                <td class="numeric">32</td>
+                                <td class="numeric">1.00</td>
+                                <td class="numeric">$2.79</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr style="background: var(--bg-secondary);">
+                                <td><strong>Total (English)</strong></td>
+                                <td class="numeric"><strong>$340.79</strong></td>
+                                <td class="numeric"><strong>75</strong></td>
+                                <td class="numeric"><strong>2.00</strong></td>
+                                <td class="numeric"><strong>$4.54</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <!-- Spanish Campaigns -->
+                <div id="lang-spanish" class="lang-content">
+                    <div class="lang-summary">
+                        <div class="lang-summary-item">
+                            <span class="lang-summary-label">Total Cost</span>
+                            <span class="lang-summary-value">$699.53</span>
+                        </div>
+                        <div class="lang-summary-item">
+                            <span class="lang-summary-label">Total Clicks</span>
+                            <span class="lang-summary-value">573</span>
+                        </div>
+                        <div class="lang-summary-item">
+                            <span class="lang-summary-label">Conversions</span>
+                            <span class="lang-summary-value">4.00</span>
+                        </div>
+                        <div class="lang-summary-item">
+                            <span class="lang-summary-label">Avg. CPC</span>
+                            <span class="lang-summary-value">$1.22</span>
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Campaign</th>
+                                <th class="numeric">Cost</th>
+                                <th class="numeric">Clicks</th>
+                                <th class="numeric">Conv.</th>
+                                <th class="numeric">CPC</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="campaign-status">
+                                        <span class="status-dot"></span>
+                                        Búsqueda | Servicios | Español
+                                    </div>
+                                </td>
+                                <td class="numeric">$245.97</td>
+                                <td class="numeric">242</td>
+                                <td class="numeric">0.00</td>
+                                <td class="numeric">$1.02</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="campaign-status">
+                                        <span class="status-dot"></span>
+                                        Búsqueda | Marca | Español
+                                    </div>
+                                </td>
+                                <td class="numeric">$243.11</td>
+                                <td class="numeric">136</td>
+                                <td class="numeric">2.00</td>
+                                <td class="numeric">$1.79</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="campaign-status">
+                                        <span class="status-dot"></span>
+                                        Inversión desde LATAM | Search
+                                    </div>
+                                </td>
+                                <td class="numeric">$210.45</td>
+                                <td class="numeric">195</td>
+                                <td class="numeric">2.00</td>
+                                <td class="numeric">$1.08</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr style="background: var(--bg-secondary);">
+                                <td><strong>Total (Spanish)</strong></td>
+                                <td class="numeric"><strong>$699.53</strong></td>
+                                <td class="numeric"><strong>573</strong></td>
+                                <td class="numeric"><strong>4.00</strong></td>
+                                <td class="numeric"><strong>$1.22</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <!-- Portuguese Campaigns -->
+                <div id="lang-portuguese" class="lang-content">
+                    <div class="lang-empty">
+                        <i data-lucide="inbox" style="width: 48px; height: 48px; color: var(--text-muted); margin-bottom: 1rem;"></i>
+                        <p>No Portuguese campaigns active during this period</p>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">Consider expanding to Brazilian market for additional reach</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Device Performance -->
+            <div class="card">
+                <div class="section-header">
+                    <i data-lucide="smartphone"></i>
+                    <h2>Device Performance</h2>
+                </div>
+                <div class="device-legend">
+                    <div class="legend-item">
+                        <div class="legend-dot mobile"></div>
+                        <span>Mobile</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot tablet"></div>
+                        <span>Tablets</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot desktop"></div>
+                        <span>Computers</span>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <div class="card-title">Cost Distribution</div>
+                    <div class="progress-bar">
+                        <div class="progress-segment mobile" style="width: 84.5%;">84.5%</div>
+                        <div class="progress-segment tablet" style="width: 0.2%; min-width: 0;">0.2%</div>
+                        <div class="progress-segment desktop" style="width: 15.3%;">15.3%</div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <div class="card-title">Clicks Distribution</div>
+                    <div class="progress-bar">
+                        <div class="progress-segment mobile" style="width: 84.7%;">84.7%</div>
+                        <div class="progress-segment tablet" style="width: 0.3%; min-width: 0;">0.3%</div>
+                        <div class="progress-segment desktop" style="width: 15%;">15%</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="card-title">Conversions Distribution</div>
+                    <div class="progress-bar">
+                        <div class="progress-segment mobile" style="width: 66.7%;">66.7%</div>
+                        <div class="progress-segment tablet" style="width: 0%; min-width: 0;"></div>
+                        <div class="progress-segment desktop" style="width: 33.3%;">33.3%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keyword Performance & Biggest Changes -->
+        <div class="grid-2">
+            <!-- Keyword Performance -->
+            <div class="card">
+                <div class="section-header">
+                    <i data-lucide="search"></i>
+                    <h2>Keyword Performance</h2>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Keyword</th>
+                            <th class="numeric">Cost</th>
+                            <th class="numeric">Clicks</th>
+                            <th class="numeric">CTR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"Comprar casas en USA"</td>
+                            <td class="numeric">$184.93</td>
+                            <td class="numeric">128</td>
+                            <td class="numeric" style="color: var(--accent-green);">15.86%</td>
+                        </tr>
+                        <tr>
+                            <td>"Arrendamiento bienes inmuebles"</td>
+                            <td class="numeric">$138.96</td>
+                            <td class="numeric">125</td>
+                            <td class="numeric">10.25%</td>
+                        </tr>
+                        <tr>
+                            <td>"property management"</td>
+                            <td class="numeric">$108.26</td>
+                            <td class="numeric">18</td>
+                            <td class="numeric">10.53%</td>
+                        </tr>
+                        <tr>
+                            <td>"invertir en bienes raíces en estados unidos"</td>
+                            <td class="numeric">$88.79</td>
+                            <td class="numeric">79</td>
+                            <td class="numeric">11.30%</td>
+                        </tr>
+                        <tr>
+                            <td>"administracion de bienes raices"</td>
+                            <td class="numeric">$66.66</td>
+                            <td class="numeric">66</td>
+                            <td class="numeric">7.45%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Biggest Changes -->
+            <div class="card">
+                <div class="section-header">
+                    <i data-lucide="git-compare"></i>
+                    <h2>Biggest Changes vs. Previous Period</h2>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    Jan 1-9, 2026 compared to Dec 23-31, 2025
+                </p>
+                <div class="changes-list">
+                    <div class="change-item">
+                        <span class="change-campaign">Performance Max</span>
+                        <div class="change-bar">
+                            <div class="change-bar-fill negative" style="width: 100%;"></div>
+                        </div>
+                        <span class="change-amount change-negative">
+                            -$96.01 <span style="font-size: 0.7rem;">(-100%)</span>
+                        </span>
+                    </div>
+                    <div class="change-item">
+                        <span class="change-campaign">Search | NB | Property Investors</span>
+                        <div class="change-bar">
+                            <div class="change-bar-fill negative" style="width: 71%;"></div>
+                        </div>
+                        <span class="change-amount change-negative">
+                            -$69.25 <span style="font-size: 0.7rem;">(-71.26%)</span>
+                        </span>
+                    </div>
+                    <div class="change-item">
+                        <span class="change-campaign">Búsqueda | Gestión Arrendamiento</span>
+                        <div class="change-bar">
+                            <div class="change-bar-fill positive" style="width: 98%;"></div>
+                        </div>
+                        <span class="change-amount change-positive">
+                            +$68.76 <span style="font-size: 0.7rem;">(+97.96%)</span>
+                        </span>
+                    </div>
+                    <div class="change-item">
+                        <span class="change-campaign">Búsqueda | Marca</span>
+                        <div class="change-bar">
+                            <div class="change-bar-fill positive" style="width: 30%;"></div>
+                        </div>
+                        <span class="change-amount change-positive">
+                            +$56.79 <span style="font-size: 0.7rem;">(+30.48%)</span>
+                        </span>
+                    </div>
+                    <div class="change-item">
+                        <span class="change-campaign">Inversión desde LATAM | USA</span>
+                        <div class="change-bar">
+                            <div class="change-bar-fill positive" style="width: 55%;"></div>
+                        </div>
+                        <span class="change-amount change-positive">
+                            +$32.18 <span style="font-size: 0.7rem;">(+54.69%)</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Search Ad & Auction Insights -->
+        <div class="grid-2">
+            <!-- Top Search Ad -->
+            <div class="card">
+                <div class="section-header">
+                    <i data-lucide="file-text"></i>
+                    <h2>Most-Shown Search Ad</h2>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--accent-green); margin-bottom: 1rem;">
+                    ● Nisus | Búsqueda | Servicios | Español → Gestión de Arrendamiento
+                </p>
+                <div class="ad-preview">
+                    <div class="ad-url">
+                        <span style="background: #006621; color: #fff; padding: 1px 4px; border-radius: 2px; font-size: 0.65rem; margin-right: 4px;">Ad</span>
+                        nisusrealestate.com/administracion/alquileres
+                    </div>
+                    <div class="ad-headline">
+                        Gestión expertas de Inquilinos | Administración de arriendos | Gestión de arriendos en Toledo
+                    </div>
+                    <div class="ad-description">
+                        Nisus: Administración integral y rentable de viviendas en Detroit, Cleveland y Toledo. Gestión de alquileres residenciales y Sección 8: alta rentabilidad y pagos puntuales.
+                    </div>
+                    <div class="ad-sitelinks">
+                        <span class="ad-sitelink">Ver propiedades</span>
+                        <span class="ad-sitelink">Contáctanos</span>
+                        <span class="ad-sitelink">Sobre nosotros</span>
+                        <span class="ad-sitelink">Cómo Invertir</span>
+                    </div>
+                    <div class="ad-stats">
+                        <div class="ad-stat">
+                            <div class="ad-stat-value">1,220</div>
+                            <div class="ad-stat-label">Impressions</div>
+                        </div>
+                        <div class="ad-stat">
+                            <div class="ad-stat-value">125</div>
+                            <div class="ad-stat-label">Clicks</div>
+                        </div>
+                        <div class="ad-stat">
+                            <div class="ad-stat-value" style="color: var(--accent-green);">10.25%</div>
+                            <div class="ad-stat-label">CTR</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Auction Insights -->
+            <div class="card">
+                <div class="section-header">
+                    <i data-lucide="users"></i>
+                    <h2>Auction Insights</h2>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    Other advertisers participating in the same ad auctions
+                </p>
+                
+                <div class="auction-bubble">
+                    <div class="bubble-indicator you">You</div>
+                    <div class="bubble-info">
+                        <div class="bubble-name">Nisus Real Estate</div>
+                        <div class="bubble-stats">Impression Share: ~23% • Top of Page: Variable</div>
+                    </div>
+                </div>
+                
+                <div class="auction-bubble">
+                    <div class="bubble-indicator competitor1">1</div>
+                    <div class="bubble-info">
+                        <div class="bubble-name">allproperty...</div>
+                        <div class="bubble-stats">Impression Share: ~8% • Top of Page: ~80%</div>
+                    </div>
+                </div>
+                
+                <div class="auction-bubble">
+                    <div class="bubble-indicator competitor2">2</div>
+                    <div class="bubble-info">
+                        <div class="bubble-name">argenprop.c...</div>
+                        <div class="bubble-stats">Impression Share: ~8% • Top of Page: ~95%</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1.5rem;">
+                    <div class="chart-container-sm">
+                        <canvas id="auctionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day & Hour Heatmap & Demographics -->
+        <div class="grid-2">
+            <!-- Day & Hour -->
+            <div class="card">
+                <div class="section-header">
+                    <i data-lucide="clock"></i>
+                    <h2>Performance by Day & Hour</h2>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    Impressions heatmap showing peak performance times
+                </p>
+                <div class="chart-container-sm">
+                    <canvas id="dayHourChart"></canvas>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 1rem; font-size: 0.7rem; color: var(--text-muted);">
+                    <span>12 AM</span>
+                    <span>6 AM</span>
+                    <span>12 PM</span>
+                    <span>6 PM</span>
+                    <span>12 AM</span>
+                </div>
+            </div>
+
+            <!-- Demographics -->
+            <div class="card">
+                <div class="section-header">
+                    <i data-lucide="pie-chart"></i>
+                    <h2>Demographics Overview</h2>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    Impressions by age and gender (based on 77% of known demographics)
+                </p>
+                <div class="chart-container-sm">
+                    <canvas id="demographicsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Search Terms -->
+        <div class="card">
+            <div class="section-header">
+                <i data-lucide="hash"></i>
+                <h2>Top Search Terms</h2>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Top searches and words where people saw your ads (sorted by impressions)
+            </p>
+            <div class="search-terms">
+                <span class="search-term">gestion argenprop</span>
+                <span class="search-term">casas en estados unidos</span>
+                <span class="search-term">casas estados unidos</span>
+                <span class="search-term">soymacondo</span>
+                <span class="search-term">comprar casa en eeuu desde españa</span>
+                <span class="search-term">cuanto cuesta una casa en estados unidos</span>
+                <span class="search-term">casa en estados unidos</span>
+                <span class="search-term">alquiler con opcion a compra</span>
+                <span class="search-term">invertir en miami</span>
+                <span class="search-term">property management</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="report-footer">
+            <div class="footer-logo">
+                <img src="Images/Refiniti-AI-Vertical-Logo (1).png" alt="Refiniti AI" onerror="this.style.display='none'">
+            </div>
+            <p class="footer-text">
+                <span class="powered-by">
+                    <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+                    Powered by RefinitiAI
+                </span>
+                <br>
+                <span style="margin-top: 0.5rem; display: inline-block;">
+                    Enterprise-Level Marketing Automation • refiniti.ai
+                </span>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Language Tab Switching
+        function switchLangTab(lang, btn) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.lang-tab').forEach(tab => tab.classList.remove('active'));
+            // Add active class to clicked tab
+            btn.classList.add('active');
+            
+            // Hide all content sections
+            document.querySelectorAll('.lang-content').forEach(content => content.classList.remove('active'));
+            // Show selected content
+            document.getElementById('lang-' + lang).classList.add('active');
+            
+            // Re-initialize icons for newly visible content
+            lucide.createIcons();
+        }
+        
+        // Chart.js Global Defaults
+        Chart.defaults.color = '#a0a0b0';
+        Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.08)';
+        Chart.defaults.font.family = "'DM Sans', sans-serif";
+        
+        // Language Comparison Chart
+        const languageCtx = document.getElementById('languageChart').getContext('2d');
+        new Chart(languageCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Cost', 'Clicks', 'Conversions', 'CPC'],
+                datasets: [
+                    {
+                        label: '🇺🇸 English',
+                        data: [340.79, 75, 2, 4.54],
+                        backgroundColor: 'rgba(66, 133, 244, 0.7)',
+                        borderColor: '#4285f4',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    },
+                    {
+                        label: '🇪🇸 Spanish',
+                        data: [699.53, 573, 4, 1.22],
+                        backgroundColor: 'rgba(251, 188, 4, 0.7)',
+                        borderColor: '#fbbc04',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    },
+                    {
+                        label: '🇧🇷 Portuguese',
+                        data: [0, 0, 0, 0],
+                        backgroundColor: 'rgba(52, 168, 83, 0.7)',
+                        borderColor: '#34a853',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                let value = context.raw;
+                                if (context.label === 'Cost' || context.label === 'CPC') {
+                                    return label + ': $' + value.toFixed(2);
+                                }
+                                return label + ': ' + value;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                    }
+                }
+            }
+        });
+        
+        // Performance Trend Chart
+        const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(performanceCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan 1', 'Jan 2', 'Jan 3', 'Jan 4', 'Jan 5', 'Jan 6', 'Jan 7', 'Jan 8', 'Jan 9'],
+                datasets: [
+                    {
+                        label: 'Clicks',
+                        data: [65, 72, 78, 85, 62, 68, 88, 92, 58],
+                        borderColor: '#4285f4',
+                        backgroundColor: 'rgba(66, 133, 244, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    },
+                    {
+                        label: 'Impressions (÷10)',
+                        data: [45, 52, 62, 72, 55, 62, 75, 85, 50],
+                        borderColor: '#ea4335',
+                        backgroundColor: 'rgba(234, 67, 53, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                }
+            }
+        });
+        
+        // Auction Insights Bubble Chart
+        const auctionCtx = document.getElementById('auctionChart').getContext('2d');
+        new Chart(auctionCtx, {
+            type: 'bubble',
+            data: {
+                datasets: [
+                    {
+                        label: 'You (Nisus)',
+                        data: [{x: 50, y: 23, r: 20}],
+                        backgroundColor: 'rgba(66, 133, 244, 0.7)',
+                        borderColor: '#4285f4'
+                    },
+                    {
+                        label: 'allproperty...',
+                        data: [{x: 80, y: 8, r: 12}],
+                        backgroundColor: 'rgba(234, 67, 53, 0.7)',
+                        borderColor: '#ea4335'
+                    },
+                    {
+                        label: 'argenprop.c...',
+                        data: [{x: 95, y: 8, r: 10}],
+                        backgroundColor: 'rgba(251, 188, 4, 0.7)',
+                        borderColor: '#fbbc04'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw.y}% imp. share, ${context.raw.x}% top of page`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Top of Page Rate %',
+                            color: '#6b6b7a',
+                            font: { size: 10 }
+                        },
+                        min: 0,
+                        max: 100,
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Impression Share %',
+                            color: '#6b6b7a',
+                            font: { size: 10 }
+                        },
+                        min: 0,
+                        max: 30,
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                    }
+                }
+            }
+        });
+        
+        // Day & Hour Heatmap (using bar chart as approximation)
+        const dayHourCtx = document.getElementById('dayHourChart').getContext('2d');
+        const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+        const heatmapData = [
+            [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15],
+            [12, 18, 25, 32, 40, 48, 55, 62, 70, 75, 80, 85, 88, 82, 75, 68, 60, 52, 45, 38, 30, 22, 15, 10],
+            [15, 22, 30, 38, 45, 52, 60, 68, 75, 80, 85, 90, 92, 88, 82, 75, 68, 60, 52, 45, 38, 30, 22, 15],
+            [18, 25, 32, 40, 48, 55, 62, 70, 78, 85, 90, 95, 98, 92, 85, 78, 70, 62, 55, 48, 40, 32, 25, 18],
+            [20, 28, 35, 42, 50, 58, 65, 72, 80, 88, 95, 100, 100, 95, 88, 80, 72, 65, 58, 50, 42, 35, 28, 20],
+            [18, 25, 32, 40, 48, 55, 62, 70, 78, 85, 92, 98, 95, 90, 82, 75, 68, 60, 52, 45, 38, 30, 22, 15],
+            [12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 75, 70, 64, 58, 52, 46, 40, 34, 28, 22, 16, 10]
+        ];
+        
+        // Create matrix data for heatmap
+        const matrixData = [];
+        for (let day = 0; day < 7; day++) {
+            for (let hour = 0; hour < 24; hour++) {
+                matrixData.push({
+                    x: hour,
+                    y: day,
+                    v: heatmapData[day][hour]
+                });
+            }
+        }
+        
+        new Chart(dayHourCtx, {
+            type: 'bar',
+            data: {
+                labels: Array.from({length: 24}, (_, i) => i),
+                datasets: days.map((day, idx) => ({
+                    label: day,
+                    data: heatmapData[idx],
+                    backgroundColor: heatmapData[idx].map(v => `rgba(66, 133, 244, ${v/100})`),
+                    borderRadius: 2,
+                    barPercentage: 0.9,
+                    categoryPercentage: 0.9
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'left',
+                        labels: {
+                            boxWidth: 12,
+                            padding: 8,
+                            font: { size: 10 }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        display: false,
+                        stacked: true
+                    },
+                    y: {
+                        display: false,
+                        stacked: true
+                    }
+                }
+            }
+        });
+        
+        // Demographics Chart
+        const demographicsCtx = document.getElementById('demographicsChart').getContext('2d');
+        new Chart(demographicsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['18-24', '25-34', '35-44', '45-54', '55-64', '65+'],
+                datasets: [
+                    {
+                        label: 'Male',
+                        data: [15, 45, 55, 50, 40, 30],
+                        backgroundColor: 'rgba(66, 133, 244, 0.7)',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Female',
+                        data: [12, 35, 42, 38, 32, 25],
+                        backgroundColor: 'rgba(0, 207, 255, 0.7)',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        title: {
+                            display: true,
+                            text: 'Impressions',
+                            color: '#6b6b7a',
+                            font: { size: 10 }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

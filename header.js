@@ -99,25 +99,35 @@ class RefinitiHeader extends HTMLElement {
                 }
 
                 .btn-primary {
+                    display: none;
                     background-color: #00CFFF;
                     color: black;
-                    padding: 0.625rem 1.5rem;
+                    padding: 0.5rem 1rem;
                     border-radius: 9999px;
                     font-weight: 600;
-                    font-size: 0.875rem;
+                    font-size: 0.75rem;
                     border: none;
                     cursor: pointer;
-                    transition: box-shadow 0.3s;
+                    transition: all 0.3s;
                 }
                 .btn-primary:hover {
                     box-shadow: 0 0 15px rgba(0, 207, 255, 0.4);
+                    transform: translateY(-1px);
+                }
+
+                @media (min-width: 768px) {
+                    .btn-primary {
+                        display: block;
+                        padding: 0.625rem 1.5rem;
+                        font-size: 0.875rem;
+                    }
                 }
 
                 .mobile-menu-overlay {
                     position: fixed;
                     inset: 0;
                     background-color: black;
-                    z-index: 40;
+                    z-index: 60;
                     transform: translateX(100%);
                     transition: transform 0.3s ease-in-out;
                     padding-top: 8rem;
@@ -195,15 +205,14 @@ class RefinitiHeader extends HTMLElement {
                 </a>
                 <div class="nav-links-container gap-8">
                     <a href="index.html#system" class="nav-link">Process</a>
+                    <a href="case-study.html" class="nav-link">Our Work</a>
                     <a href="index.html#product-suite" class="nav-link">Engine</a>
                     <a href="index.html#how-it-works" class="nav-link">Difference</a>
                     <a href="index.html#results" class="nav-link">Results</a>
                     <a href="index.html#faq" class="nav-link">FAQ</a>
                 </div>
                 <div class="flex items-center gap-4">
-                    <div class="hidden md:flex">
-                        <button class="btn-primary" id="desktop-cta">See if you Qualify</button>
-                    </div>
+                    <button class="btn-primary" id="desktop-cta">See if you Qualify</button>
                     <button class="hamburger-btn" id="mobile-menu-button" aria-label="Menu">
                         <span class="line line-1"></span>
                         <span class="line line-2"></span>
@@ -214,6 +223,7 @@ class RefinitiHeader extends HTMLElement {
 
             <div class="mobile-menu-overlay" id="mobile-menu">
                 <a href="index.html#system" class="mobile-link">Process</a>
+                <a href="case-study.html" class="mobile-link">Our Work</a>
                 <a href="index.html#product-suite" class="mobile-link">Engine</a>
                 <a href="index.html#how-it-works" class="mobile-link">Difference</a>
                 <a href="index.html#results" class="mobile-link">Results</a>

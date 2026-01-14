@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funnel Visualizer | Refiniti AI</title>
+    <link rel="icon" type="image/png" href="Images/Refiniti Favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jerosoler/Drawflow/dist/drawflow.min.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
+    <style>
+        :root {
+            --df-node-bg: rgba(255, 255, 255, 0.03);
+            --df-node-border: rgba(255, 255, 255, 0.1);
+            --df-node-text: #ffffff;
+            --df-accent: #00CFFF;
+        }
+
+        body {
+            background-color: #08080A;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        #drawflow {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #08080A;
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            cursor: grab;
+        }
+
+        #drawflow:active {
+            cursor: grabbing;
+        }
+
+        /* Ensure the parent-drawflow allows canvas panning */
+        .drawflow .parent-drawflow {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Make sure drawflow_content_node doesn't block canvas interaction */
+        .drawflow .drawflow_content_node {
+            pointer-events: auto;
+        }
+
+        /* Zoom controls */
+        .zoom-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 300px;
+            display: flex;
+            gap: 8px;
+            z-index: 20;
+        }
+
+        .zoom-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(16, 21, 28, 0.9);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .zoom-btn:hover {
+            background: rgba(0, 207, 255, 0.2);
+            border-color: var(--df-accent);
+        }
+
+        .zoom-level {
+            background: rgba(16, 21, 28, 0.9);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: white;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .drawflow .drawflow-node {
+            background: var(--df-node-bg);
+            border: 1px solid var(--df-node-border);
+            border-radius: 12px;
+            color: var(--df-node-text);
+            width: 220px;
+            min-height: 100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease;
+            position: relative;
+            cursor: grab;
+        }
+
+        .drawflow .drawflow_content_node {
+            padding: 15px;
+            padding-top: 45px;
+        }
+
+        .drawflow .drawflow-node:active {
+            cursor: grabbing;
+        }
+
+        .edit-node-btn {
+            position: absolute;
+            top: 10px;
+            right: 45px;
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.15);
+            opacity: 0;
+            transition: all 0.2s;
+            z-index: 100;
+            color: white;
+        }
+
+        .edit-node-btn svg,
+        .delete-node-btn svg {
+            width: 14px !important;
+            height: 14px !important;
+        }
+
+        .delete-node-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 28px;
+            height: 28px;
+            background: rgba(255,50,50,0.15);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid rgba(255,50,50,0.3);
+            opacity: 0;
+            transition: all 0.2s;
+            z-index: 100;
+            color: #ff5555;
+        }
+
+        .drawflow .drawflow-node:hover .edit-node-btn,
+        .drawflow .drawflow-node:hover .delete-node-btn {
+            opacity: 1;
+        }
+
+        .edit-node-btn:hover {
+            background: var(--df-accent);
+            color: black;
+            border-color: var(--df-accent);
+        }
+
+        .delete-node-btn:hover {
+            background: #ff3333;
+            color: white;
+            border-color: #ff3333;
+        }
+
+        .drawflow .drawflow-node:hover {
+            border-color: var(--df-accent);
+        }
+
+        .drawflow .drawflow-node.selected {
+            border-color: var(--df-accent);
+            background: rgba(0, 207, 255, 0.08);
+            box-shadow: 0 0 25px rgba(0, 207, 255, 0.3), 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .drawflow .drawflow-node.selected .node-title {
+            color: var(--df-accent);
+        }
+
+        .drawflow .drawflow-node.selected .node-body {
+            color: #ffffff;
+        }
+
+        .drawflow .drawflow-node.selected .node-icon-box {
+            background: rgba(0, 207, 255, 0.25);
+        }
+
+        .drawflow .connection .main-path {
+            stroke: var(--df-accent);
+            stroke-width: 3px;
+            fill: none;
+        }
+
+        /* Ensure SVG connections are positioned correctly - only target the main drawflow connection SVG */
+        #drawflow > svg,
+        .drawflow > svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        #drawflow > svg path,
+        .drawflow > svg path {
+            pointer-events: all;
+        }
+
+        /* Prevent node icon SVGs from being affected by drawflow SVG rules */
+        .drawflow-node svg,
+        .drawflow_content_node svg {
+            position: static !important;
+        }
+
+        /* Only style the appearance, don't override positioning */
+        .drawflow .drawflow-node .input, 
+        .drawflow .drawflow-node .output {
+            background: #1a1a1a !important;
+            border: 2px solid var(--df-accent) !important;
+            border-radius: 50% !important;
+        }
+
+        .drawflow .drawflow-node .input:hover, 
+        .drawflow .drawflow-node .output:hover {
+            background: var(--df-accent) !important;
+            box-shadow: 0 0 10px var(--df-accent);
+        }
+
+        .drawflow .connection .point {
+            stroke: var(--df-accent);
+            fill: var(--df-accent);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background: rgba(16, 21, 28, 0.8);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            padding: 20px;
+            z-index: 10;
+            overflow-y: auto;
+        }
+
+        .drag-item {
+            padding: 12px;
+            margin-bottom: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .drag-item:hover {
+            background: rgba(0, 207, 255, 0.1);
+            border-color: var(--df-accent);
+            transform: translateX(4px);
+        }
+
+        .drag-item i {
+            width: 20px;
+            height: 20px;
+            color: var(--df-accent);
+        }
+
+        .sidebar-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888;
+            margin-bottom: 16px;
+            margin-top: 24px;
+        }
+
+        /* Node content styles */
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .node-icon-box {
+            width: 32px !important;
+            height: 32px !important;
+            min-width: 32px !important;
+            max-width: 32px !important;
+            min-height: 32px !important;
+            max-height: 32px !important;
+            background: rgba(0, 207, 255, 0.15);
+            border-radius: 8px;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            overflow: hidden !important;
+            position: relative !important;
+            flex-shrink: 0 !important;
+        }
+
+        .node-icon-box svg {
+            width: 16px !important;
+            height: 16px !important;
+            max-width: 16px !important;
+            max-height: 16px !important;
+            min-width: 16px !important;
+            min-height: 16px !important;
+            flex-shrink: 0 !important;
+            position: static !important;
+            top: auto !important;
+            left: auto !important;
+            transform: none !important;
+        }
+
+        .node-title {
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            color: white;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+        }
+
+        .placeholder-text {
+            color: rgba(255,255,255,0.3);
+            font-style: italic;
+        }
+
+        .node-body {
+            font-size: 0.8rem;
+            color: #aaa;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .node-detail {
+            font-size: 0.7rem;
+            color: #777;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 8px;
+            margin-top: 8px;
+        }
+
+        .node-detail span strong {
+            color: #aaa;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Modal Styles */
+        #edit-modal {
+            transition: opacity 0.3s ease;
+        }
+        #edit-modal.hidden {
+            display: none;
+        }
+
+        .modal-input {
+            width: 100%;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .modal-input:focus {
+            border-color: var(--df-accent);
+        }
+
+        .modal-label {
+            display: block;
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* AI Chat Styles */
+        .varia-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 400px;
+            z-index: 150;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .varia-chat {
+            background: rgba(16, 21, 28, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 207, 255, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .varia-chat.active {
+            display: flex;
+        }
+
+        .varia-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 12px;
+        }
+
+        .varia-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: var(--df-accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .varia-input-container {
+            display: flex;
+            gap: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        .varia-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+            resize: none;
+            max-height: 100px;
+        }
+
+        .varia-send-btn {
+            background: var(--df-accent);
+            color: black;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .varia-send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 207, 255, 0.4);
+        }
+
+        .varia-toggle-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--df-accent);
+            color: black;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 207, 255, 0.3);
+            margin-left: auto;
+            transition: all 0.3s ease;
+        }
+
+        .varia-toggle-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .varia-status {
+            font-size: 0.7rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Controls */
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 12px;
+            z-index: 20;
+        }
+
+        .control-btn {
+            background: rgba(16, 21, 28, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(10px);
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--df-accent);
+        }
+
+        .control-btn.primary {
+            background: var(--df-accent);
+            color: black;
+            border: none;
+        }
+
+        .control-btn.primary:hover {
+            background: #33DDFF;
+            box-shadow: 0 0 15px rgba(0, 207, 255, 0.4);
+        }
+
+        /* Mobile Header override */
+        refiniti-header {
+            position: relative;
+            z-index: 100;
+        }
+
+        .main-container {
+            display: flex;
+            height: 100vh;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2 class="sidebar-title">Traffic & Awareness</h2>
+            <div class="drag-item" draggable="true" ondragstart="drag(event)" data-node="traffic">
+                <i data-lucide="users"></i>
+                <span>Traffic Source</span>
+            </div>
+            <div class="drag-item" draggable="true" ondragstart="drag(event)" data-node="video_ad">
+                <i data-lucide="video"></i>
+                <span>Video Ad (TOF)</span>
+            </div>
+            <div class="drag-item" draggable="true" ondragstart="drag(event)" data-node="retargeting">
+                <i data-lucide="refresh-cw"></i>
+                <span>Retargeting Ad</span>
+            </div>
+
+            <h2 class="sidebar-title">Funnel Steps</h2>
+            <div class="drag-item" draggable="true" ondragstart="drag(event)" data-node="landing_page">
+                <i data-lucide="layout"></i>
+                <span>VSL Landing Page</span>
+            </div>
+            <div class="drag-item" draggable="true" ondragstart="drag(event)" data-node="form">
+                <i data-lucide="form-input"></i>
+                <span>Lead Form</span>
+            </div>
+            <div class="drag-item" draggable="true" ondragstart="drag(event)" data-node="wait">
+                <i data-lucide="clock"></i>
+                <span>Wait (Delay)</span>
+            </div>
+            <div class="drag-item" draggable="true" ondragstart="drag(event)" data-node="email">
+                <i data-lucide="mail"></i>
+                <span>Email Sequence</span>
+            </div>
+
+            <h2 class="sidebar-title">Fulfillment & Sales</h2>
+            <div class="drag-item" draggable="true" ondragstart="drag(event)" data-node="isa_call">
+                <i data-lucide="phone-call"></i>
+                <span>ISA Qualify Call</span>
+            </div>
+            <div class="drag-item" draggable="true" ondragstart="drag(event)" data-node="agent">
+                <i data-lucide="user-check"></i>
+                <span>Certified Agent</span>
+            </div>
+            <div class="drag-item" draggable="true" ondragstart="drag(event)" data-node="fulfillment">
+                <i data-lucide="home"></i>
+                <span>Fulfillment</span>
+            </div>
+            <div class="drag-item" draggable="true" ondragstart="drag(event)" data-node="revenue">
+                <i data-lucide="dollar-sign"></i>
+                <span>Revenue Event</span>
+            </div>
+        </div>
+
+        <!-- Canvas -->
+        <div class="relative flex-1 overflow-hidden">
+            <div class="controls items-center">
+                <div class="flex items-center bg-[#10151c] rounded-full px-4 py-1 border border-white/10 mr-4">
+                    <label class="text-[10px] text-white/40 uppercase font-bold tracking-widest mr-2">Funnel Name:</label>
+                    <input type="text" id="funnel-name" placeholder="New Funnel..." class="bg-transparent border-none text-white text-sm outline-none w-32 font-bold">
+                </div>
+                <select id="funnel-list" onchange="loadFunnel(this.value)" class="bg-[#10151c] text-white text-xs border border-white/10 rounded-full px-4 py-2 outline-none cursor-pointer hover:border-[#00CFFF]/50 transition-all">
+                    <option value="">Select Funnel...</option>
+                </select>
+                <button class="control-btn" onclick="editor.clear()">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i> Clear
+                </button>
+                <button class="control-btn" onclick="downloadImage()">
+                    <i data-lucide="camera" class="w-4 h-4"></i> Download Image
+                </button>
+                <button class="control-btn primary" onclick="saveToLocal()">
+                    <i data-lucide="save" class="w-4 h-4"></i> Save Funnel
+                </button>
+            </div>
+            <div id="drawflow"></div>
+            
+            <!-- Zoom Controls -->
+            <div class="zoom-controls">
+                <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out">
+                    <i data-lucide="minus" class="w-4 h-4"></i>
+                </button>
+                <div class="zoom-level" id="zoom-level">100%</div>
+                <button class="zoom-btn" onclick="zoomIn()" title="Zoom In">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                </button>
+                <button class="zoom-btn" onclick="zoomReset()" title="Reset View">
+                    <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VARIA AI Container -->
+    <div class="varia-container">
+        <div id="varia-chat" class="varia-chat">
+            <div class="varia-header">
+                <div class="varia-title">
+                    <i data-lucide="sparkles"></i>
+                    VARIA AI
+                </div>
+                <button onclick="toggleVaria()" class="text-white/40 hover:text-white">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="text-sm text-white/60 leading-relaxed">
+                Describe your funnel strategy below. I'll automatically simulate and build the visualization for you.
+            </div>
+            <div id="varia-status" class="varia-status hidden">Building funnel architecture...</div>
+            <div class="varia-input-container">
+                <textarea id="varia-prompt" class="varia-input" placeholder="e.g. A webinar funnel starting with FB ads, then a landing page, 3 day wait, and a sales call..." rows="3"></textarea>
+                <div onclick="generateVariaFunnel()" class="varia-send-btn">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </div>
+            </div>
+        </div>
+        <div onclick="toggleVaria()" class="varia-toggle-btn">
+            <i data-lucide="brain-circuit" class="w-8 h-8"></i>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="hidden fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="bg-[#10151c] border border-white/10 p-6 md:p-8 rounded-2xl w-full max-w-lg shadow-2xl max-h-[90vh] overflow-y-auto relative">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-white/40 hover:text-white transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <h3 class="text-xl font-bold mb-6 text-white flex items-center gap-2">
+                <i data-lucide="edit-3" class="w-5 h-5 text-[#00CFFF]"></i>
+                Edit Funnel Step
+            </h3>
+            <div id="modal-fields" class="space-y-6">
+                <!-- Dynamic fields will be injected here -->
+            </div>
+            <div class="flex justify-end gap-4 mt-8 pt-6 border-t border-white/5">
+                <button onclick="closeModal()" class="px-6 py-2 rounded-full border border-white/10 text-white hover:bg-white/5 transition-colors">Cancel</button>
+                <button onclick="saveNodeData()" class="px-6 py-2 rounded-full bg-[#00CFFF] text-black font-bold hover:shadow-[0_0_15px_rgba(0,207,255,0.4)] transition-all">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/jerosoler/Drawflow/dist/drawflow.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Drawflow Initialization FIRST
+        const id = document.getElementById("drawflow");
+        const editor = new Drawflow(id);
+        editor.reroute = true;
+        editor.reroute_fix_curvature = true;
+        editor.force_first_input = false;
+        editor.draggable_inputs = false;
+        editor.editor_mode = 'edit'; // Allows canvas panning and node editing
+        editor.start();
+
+        // Global icon refresh function - only for sidebar and non-node elements
+        function refreshIcons() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+
+        // Event delegation for delete and edit buttons
+        document.addEventListener('click', function(e) {
+            // Delete button handler
+            const deleteBtn = e.target.closest('.delete-node-btn');
+            if (deleteBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                const nodeEl = deleteBtn.closest('.drawflow-node');
+                if (nodeEl) {
+                    const nodeId = nodeEl.id.replace('node-', '');
+                    editor.removeNodeId('node-' + nodeId);
+                }
+                return;
+            }
+            
+            // Edit button handler
+            const editBtn = e.target.closest('.edit-node-btn');
+            if (editBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                openEditModal(editBtn);
+                return;
+            }
+        }, true); // Use capture phase
+
+        function updateFunnelList() {
+            const list = document.getElementById('funnel-list');
+            const funnels = JSON.parse(localStorage.getItem('refiniti_funnels_index') || '[]');
+            
+            // Keep first option
+            const firstOption = list.options[0];
+            list.innerHTML = '';
+            list.appendChild(firstOption);
+
+            funnels.forEach(name => {
+                const option = document.createElement('option');
+                option.value = name;
+                option.textContent = name;
+                list.appendChild(option);
+            });
+        }
+
+        function loadFunnel(name) {
+            if (!name) return;
+            const dataStr = localStorage.getItem('refiniti_funnel_' + name);
+            if (dataStr) {
+                const data = JSON.parse(dataStr);
+                
+                // Repair nodes for older saves
+                if (data.drawflow) {
+                    Object.values(data.drawflow).forEach(module => {
+                        if (module.data) {
+                            Object.values(module.data).forEach(node => {
+                                node.typenode = false;
+                                // Regenerate HTML to use new inline SVG icons
+                                if (node.name && nodeTemplates[node.name]) {
+                                    node.html = createNodeHtml(node.name, node.data);
+                                }
+                            });
+                        }
+                    });
+                }
+                
+                editor.import(data);
+                document.getElementById('funnel-name').value = name;
+                setTimeout(refreshIcons, 100);
+            }
+        }
+
+        function saveToLocal() {
+            const name = document.getElementById('funnel-name').value.trim();
+            if (!name) {
+                alert('Please enter a funnel name');
+                return;
+            }
+
+            const funnelsIndex = JSON.parse(localStorage.getItem('refiniti_funnels_index') || '[]');
+            const currentFunnelName = document.getElementById('funnel-list').value;
+
+            if (funnelsIndex.includes(name) && name !== currentFunnelName) {
+                alert('A funnel with this name already exists. Please choose a unique name.');
+                return;
+            }
+
+            if (!funnelsIndex.includes(name)) {
+                funnelsIndex.push(name);
+                localStorage.setItem('refiniti_funnels_index', JSON.stringify(funnelsIndex));
+            }
+
+            const data = editor.export();
+            localStorage.setItem('refiniti_funnel_' + name, JSON.stringify(data));
+            
+            updateFunnelList();
+            document.getElementById('funnel-list').value = name;
+            alert('Funnel "' + name + '" saved successfully!');
+        }
+
+        // Zoom functions
+        function updateZoomLevel() {
+            const zoomPercent = Math.round(editor.zoom * 100);
+            document.getElementById('zoom-level').textContent = zoomPercent + '%';
+        }
+
+        function zoomIn() {
+            editor.zoom_in();
+            updateZoomLevel();
+        }
+
+        function zoomOut() {
+            editor.zoom_out();
+            updateZoomLevel();
+        }
+
+        function zoomReset() {
+            editor.zoom_reset();
+            updateZoomLevel();
+        }
+
+        // Update zoom level on scroll zoom
+        id.addEventListener('wheel', function() {
+            setTimeout(updateZoomLevel, 50);
+        });
+
+        // Arrow key panning
+        document.addEventListener('keydown', function(e) {
+            const panAmount = 50;
+            switch(e.key) {
+                case 'ArrowLeft':
+                    editor.canvas_x += panAmount;
+                    editor.precanvas.style.transform = `translate(${editor.canvas_x}px, ${editor.canvas_y}px) scale(${editor.zoom})`;
+                    break;
+                case 'ArrowRight':
+                    editor.canvas_x -= panAmount;
+                    editor.precanvas.style.transform = `translate(${editor.canvas_x}px, ${editor.canvas_y}px) scale(${editor.zoom})`;
+                    break;
+                case 'ArrowUp':
+                    editor.canvas_y += panAmount;
+                    editor.precanvas.style.transform = `translate(${editor.canvas_x}px, ${editor.canvas_y}px) scale(${editor.zoom})`;
+                    break;
+                case 'ArrowDown':
+                    editor.canvas_y -= panAmount;
+                    editor.precanvas.style.transform = `translate(${editor.canvas_x}px, ${editor.canvas_y}px) scale(${editor.zoom})`;
+                    break;
+            }
+        });
+
+        // Refresh icons when nodes are created or imported
+        editor.on('nodeCreated', function() {
+            setTimeout(refreshIcons, 50);
+        });
+        
+        editor.on('import', function() {
+            setTimeout(refreshIcons, 50);
+        });
+
+        editor.on('nodeMoved', function(nodeId) {
+            editor.updateConnectionNodes('node-' + nodeId);
+        });
+
+        // Inline SVG icons for nodes (avoids Lucide positioning issues)
+        const iconSvgs = {
+            'users': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+            'video': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg>',
+            'refresh-cw': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>',
+            'layout': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="9" x2="9" y1="21" y2="9"/></svg>',
+            'form-input': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><rect width="20" height="12" x="2" y="6" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>',
+            'clock': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+            'mail': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+            'phone-call': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+            'user-check': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>',
+            'home': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+            'dollar-sign': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+            'box': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00CFFF" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>'
+        };
+
+        const nodeTemplates = {
+            traffic: {
+                name: 'Traffic Source',
+                icon: 'users',
+                body: '',
+                stats: { conv: '', leads: '' },
+                details: { sources: '', strategy: '' }
+            },
+            video_ad: {
+                name: 'Top-of-Funnel Video Ads',
+                icon: 'video',
+                body: '',
+                stats: { conv: '', leads: '' },
+                details: { targeting: '', output: '' }
+            },
+            retargeting: {
+                name: 'Retargeting Ads',
+                icon: 'refresh-cw',
+                body: '',
+                stats: { conv: '', leads: '' },
+                details: { audience: '', cta: '' }
+            },
+            landing_page: {
+                name: 'VSL Landing Page',
+                icon: 'layout',
+                body: '',
+                stats: { conv: '', leads: '' },
+                details: { headline: '', duration: '' }
+            },
+            form: {
+                name: 'Lead Capture Event',
+                icon: 'form-input',
+                body: '',
+                stats: { conv: '', leads: '' },
+                details: { fields: '', trigger: '' }
+            },
+            wait: {
+                name: 'Wait (Delay)',
+                icon: 'clock',
+                body: '',
+                stats: { conv: '', leads: '' },
+                details: { days: '', reason: '' }
+            },
+            email: {
+                name: 'Email Sequence',
+                icon: 'mail',
+                body: '',
+                stats: { conv: '', leads: '' },
+                details: { type: '', count: '' }
+            },
+            isa_call: {
+                name: 'ISA Qualification',
+                icon: 'phone-call',
+                body: '',
+                stats: { conv: '', leads: '' },
+                details: { goal: '', pathways: '' }
+            },
+            agent: {
+                name: 'Certified Agent',
+                icon: 'user-check',
+                body: '',
+                stats: { conv: '', leads: '' },
+                details: { services: '', model: '' }
+            },
+            fulfillment: {
+                name: 'Deal Execution',
+                icon: 'home',
+                body: '',
+                stats: { conv: '', leads: '' },
+                details: { pathways: '' }
+            },
+            revenue: {
+                name: 'Revenue Event',
+                icon: 'dollar-sign',
+                body: '',
+                stats: { conv: '', leads: '' },
+                details: { fees: '', flywheel: '' }
+            }
+        };
+
+        function createNodeHtml(type, customData = null) {
+            const data = customData || nodeTemplates[type];
+            if (!data) return '';
+            
+            let statsHtml = '';
+            if (data.stats && (data.stats.conv || data.stats.leads)) {
+                statsHtml = `
+                <div class="mt-2 pt-2 border-t border-white/5 flex justify-between items-center text-[10px] font-mono">
+                    <span class="text-white/40">CONV: <span class="text-[#00CFFF]">${data.stats.conv || '-'}%</span></span>
+                    <span class="text-white/40">LEADS: <span class="text-[#00CFFF]">${data.stats.leads || '-'}</span></span>
+                </div>
+                `;
+            }
+
+            let detailsHtml = '';
+            if (data.details) {
+                const filledDetails = Object.entries(data.details).filter(([key, value]) => value);
+                if (filledDetails.length > 0) {
+                    detailsHtml = '<div class="node-detail">';
+                    for (const [key, value] of filledDetails) {
+                        detailsHtml += `<span><strong>${key.replace('_', ' ')}:</strong> ${value}</span>`;
+                    }
+                    detailsHtml += '</div>';
+                }
+            }
+            
+            return `
+                <div class="edit-node-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+                </div>
+                <div class="delete-node-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </div>
+                <div class="node-header">
+                    <div class="node-icon-box">${iconSvgs[data.icon] || iconSvgs['box']}</div>
+                    <div class="node-title">${data.name}</div>
+                </div>
+                <div class="node-body">
+                    ${data.body || '<span class="placeholder-text">Click edit to add details</span>'}
+                </div>
+                ${detailsHtml}
+                ${statsHtml}
+            `;
+        }
+
+        let currentNodeId = null;
+
+        function openEditModal(btn) {
+            const nodeEl = btn.closest('.drawflow-node');
+            currentNodeId = nodeEl.id.replace('node-', '');
+            const nodeData = editor.getNodeFromId(currentNodeId);
+            const template = nodeTemplates[nodeData.name] || {};
+            
+            // Merge defaults with current data
+            const currentData = {
+                name: nodeData.data.name || template.name || '',
+                body: nodeData.data.body || template.body || '',
+                stats: nodeData.data.stats || template.stats || { conv: '', leads: '' },
+                details: nodeData.data.details || template.details || {}
+            };
+
+            const fieldsContainer = document.getElementById('modal-fields');
+            fieldsContainer.innerHTML = `
+                <div>
+                    <label class="modal-label">Step Name</label>
+                    <input type="text" id="edit-name" class="modal-input" value="${currentData.name}">
+                </div>
+                <div>
+                    <label class="modal-label">Description</label>
+                    <textarea id="edit-body" class="modal-input h-20">${currentData.body}</textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="modal-label">Conversion %</label>
+                        <input type="text" id="edit-conv" class="modal-input" value="${currentData.stats.conv || ''}">
+                    </div>
+                    <div>
+                        <label class="modal-label">Lead Count</label>
+                        <input type="text" id="edit-leads" class="modal-input" value="${currentData.stats.leads || ''}">
+                    </div>
+                </div>
+                <div id="dynamic-details" class="space-y-4 pt-4 border-t border-white/5">
+                    <h4 class="text-xs font-bold text-white/40 uppercase tracking-widest">Additional Details</h4>
+                    ${Object.entries(currentData.details).map(([key, val]) => `
+                        <div>
+                            <label class="modal-label">${key.replace('_', ' ')}</label>
+                            <input type="text" data-detail="${key}" class="modal-input detail-input" value="${val || ''}">
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            document.getElementById('edit-modal').classList.remove('hidden');
+            refreshIcons();
+        }
+
+        function closeModal() {
+            document.getElementById('edit-modal').classList.add('hidden');
+        }
+
+        function saveNodeData() {
+            const nodeData = editor.getNodeFromId(currentNodeId);
+            const details = {};
+            document.querySelectorAll('.detail-input').forEach(input => {
+                details[input.getAttribute('data-detail')] = input.value;
+            });
+
+            const newData = {
+                name: document.getElementById('edit-name').value,
+                body: document.getElementById('edit-body').value,
+                icon: nodeTemplates[nodeData.name]?.icon || 'box',
+                stats: {
+                    conv: document.getElementById('edit-conv').value,
+                    leads: document.getElementById('edit-leads').value
+                },
+                details: details
+            };
+
+            // Update the node's visual content
+            const html = createNodeHtml(nodeData.name, newData);
+            const nodeContent = document.querySelector('#node-' + currentNodeId + ' .drawflow_content_node');
+            if (nodeContent) {
+                nodeContent.innerHTML = html;
+            }
+            
+            // Update node data in editor
+            editor.updateNodeDataFromId(currentNodeId, newData);
+            
+            closeModal();
+            setTimeout(refreshIcons, 50);
+        }
+
+        // Drag and Drop
+        function drag(ev) {
+            ev.dataTransfer.setData("node", ev.target.getAttribute('data-node'));
+        }
+
+        // Use the drawflow element for drop events
+        id.addEventListener('drop', function(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            const nodeType = ev.dataTransfer.getData("node");
+            if (nodeType) {
+                addNodeToEditor(nodeType, ev.clientX, ev.clientY);
+            }
+        });
+
+        id.addEventListener('dragover', function(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+        });
+
+        id.addEventListener('dragenter', function(ev) {
+            ev.preventDefault();
+        });
+
+        function addNodeToEditor(type, clientX, clientY) {
+            if (!type || !nodeTemplates[type]) return false;
+            if (editor.editor_mode === 'fixed') return false;
+            
+            // Get the precanvas element and its bounding rect
+            const precanvas = editor.precanvas;
+            const precanvasRect = precanvas.getBoundingClientRect();
+            
+            // Calculate position relative to precanvas, accounting for zoom
+            const zoom = editor.zoom;
+            const pos_x = (clientX - precanvasRect.left) / zoom;
+            const pos_y = (clientY - precanvasRect.top) / zoom;
+
+            const html = createNodeHtml(type);
+            const data = JSON.parse(JSON.stringify(nodeTemplates[type] || {}));
+            
+            // Add node with typenode explicitly set to false
+            editor.addNode(type, 1, 1, pos_x, pos_y, type, data, html, false);
+        }
+
+        function initInitialFlow() {
+            updateFunnelList();
+            document.getElementById('funnel-name').value = '';
+            setTimeout(refreshIcons, 100);
+        }
+
+        async function downloadImage() {
+            const el = document.getElementById("drawflow");
+            
+            // Temporary styles to ensure background and all elements are captured correctly
+            const originalBg = el.style.backgroundColor;
+            el.style.backgroundColor = "#08080A";
+            
+            try {
+                const canvas = await html2canvas(el, {
+                    backgroundColor: "#08080A",
+                    logging: false,
+                    useCORS: true,
+                    scale: 2 // Higher quality
+                });
+                
+                const url = canvas.toDataURL("image/png");
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = "refiniti-funnel-visualizer.png";
+                a.click();
+            } catch (err) {
+                console.error("Error generating image:", err);
+                alert("Failed to generate image. Please try again.");
+            } finally {
+                el.style.backgroundColor = originalBg;
+            }
+        }
+
+        // VARIA AI Logic
+        window.toggleVaria = function() {
+            document.getElementById('varia-chat').classList.toggle('active');
+        }
+
+        window.generateVariaFunnel = function() {
+            const prompt = document.getElementById('varia-prompt').value.trim();
+            if (!prompt) return;
+
+            const status = document.getElementById('varia-status');
+            status.classList.remove('hidden');
+            
+            // Simulation logic
+            setTimeout(() => {
+                editor.clear();
+                
+                const steps = [];
+                const words = prompt.toLowerCase();
+
+                // Simple NLP simulation to detect steps
+                if (words.includes('traffic') || words.includes('ad') || words.includes('facebook') || words.includes('instagram') || words.includes('tiktok') || words.includes('google')) steps.push('traffic');
+                if (words.includes('video') || words.includes('tof') || words.includes('awareness')) steps.push('video_ad');
+                if (words.includes('retarget') || words.includes('remarketing')) steps.push('retargeting');
+                if (words.includes('landing') || words.includes('vsl') || words.includes('page') || words.includes('webinar')) steps.push('landing_page');
+                if (words.includes('form') || words.includes('lead') || words.includes('capture') || words.includes('optin')) steps.push('form');
+                if (words.includes('wait') || words.includes('delay') || words.includes('day')) steps.push('wait');
+                if (words.includes('email') || words.includes('sequence') || words.includes('nurture')) steps.push('email');
+                if (words.includes('call') || words.includes('isa') || words.includes('phone') || words.includes('qualify') || words.includes('appointment')) steps.push('isa_call');
+                if (words.includes('agent') || words.includes('partner') || words.includes('sales rep')) steps.push('agent');
+                if (words.includes('fulfillment') || words.includes('execution') || words.includes('deal') || words.includes('service')) steps.push('fulfillment');
+                if (words.includes('sale') || words.includes('revenue') || words.includes('money') || words.includes('profit') || words.includes('close') || words.includes('convert')) steps.push('revenue');
+
+                // Fallback if no keywords matched
+                if (steps.length === 0) {
+                    steps.push('traffic', 'landing_page', 'form', 'revenue');
+                }
+
+                // Generate AI-powered details based on prompt context
+                function generateDetails(type, prompt) {
+                    const data = JSON.parse(JSON.stringify(nodeTemplates[type] || {}));
+                    const words = prompt.toLowerCase();
+                    
+                    // Extract potential platforms/channels mentioned
+                    const platforms = [];
+                    if (words.includes('facebook') || words.includes('fb')) platforms.push('Facebook');
+                    if (words.includes('instagram') || words.includes('ig')) platforms.push('Instagram');
+                    if (words.includes('tiktok')) platforms.push('TikTok');
+                    if (words.includes('google')) platforms.push('Google');
+                    if (words.includes('youtube')) platforms.push('YouTube');
+                    if (words.includes('linkedin')) platforms.push('LinkedIn');
+                    
+                    // Extract timing info
+                    const dayMatch = prompt.match(/(\d+)\s*day/i);
+                    const waitDays = dayMatch ? dayMatch[1] : '3';
+                    
+                    switch(type) {
+                        case 'traffic':
+                            data.body = 'Drive qualified traffic to the funnel';
+                            data.stats = { conv: '100', leads: 'TBD' };
+                            data.details = { 
+                                sources: platforms.length > 0 ? platforms.join(', ') + ' Ads' : 'Paid Ads, Organic Social',
+                                strategy: words.includes('video') ? 'Video View Campaigns' : 'Traffic Campaigns'
+                            };
+                            break;
+                        case 'video_ad':
+                            data.body = 'Top-of-funnel video content to build awareness';
+                            data.stats = { conv: '25', leads: 'TBD' };
+                            data.details = { 
+                                targeting: 'Interest-based audiences',
+                                output: '25%+ video viewers for retargeting'
+                            };
+                            break;
+                        case 'retargeting':
+                            data.body = 'Retarget engaged users with conversion-focused ads';
+                            data.stats = { conv: '15', leads: 'TBD' };
+                            data.details = { 
+                                audience: 'Video viewers, website visitors',
+                                cta: 'Book a Call / Learn More'
+                            };
+                            break;
+                        case 'landing_page':
+                            data.body = words.includes('webinar') ? 'Webinar registration page' : 'VSL Landing Page to convert visitors';
+                            data.stats = { conv: '20', leads: 'TBD' };
+                            data.details = { 
+                                headline: 'Value proposition headline',
+                                duration: words.includes('webinar') ? '60-90 min webinar' : '4-5 minute VSL'
+                            };
+                            break;
+                        case 'form':
+                            data.body = 'Capture lead information for follow-up';
+                            data.stats = { conv: '80', leads: 'TBD' };
+                            data.details = { 
+                                fields: 'Name, Email, Phone',
+                                trigger: 'Push to CRM / ISA team'
+                            };
+                            break;
+                        case 'wait':
+                            data.body = 'Delay before next step in sequence';
+                            data.stats = { conv: '100', leads: '-' };
+                            data.details = { 
+                                days: waitDays + ' days',
+                                reason: 'Allow time for consideration'
+                            };
+                            break;
+                        case 'email':
+                            data.body = 'Nurture sequence to build trust and drive action';
+                            data.stats = { conv: '10', leads: 'TBD' };
+                            data.details = { 
+                                type: words.includes('nurture') ? 'Nurture Sequence' : 'Sales Sequence',
+                                count: '5-7 emails over 14 days'
+                            };
+                            break;
+                        case 'isa_call':
+                            data.body = 'Qualification call to assess fit and book appointments';
+                            data.stats = { conv: '40', leads: 'TBD' };
+                            data.details = { 
+                                goal: 'Book qualified appointment',
+                                pathways: 'Qualify, Disqualify, Nurture'
+                            };
+                            break;
+                        case 'agent':
+                            data.body = 'Sales rep or agent handles the qualified lead';
+                            data.stats = { conv: '25', leads: 'TBD' };
+                            data.details = { 
+                                services: 'Consultation, Proposal, Close',
+                                model: 'Commission or fee-based'
+                            };
+                            break;
+                        case 'fulfillment':
+                            data.body = 'Deliver the product or service to the customer';
+                            data.stats = { conv: '100', leads: '-' };
+                            data.details = { 
+                                pathways: 'Onboarding, Delivery, Support'
+                            };
+                            break;
+                        case 'revenue':
+                            data.body = 'Revenue event when deal closes';
+                            data.stats = { conv: '100', leads: '$TBD' };
+                            data.details = { 
+                                fees: 'Varies by deal size',
+                                flywheel: 'Reinvest into marketing'
+                            };
+                            break;
+                    }
+                    return data;
+                }
+
+                // Build the flow with AI-generated details
+                let prevId = null;
+                steps.forEach((type, index) => {
+                    const posX = 50 + (index * 320); // More spacing between cards
+                    const posY = 150;
+                    const data = generateDetails(type, prompt);
+                    const html = createNodeHtml(type, data);
+                    
+                    const nodeId = editor.addNode(type, 1, 1, posX, posY, type, data, html, false);
+                    
+                    if (prevId !== null) {
+                        editor.addConnection(prevId, nodeId, 'output_1', 'input_1');
+                    }
+                    prevId = nodeId;
+                });
+
+                // Update all connection paths after nodes are created
+                setTimeout(() => {
+                    const nodeIds = Object.keys(editor.drawflow.drawflow.Home.data);
+                    nodeIds.forEach(nodeId => {
+                        editor.updateConnectionNodes('node-' + nodeId);
+                    });
+                }, 100);
+
+                status.classList.add('hidden');
+                document.getElementById('varia-prompt').value = '';
+                window.toggleVaria();
+                
+                // Set a name for the AI generated funnel
+                document.getElementById('funnel-name').value = 'AI: ' + prompt.substring(0, 20) + '...';
+            }, 1500);
+        }
+
+        // Initialize on load
+        window.addEventListener('load', function() {
+            initInitialFlow();
+            refreshIcons();
+        });
+    </script>
+</body>
+</html>
+

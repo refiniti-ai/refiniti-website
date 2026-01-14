@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "tailwind:init": "tailwindcss init",
-    "build": "node ./node_modules/tailwindcss/lib/cli.js -i ./style.css -o ./dist/style.css --minify"
+    "build": "tailwindcss -i ./style.css -o ./dist/style.css --minify"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1"
