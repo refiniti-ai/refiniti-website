@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Call | RefinitiAI — Personal Strategy Session</title>
+    <meta name="description" content="Schedule a one-on-one strategy session with RefinitiAI. Reserved for serious growth partners.">
+    <link rel="icon" href="Images/Refiniti Favicon.png" type="image/png">
+    <link rel="stylesheet" href="dist/style.css">
+    <script type="module" src="header.js"></script>
+    <script type="module" src="legal-modal.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .meeting-hero {
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 207, 255, 0.08) 0%, transparent 55%),
+                        linear-gradient(180deg, #050507 0%, #08080A 100%);
+        }
+        .meeting-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 207, 255, 0.05);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        .meeting-card:hover {
+            border-color: rgba(0, 207, 255, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 207, 255, 0.06);
+        }
+        .booking-iframe-wrap {
+            min-height: 700px;
+            width: 100%;
+        }
+        .booking-iframe-wrap iframe {
+            min-height: 700px;
+            display: block;
+        }
+        @media (min-width: 768px) {
+            .booking-iframe-wrap { min-height: 800px; }
+            .booking-iframe-wrap iframe { min-height: 800px; }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden bg-[#050507]">
+    <refiniti-header></refiniti-header>
+
+    <main class="min-h-screen pt-24 md:pt-32 pb-20">
+        <section class="meeting-hero pt-12 md:pt-16 pb-8">
+            <div class="max-w-3xl mx-auto px-6 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00CFFF]/20 bg-[#00CFFF]/5 mb-6">
+                    <i data-lucide="calendar-check" class="w-4 h-4 text-[#00CFFF]"></i>
+                    <span class="text-xs font-medium text-[#00CFFF] uppercase tracking-wider">One-on-One</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+                    Your Personal <span class="text-glow-anim">Strategy Session</span>
+                </h1>
+                <p class="text-white/70 text-lg md:text-xl max-w-xl mx-auto">
+                    Reserve a time that works for you. This call is reserved for leaders ready to scale with clarity.
+                </p>
+            </div>
+        </section>
+
+        <section class="max-w-4xl mx-auto px-6 -mt-2">
+            <div class="meeting-card p-0">
+                <div class="booking-iframe-wrap">
+                    <iframe
+                        src="https://api.leadconnectorhq.com/widget/booking/IHmNKqcjfKO9gP0lmiuj"
+                        style="width: 100%; border: none; overflow: hidden;"
+                        scrolling="no"
+                        id="IHmNKqcjfKO9gP0lmiuj_1771794195143"
+                        title="Book your RefinitiAI strategy call"
+                    ></iframe>
+                </div>
+            </div>
+            <p class="text-center text-white/40 text-sm mt-6">
+                You’ll receive a confirmation and calendar invite once you’ve selected a time.
+            </p>
+        </section>
+    </main>
+
+    <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+    <script type="module" src="footer.js"></script>
+    <refiniti-footer></refiniti-footer>
+    <script>if (typeof lucide !== 'undefined') lucide.createIcons();</script>
+</body>
+</html>

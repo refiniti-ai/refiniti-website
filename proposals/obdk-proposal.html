@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefinitiAI | Proposal for OBDK – Passport to Wildlife Academy</title>
+    <script type="module" src="../legal-modal.js"></script>
+    <link rel="stylesheet" href="../dist/style.css">
+    <link rel="stylesheet" href="../proposal.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .section-padding { padding-top: 2rem; padding-bottom: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .disclaimer-box {
+            margin-top: 1.5rem; padding: 1.25rem; border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem; color: rgba(255, 255, 255, 0.6); font-style: italic;
+        }
+        @media (max-width: 767px) {
+            .ref-engine-visual { height: 200px !important; }
+            .engine-box { padding: 0.5rem !important; }
+            .engine-text { font-size: 0.75rem !important; }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden text-white">
+
+    <div class="background-container" id="background-container"></div>
+
+    <div id="password-modal">
+        <div class="password-box">
+            <h2 class="text-2xl font-bold mb-4">Access Proposal</h2>
+            <p class="mb-6">Please enter the password to view this document.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" class="w-full rounded-lg p-3 text-center mb-4" placeholder="Password">
+                <p id="password-error" class="mb-4">Incorrect password. Please try again.</p>
+                <button type="submit" class="w-full bg-cyan-accent text-black font-bold py-3 rounded-lg hover:bg-cyan-accent/80 transition-colors">View</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <main class="py-24 md:py-32">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="content-container">
+                    <div class="text-center mb-16">
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight md:leading-[1.1] mb-6 text-white">
+                            Proposal for <span class="text-glow-anim">Chris Anderson | OBDK</span>
+                        </h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                            Launch Passport to Wildlife Academy with a Video Sales Letter (VSL) strategy and avatar-specific landing pages—product info, FOMO, and tailored testimonials for homeschool, museums, and K–12 educators.
+                        </p>
+                        <p class="text-white/60 text-sm mt-4">February 12, 2026</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-12">
+                        <div class="md:pr-8">
+                            <h3 class="text-2xl font-bold text-white mb-4">The Refiniti Approach for OBDK</h3>
+                            <p class="leading-relaxed mb-6">
+                                Chris, we're focusing on <strong>launching the Passport to Wildlife Academy</strong> as the ideal testing ground for Refiniti AI's marketing strategies. With ~400,000 barn owl pellets processed annually, 14,000 customers, and 30 years of category authority, the academy is your next lever for retention and lifetime value—and we'll support it with a clear VSL funnel.
+                            </p>
+                            <p class="mb-6">
+                                We'll build <strong>three core Video Sales Letters</strong>: one for product information, one addressing fear of missing out, and one for testimonials and trust. Two of these can be universal; the testimonial VSL will be <strong>customized per customer avatar</strong> (e.g., homeschool moms, museum administrators, district buyers) and paired with a dedicated landing page so each segment sees a pitch that speaks to them.
+                            </p>
+                            <div class="flex items-center gap-3 text-green-accent font-semibold text-sm">
+                                <i data-lucide="target" class="w-5 h-5 flex-shrink-0"></i>
+                                <span>Academy flyer in every order drives traffic; VSLs and landing pages convert visitors into academy signups and repeat buyers.</span>
+                            </div>
+                        </div>
+                        <div class="ref-engine-visual h-[280px] md:h-auto bg-black/20 rounded-3xl border border-white/10 p-4 relative overflow-hidden flex items-center justify-center group hover:border-cyan-accent/20 transition-colors py-6">
+                            <div class="absolute inset-0 bg-gradient-to-r from-black via-cyan-accent/5 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            <div class="flex flex-col md:flex-row items-center gap-2 relative z-10 w-full justify-center scale-90">
+                                <div class="flex flex-col gap-2 items-center opacity-60">
+                                    <div class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="graduation-cap" class="text-white w-5 h-5"></i></div>
+                                    <span class="text-xs text-white/50">Academy</span>
+                                </div>
+                                <div class="hidden md:block"><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="engine-box p-3">
+                                    <i data-lucide="video" class="engine-brain w-6 h-6"></i>
+                                    <span class="engine-text text-sm">3 VSLs</span>
+                                </div>
+                                <div class="hidden md:block"><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="roi-counter-box text-center">
+                                    <div class="w-12 h-12 rounded-full bg-cyan-accent flex items-center justify-center shadow-[0_0_15px_rgba(0,207,255,0.4)] mb-2 mx-auto"><i data-lucide="layout" class="text-black font-bold w-6 h-6"></i></div>
+                                    <div class="roi-number text-green-accent text-lg">Landing</div>
+                                    <div class="roi-label text-white/50 text-xs">Per avatar</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-12 py-6">
+
+                        <!-- VSL + Landing Page Strategy -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">VSL + Landing Page Strategy</h3>
+                            <p class="mb-6">One clear path: Academy traffic (flyer, site, future channels) → Video Sales Letters → Avatar-specific landing pages with trust and CTA.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">VSL 1 – Product Information</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="video" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Introduces Passport to Wildlife Academy: what it is, how students participate, and the <strong>lifetime reward (e.g., 15% discount)</strong> tied to your average cost of sale.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="book-open" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Universal across all segments—foundation for biology, anatomy, and ecology education in the classroom.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">VSL 2 – Fear of Missing Out (FOMO)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="zap" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Creates urgency around joining the academy: limited-time value, exclusivity of rewards, and the cost of not engaging students with a structured, reward-based program.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="globe" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Can be kept universal or lightly tailored by channel (e.g., homeschool vs. district).</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">VSL 3 – Testimonials & Trust (Avatar-Specific)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="message-circle" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Customized per customer avatar:</strong> homeschool moms, museum administrators, K–12 district buyers, and others you prioritize.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="award" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Each avatar gets a dedicated landing page with the relevant testimonial VSL, benefit copy, and CTA—so messaging matches who they are and how they buy.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Landing Pages (Per Avatar)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="layout" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>One landing page per segment (e.g., homeschool, museum, district) with the appropriate VSL mix and copy.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="link" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Academy link (once provided) will be integrated; flyer and future campaigns can send traffic to the right page by audience.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customer Avatars -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-6">Customer Avatars (Examples)</h3>
+                            <p class="mb-6">Different segments need tailored pitches. We'll align VSL 3 and landing page copy with the avatars you care about most.</p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Avatar</th>
+                                            <th>Focus</th>
+                                            <th>Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-label="Avatar"><span class="font-semibold text-cyan-accent">K–12 Teachers / District Buyers</span></td>
+                                            <td data-label="Focus" class="text-white">Biology, anatomy, ecology; classroom kits, curriculum fit</td>
+                                            <td data-label="Notes" class="text-white/70 text-sm">Core base; twice-a-year purchase cycle; word-of-mouth strong.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Avatar"><span class="font-semibold text-cyan-accent">Homeschool Moms</span></td>
+                                            <td data-label="Focus" class="text-white">Hands-on science, rewards for kids, value & convenience</td>
+                                            <td data-label="Notes" class="text-white/70 text-sm">Easier sales, upfront payment; high fit for academy rewards.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Avatar"><span class="font-semibold text-cyan-accent">Museum Administrators</span></td>
+                                            <td data-label="Focus" class="text-white">Programs, group visits, educational authority</td>
+                                            <td data-label="Notes" class="text-white/70 text-sm">Institutional angle; testimonials from similar venues.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Avatar"><span class="font-semibold text-cyan-accent">Libraries / Scouting</span></td>
+                                            <td data-label="Focus" class="text-white">Workshops, events, youth engagement</td>
+                                            <td data-label="Notes" class="text-white/70 text-sm">Expand beyond traditional school buyers; LinkedIn opportunity.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="disclaimer-box">
+                                <p><strong>Note:</strong> We'll start with the avatars you want to prioritize for the academy launch. Successful techniques can later be applied to other products and channels (e.g., wholesale, Amazon/Walmart, or LinkedIn).</p>
+                            </div>
+                        </div>
+
+                        <!-- Investment Summary -->
+                        <div class="section-padding" id="investment-summary">
+                            <h3 class="text-2xl font-bold text-white mb-6">Investment Summary</h3>
+                            <p class="mb-6">Package focused on launching Passport to Wildlife Academy with three VSLs and avatar-specific landing pages. Scope can be adjusted based on how many avatars you want to launch with.</p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Cost (Initial)</th>
+                                            <th>Cost (Monthly)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="investment-row">
+                                            <td data-label="Item"><span>Academy Launch – 3 VSLs + Landing Pages</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$4,200</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent">—</td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="3">
+                                                <div class="breakdown-content">
+                                                    <ul class="space-y-3">
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="video" class="w-5 h-5 text-white/70"></i>VSL 1 – Product Information (universal)</span> <span class="text-green-accent">$1,199</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="video" class="w-5 h-5 text-white/70"></i>VSL 2 – Fear of Missing Out (universal)</span> <span class="text-green-accent">$1,199</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="video" class="w-5 h-5 text-white/70"></i>VSL 3 – Testimonials & Trust (1 avatar version)</span> <span class="text-green-accent">$1,199</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="layout" class="w-5 h-5 text-white/70"></i>Landing page (1 avatar – e.g., homeschool or museum)</span> <span class="text-green-accent">$603</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="target" class="w-5 h-5 text-white/70"></i>Copy & offer setup for academy</span> <span class="text-white/60">Included</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="investment-row">
+                                            <td data-label="Item"><span>Additional Avatar (VSL 3 variant + Landing Page)</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$1,350</td>
+                                            <td data-label="Cost (Monthly)" class="text-green-accent">—</td>
+                                        </tr>
+                                        <tr class="hidden-breakdown hidden">
+                                            <td colspan="3">
+                                                <div class="breakdown-content">
+                                                    <ul class="space-y-3">
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="message-circle" class="w-5 h-5 text-white/70"></i>Custom testimonial VSL for second avatar</span> <span class="text-green-accent">$899</span></li>
+                                                        <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="layout" class="w-5 h-5 text-white/70"></i>Dedicated landing page</span> <span class="text-green-accent">$451</span></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="font-bold bg-white/5">
+                                            <td data-label="Item">Academy Launch Total (1 avatar)</td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$4,200</td>
+                                            <td data-label="Cost (Monthly)" class="text-white/70">—</td>
+                                        </tr>
+                                        <tr class="font-bold bg-white/5">
+                                            <td data-label="Item">With 2 avatars (e.g., homeschool + museum)</td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$5,550</td>
+                                            <td data-label="Cost (Monthly)" class="text-white/70">—</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="disclaimer-box">
+                                <p><strong>Scope:</strong> We propose starting with one avatar to validate the funnel; add more avatars as you see results. Once the academy link is shared, we'll integrate it into all landing pages and align copy with your reward structure (e.g., 15% lifetime discount).</p>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Suggested Next Steps</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-accent flex-shrink-0 mt-0.5"></i><span><strong>Chris</strong> to send the link to the Passport to Wildlife Academy so the team can view it and align VSL/landing page copy.</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-accent flex-shrink-0 mt-0.5"></i><span><strong>Refiniti</strong> to provide an example Video Sales Letter so Chris can visualize how it would work for OBDK.</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-accent flex-shrink-0 mt-0.5"></i><span>Confirm which avatar to launch with first (e.g., homeschool moms or museum administrators), then add others as needed.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-12 pt-12 border-t border-white/5">
+                        <button id="accept-agreement-btn" class="bg-cyan-accent text-black font-bold py-4 px-8 rounded-lg text-lg hover:bg-cyan-accent/80 transition-colors shadow-[0_0_25px_rgba(0,207,255,0.6)]">
+                            Accept Agreement
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script type="module" src="../footer.js"></script>
+        <refiniti-footer hide-product></refiniti-footer>
+    </div>
+
+    <!-- Agreement Modal -->
+    <div id="agreement-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h2 class="text-2xl font-bold mb-6 text-center">Accept Contract Agreement</h2>
+            <form id="agreement-form" class="space-y-4">
+                <div>
+                    <label for="full-name" class="block text-white text-sm font-semibold mb-2">Full Name</label>
+                    <input type="text" id="full-name" name="fullName" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <input type="hidden" id="initial-cost" name="initialCost" value="4200">
+                <div class="flex items-start">
+                    <input type="checkbox" id="consent" name="consent" class="mt-1 mr-2 accent-cyan-accent" required>
+                    <label for="consent" class="text-sm text-white/80">I initialize and agree to the contract.</label>
+                </div>
+                <button type="submit" class="w-full bg-green-accent text-black font-bold py-3 rounded-lg mt-6 hover:bg-green-accent/80 transition-colors">Accept</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqTriggers = document.querySelectorAll('.faq-trigger');
+            faqTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const faqItem = trigger.closest('.faq-item');
+                    faqItem.classList.toggle('open');
+                });
+            });
+
+            const investmentRows = document.querySelectorAll('.investment-row');
+            investmentRows.forEach(row => {
+                row.addEventListener('click', () => {
+                    const icon = row.querySelector('i[data-lucide="chevron-down"]');
+                    const breakdownRow = row.nextElementSibling;
+                    if (breakdownRow && breakdownRow.classList.contains('hidden-breakdown')) {
+                        breakdownRow.classList.toggle('hidden');
+                        if (icon) icon.style.transform = breakdownRow.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                    }
+                });
+            });
+
+            const container = document.getElementById('background-container');
+            if (container) {
+                const icons = ['book-open', 'graduation-cap', 'target', 'video', 'trending-up', 'users', 'feather', 'award'];
+                for (let i = 0; i < 12; i++) {
+                    const iconWrapper = document.createElement('div');
+                    iconWrapper.classList.add('floating-icon');
+                    const iconEl = document.createElement('i');
+                    iconEl.setAttribute('data-lucide', icons[Math.floor(Math.random() * icons.length)]);
+                    iconWrapper.appendChild(iconEl);
+                    const size = Math.random() * 28 + 14;
+                    iconWrapper.style.width = size + 'px';
+                    iconWrapper.style.height = size + 'px';
+                    iconWrapper.style.top = Math.random() * 100 + 'vh';
+                    iconWrapper.style.left = Math.random() * 100 + 'vw';
+                    iconWrapper.style.animationDuration = (Math.random() * 20 + 18) + 's';
+                    iconWrapper.style.animationDelay = (Math.random() * -30) + 's';
+                    container.appendChild(iconWrapper);
+                }
+            }
+            lucide.createIcons();
+        });
+
+        window.initializeAgreementModal = () => {
+            const acceptBtn = document.getElementById('accept-agreement-btn');
+            const agreementModal = document.getElementById('agreement-modal');
+            const modalCloseBtn = document.querySelector('.modal-close-btn');
+            const agreementForm = document.getElementById('agreement-form');
+            const initialCostInput = document.getElementById('initial-cost');
+
+            const getInitialCost = () => {
+                const val = initialCostInput && initialCostInput.value ? initialCostInput.value : '4200';
+                return parseInt(val.replace(/[^0-9]/g, '')) || 4200;
+            };
+
+            if (acceptBtn) {
+                acceptBtn.addEventListener('click', () => {
+                    if (initialCostInput) initialCostInput.value = getInitialCost();
+                    agreementModal.classList.remove('hidden');
+                });
+            }
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', () => agreementModal.classList.add('hidden'));
+            if (agreementModal) {
+                agreementModal.addEventListener('click', (e) => {
+                    if (e.target === agreementModal) agreementModal.classList.add('hidden');
+                });
+            }
+            if (agreementForm) {
+                agreementForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const fullName = document.getElementById('full-name').value;
+                    const email = document.getElementById('email').value;
+                    const consent = document.getElementById('consent').checked;
+                    const initialCost = getInitialCost();
+
+                    if (!consent) {
+                        alert('You must agree to the contract to proceed.');
+                        return;
+                    }
+
+                    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/itcUlMQJDKPVgPxLNDGk/webhook-trigger/d1ef27fc-6f13-47a1-8632-8af5962e0e3e';
+                    try {
+                        const response = await fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                fullName: fullName,
+                                email: email,
+                                initialCost: initialCost,
+                                consent: consent,
+                                proposalType: 'OBDK – Passport to Wildlife Academy'
+                            }),
+                        });
+                        if (response.ok) {
+                            alert('Agreement accepted successfully!');
+                            agreementModal.classList.add('hidden');
+                            agreementForm.reset();
+                        } else {
+                            alert('Failed to accept agreement. Please try again.');
+                        }
+                    } catch (err) {
+                        console.error(err);
+                        alert('An error occurred. Please try again later.');
+                    }
+                });
+            }
+        };
+    </script>
+</body>
+</html>

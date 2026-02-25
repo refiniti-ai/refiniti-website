@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earnings Statement – Gowtham Sivakumar</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11px;
+      line-height: 1.4;
+      color: #1a1a2e;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 24px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .paystub {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .paystub { box-shadow: none; border-radius: 0; max-width: none; }
+      .print-hide { display: none !important; }
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 32px;
+      padding: 28px 32px 24px;
+    }
+
+    @media (max-width: 700px) {
+      .main { grid-template-columns: 1fr; }
+    }
+
+    .main-left-top {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .codes table,
+    .main-left-top__status,
+    .payments,
+    .deduction,
+    .main-right__payment-period,
+    .other-info,
+    .footer-right-middle__account-payment,
+    .advice-info {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+
+    .codes__head th,
+    .payments-thead th,
+    .deduction-thead th,
+    .other-info__head-item {
+      background: #1a1a2e;
+      color: #fff;
+      font-weight: 600;
+      text-align: left;
+      padding: 8px 10px;
+      border: none;
+    }
+
+    .codes__head th { font-size: 9px; text-transform: uppercase; letter-spacing: .03em; }
+    .payments-thead__item--salary,
+    .payments-thead__item--empty { background: #2d2d44; }
+    .deduction-thead__item--empty { background: #2d2d44; }
+
+    .codes__body td,
+    .payments-tbody td,
+    .deduction-tbody td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #e8eaed;
+    }
+
+    .payments-tbody tr:nth-child(even):not(.payments-tbody tr:last-child),
+    .deduction-tbody tr:nth-child(even) {
+      background: #f8f9fb;
+    }
+
+    .payments-tbody__item--accent,
+    .deduction-tbody__item--active {
+      font-weight: 700;
+      color: #1a1a2e;
+      background: #e8f4fc !important;
+    }
+
+    .deduction-tbody__item--secondary {
+      color: #5f6368;
+      font-size: 9.5px;
+    }
+
+    .ta-right { text-align: right; }
+    .ta-left { text-align: left; }
+    .pe-0 { padding-inline-end: 0; }
+    .pe-1 { padding-inline-end: 4px; }
+    .ps-1 { padding-inline-start: 4px; }
+
+    .paystub-base-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px 20px;
+      font-size: 10.5px;
+    }
+
+    .paystub-base-metrics__item {
+      padding: 2px 0;
+      color: #3c4043;
+    }
+
+    .main-left-top__status th,
+    .main-right__payment-period th,
+    .other-info th,
+    .advice-info th {
+      font-weight: 600;
+      color: #5f6368;
+      padding: 4px 12px 4px 0;
+      width: 1%;
+      white-space: nowrap;
+    }
+
+    .main-left-top__status td,
+    .main-right__payment-period td,
+    .other-info td,
+    .advice-info td {
+      padding: 4px 0;
+    }
+
+    .main-right__title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 12px;
+      letter-spacing: .02em;
+    }
+
+    .main-right__head {
+      margin-bottom: 16px;
+    }
+
+    .main-right__employee .paystub-base-metrics__item:first-child {
+      font-weight: 600;
+      font-size: 12px;
+      color: #1a1a2e;
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+      padding: 20px 32px 24px;
+      background: #f8f9fb;
+      border-top: 2px solid #e8eaed;
+    }
+
+    @media (max-width: 600px) {
+      .footer { grid-template-columns: 1fr; }
+    }
+
+    .footer-left__logo img {
+      max-width: 120px;
+      height: auto;
+      display: block;
+    }
+
+    .footer-right-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+
+    .footer-right-middle__account-payment {
+      margin-bottom: 12px;
+    }
+
+    .footer-right-middle__account-payment th {
+      background: #1a1a2e;
+      color: #fff;
+      font-weight: 600;
+      padding: 8px 10px;
+      text-align: left;
+      font-size: 10px;
+    }
+
+    .footer-right-middle__account-payment td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #e8eaed;
+    }
+
+    .footer-right-bottom__non-negotiable {
+      font-size: 9px;
+      color: #5f6368;
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    .fw-normal { font-weight: 400; }
+
+    /* Watermark removed for clean print; optional overlay can be re-enabled */
+    .watermark-wrapper { display: none; }
+  </style>
+</head>
+<body>
+  <div class="paystub pst1 doc-preview-frame">
+    <main class="main">
+      <div class="main-left">
+        <div class="main-left-top">
+          <div class="codes">
+            <table>
+              <thead class="codes__head">
+                <tr>
+                  <th>CO.</th>
+                  <th>File</th>
+                  <th>Dept.</th>
+                  <th>Clock</th>
+                  <th>Vchr NO.</th>
+                  <th>062</th>
+                </tr>
+              </thead>
+              <tbody class="codes__body">
+                <tr>
+                  <td>a7z</td>
+                  <td>356943</td>
+                  <td>517994</td>
+                  <td>50101</td>
+                  <td>0000046562</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="paystub-base-metrics main-left-top__company-about">
+            <div class="paystub-base-metrics__item">Gothambuddha LLC</div>
+            <div class="paystub-base-metrics__item"></div>
+            <div class="paystub-base-metrics__item">4809425471</div>
+            <div class="paystub-base-metrics__item">1009 N 1st Street,</div>
+            <div class="paystub-base-metrics__item">Company street address 2</div>
+            <div class="paystub-base-metrics__item">Phoenix, AZ 85004</div>
+          </div>
+          <table class="main-left-top__status">
+            <tbody>
+              <tr><th>Social Security Number:</th><td>XXX-XX-6209</td></tr>
+              <tr><th>Taxable Marital Status:</th><td>MARRIED</td></tr>
+              <tr><th>Dependents amount:</th><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <table class="payments">
+          <thead class="payments-thead">
+            <tr>
+              <th class="ta-left">Earnings</th>
+              <th class="payments-thead__item payments-thead__item--salary">Rate</th>
+              <th class="payments-thead__item">Amount</th>
+              <th class="payments-thead__item--empty"></th>
+              <th class="payments-thead__item pe-0">Year To Date</th>
+            </tr>
+          </thead>
+          <tbody class="payments-tbody">
+            <tr>
+              <td class="ta-left">Salary</td>
+              <td class="pe-1">120,000.00</td>
+              <td>10,000.00</td>
+              <td></td>
+              <td>10,000.00</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="ta-left ps-1">Gross Pay</td>
+              <td><strong>$10,000.00</strong></td>
+              <td></td>
+              <td>10,000.00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="deduction">
+          <thead class="deduction-thead">
+            <tr>
+              <th class="deduction-thead__item">Deduction</th>
+              <th class="deduction-thead__item">Statutory</th>
+              <th class="deduction-thead__item"></th>
+              <th class="deduction-thead__item--empty"></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="deduction-tbody">
+            <tr>
+              <td></td>
+              <td>FICA-Medicare</td>
+              <td class="ta-right">- 145.00</td>
+              <td></td>
+              <td class="ta-right">145.00</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>FICA-Social Security</td>
+              <td class="ta-right">- 620.00</td>
+              <td></td>
+              <td class="ta-right">620.00</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Federal tax</td>
+              <td class="ta-right">- 860.24</td>
+              <td></td>
+              <td class="ta-right">860.24</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>State tax</td>
+              <td class="ta-right">- 147.50</td>
+              <td></td>
+              <td class="ta-right">147.50</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="deduction-tbody__item--active">Net Pay</td>
+              <td class="deduction-tbody__item--active ta-right">$8,227.26</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="deduction-tbody__item--secondary">Check</td>
+              <td class="deduction-tbody__item--secondary ta-right">- 8,227.26</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="deduction-tbody__item--active">Net Check</td>
+              <td class="deduction-tbody__item--active ta-right">$0.00</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="main-right">
+        <div class="main-right__head">
+          <div class="main-right__title">Earnings Statement</div>
+          <table class="main-right__payment-period">
+            <tbody>
+              <tr><th>Period Beginning:</th><td>01/01/2026</td></tr>
+              <tr><th>Period Ending:</th><td>01/31/2026</td></tr>
+              <tr><th>Pay Date:</th><td>01/31/2026</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="paystub-base-metrics main-right__employee">
+          <div class="paystub-base-metrics__item">Gowtham Sivakumar</div>
+          <div class="paystub-base-metrics__item"></div>
+          <div class="paystub-base-metrics__item">4808828398</div>
+          <div class="paystub-base-metrics__item">1700 E Baseline Rd</div>
+          <div class="paystub-base-metrics__item">68</div>
+          <div class="paystub-base-metrics__item">Phoenix, AZ 85042</div>
+        </div>
+        <table class="other-info">
+          <thead>
+            <tr>
+              <th class="other-info__head-item">Other Benefits and Information</th>
+              <th class="other-info__head-item">This Period</th>
+              <th class="other-info__head-item ta-right">Year To Date</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <div class="footer-left__logo">
+          <img src="data:image/webp;base64,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" alt="Employer Logo">
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-right-top">
+          <div class="footer-right-top__left">
+            <div class="paystub-base-metrics footer-right-top__about-company">
+              <div class="paystub-base-metrics__item">Gothambuddha LLC</div>
+              <div class="paystub-base-metrics__item"></div>
+              <div class="paystub-base-metrics__item">4809425471</div>
+              <div class="paystub-base-metrics__item">1009 N 1st Street,</div>
+              <div class="paystub-base-metrics__item">Company street address 2</div>
+              <div class="paystub-base-metrics__item">Phoenix, AZ 85004</div>
+            </div>
+          </div>
+          <div class="footer-right-top__right">
+            <table class="advice-info">
+              <tbody>
+                <tr><th>Advice Number:</th><td>0000046562</td></tr>
+                <tr><th class="fw-normal">Pay Date:</th><td>01/31/2026</td></tr>
+                <tr><th class="fw-normal">Social Security Number:</th><td>XXX-XX-6209</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="footer-right-middle">
+          <table class="footer-right-middle__account-payment">
+            <thead>
+              <tr>
+                <th>Deposited to the account of</th>
+                <th>Account Number</th>
+                <th>Transit</th>
+                <th>ABA</th>
+                <th class="ta-right">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Gowtham Sivakumar</td>
+                <td>xxxxxxx0873</td>
+                <td>xxxx</td>
+                <td>xxxx</td>
+                <td class="ta-right">$8,227.26</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="footer-right-bottom">
+          <div class="footer-right-bottom__non-negotiable">Non-negotiable</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <p class="print-hide" style="text-align:center; margin-top:16px; font-size:12px; color:#5f6368;">
+    To save as PDF: <kbd>Ctrl+P</kbd> (or <kbd>Cmd+P</kbd> on Mac) → choose <strong>Save as PDF</strong> → Save.
+  </p>
+</body>
+</html>

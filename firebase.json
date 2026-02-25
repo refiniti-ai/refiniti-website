@@ -7,7 +7,61 @@
       "**/node_modules/**"
     ],
     "cleanUrls": true,
+    "redirects": [
+      {
+        "source": "/canyon-lake-proposal",
+        "destination": "/proposals/canyon-lake-proposal.html",
+        "type": 301
+      },
+      {
+        "source": "/ecotech-proposal",
+        "destination": "/proposals/ecotech-proposal.html",
+        "type": 301
+      },
+      {
+        "source": "/handyman-can-help-proposal",
+        "destination": "/proposals/handyman-can-help-proposal.html",
+        "type": 301
+      },
+      {
+        "source": "/ll-cleaning-airbnb-proposal",
+        "destination": "/proposals/ll-cleaning-airbnb-proposal.html",
+        "type": 301
+      },
+      {
+        "source": "/ll-cleaning-home-proposal",
+        "destination": "/proposals/ll-cleaning-home-proposal.html",
+        "type": 301
+      },
+      {
+        "source": "/nc-fitness-proposal",
+        "destination": "/proposals/nc-fitness-proposal.html",
+        "type": 301
+      },
+      {
+        "source": "/windowhq-proposal",
+        "destination": "/proposals/windowhq-proposal.html",
+        "type": 301
+      },
+      {
+        "source": "/proposal",
+        "destination": "/proposals/proposal.html",
+        "type": 301
+      }
+    ],
     "rewrites": [
+      {
+        "source": "/api/ghl-opportunity",
+        "function": "handleGHLOpportunity"
+      },
+      {
+        "source": "/api/create-payment-intent",
+        "function": "createPaymentIntent"
+      },
+      {
+        "source": "/api/save-invoice",
+        "function": "saveInvoicePDF"
+      },
       {
         "source": "/case-study",
         "destination": "/case-study.html"
@@ -29,9 +83,17 @@
         "destination": "/nisus-report.html"
       },
       {
+        "source": "/proposals/:proposal",
+        "destination": "/proposals/:proposal.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
     ]
+  },
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs22"
   }
 }

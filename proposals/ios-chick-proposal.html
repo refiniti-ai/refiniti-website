@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefinitiAI | THE IOS Chick Proposal</title>
+    <script type="module" src="../legal-modal.js"></script>
+    <link rel="stylesheet" href="../dist/style.css">
+    <link rel="stylesheet" href="../proposal.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="overflow-x-hidden text-white">
+
+    <div class="background-container" id="background-container"></div>
+
+    <div id="password-modal">
+        <div class="password-box">
+            <h2 class="text-2xl font-bold mb-4">Access Proposal</h2>
+            <p class="mb-6">Please enter the password to view this document.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" class="w-full rounded-lg p-3 text-center" placeholder="Password">
+                <p id="password-error">Incorrect password. Please try again.</p>
+                <button type="submit" class="w-full bg-cyan-accent text-black font-bold py-3 rounded-lg mt-4 hover:bg-cyan-accent/80 transition-colors">View</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <main class="py-24 md:py-32">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="content-container">
+                    <div class="text-center mb-12">
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight md:leading-[1.1] mb-6 text-white">
+                            <span class="text-glow-anim">THE IOS Chick</span> Data Pipeline &amp; Property CRM
+                        </h1>
+                        <div class="text-left max-w-2xl mx-auto mt-8 space-y-1 text-white/90 text-sm md:text-base">
+                            <p><strong>To:</strong> Michelle Pauley, MBA — Founder of IOS Chicks, Brokered By eXp Commercial</p>
+                            <p><strong>From:</strong> Dustin | Refiniti.ai &amp; Geopoint Data</p>
+                            <p><strong>Date:</strong> October 24, 2023</p>
+                            <p><strong>Subject:</strong> Streamlined Data Enrichment and Custom Property CRM Buildout</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-12">
+
+                        <!-- 1. Executive Summary -->
+                        <div>
+                            <h2 class="text-2xl font-bold text-white mb-4">1. Executive Summary</h2>
+                            <p class="leading-relaxed mb-4">
+                                Refiniti.ai and Geopoint Data are pleased to submit this proposal for THE IOS Chick’s data and application buildout. Our objective is to keep "Version One" simple and high-impact: creating a seamless path from your spreadsheet data through specialized enrichment (lot coverage, zoning, and dimensions) into a dedicated app.
+                            </p>
+                            <p class="leading-relaxed">
+                                This system will allow your team to view properties, filter by specific lot requirements, track notes/visits, and—optionally—place calls without switching platforms. Additionally, by leveraging the app system, as properties sell and ownership records change, we can automatically purge from the system. The architecture is designed for CRM portability, ensuring a straightforward transition from HubSpot to eXp Commercial’s future CRM when you are ready.
+                            </p>
+                        </div>
+
+                        <!-- 2. The Refiniti Approach -->
+                        <div>
+                            <h2 class="text-2xl font-bold text-white mb-4">2. The Refiniti Approach: "Analysis First"</h2>
+                            <p class="mb-6">We have structured this workflow to ensure we aren't putting the "cart before the horse." Per our strategy discussions, lot coverage analysis defines the dataset before any secondary filtering or contact enrichment occurs.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Workflow Phase I: Data &amp; Enrichment</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="file-spreadsheet" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Source of Truth:</strong> We will utilize your existing spreadsheets as the primary data source; we will not rely on CoStar API per access restrictions.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="map" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>API Enrichment:</strong> Integration of Google Maps API and County Assessor APIs to enrich records with satellite data, zoning, and precise lot dimensions.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="percent" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>The "Universe" Definition:</strong> Lot coverage analysis (e.g., lot coverage %) is run first to define the qualifying "universe" of properties.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Workflow Phase II: Filtering &amp; Contact Append</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="filter" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Buyer-Centric Filtering:</strong> We apply your specific criteria (e.g., lot size &lt; 2 acres) to focus on high-intent needs like contractors and 3PL/construction supply.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="building" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Ownership Research:</strong> Utilization of Geopoint Data Open Corporates (or equivalent) for LLC members/addresses and professional skip tracing for owner contact details.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="users" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Hybrid Deliverable:</strong> A clean output of property essentials (Address, APN, Lat/Long) merged with owner names, phones, and emails.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Scope of Deliverables -->
+                        <div>
+                            <h2 class="text-2xl font-bold text-white mb-4">3. Scope of Deliverables (Version One)</h2>
+                            <p class="mb-6">Version one is focused on the "path of least resistance" for your staff.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">A. Phase 1: Data Pipeline &amp; APIs</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="code" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Enrichment Pipeline:</strong> Automated pulls for lot info, zoning, and dimensions.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="database" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Data Organization:</strong> Extraction of spreadsheet columns based on your prioritized "Kitchen Sink" headers.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="target" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Target Volume:</strong> A working target of 250–500 properties per MSA to ensure data quality and focus, considered our testing phase.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">B. Phase 2: Spreadsheet Deliverables</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="code" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Enrichment Pipeline:</strong> Automated pulls for lot info, zoning, and dimensions.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="database" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Data Organization:</strong> Extraction of spreadsheet columns based on your prioritized "Kitchen Sink" headers.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="target" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Target Volume:</strong> A working target of 20K properties for the first MSA to ensure data quality and focus, considered our testing phase.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">C. Phase 3: Property CRM App</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="layout-grid" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Functional Tools:</strong> Property list view, interactive map, and custom filters (primarily lot size). Quarterly updates for updated information on owners, sale transfers and debt servicing.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="sticky-note" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>CRM Capabilities:</strong> Internal tracking for notes, site visits, and status updates. Set &amp; forget marketing workflow triggers based upon post call feedback.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="phone" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Optional Integration:</strong> Built-in dialer functionality to streamline outreach.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Action Items & Next Steps -->
+                        <div>
+                            <h2 class="text-2xl font-bold text-white mb-4">4. Action Items &amp; Next Steps</h2>
+                            <p class="mb-6">To finalize the firm quote and project timeline, we require the following inputs:</p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Step</th>
+                                            <th>Owner</th>
+                                            <th>Action Required</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-label="Step">1. Data Feedback</td>
+                                            <td data-label="Owner">Michelle / IOS Chick</td>
+                                            <td data-label="Action Required">Confirm prioritized headers from the bolded "Kitchen Sink"; clarify critical fields for the hybrid deliverable.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Step">2. UX / Workflow</td>
+                                            <td data-label="Owner">Michelle / IOS Chick</td>
+                                            <td data-label="Action Required">Share a short recording or description of the desired user experience to ensure we build for your staff's workflow.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Step">3. API Planning</td>
+                                            <td data-label="Owner">Refiniti / Geopoint</td>
+                                            <td data-label="Action Required">Finalize the most cost-effective APIs for assessor data and organize the extraction pipeline.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Step">4. Final Quote</td>
+                                            <td data-label="Owner">Dustin / Refiniti</td>
+                                            <td data-label="Action Required">Provide a formal investment breakdown and timeline based on the confirmed scope above.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- 5. Investment Summary -->
+                        <div>
+                            <h2 class="text-2xl font-bold text-white mb-4">5. Investment Summary</h2>
+                            <p class="leading-relaxed">
+                                A detailed investment breakdown—covering the data pipeline, enrichment APIs, app build, and optional dialer—will be provided immediately following the completion of the API review and your confirmation of UX direction. This ensures the quote reflects the actual scope and avoids over-engineering the initial launch.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-16">
+                <a href="../schedule-meeting.html" class="inline-block bg-cyan-accent text-black font-bold py-4 px-8 rounded-lg text-lg hover:bg-cyan-accent/80 transition-colors shadow-[0_0_25px_rgba(0,207,255,0.6)]">
+                    Schedule a Call to Finalize
+                </a>
+            </div>
+        </main>
+
+        <script type="module" src="../footer.js"></script>
+        <refiniti-footer hide-product></refiniti-footer>
+    </div>
+
+    <script src="../password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqTriggers = document.querySelectorAll('.faq-trigger');
+            faqTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const faqItem = trigger.closest('.faq-item');
+                    faqItem.classList.toggle('open');
+                });
+            });
+
+            const container = document.getElementById('background-container');
+            if (container) {
+                const icons = ['cpu', 'database', 'map-pin', 'layers', 'file-spreadsheet', 'building-2'];
+                const numIcons = 12;
+                for (let i = 0; i < numIcons; i++) {
+                    const iconWrapper = document.createElement('div');
+                    iconWrapper.classList.add('floating-icon');
+                    const iconEl = document.createElement('i');
+                    iconEl.setAttribute('data-lucide', icons[Math.floor(Math.random() * icons.length)]);
+                    iconWrapper.appendChild(iconEl);
+                    const size = Math.random() * 30 + 15;
+                    iconWrapper.style.width = `${size}px`;
+                    iconWrapper.style.height = `${size}px`;
+                    iconWrapper.style.top = `${Math.random() * 100}vh`;
+                    iconWrapper.style.left = `${Math.random() * 100}vw`;
+                    iconWrapper.style.animationDuration = `${Math.random() * 25 + 20}s`;
+                    iconWrapper.style.animationDelay = `${Math.random() * -45}s`;
+                    container.appendChild(iconWrapper);
+                }
+            }
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

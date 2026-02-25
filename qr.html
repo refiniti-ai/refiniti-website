@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect with Refiniti AI | QR Code</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Scan the Refiniti AI QR code to connect instantly and explore our AI-driven growth ecosystem.">
+    <meta name="keywords" content="Refiniti AI QR code, AI growth system, connect with RefinitiAI">
+    <meta name="author" content="RefinitiAI">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://refiniti.ai/qr.html">
+    <meta property="og:title" content="Connect with Refiniti AI | QR Code">
+    <meta property="og:description" content="Scan the Refiniti AI QR code to connect instantly and explore our AI-driven growth ecosystem.">
+    <meta property="og:image" content="https://refiniti.ai/Images/Refiniti%20QR%20code%20(1).png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://refiniti.ai/qr.html">
+    <meta property="twitter:title" content="Connect with Refiniti AI | QR Code">
+    <meta property="twitter:description" content="Scan the Refiniti AI QR code to connect instantly and explore our AI-driven growth ecosystem.">
+    <meta property="twitter:image" content="https://refiniti.ai/Images/Refiniti%20QR%20code%20(1).png">
+
+    <link rel="icon" href="Images/Refiniti Favicon.png" type="image/png">
+    <link rel="stylesheet" href="dist/style.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            background-color: #08080A; 
+            color: #fff; 
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        h1 { font-family: 'Space Grotesk', sans-serif; }
+        
+        .qr-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 2.5rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        .qr-image {
+            width: 100%;
+            height: auto;
+            border-radius: 1.5rem;
+            margin-bottom: 2rem;
+            border: 8px solid white;
+            box-shadow: 0 0 40px rgba(0, 207, 255, 0.2);
+        }
+
+        .bg-grid {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), 
+                              linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 207, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 99px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .btn-home:hover {
+            background: #00CFFF;
+            color: #000;
+            border-color: #00CFFF;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="glow" style="top: -10%; left: -10%;"></div>
+    <div class="glow" style="bottom: -10%; right: -10%;"></div>
+
+    <div class="qr-container">
+        <img src="Images/Refiniti-AI-Vertical-Logo (1).png" alt="Refiniti AI" class="h-12 mx-auto mb-8">
+        
+        <div class="relative group">
+            <div class="absolute -inset-2 bg-[#00CFFF] opacity-20 blur-xl group-hover:opacity-40 transition-opacity rounded-3xl"></div>
+            <img src="Images/Refiniti QR code (1).png" alt="Scan QR Code" class="qr-image relative">
+        </div>
+
+        <h1 class="text-2xl font-bold mb-3 tracking-tight">Scan to Connect</h1>
+        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+            Point your camera at the screen to instantly access our growth ecosystem.
+        </p>
+
+        <a href="index.html" class="btn-home">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            Visit Website
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefinitiAI | Airbnb Cleaning Expansion Proposal for L&L Cleaning</title>
+    <script type="module" src="../legal-modal.js"></script> 
+    <link rel="stylesheet" href="../dist/style.css">
+    <link rel="stylesheet" href="../proposal.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .section-padding {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .choose-plan-btn {
+            min-width: 100px;
+        }
+        @media (max-width: 767px) {
+            .section-padding {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+        }
+        .faq-item {
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .faq-content {
+            padding: 0 1rem 1rem 1rem;
+        }
+        .disclaimer-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden text-white">
+
+    <div class="background-container" id="background-container"></div>
+
+    <div id="password-modal">
+        <div class="password-box">
+            <h2 class="text-2xl font-bold mb-4">Access Proposal</h2>
+            <p class="mb-6">Please enter the password to view this document.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" class="w-full rounded-lg p-3 text-center mb-4" placeholder="Password">
+                <p id="password-error" class="mb-4">Incorrect password. Please try again.</p>
+                <button type="submit" class="w-full bg-cyan-accent text-black font-bold py-3 rounded-lg hover:bg-cyan-accent/80 transition-colors">View</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <main class="py-24 md:py-32">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="content-container">
+                    <div class="text-center mb-16">
+                        <p class="text-cyan-accent font-mono mb-4">PREPARED FOR: MARIO FRANCOIS • 01/28/2026</p>
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight md:leading-[1.1] mb-6 text-white">
+                            Airbnb Cleaning <br><span class="text-glow-anim">Expansion Strategy</span>
+                        </h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                            A performance-based partnership to dominate the South Florida Airbnb cleaning market through operational excellence and automated sales.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-12">
+                        <div class="md:pr-8">
+                            <h3 class="text-2xl font-bold text-white mb-4">The Partnership Model</h3>
+                            <p class="leading-relaxed mb-6">
+                                We are proposing a high-margin pivot for L&L Cleaning. Instead of chasing one-off residential leads, we will build a dedicated <strong>Airbnb Cleaning Division</strong>.
+                            </p>
+                            <p class="mb-6">
+                                <strong>Performance-Based Growth:</strong> Refiniti provides all sales and marketing for the Airbnb line at <strong>zero upfront cost</strong>. We earn only when you earn, by taking a margin on top of your quoted cleaning rates. 
+                                <br><br>
+                                <em>Note: While marketing is performance-based, there is a one-time investment for the operational and financial infrastructure development required to launch this new line of business.</em>
+                            </p>
+                            <div class="flex items-center gap-4 text-green-accent font-bold">
+                                <i data-lucide="trending-up" class="w-6 h-6"></i>
+                                <span>Zero-risk marketing. We only win if we bring you bookings.</span>
+                            </div>
+                        </div>
+                        <div class="bg-black/20 rounded-3xl border border-white/10 p-8 relative overflow-hidden group hover:border-cyan-accent/20 transition-colors">
+                            <h4 class="text-xl font-bold mb-4 flex items-center gap-2"><i data-lucide="zap" class="text-yellow-500"></i> Why Airbnb?</h4>
+                            <ul class="space-y-4 text-sm opacity-90">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-accent mt-0.5"></i>
+                                    <span><strong>Higher Margins:</strong> Specialized "turnover" cleans command premium pricing.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-accent mt-0.5"></i>
+                                    <span><strong>Predictable Schedule:</strong> Most cleans occur in the 11 AM – 3 PM window.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-accent mt-0.5"></i>
+                                    <span><strong>Recurring Revenue:</strong> One property owner can provide 5-10 cleans per month.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-16 py-8">
+                        <!-- Strategic Objectives -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Operational & Technical Setup</h3>
+                            <p class="mb-8 opacity-80">To ensure L&L Cleaning delivers a 5-star experience every time, we will implement a complete operational "business-in-a-box" for your Airbnb line.</p>
+                            <div class="grid grid-cols-1 gap-6">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Standardized Operations ($1,000)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-2 pt-2 pl-2 text-sm">
+                                            <li>• <strong>Custom Checklists:</strong> Photo-verified tasks for every room.</li>
+                                            <li>• <strong>Staff Training:</strong> Specialized training for Airbnb turnover speed and quality.</li>
+                                            <li>• <strong>Inspector Protocol:</strong> Training for senior staff to audit and guarantee quality.</li>
+                                            <li>• <strong>Damage/Stock Reporting:</strong> Automated alerts for low supplies or guest damage.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Financial Infrastructure ($500)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-2 pt-2 pl-2 text-sm">
+                                            <li>• <strong>Stripe Integration:</strong> Automated intake of cleaning fees from clients.</li>
+                                            <li>• <strong>Automated Payroll:</strong> System to pay out cleaners on a "per-clean" basis.</li>
+                                            <li>• <strong>Margin Tracking:</strong> Real-time visibility into the profitability of every job.</li>
+                                            <li>• <strong>Upfront Payments:</strong> Eliminating the "chasing checks" headache.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Sales & Web Presence (Included)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-2 pt-2 pl-2 text-sm">
+                                            <li>• <strong>Dedicated Landing Page:</strong> A high-conversion site for the Airbnb line.</li>
+                                            <li>• <strong>Organic Sales Flow:</strong> SEO-optimized booking path for Florida hosts.</li>
+                                            <li>• <strong>Lead Capture:</strong> Automated follow-ups for property management inquiries.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Consulting & Strategy ($250/hr)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-2 pt-2 pl-2 text-sm">
+                                            <li>• <strong>Market Analysis:</strong> Deep dives into specific Florida zip codes.</li>
+                                            <li>• <strong>Scaling Strategy:</strong> How to move from 10 doors to 100 doors.</li>
+                                            <li>• <strong>Custom Integrations:</strong> Advanced API connections to property management software.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Investment Table -->
+                        <div class="section-padding" id="investment-summary">
+                            <h3 class="text-2xl font-bold text-white mb-6">Investment Summary</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Service Item</th>
+                                            <th>Description</th>
+                                            <th>Investment</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="investment-row border-2 border-cyan-accent/50 bg-cyan-accent/5">
+                                            <td data-label="Service Item">
+                                                <span class="font-bold">Operational Setup</span>
+                                            </td>
+                                            <td data-label="Description" class="text-sm opacity-80">Training, Checklists, Inspector Protocols</td>
+                                            <td data-label="Investment" class="text-green-accent font-bold">$1,000</td>
+                                            <td data-label="Action">
+                                                <button class="choose-plan-btn bg-green-accent text-black font-bold py-2 px-3 rounded text-xs hover:bg-green-accent/80 transition-colors whitespace-nowrap" data-price="1000" data-plan="Operational Setup">Selected</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="investment-row border-2 border-cyan-accent/50 bg-cyan-accent/5">
+                                            <td data-label="Service Item">
+                                                <span class="font-bold">Financial Infrastructure</span>
+                                            </td>
+                                            <td data-label="Description" class="text-sm opacity-80">Stripe Setup, Payroll Automation, Margin Tracking</td>
+                                            <td data-label="Investment" class="text-green-accent font-bold">$500</td>
+                                            <td data-label="Action">
+                                                <button class="choose-plan-btn bg-green-accent text-black font-bold py-2 px-3 rounded text-xs hover:bg-green-accent/80 transition-colors whitespace-nowrap" data-price="500" data-plan="Financial Infrastructure">Selected</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="investment-row border-2 border-cyan-accent/50 bg-cyan-accent/5">
+                                            <td data-label="Service Item">
+                                                <span class="font-bold">Sales & Marketing</span>
+                                            </td>
+                                            <td data-label="Description" class="text-sm opacity-80">Landing Page, Organic Flow, Lead Gen</td>
+                                            <td data-label="Investment" class="text-green-accent font-bold">FREE</td>
+                                            <td data-label="Action">
+                                                <button class="bg-white/10 text-white/50 font-bold py-2 px-3 rounded text-xs cursor-default whitespace-nowrap">Included</button>
+                                            </td>
+                                        </tr>
+                                        <tr class="font-bold bg-white/5">
+                                            <td data-label="Service Item">Total Initial Investment</td>
+                                            <td class="text-right pr-8 opacity-50 italic text-sm">One-time setup fee</td>
+                                            <td data-label="Investment" class="text-cyan-accent text-xl" id="selected-initial-total">$1,500</td>
+                                            <td data-label="Action">
+                                                <button id="summary-accept-btn" class="bg-green-accent text-black font-bold py-2 px-4 rounded text-xs hover:bg-green-accent/80 transition-colors whitespace-nowrap">Accept Agreement</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="disclaimer-box">
+                                <p><strong>Performance Note:</strong> Refiniti's ongoing compensation is built into the margins of the Airbnb cleaning quotes. L&L Cleaning provides the "base quote" for the clean, and Refiniti adds a margin on top for the client. This ensures zero out-of-pocket marketing costs for L&L Cleaning.</p>
+                                <p class="mt-4 text-[10px] opacity-50 uppercase tracking-widest">Confidential: Intended solely for L&L Cleaning Services and its affiliates.</p>
+                            </div>
+                        </div>
+
+                        <!-- Roadmap -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Launch Roadmap</h3>
+                            <div class="mt-8 space-y-4">
+                                <div class="flex gap-6 items-start">
+                                    <div class="w-24 text-cyan-accent font-bold pt-1">Week 1</div>
+                                    <div class="flex-1 bg-white/5 p-4 rounded-xl border border-white/10">
+                                        <h4 class="font-bold mb-1">Infrastructure Setup</h4>
+                                        <p class="text-sm opacity-70">Stripe integration, payroll automation, and margin tracking dashboard setup.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-6 items-start">
+                                    <div class="w-24 text-cyan-accent font-bold pt-1">Week 2</div>
+                                    <div class="flex-1 bg-white/5 p-4 rounded-xl border border-white/10">
+                                        <h4 class="font-bold mb-1">Operational Training</h4>
+                                        <p class="text-sm opacity-70">Checklist creation, staff training sessions, and inspector protocol implementation.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-6 items-start">
+                                    <div class="w-24 text-cyan-accent font-bold pt-1">Week 3</div>
+                                    <div class="flex-1 bg-white/5 p-4 rounded-xl border border-white/10">
+                                        <h4 class="font-bold mb-1">Sales Launch</h4>
+                                        <p class="text-sm opacity-70">Landing page live, organic sales flow activated, and initial outreach to Florida hosts.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Accept Agreement Button -->
+                    <div class="text-center mt-12 pt-12 border-t border-white/5">
+                        <button id="final-accept-btn" class="bg-cyan-accent text-black font-bold py-4 px-8 rounded-lg text-lg hover:bg-cyan-accent/80 transition-colors shadow-[0_0_25px_rgba(0,207,255,0.6)] inline-block mx-8">
+                            Accept Agreement
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Agreement Modal -->
+    <div id="agreement-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h2 class="text-2xl font-bold mb-6 text-center">Accept Contract Agreement</h2>
+            <form id="agreement-form" class="space-y-4">
+                <div>
+                    <label for="full-name" class="block text-white text-sm font-semibold mb-2">Full Name</label>
+                    <input type="text" id="full-name" name="fullName" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <input type="hidden" id="initial-cost" name="initialCost" value="1500">
+                <input type="hidden" id="selected-plan" name="selectedPlan" value="Airbnb Expansion Package">
+                <div class="flex items-start">
+                    <input type="checkbox" id="consent" name="consent" class="mt-1 mr-2 accent-cyan-accent" required>
+                    <label for="consent" class="text-sm text-white/80">I initialize and agree to the contract.</label>
+                </div>
+                <button type="submit" class="w-full bg-green-accent text-black font-bold py-3 rounded-lg mt-6 hover:bg-green-accent/80 transition-colors">Accept</button>
+            </form>        
+        </div>
+    </div>
+
+    <script type="module" src="../footer.js"></script>
+    <refiniti-footer hide-product></refiniti-footer>
+
+    <script src="../password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // FAQ Toggles
+            const faqTriggers = document.querySelectorAll('.faq-trigger');
+            faqTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const faqItem = trigger.closest('.faq-item');
+                    faqItem.classList.toggle('open');
+                });
+            });
+    
+            // Agreement Modal Logic
+            const agreementModal = document.getElementById('agreement-modal');
+            const summaryAcceptBtn = document.getElementById('summary-accept-btn');
+            const finalAcceptBtn = document.getElementById('final-accept-btn');
+            const modalCloseBtn = document.querySelector('.modal-close-btn');
+
+            const handleAcceptClick = () => {
+                if (agreementModal) agreementModal.classList.remove('hidden');
+            };
+
+            if (summaryAcceptBtn) summaryAcceptBtn.addEventListener('click', handleAcceptClick);
+            if (finalAcceptBtn) finalAcceptBtn.addEventListener('click', handleAcceptClick);
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', () => agreementModal.classList.add('hidden'));
+
+            if (agreementModal) {
+                agreementModal.addEventListener('click', (e) => {
+                    if (e.target === agreementModal) agreementModal.classList.add('hidden');
+                });
+            }
+
+            const agreementForm = document.getElementById('agreement-form');
+            if (agreementForm) {
+                agreementForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const fullName = document.getElementById('full-name').value;
+                    const email = document.getElementById('email').value;
+                    const consent = document.getElementById('consent').checked;
+                    const initialCost = document.getElementById('initial-cost').value;
+                    const selectedPlan = document.getElementById('selected-plan').value;
+    
+                    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/itcUlMQJDKPVgPxLNDGk/webhook-trigger/d1ef27fc-6f13-47a1-8632-8af5962e0e3e';
+    
+                    try {
+                        const response = await fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                fullName, email, initialCost, selectedPlan, consent,
+                                proposalType: 'L&L Cleaning Airbnb Expansion'
+                            }),
+                        });
+                        if (response.ok) {
+                            alert('Agreement accepted successfully!');
+                            agreementModal.classList.add('hidden');
+                            agreementForm.reset();
+                        } else {
+                            alert('Failed to accept agreement.');
+                        }
+                    } catch (error) {
+                        alert('An error occurred.');
+                    }
+                });
+            }
+    
+            // Floating Icons
+            const container = document.getElementById('background-container');
+            if (container) {
+                const icons = ['home', 'calendar', 'shield-check', 'credit-card', 'users', 'bar-chart-2'];
+                const numIcons = 15;
+                for (let i = 0; i < numIcons; i++) {
+                    const iconWrapper = document.createElement('div');
+                    iconWrapper.classList.add('floating-icon');
+                    const iconEl = document.createElement('i');
+                    const iconName = icons[Math.floor(Math.random() * icons.length)];
+                    iconEl.setAttribute('data-lucide', iconName);
+                    iconWrapper.appendChild(iconEl);
+                    const size = Math.random() * 30 + 15; 
+                    iconWrapper.style.width = `${size}px`;
+                    iconWrapper.style.height = `${size}px`;
+                    iconWrapper.style.top = `${Math.random() * 100}vh`;
+                    iconWrapper.style.left = `${Math.random() * 100}vw`;
+                    iconWrapper.style.animationDuration = `${Math.random() * 25 + 20}s`; 
+                    iconWrapper.style.animationDelay = `${Math.random() * -45}s`; 
+                    container.appendChild(iconWrapper);
+                }
+            }
+            lucide.createIcons();
+        });
+    </script>    
+</body>
+</html>

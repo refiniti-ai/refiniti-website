@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefinitiAI | Proposal for Handyman Can Help</title>
+    <script type="module" src="../legal-modal.js"></script> 
+    <link rel="stylesheet" href="../dist/style.css">
+    <link rel="stylesheet" href="../proposal.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .section-padding {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .meta-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 1.25rem;
+        }
+        .faq-item {
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .faq-content {
+            padding: 0 1rem 1rem 1rem;
+        }
+        .breakdown-content {
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+        }
+        .disclaimer-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+        @media (max-width: 767px) {
+            .section-padding {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden text-white">
+
+    <div class="background-container" id="background-container"></div>
+
+    <div id="password-modal">
+        <div class="password-box">
+            <h2 class="text-2xl font-bold mb-4">Access Proposal</h2>
+            <p class="mb-6">Please enter the password to view this document.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" class="w-full rounded-lg p-3 text-center mb-4" placeholder="Password">
+                <p id="password-error" class="mb-4">Incorrect password. Please try again.</p>
+                <button type="submit" class="w-full bg-cyan-accent text-black font-bold py-3 rounded-lg hover:bg-cyan-accent/80 transition-colors">View</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <main class="py-24 md:py-32">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="content-container">
+                    <div class="text-center mb-16">
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight md:leading-[1.1] mb-6 text-white">
+                            Proposal for <span class="text-glow-anim">Handyman Can Help</span>
+                        </h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                            A conversion-first website + automation blueprint to increase average ticket size, reduce phone calls, and bring
+                            higher-value jobs directly into your calendar.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                        <div class="meta-card">
+                            <div class="text-sm text-white/60">Prepared For</div>
+                            <div class="text-lg font-semibold">Handyman Can Help</div>
+                            <div class="text-sm text-white/60 mt-1">Tampa Bay, FL</div>
+                        </div>
+                        <div class="meta-card">
+                            <div class="text-sm text-white/60">Prepared By</div>
+                            <div class="text-lg font-semibold">Refiniti AI Marketing</div>
+                            <div class="text-sm text-white/60 mt-1">Growth + Automation Team</div>
+                        </div>
+                        <div class="meta-card">
+                            <div class="text-sm text-white/60">Date</div>
+                            <div class="text-lg font-semibold">Jan 26, 2026</div>
+                            <div class="text-sm text-white/60 mt-1">Version 1.0</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-12">
+                        <div class="md:pr-8">
+                            <h3 class="text-2xl font-bold text-white mb-4">Strategy: High-Ticket Lead Control</h3>
+                            <p class="leading-relaxed mb-6">
+                                Don, our focus is to make the business run hands-off by pushing qualified leads into a streamlined intake flow,
+                                while keeping your SEO and five-star reputation intact. We’re optimizing for high-ticket work (door/window installs,
+                                painting, and premium repairs) with a conversion-first website and automation backbone.
+                            </p>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-green-accent font-semibold">
+                                    <i data-lucide="target" class="w-5 h-5"></i>
+                                    <span>Target ticket size: $1,200–$5,000</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-cyan-accent font-semibold">
+                                    <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                                    <span>Self-scheduling and pre-qualification built in</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-white/80 font-semibold">
+                                    <i data-lucide="shield-check" class="w-5 h-5 text-cyan-accent"></i>
+                                    <span>Preserve current SEO equity + review authority</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ref-engine-visual h-[250px] md:h-auto bg-black/20 rounded-3xl border border-white/10 p-4 relative overflow-hidden flex items-center justify-center group hover:border-cyan-accent/20 transition-colors py-4">
+                            <div class="absolute inset-0 bg-gradient-to-r from-black via-cyan-accent/5 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            <div class="flex flex-row items-center gap-2 relative z-10 w-full justify-center scale-75 md:scale-90">
+                                <div class="flex flex-col gap-2 items-center opacity-60">
+                                    <div class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="users" class="text-white w-5 h-5"></i></div>
+                                    <div class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center"><i data-lucide="filter" class="text-white w-5 h-5"></i></div>
+                                </div>
+                                <div><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="engine-box p-3">
+                                    <i data-lucide="brain-circuit" class="engine-brain w-6 h-6"></i>
+                                    <span class="engine-text text-sm">Refiniti Engine</span>
+                                </div>
+                                <div><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="roi-counter-box">
+                                    <div class="w-12 h-12 rounded-full bg-cyan-accent flex items-center justify-center shadow-[0_0_15px_rgba(0,207,255,0.4)] mb-2 transition-transform hover:scale-110">
+                                        <i data-lucide="dollar-sign" class="text-black font-bold w-6 h-6"></i>
+                                    </div>
+                                    <div class="roi-label">Qualified Jobs</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-16 py-8">
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Current Snapshot (Website Highlights)</h3>
+                            <p class="mb-6">Key strengths to preserve while rebuilding the experience.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="meta-card">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="star" class="w-5 h-5 text-cyan-accent"></i>
+                                        <span class="font-semibold">400+ five-star reviews and a strong local reputation.</span>
+                                    </div>
+                                </div>
+                                <div class="meta-card">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="badge-check" class="w-5 h-5 text-cyan-accent"></i>
+                                        <span class="font-semibold">Licensed experts with wide service coverage in Tampa Bay.</span>
+                                    </div>
+                                </div>
+                                <div class="meta-card">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="layers" class="w-5 h-5 text-cyan-accent"></i>
+                                        <span class="font-semibold">Broad service catalog: carpentry, repairs, landscaping, drywall.</span>
+                                    </div>
+                                </div>
+                                <div class="meta-card">
+                                    <div class="flex items-center gap-3">
+                                        <i data-lucide="paint-roller" class="w-5 h-5 text-cyan-accent"></i>
+                                        <span class="font-semibold">High-value services: flooring, painting, pressure washing, moving.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Primary Goals & Outcomes</h3>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Increase Ticket Size & Job Quality</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="trending-up" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Shift inbound flow to premium projects (door/window installs, painting, remodeling).</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="filter" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Pre-qualify clients to reduce low-ticket and non-fit requests.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Automate Intake & Scheduling</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="message-circle" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>AI chatbot captures details without phone calls.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="calendar" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Service calendar integration for direct booking.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Preserve SEO & Improve Conversion</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="search" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Maintain existing rankings while improving page structure.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="mouse-pointer-click" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Conversion-first layouts and dedicated service pages.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Recommended Build (Phased)</h3>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Phase 1 — Website Redesign & Rebranding</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="layout" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Updated UI, mobile-first experience, and refined service positioning.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="file-text" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>High-ticket service landing pages with strong CTAs.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>SEO-safe migration to preserve existing rankings.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Phase 2 — CRM Automation & Calendar Integration</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="workflow" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Automated lead capture, tagging, and follow-up sequences.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="calendar-clock" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Calendar sync for direct scheduling and technician routing.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Phase 3 — AI Chatbot + VSL Funnel (Optional)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="bot" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Small language model chatbot trained on your services and FAQs.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="video" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>VSL funnel to qualify high-ticket leads and reduce sales time.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-6">A La Carte Services</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Service</th>
+                                            <th>Includes</th>
+                                            <th>Pricing</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Website redesign & rebranding</td>
+                                            <td>UX/UI refresh, SEO-safe migration, service pages, conversion copy.</td>
+                                            <td class="text-green-accent">$2,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>AI chatbot</td>
+                                            <td>Company-trained bot for intake, FAQs, and lead qualification.</td>
+                                            <td class="text-green-accent">$500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CRM automation</td>
+                                            <td>Pipeline setup, lead routing, follow-up sequences.</td>
+                                            <td class="text-green-accent">$1,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Calendar + payment integration</td>
+                                            <td>Online booking, technician routing, calendar sync, payment sync.</td>
+                                            <td class="text-green-accent">$500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Google Ads management (maintenance only)</td>
+                                            <td>Budget optimization, conversion tracking, reporting.</td>
+                                            <td class="text-green-accent">$200/month</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Facebook Ads management</td>
+                                            <td>Audience targeting, creative testing, retargeting.</td>
+                                            <td class="text-green-accent">$500/month</td>
+                                        </tr>
+                                        <tr>
+                                            <td>YouTube channel management</td>
+                                            <td>Video creation guidance, uploads, SEO titles/description.</td>
+                                            <td class="text-green-accent">$200/month</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Animated video (1 min)</td>
+                                            <td>2.5D/3D animation, script support, voiceover options.</td>
+                                            <td class="text-green-accent">$750/video</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Live action video editing</td>
+                                            <td>Cinematic edit, captions, music, delivery formats.</td>
+                                            <td class="text-green-accent">$150/video</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="disclaimer-box">
+                                Production scope and volume can adjust pricing for video deliverables beyond the items listed.
+                            </div>
+                        </div>
+
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Full Service Funnel Bundle</h3>
+                            <p class="mb-6">Includes all a la carte build items with a 15% discount, plus:</p>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i>
+                                    <span>1 animated video (1 minute)</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i>
+                                    <span>2 live action video edits</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i>
+                                    <span>YouTube video production priced by total video count</span>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                                <div class="meta-card">
+                                    <div class="text-sm text-white/60">One-time bundle total</div>
+                                    <div class="text-2xl font-bold text-green-accent">$4,717.50</div>
+                                    <div class="text-sm text-white/60 mt-1">Includes 15% discount on all build items</div>
+                                </div>
+                                <div class="meta-card">
+                                    <div class="text-sm text-white/60">Monthly retainers (full price)</div>
+                                    <div class="text-2xl font-bold text-green-accent">$900/month</div>
+                                    <div class="text-sm text-white/60 mt-1">Google Ads + Facebook Ads + YouTube management</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="../footer.js"></script>
+    <refiniti-footer hide-product></refiniti-footer>
+
+    <script src="../password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqTriggers = document.querySelectorAll('.faq-trigger');
+            faqTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const faqItem = trigger.closest('.faq-item');
+                    faqItem.classList.toggle('open');
+                });
+            });
+
+            const container = document.getElementById('background-container');
+            if (container) {
+                const icons = ['cpu', 'database', 'shield-check', 'server', 'pen-tool', 'bar-chart-2'];
+                const numIcons = 15;
+
+                for (let i = 0; i < numIcons; i++) {
+                    const iconWrapper = document.createElement('div');
+                    iconWrapper.classList.add('floating-icon');
+
+                    const iconEl = document.createElement('i');
+                    const iconName = icons[Math.floor(Math.random() * icons.length)];
+                    iconEl.setAttribute('data-lucide', iconName);
+
+                    iconWrapper.appendChild(iconEl);
+
+                    const size = Math.random() * 30 + 15;
+                    iconWrapper.style.width = `${size}px`;
+                    iconWrapper.style.height = `${size}px`;
+                    iconWrapper.style.top = `${Math.random() * 100}vh`;
+                    iconWrapper.style.left = `${Math.random() * 100}vw`;
+                    iconWrapper.style.animationDuration = `${Math.random() * 25 + 20}s`;
+                    iconWrapper.style.animationDelay = `${Math.random() * -45}s`;
+
+                    container.appendChild(iconWrapper);
+                }
+            }
+            
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
+
+
+
+

@@ -210,8 +210,8 @@ class RefinitiFooter extends HTMLElement {
                     <div class="footer-pill">
                         
                         <div class="flex flex-col gap-6 max-w-sm">
-                             <a href="index.html" class="footer-logo-anchor">
-                                <img src="Images/Refiniti-AI-Vertical-Logo (1).png" alt="Refiniti AI" class="footer-logo">
+                             <a href="/index.html" class="footer-logo-anchor">
+                                <img src="/Images/Refiniti-AI-Vertical-Logo (1).png" alt="Refiniti AI" class="footer-logo">
                             </a>
                             <p class="footer-text">
                                 Built for ambitious teams. The only AI growth system that diagnoses, automates, and scales revenue with mathematical precision.
@@ -237,8 +237,8 @@ class RefinitiFooter extends HTMLElement {
                             </div> -->
                             <div>
                                 <h4 class="links-heading">Legal</h4>
-                                <a data-modal-trigger="privacy" class="footer-link">Privacy Policy</a>
-                                <a data-modal-trigger="terms" class="footer-link">Terms & Conditions</a>
+                                <a href="privacy-policy.html" target="_blank" class="footer-link">Privacy Policy</a>
+                                <a href="terms-conditions.html" target="_blank" class="footer-link">Terms & Conditions</a>
                             </div>
                         </div>
 
@@ -296,14 +296,14 @@ class RefinitiFooter extends HTMLElement {
                         <div class="consent-group">
                             <input type="checkbox" id="sms_consent" name="sms_consent" class="consent-checkbox" required>
                             <label for="sms_consent" class="consent-label">
-                                I consent to receive recurring SMS/MMS messages from Refiniti AI at the mobile number I provided. Message frequency may vary. Msg & data rates may apply. Text STOP to cancel or HELP for help. View our <a href="#" data-modal-trigger="privacy" style="color: #00CFFF; text-decoration: underline;">Privacy Policy</a> and <a href="#" data-modal-trigger="terms" style="color: #00CFFF; text-decoration: underline;">Terms & Conditions</a>.
+                                I consent to receive recurring SMS/MMS messages from Refiniti AI at the mobile number I provided. Message frequency may vary. Msg & data rates may apply. Text STOP to cancel or HELP for help. View our <a href="privacy-policy.html" target="_blank" style="color: #00CFFF; text-decoration: underline;">Privacy Policy</a> and <a href="terms-conditions.html" target="_blank" style="color: #00CFFF; text-decoration: underline;">Terms & Conditions</a>.
                             </label>
                         </div>
                         <button type="submit" style="padding: 0.75rem 0; background-color: #00CFFF; color: black; font-weight: bold; border-radius: 99px; border: none; cursor: pointer;">Submit Application</button>
                     </form>
                 </div>
             </div>
-            <legal-modal id="legal-modal-instance"></legal-modal>
+            <legal-modal id="legal-modal-instance" style="display: none;"></legal-modal>
         `;
 
         const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
@@ -418,38 +418,7 @@ class RefinitiFooter extends HTMLElement {
         }
 
         // --- LEGAL MODAL LOGIC ---
-        // Ensure legal-modal.js is loaded and custom element is defined before trying to use it
-        customElements.whenDefined('legal-modal').then(() => {
-            const legalModal = shadow.getElementById('legal-modal-instance');
-
-            if (legalModal) {
-                const triggerPrivacy = () => {
-                    legalModal.show('Privacy Policy', 'privacy-policy.html');
-                };
-
-                const triggerTerms = () => {
-                    legalModal.show('Terms & Conditions', 'terms-conditions.html');
-                };
-
-                shadow.querySelectorAll('[data-modal-trigger="privacy"]').forEach(el => {
-                    el.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        triggerPrivacy();
-                    });
-                });
-
-                shadow.querySelectorAll('[data-modal-trigger="terms"]').forEach(el => {
-                    el.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        triggerTerms();
-                    });
-                });
-            } else {
-                console.error('Legal modal instance not found in footer shadow DOM.');
-            }
-        }).catch(error => {
-            console.error('Error defining legal-modal custom element:', error);
-        });
+        // Links now open in new tabs directly. Legal modal logic removed.
     }
 }
 

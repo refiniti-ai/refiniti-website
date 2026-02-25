@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refiniti | Secure Checkout</title>
+    <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="proposal.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #08080A;
+            --card-bg: #0D0D12;
+            --cyan-accent: #00F2FF;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+        }
+        .invoice-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .cyan-glow {
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
+        }
+        /* Stripe Elements Styling */
+        .StripeElement {
+            background-color: #08080A;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: #FFFFFF;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+        .StripeElement--focus {
+            border-color: var(--cyan-accent);
+            box-shadow: 0 0 0 2px rgba(0, 242, 255, 0.2);
+            outline: none;
+        }
+        .StripeElement--invalid {
+            border-color: #EF4444;
+        }
+        .StripeElement--complete {
+            border-color: #10B981;
+        }
+        #card-element {
+            margin-top: 1rem;
+        }
+        #payment-form {
+            margin-top: 2rem;
+        }
+        #submit-button {
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+        #submit-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .error-message {
+            color: #EF4444;
+            font-size: 14px;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        .error-message.visible {
+            display: block;
+        }
+        .success-message {
+            color: #10B981;
+            font-size: 14px;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        .success-message.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-[#08080A] text-white min-h-screen flex items-center justify-center p-4 md:p-8">
+    <div class="max-w-4xl w-full">
+        <!-- Brand Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-cyan-accent rounded-xl flex items-center justify-center cyan-glow">
+                    <i data-lucide="Zap" class="text-black w-7 h-7 fill-current"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight font-space uppercase">Refiniti<span class="text-cyan-accent">.ai</span></h1>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest font-medium">Performance Engine</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-sm text-gray-400">Invoice ID: <span id="invoice-id" class="text-white font-mono">#INV-XXXX</span></p>
+                <p class="text-sm text-gray-400">Date: <span id="invoice-date" class="text-white"></span></p>
+            </div>
+        </div>
+
+        <div class="invoice-card rounded-3xl overflow-hidden">
+            <!-- Main Content -->
+            <div class="p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-12 mb-12">
+                    <!-- Client Info -->
+                    <div>
+                        <h2 class="text-xs font-bold text-cyan-accent uppercase tracking-widest mb-4">Bill To</h2>
+                        <div class="space-y-1">
+                            <p id="client-name" class="text-xl font-semibold">Valued Client</p>
+                            <p id="client-email" class="text-gray-400">client@example.com</p>
+                        </div>
+                    </div>
+                    <!-- Status -->
+                    <div class="md:text-right">
+                        <h2 class="text-xs font-bold text-cyan-accent uppercase tracking-widest mb-4">Status</h2>
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-sm font-medium">
+                            <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
+                            Awaiting Payment
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Line Items -->
+                <div class="mb-12">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="text-left border-b border-white/5 pb-4">
+                                <th class="text-xs font-bold text-gray-500 uppercase tracking-widest pb-4">Description</th>
+                                <th class="text-xs font-bold text-gray-500 uppercase tracking-widest pb-4 text-right">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5" id="line-items-body">
+                            <!-- Dynamic line items will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Totals -->
+                <div class="flex flex-col items-end gap-4 mb-8">
+                    <div class="w-full md:w-64 space-y-3">
+                        <div class="flex justify-between text-sm text-gray-400">
+                            <span>Subtotal</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-400">
+                            <span>Tax (0%)</span>
+                            <span>$0.00</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-white/10">
+                            <span class="text-lg font-bold">Total Due</span>
+                            <span id="total-amount" class="text-2xl font-extrabold text-cyan-accent">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <div id="payment-form">
+                    <h3 class="text-lg font-semibold mb-4">Payment Information</h3>
+                    <form id="payment-form-element">
+                        <div id="card-element">
+                            <!-- Stripe Elements will create form elements here -->
+                        </div>
+                        <div id="card-errors" class="error-message" role="alert"></div>
+                        <div id="card-success" class="success-message"></div>
+                        <button type="submit" id="submit-button" class="w-full px-12 py-4 bg-cyan-accent text-black font-bold rounded-2xl hover:scale-105 transition-transform cyan-glow flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                            <i data-lucide="credit-card" class="w-5 h-5"></i>
+                            <span id="submit-button-text">Pay Now</span>
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-500 flex items-center justify-center gap-2 mt-4">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-green-500"></i>
+                        Secure encrypted payment powered by Stripe
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 text-center">
+            <p class="text-gray-600 text-sm italic">"The future belongs to those who build it." — Refiniti</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name') || 'Valued Client';
+            const email = urlParams.get('email') || '';
+            const amount = urlParams.get('amount') || '0.00';
+            const id = urlParams.get('id') || 'INV-' + Math.floor(Math.random() * 9000 + 1000);
+            
+            // Get Payment Intent from backend
+            let paymentIntentSecret;
+            let setupIntentSecret;
+            
+            async function initializePayment() {
+                try {
+                    const response = await fetch(`/api/create-payment-intent?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&amount=${encodeURIComponent(amount)}&id=${encodeURIComponent(id)}`);
+                    const data = await response.json();
+                    
+                    if (data.error) {
+                        throw new Error(data.error);
+                    }
+                    
+                    paymentIntentSecret = data.paymentIntent;
+                    setupIntentSecret = data.setupIntent; // For Canyon Lake
+                    
+                    // Initialize Stripe Elements after getting Payment Intent
+                    initializeStripe();
+                } catch (error) {
+                    console.error('Failed to create payment intent:', error);
+                    const displayError = document.getElementById('card-errors');
+                    displayError.textContent = 'Failed to initialize payment. Please refresh the page.';
+                    displayError.classList.add('visible');
+                }
+            }
+            
+            function initializeStripe() {
+
+            // Update UI
+            document.getElementById('client-name').textContent = name;
+            document.getElementById('client-email').textContent = email;
+            document.getElementById('invoice-id').textContent = '#' + id;
+            
+            const date = new Date();
+            document.getElementById('invoice-date').textContent = date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+
+            // Handle line items
+            const lineItemsBody = document.getElementById('line-items-body');
+            let subtotal = 0;
+
+            if (id === 'CANYON-LAKE') {
+                lineItemsBody.innerHTML = `
+                    <tr>
+                        <td class="py-6">
+                            <p class="font-medium text-lg">Canyon Lake Performance Engine - Upfront Setup</p>
+                            <p class="text-sm text-gray-500 mt-1">One-time setup fee</p>
+                        </td>
+                        <td class="py-6 text-right font-semibold text-lg">$2,500.00</td>
+                    </tr>
+                    <tr>
+                        <td class="py-6">
+                            <p class="font-medium text-lg">Canyon Lake Performance Engine - Monthly Performance</p>
+                            <p class="text-sm text-gray-500 mt-1">Recurring monthly fee (3 months)</p>
+                        </td>
+                        <td class="py-6 text-right font-semibold text-lg">$500.00/month</td>
+                    </tr>
+                `;
+                subtotal = 2500;
+            } else {
+                lineItemsBody.innerHTML = `
+                    <tr>
+                        <td class="py-6">
+                            <p class="font-medium text-lg">Refiniti Engine Services</p>
+                            <p class="text-sm text-gray-500 mt-1">Service description</p>
+                        </td>
+                        <td class="py-6 text-right font-semibold text-lg">$${parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    </tr>
+                `;
+                subtotal = parseFloat(amount);
+            }
+
+            document.getElementById('total-amount').textContent = '$' + subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('subtotal').textContent = '$' + subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            // Initialize Stripe
+            const stripe = Stripe('pk_live_51Spza5I9JZQSbbRIR5vBfM23LATBZuq4UR59DYan9U8s5af5TvshIhnFt8LmqWvSdAE8CoPpdcw2rKIhJTZlgCcv00S04Rvecy');
+            
+            function initializeStripe() {
+                if (!paymentIntentSecret) {
+                    console.error('Payment Intent not available');
+                    return;
+                }
+                
+                const elements = stripe.elements({
+                appearance: {
+                    theme: 'night',
+                    variables: {
+                        colorPrimary: '#00F2FF',
+                        colorBackground: '#0D0D12',
+                        colorText: '#FFFFFF',
+                        colorDanger: '#EF4444',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        borderRadius: '16px'
+                    }
+                }
+            });
+
+            // Create card element
+            const cardElement = elements.create('card', {
+                style: {
+                    base: {
+                        color: '#FFFFFF',
+                        fontFamily: 'Inter, system-ui, sans-serif',
+                        fontSize: '16px',
+                        '::placeholder': {
+                            color: '#9CA3AF',
+                        },
+                    },
+                    invalid: {
+                        color: '#EF4444',
+                    },
+                },
+            });
+
+            cardElement.mount('#card-element');
+
+            // Handle real-time validation errors
+            cardElement.on('change', ({error}) => {
+                const displayError = document.getElementById('card-errors');
+                if (error) {
+                    displayError.textContent = error.message;
+                    displayError.classList.add('visible');
+                } else {
+                    displayError.classList.remove('visible');
+                }
+            });
+
+            // Handle form submission
+            const form = document.getElementById('payment-form-element');
+            const submitButton = document.getElementById('submit-button');
+            const submitButtonText = document.getElementById('submit-button-text');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                
+                submitButton.disabled = true;
+                submitButtonText.textContent = 'Processing...';
+
+                try {
+                    // Confirm payment with the Payment Intent
+                    const {error, paymentIntent} = await stripe.confirmCardPayment(paymentIntentSecret, {
+                        payment_method: {
+                            card: cardElement,
+                            billing_details: {
+                                name: name,
+                                email: email,
+                            },
+                        }
+                    });
+
+                    if (error) {
+                        // Show error to customer
+                        const displayError = document.getElementById('card-errors');
+                        displayError.textContent = error.message;
+                        displayError.classList.add('visible');
+                        submitButton.disabled = false;
+                        submitButtonText.textContent = 'Pay Now';
+                    } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+                        // Payment succeeded
+                        const successMessage = document.getElementById('card-success');
+                        successMessage.textContent = 'Payment successful! Redirecting...';
+                        successMessage.classList.add('visible');
+                        
+                        // If there's a setup intent (Canyon Lake), handle subscription setup
+                        if (setupIntentSecret) {
+                            // Setup the recurring payment
+                            const {error: setupError, setupIntent} = await stripe.confirmCardSetup(setupIntentSecret, {
+                                payment_method: {
+                                    card: cardElement,
+                                    billing_details: {
+                                        name: name,
+                                        email: email,
+                                    },
+                                }
+                            });
+
+                            if (setupError) {
+                                console.error('Setup Intent error:', setupError);
+                            } else if (setupIntent && setupIntent.status === 'succeeded') {
+                                // Create subscription on backend (would need additional endpoint)
+                                console.log('Setup Intent succeeded:', setupIntent);
+                            }
+                        }
+
+                        // Redirect to success page
+                        setTimeout(() => {
+                            window.location.href = `https://refiniti.ai/success.html?payment_intent=${paymentIntent.id}`;
+                        }, 2000);
+                    }
+                } catch (err) {
+                    console.error('Payment error:', err);
+                    const displayError = document.getElementById('card-errors');
+                    displayError.textContent = 'An unexpected error occurred. Please try again.';
+                    displayError.classList.add('visible');
+                    submitButton.disabled = false;
+                    submitButtonText.textContent = 'Pay Now';
+                }
+            });
+            }
+            
+            // Start initialization
+            initializePayment();
+        });
+    </script>
+</body>
+</html>
