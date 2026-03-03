@@ -44,6 +44,11 @@
         "type": 301
       },
       {
+        "source": "/saeid-gah-proposal",
+        "destination": "/proposals/saeid-gah-proposal.html",
+        "type": 301
+      },
+      {
         "source": "/proposal",
         "destination": "/proposals/proposal.html",
         "type": 301
@@ -73,6 +78,10 @@
       {
         "source": "/schedule-meeting",
         "destination": "/schedule-meeting.html"
+      },
+      {
+        "source": "/brainstorm",
+        "destination": "/brainstorm.html"
       },
       {
         "source": "/terms-conditions",
