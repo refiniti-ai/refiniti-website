@@ -161,24 +161,22 @@
                         <!-- Investment Summary -->
                         <div class="section-padding" id="investment-summary">
                             <h3 class="text-2xl font-bold text-white mb-6">Investment Summary</h3>
-                            <p class="mb-6">Fixed-price website, one-time AI workflow setup, monthly AI call handling, and Meta ads management. Final amounts will be confirmed in the formal proposal delivered to you.</p>
+                            <p class="mb-6">Fixed-price website, AI inbound workflow setup, and Meta Ads setup and social management—one-time initial investment.</p>
                             <div class="overflow-x-auto">
                                 <table class="w-full text-left proposal-table">
                                     <thead class="bg-cyan-accent text-black">
                                         <tr>
                                             <th>Item</th>
                                             <th>Cost (Initial)</th>
-                                            <th>Cost (Monthly)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="investment-row">
                                             <td data-label="Item"><span>Antique Mall Website (fixed price)</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
-                                            <td data-label="Cost (Initial)" class="text-green-accent">Quote</td>
-                                            <td data-label="Cost (Monthly)" class="text-green-accent">—</td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$2,000</td>
                                         </tr>
                                         <tr class="hidden-breakdown hidden">
-                                            <td colspan="3">
+                                            <td colspan="2">
                                                 <div class="breakdown-content">
                                                     <ul class="space-y-3">
                                                         <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="package" class="w-5 h-5 text-white/70"></i>Full inventory display &amp; direct purchase</span> <span class="text-white/60">Included</span></li>
@@ -190,11 +188,10 @@
                                         </tr>
                                         <tr class="investment-row">
                                             <td data-label="Item"><span>AI Inbound Call Workflow – Setup</span><i data-lucide="chevron-down" class="w-5 h-5 opacity-50 transition-transform"></i></td>
-                                            <td data-label="Cost (Initial)" class="text-green-accent">Quote</td>
-                                            <td data-label="Cost (Monthly)" class="text-green-accent">—</td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$500</td>
                                         </tr>
                                         <tr class="hidden-breakdown hidden">
-                                            <td colspan="3">
+                                            <td colspan="2">
                                                 <div class="breakdown-content">
                                                     <ul class="space-y-3">
                                                         <li class="flex items-center justify-between"><span class="flex items-center gap-3"><i data-lucide="bot" class="w-5 h-5 text-white/70"></i>Same workflow as moving company (voice, qualification, lead forms)</span> <span class="text-white/60">Included</span></li>
@@ -203,25 +200,18 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td data-label="Item">AI Inbound Call Workflow – Monthly (30–60 calls/day, 3–5 min avg)</td>
-                                            <td data-label="Cost (Initial)" class="text-white/70">—</td>
-                                            <td data-label="Cost (Monthly)" class="text-green-accent">Quote</td>
-                                        </tr>
-                                        <tr>
-                                            <td data-label="Item">Meta Ads – Facebook &amp; Instagram management</td>
-                                            <td data-label="Cost (Initial)" class="text-white/70">—</td>
-                                            <td data-label="Cost (Monthly)" class="text-green-accent">$1,000</td>
+                                            <td data-label="Item">Meta Ads Setup and Social Management</td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$1,000</td>
                                         </tr>
                                         <tr class="font-bold bg-white/5">
-                                            <td data-label="Item">Total (initial + monthly as quoted)</td>
-                                            <td data-label="Cost (Initial)" class="text-green-accent">See quote</td>
-                                            <td data-label="Cost (Monthly)" class="text-green-accent">$1,000 + AI monthly</td>
+                                            <td data-label="Item">Total</td>
+                                            <td data-label="Cost (Initial)" class="text-green-accent">$3,500</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="disclaimer-box">
-                                <p><strong>Note:</strong> Website and AI workflow pricing will be confirmed in the full proposal. Meta ads are shown at $500/month per channel (Facebook + Instagram = $1,000/month). Your team will receive the complete proposal with all costs by the middle of the week following our meeting.</p>
+                                <p><strong>Note:</strong> All costs are one-time initial investment. Website includes full inventory, direct purchase, and marketplace export. Meta Ads setup covers Facebook and Instagram campaign setup and social management.</p>
                             </div>
                         </div>
 
@@ -263,7 +253,7 @@
                     <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
                     <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
                 </div>
-                <input type="hidden" id="initial-cost" name="initialCost" value="0">
+                <input type="hidden" id="initial-cost" name="initialCost" value="3500">
                 <div class="flex items-start">
                     <input type="checkbox" id="consent" name="consent" class="mt-1 mr-2 accent-cyan-accent" required>
                     <label for="consent" class="text-sm text-white/80">I initialize and agree to the contract.</label>
@@ -326,8 +316,8 @@
             const initialCostInput = document.getElementById('initial-cost');
 
             const getInitialCost = () => {
-                const val = initialCostInput && initialCostInput.value ? initialCostInput.value : '0';
-                return parseInt(val.replace(/[^0-9]/g, '')) || 0;
+                const val = initialCostInput && initialCostInput.value ? initialCostInput.value : '3500';
+                return parseInt(val.replace(/[^0-9]/g, '')) || 3500;
             };
 
             if (acceptBtn) {
