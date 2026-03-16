@@ -84,6 +84,10 @@
         "destination": "/brainstorm.html"
       },
       {
+        "source": "/pricing",
+        "destination": "/pricing.html"
+      },
+      {
         "source": "/terms-conditions",
         "destination": "/terms-conditions.html"
       },
