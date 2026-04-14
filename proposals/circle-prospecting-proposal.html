@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefinitiAI | Circle Prospecting Proposal</title>
+    <script type="module" src="../legal-modal.js"></script>
+    <link rel="stylesheet" href="../dist/style.css">
+    <link rel="stylesheet" href="../proposal.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .section-padding { padding-top: 2rem; padding-bottom: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        @media (max-width: 767px) {
+            .ref-engine-visual { height: 200px !important; }
+            .engine-box { padding: 0.5rem !important; }
+            .engine-text { font-size: 0.75rem !important; }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden text-white">
+
+    <div class="background-container" id="background-container"></div>
+
+    <div id="password-modal">
+        <div class="password-box">
+            <h2 class="text-2xl font-bold mb-4">Access Proposal</h2>
+            <p class="mb-6">Please enter the password to view this document.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" class="w-full rounded-lg p-3 text-center mb-4" placeholder="Password">
+                <p id="password-error" class="mb-4">Incorrect password. Please try again.</p>
+                <button type="submit" class="w-full bg-cyan-accent text-black font-bold py-3 rounded-lg hover:bg-cyan-accent/80 transition-colors">View</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <main class="py-24 md:py-32">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="content-container">
+                    <div class="text-center mb-16">
+                        <p class="text-cyan-accent font-mono text-sm mb-4">PREPARED FOR: GREG STEINIGER • greg@ihomesnetwork.com</p>
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight md:leading-[1.1] mb-6 text-white">
+                            Circle Prospecting <span class="text-glow-anim">Proposal</span>
+                        </h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                            Focused delivery for Circle Prospecting covering GoHighLevel setup, Stripe commerce flows,
+                            database API integration for record-aware checkout, and deployment handoff.
+                            This scope excludes Blue Bridge/SendBlue, MLS integrations, and homeowner data work.
+                        </p>
+                        <p class="text-white/60 text-sm mt-4">April 7, 2026</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-12">
+                        <div class="md:pr-8">
+                            <h3 class="text-2xl font-bold text-white mb-4">The Refiniti Approach</h3>
+                            <p class="leading-relaxed mb-6">
+                                Delivery is structured around core operations first: <strong>GoHighLevel implementation</strong>,
+                                <strong>Stripe checkout and invoicing workflows</strong>, a <strong>record-aware database/API checkout layer</strong>,
+                                and a clean <strong>deployment + transfer handoff</strong>.
+                            </p>
+                            <p class="mb-6">
+                                This proposal intentionally removes messaging bridge dependencies and external listing/homeowner data dependencies
+                                so execution can start immediately with a tighter, bootstrappable scope.
+                            </p>
+                            <div class="flex items-center gap-3 text-green-accent font-semibold text-sm">
+                                <i data-lucide="layers" class="w-5 h-5 flex-shrink-0"></i>
+                                <span>Stage-based delivery with fixed cost by stage.</span>
+                            </div>
+                        </div>
+                        <div class="ref-engine-visual h-[280px] md:h-auto bg-black/20 rounded-3xl border border-white/10 p-4 relative overflow-hidden flex items-center justify-center group hover:border-cyan-accent/20 transition-colors py-6">
+                            <div class="absolute inset-0 bg-gradient-to-r from-black via-cyan-accent/5 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            <div class="flex flex-col md:flex-row items-center gap-2 relative z-10 w-full justify-center scale-90">
+                                <div class="engine-box p-3">
+                                    <i data-lucide="workflow" class="engine-brain w-6 h-6"></i>
+                                    <span class="engine-text text-sm">GHL + Stripe</span>
+                                </div>
+                                <div class="hidden md:block"><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="roi-counter-box text-center">
+                                    <div class="w-12 h-12 rounded-full bg-cyan-accent flex items-center justify-center shadow-[0_0_15px_rgba(0,207,255,0.4)] mb-2 mx-auto"><i data-lucide="cloud" class="text-black font-bold w-6 h-6"></i></div>
+                                    <div class="roi-number text-green-accent text-lg">Deploy</div>
+                                    <div class="roi-label text-white/50 text-xs">and handoff</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-12 py-6">
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Scope of Work</h3>
+                            <p class="mb-6">Organized around implementation-ready stages only.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">GoHighLevel setup (Circle Prospecting + personal instance)</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="building-2" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Create and configure a GHL instance for <strong>Circle Prospecting</strong> operations.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="user" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Maintain a <strong>separate GHL instance</strong> for personal data isolation.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Configure operational controls, messaging settings, and admin-safe workflows.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Stripe packages, credits, and invoicing</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="credit-card" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Integrate <strong>Stripe with GHL</strong> for pay-as-you-go packages and invoice delivery.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="coins" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Configure <strong>product and credit structure</strong> aligned to your offer model.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="shopping-cart" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Support checkout flow and manual order-entry handling where needed.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Database integration and record-aware checkout workflow</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="database" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Integrate database/API source for Circle Prospecting records available for sale.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="filter" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Add checkout filters that query available inventory and limit plan selection to the <strong>maximum records currently available</strong> for the selected filters.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="workflow" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Set up workflow automation to pull the exact record count and filters selected by the client for downstream fulfillment.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Website deployment, hosting, and handoff</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="layout-template" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Retain and deploy current front end with required environment configuration.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="cloud" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Deploy to agreed hosting target and execute smoke-test validation.</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="folder-key" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span>Complete technical handoff of code, deployment access, and operational notes.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-padding" id="deliverables-cost">
+                            <h3 class="text-2xl font-bold text-white mb-4">Deliverables &amp; Cost</h3>
+                            <p class="mb-6 text-white/80 leading-relaxed">
+                                Fixed costs are listed per stage. This proposal removes Blue Bridge/SendBlue and MLS/homeowner data scope.
+                            </p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Deliverable / Stage</th>
+                                            <th>Includes</th>
+                                            <th>Cost</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-label="Deliverable">Stage B — GHL &amp; commerce</td>
+                                            <td data-label="Includes" class="text-white/80 text-sm">Dual GHL setup, Stripe integration, package/credit configuration, invoicing, checkout workflow alignment</td>
+                                            <td data-label="Cost" class="text-green-accent font-semibold whitespace-nowrap">$700</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Deliverable">Stage C — Database/API integration &amp; record-aware checkout</td>
+                                            <td data-label="Includes" class="text-white/80 text-sm">API integration to retrieve sellable records, checkout filter logic with max-record guardrails, and workflow to capture selected filters + record counts for fulfillment</td>
+                                            <td data-label="Cost" class="text-green-accent font-semibold whitespace-nowrap">$1,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Deliverable">Stage D — Rehost &amp; transfer</td>
+                                            <td data-label="Includes" class="text-white/80 text-sm">Deployment setup, environment configuration, smoke tests, and transfer handoff package</td>
+                                            <td data-label="Cost" class="text-green-accent font-semibold whitespace-nowrap">$800</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Deliverable">Program management, QA, documentation</td>
+                                            <td data-label="Includes" class="text-white/80 text-sm">Cross-stage coordination, QA checks, and handoff documentation</td>
+                                            <td data-label="Cost" class="text-green-accent font-semibold whitespace-nowrap">$500</td>
+                                        </tr>
+                                        <tr class="font-bold bg-white/5">
+                                            <td data-label="Deliverable">Total</td>
+                                            <td data-label="Includes" class="text-white/70">Stages B + C + D and PM/QA/documentation</td>
+                                            <td data-label="Cost" class="text-green-accent whitespace-nowrap">$3,000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">What you provide</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-accent flex-shrink-0 mt-0.5"></i><span>GHL access for business and personal instances.</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-accent flex-shrink-0 mt-0.5"></i><span>Stripe account access and pricing/package rules.</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-accent flex-shrink-0 mt-0.5"></i><span>Hosting account access and DNS details for deployment.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-12 pt-12 border-t border-white/5">
+                        <button id="accept-agreement-btn" class="bg-cyan-accent text-black font-bold py-4 px-8 rounded-lg text-lg hover:bg-cyan-accent/80 transition-colors shadow-[0_0_25px_rgba(0,207,255,0.6)]">
+                            Accept Agreement
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script type="module" src="../footer.js"></script>
+        <refiniti-footer hide-product></refiniti-footer>
+    </div>
+
+    <div id="agreement-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h2 class="text-2xl font-bold mb-6 text-center">Accept Contract Agreement</h2>
+            <form id="agreement-form" class="space-y-4">
+                <div>
+                    <label for="full-name" class="block text-white text-sm font-semibold mb-2">Full Name</label>
+                    <input type="text" id="full-name" name="fullName" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" value="greg@ihomesnetwork.com" required>
+                </div>
+                <input type="hidden" id="initial-cost" name="initialCost" value="3000">
+                <div class="flex items-start">
+                    <input type="checkbox" id="consent" name="consent" class="mt-1 mr-2 accent-cyan-accent" required>
+                    <label for="consent" class="text-sm text-white/80">I acknowledge and accept the proposal scope and stage costs listed above.</label>
+                </div>
+                <button type="submit" class="w-full bg-green-accent text-black font-bold py-3 rounded-lg mt-6 hover:bg-green-accent/80 transition-colors">Accept</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqTriggers = document.querySelectorAll('.faq-trigger');
+            faqTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const faqItem = trigger.closest('.faq-item');
+                    faqItem.classList.toggle('open');
+                });
+            });
+
+            const container = document.getElementById('background-container');
+            if (container) {
+                const icons = ['workflow', 'credit-card', 'cloud', 'shield-check', 'shopping-cart', 'building-2'];
+                for (let i = 0; i < 12; i++) {
+                    const iconWrapper = document.createElement('div');
+                    iconWrapper.classList.add('floating-icon');
+                    const iconEl = document.createElement('i');
+                    iconEl.setAttribute('data-lucide', icons[Math.floor(Math.random() * icons.length)]);
+                    iconWrapper.appendChild(iconEl);
+                    const size = Math.random() * 28 + 14;
+                    iconWrapper.style.width = size + 'px';
+                    iconWrapper.style.height = size + 'px';
+                    iconWrapper.style.top = Math.random() * 100 + 'vh';
+                    iconWrapper.style.left = Math.random() * 100 + 'vw';
+                    iconWrapper.style.animationDuration = (Math.random() * 20 + 18) + 's';
+                    iconWrapper.style.animationDelay = (Math.random() * -30) + 's';
+                    container.appendChild(iconWrapper);
+                }
+            }
+            lucide.createIcons();
+        });
+
+        window.initializeAgreementModal = () => {
+            const acceptBtn = document.getElementById('accept-agreement-btn');
+            const agreementModal = document.getElementById('agreement-modal');
+            const modalCloseBtn = document.querySelector('.modal-close-btn');
+            const agreementForm = document.getElementById('agreement-form');
+
+            if (acceptBtn) {
+                acceptBtn.addEventListener('click', () => {
+                    agreementModal.classList.remove('hidden');
+                });
+            }
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', () => agreementModal.classList.add('hidden'));
+            if (agreementModal) {
+                agreementModal.addEventListener('click', (e) => {
+                    if (e.target === agreementModal) agreementModal.classList.add('hidden');
+                });
+            }
+            if (agreementForm) {
+                agreementForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const fullName = document.getElementById('full-name').value;
+                    const email = document.getElementById('email').value;
+                    const consent = document.getElementById('consent').checked;
+                    const initialCost = 3000;
+
+                    if (!consent) {
+                        alert('You must agree to proceed.');
+                        return;
+                    }
+
+                    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/itcUlMQJDKPVgPxLNDGk/webhook-trigger/d1ef27fc-6f13-47a1-8632-8af5962e0e3e';
+                    try {
+                        const response = await fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                fullName: fullName,
+                                email: email,
+                                initialCost: initialCost,
+                                consent: consent,
+                                proposalType: 'Circle Prospecting'
+                            }),
+                        });
+                        if (response.ok) {
+                            alert('Agreement accepted successfully!');
+                            agreementModal.classList.add('hidden');
+                            agreementForm.reset();
+                        } else {
+                            alert('Failed to accept agreement. Please try again.');
+                        }
+                    } catch (err) {
+                        console.error(err);
+                        alert('An error occurred. Please try again later.');
+                    }
+                });
+            }
+        };
+    </script>
+</body>
+</html>
