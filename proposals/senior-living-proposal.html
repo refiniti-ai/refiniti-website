@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefinitiAI | Senior Living Data & Outreach Proposal</title>
+    <script type="module" src="../legal-modal.js"></script>
+    <link rel="stylesheet" href="../dist/style.css">
+    <link rel="stylesheet" href="../proposal.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .section-padding { padding-top: 2rem; padding-bottom: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .disclaimer-box {
+            margin-top: 1.5rem; padding: 1.25rem; border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem; color: rgba(255, 255, 255, 0.6);
+        }
+        .example-box {
+            margin-top: 1rem; padding: 1.25rem; border-radius: 12px;
+            background: rgba(0, 207, 255, 0.05); border: 1px solid rgba(0, 207, 255, 0.15);
+            font-size: 0.9rem; line-height: 1.6;
+        }
+        .placeholder { color: rgba(255, 200, 0, 0.85); font-style: italic; }
+        .phase-badge {
+            display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px;
+            font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;
+        }
+        .phase-1 { background: rgba(0, 207, 255, 0.15); color: #00CFFF; }
+        .phase-2 { background: rgba(0, 255, 136, 0.15); color: #00FF88; }
+        @media (max-width: 767px) {
+            .ref-engine-visual { height: 200px !important; }
+            .engine-box { padding: 0.5rem !important; }
+            .engine-text { font-size: 0.75rem !important; }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden text-white">
+
+    <div class="background-container" id="background-container"></div>
+
+    <div id="password-modal">
+        <div class="password-box">
+            <h2 class="text-2xl font-bold mb-4">Access Proposal</h2>
+            <p class="mb-6">Please enter the password to view this document.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" class="w-full rounded-lg p-3 text-center mb-4" placeholder="Password">
+                <p id="password-error" class="mb-4">Incorrect password. Please try again.</p>
+                <button type="submit" class="w-full bg-cyan-accent text-black font-bold py-3 rounded-lg hover:bg-cyan-accent/80 transition-colors">View</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <main class="py-24 md:py-32">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="content-container">
+                    <div class="text-center mb-16">
+                        <p class="text-cyan-accent font-mono text-sm mb-4">PREPARED FOR: SENIOR LIVING FACILITY PARTNER</p>
+                        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight md:leading-[1.1] mb-6 text-white">
+                            Senior Living <span class="text-glow-anim">Data & Outreach</span> Proposal
+                        </h1>
+                        <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                            A two-phase intelligence pipeline that scrapes and enriches senior living facility data from multiple sources,
+                            then uses AI to generate hyper-personalized marketing emails tailored to each facility's gaps and opportunities.
+                        </p>
+                        <p class="text-white/60 text-sm mt-4">June 8, 2026</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-12">
+                        <div class="md:pr-8">
+                            <h3 class="text-2xl font-bold text-white mb-4">The Refiniti Approach</h3>
+                            <p class="leading-relaxed mb-6">
+                                We build a <strong>data-first outreach engine</strong> for senior living facilities. Phase 1 collects foundational firmographic and contact data from APIs, directories, and scraping tools. Phase 2 enriches each record with SEO scores, tech stack, social presence, and verification status.
+                            </p>
+                            <p class="mb-6">
+                                An <strong>AI interpretation layer</strong> reads every enriched field and writes a personalized email body — referencing their specific website issues, missing social profiles, low domain authority, or outdated tech — so every outreach feels hand-crafted, not templated.
+                            </p>
+                            <div class="flex items-center gap-3 text-green-accent font-semibold text-sm">
+                                <i data-lucide="layers" class="w-5 h-5 flex-shrink-0"></i>
+                                <span>Collect basic data first. Enrich later. Personalize automatically.</span>
+                            </div>
+                        </div>
+                        <div class="ref-engine-visual h-[280px] md:h-auto bg-black/20 rounded-3xl border border-white/10 p-4 relative overflow-hidden flex items-center justify-center group hover:border-cyan-accent/20 transition-colors py-6">
+                            <div class="absolute inset-0 bg-gradient-to-r from-black via-cyan-accent/5 to-black opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            <div class="flex flex-col md:flex-row items-center gap-2 relative z-10 w-full justify-center scale-90">
+                                <div class="engine-box p-3">
+                                    <i data-lucide="database" class="engine-brain w-6 h-6"></i>
+                                    <span class="engine-text text-sm">Scrape &amp; Enrich</span>
+                                </div>
+                                <div class="hidden md:block"><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="engine-box p-3">
+                                    <i data-lucide="brain-circuit" class="engine-brain w-6 h-6"></i>
+                                    <span class="engine-text text-sm">AI Interpret</span>
+                                </div>
+                                <div class="hidden md:block"><i data-lucide="chevrons-right" class="text-cyan-accent w-6 h-6 animate-pulse opacity-50"></i></div>
+                                <div class="roi-counter-box text-center">
+                                    <div class="w-12 h-12 rounded-full bg-cyan-accent flex items-center justify-center shadow-[0_0_15px_rgba(0,207,255,0.4)] mb-2 mx-auto"><i data-lucide="mail" class="text-black font-bold w-6 h-6"></i></div>
+                                    <div class="roi-number text-green-accent text-lg">Personal</div>
+                                    <div class="roi-label text-white/50 text-xs">Email outreach</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-12 py-6">
+
+                        <!-- Two-Phase Pipeline -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Two-Phase Data Pipeline</h3>
+                            <p class="mb-6">Data collection is split into two phases so outreach can begin quickly while enrichment runs in parallel.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item open">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold"><span class="phase-badge phase-1">Phase 1</span> Basic Data Collection</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <p class="pt-2 mb-4 text-white/80">Rapidly build a working prospect list with core firmographic and contact fields. Enough to start segmented outreach within days.</p>
+                                        <ul class="space-y-3 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="building-2" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>company_name</strong> — facility legal and trade names</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="users" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>employee_count</strong> — staff size estimate</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="dollar-sign" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>annual_revenue</strong> — revenue band or estimated range</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="calendar" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>founded_year</strong> — year established</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="mail" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>primary_email</strong> — decision-maker or general contact email</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="phone" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>primary_phone_number</strong> — main facility line or admin desk</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="globe" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>website_url</strong> — primary domain</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold"><span class="phase-badge phase-2">Phase 2</span> Data Enrichment</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <p class="pt-2 mb-4 text-white/80">Layer on digital presence, technical, and SEO intelligence to power deep personalization.</p>
+                                        <ul class="space-y-3 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="linkedin" class="w-5 h-5 text-green-accent flex-shrink-0"></i><span><strong>linkedin_url</strong> — company LinkedIn profile</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="facebook" class="w-5 h-5 text-green-accent flex-shrink-0"></i><span><strong>facebook_url</strong> / <strong>instagram_url</strong> — social profiles</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="code" class="w-5 h-5 text-green-accent flex-shrink-0"></i><span><strong>tech_stack</strong> — CMS, analytics, chat widgets, booking tools detected on site</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="shield-check" class="w-5 h-5 text-green-accent flex-shrink-0"></i><span><strong>verification_status</strong> — email/phone deliverability and validity score</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="search" class="w-5 h-5 text-green-accent flex-shrink-0"></i><span><strong>seo_score</strong> — on-page and technical SEO health (0–100)</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="trending-up" class="w-5 h-5 text-green-accent flex-shrink-0"></i><span><strong>keywords_ranking_for</strong> — top organic keywords and positions</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="bar-chart-2" class="w-5 h-5 text-green-accent flex-shrink-0"></i><span><strong>domain_authority</strong> — Moz/Ahrefs-style authority score</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Sources -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Data Sources &amp; Collection Methods</h3>
+                            <p class="mb-6">We combine API integrations, licensed data providers, and targeted scraping to build a complete facility profile.</p>
+                            <div class="space-y-3">
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">API &amp; Licensed Data Providers</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="database" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Apollo.io / ZoomInfo / Clearbit</strong> — firmographics, employee count, revenue, contact emails</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Google Places API</strong> — facility name, phone, address, website, reviews</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="shield" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>CMS / State Licensing Databases</strong> — licensed senior care facilities by state</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>NeverBounce / ZeroBounce</strong> — email verification and deliverability scoring</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="search" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Ahrefs / SEMrush / Moz API</strong> — SEO score, domain authority, keyword rankings</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="code" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>BuiltWith / Wappalyzer API</strong> — tech stack detection</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="faq-item">
+                                    <button class="faq-trigger">
+                                        <span class="font-semibold">Scraping &amp; Custom Tools</span>
+                                        <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                                    </button>
+                                    <div class="faq-content">
+                                        <ul class="space-y-3 pt-2 pl-2">
+                                            <li class="flex items-start gap-3"><i data-lucide="bot" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Apify / Bright Data</strong> — scrape senior living directories (Caring.com, A Place for Mom, SeniorAdvisor)</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="globe" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Custom web scrapers</strong> — facility websites for contact pages, social links, and on-page signals</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="share-2" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>Social profile discovery</strong> — LinkedIn, Facebook, Instagram URL matching by company name + domain</span></li>
+                                            <li class="flex items-start gap-3"><i data-lucide="workflow" class="w-5 h-5 text-cyan-accent flex-shrink-0"></i><span><strong>n8n / Make.com orchestration</strong> — automated pipeline chaining scrape ? enrich ? verify ? store</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Personalization Engine -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">AI Personalization Engine</h3>
+                            <p class="mb-6">For every enriched record, AI reads all fields and generates a contextual note plus a personalized email body. Each data point maps to a specific outreach angle.</p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Data Field</th>
+                                            <th>AI Interpretation</th>
+                                            <th>Outreach Angle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-label="Data Field" class="font-semibold text-cyan-accent">seo_score (low)</td>
+                                            <td data-label="AI Interpretation" class="text-white/80 text-sm">"Site scores 34/100 — missing meta descriptions, slow load time, no schema markup."</td>
+                                            <td data-label="Outreach Angle" class="text-white/70 text-sm">Offer SEO audit + on-page fixes to improve local search visibility for "senior living near [city]."</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Data Field" class="font-semibold text-cyan-accent">domain_authority (low)</td>
+                                            <td data-label="AI Interpretation" class="text-white/80 text-sm">"DA 18 — limited backlinks; competitors in area average DA 35+."</td>
+                                            <td data-label="Outreach Angle" class="text-white/70 text-sm">Propose content marketing and local citation building to close the authority gap.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Data Field" class="font-semibold text-cyan-accent">keywords_ranking_for</td>
+                                            <td data-label="AI Interpretation" class="text-white/80 text-sm">"Ranks #14 for 'assisted living [city]' — page 2, below click threshold."</td>
+                                            <td data-label="Outreach Angle" class="text-white/70 text-sm">Highlight specific keyword opportunity and projected traffic lift from page 2 ? page 1.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Data Field" class="font-semibold text-cyan-accent">tech_stack (outdated)</td>
+                                            <td data-label="AI Interpretation" class="text-white/80 text-sm">"Running WordPress 5.4 (unsupported), no SSL on contact form page."</td>
+                                            <td data-label="Outreach Angle" class="text-white/70 text-sm">Recommend website modernization — security, mobile UX, and lead capture upgrades.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Data Field" class="font-semibold text-cyan-accent">facebook_url / instagram_url (missing)</td>
+                                            <td data-label="AI Interpretation" class="text-white/80 text-sm">"No active Facebook or Instagram presence detected — families research facilities on social first."</td>
+                                            <td data-label="Outreach Angle" class="text-white/70 text-sm">Offer social media setup + content calendar tailored to family decision-makers.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Data Field" class="font-semibold text-cyan-accent">employee_count + annual_revenue</td>
+                                            <td data-label="AI Interpretation" class="text-white/80 text-sm">"45 employees, ~$3.2M revenue — mid-size independent operator, likely budget-conscious."</td>
+                                            <td data-label="Outreach Angle" class="text-white/70 text-sm">Route to the correct revenue segment and apply the matching discounted service tier.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Data Field" class="font-semibold text-cyan-accent">verification_status (invalid email)</td>
+                                            <td data-label="AI Interpretation" class="text-white/80 text-sm">"Primary email bounced — fallback to phone outreach or alternate contact discovery."</td>
+                                            <td data-label="Outreach Angle" class="text-white/70 text-sm">Auto-route to phone/SMS sequence instead of email; flag for re-enrichment.</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Data Field" class="font-semibold text-cyan-accent">founded_year (established)</td>
+                                            <td data-label="AI Interpretation" class="text-white/80 text-sm">"Operating since 1987 — 38 years of community trust, but digital presence hasn't kept pace."</td>
+                                            <td data-label="Outreach Angle" class="text-white/70 text-sm">Lead with respect for their legacy, then bridge to modern digital gaps.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Example -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Example: How It Works</h3>
+                            <p class="mb-4">Below is a sample record and the AI-generated email it produces.</p>
+
+                            <div class="example-box mb-6">
+                                <p class="text-cyan-accent font-semibold mb-3">Input Record (enriched)</p>
+                                <pre class="text-white/80 text-sm whitespace-pre-wrap font-mono">{
+  "company_name": "Sunrise Gardens Senior Living",
+  "employee_count": 32,
+  "annual_revenue": "$2.8M",
+  "founded_year": 1995,
+  "primary_email": "admin@sunrisegardens.com",
+  "primary_phone_number": "(555) 234-8901",
+  "linkedin_url": null,
+  "facebook_url": "facebook.com/sunrisegardens",
+  "instagram_url": null,
+  "tech_stack": "WordPress 5.8, no chat widget, no analytics",
+  "verification_status": "valid",
+  "seo_score": 41,
+  "keywords_ranking_for": ["assisted living springfield" #18, "memory care springfield" #22],
+  "domain_authority": 21
+}</pre>
+                            </div>
+
+                            <div class="example-box">
+                                <p class="text-green-accent font-semibold mb-3">AI-Generated Email Body</p>
+                                <p class="text-white/90 italic">Subject: Sunrise Gardens — families in Springfield aren't finding you online</p>
+                                <p class="text-white/80 mt-3">Hi [Name],</p>
+                                <p class="text-white/80 mt-2">I came across Sunrise Gardens and was impressed that you've been serving the Springfield community since 1995 — nearly 30 years of trust is rare in senior care.</p>
+                                <p class="text-white/80 mt-2">I did a quick look at your digital presence and noticed a few opportunities. Your site currently scores <strong>41/100 on SEO health</strong> — families searching "assisted living Springfield" are seeing competitors on page 1 while Sunrise Gardens sits at position #18. Your domain authority (21) is well below the area average, which limits how often Google surfaces your facility.</p>
+                                <p class="text-white/80 mt-2">I also noticed you're active on Facebook but don't have an Instagram profile — and over 60% of adult children researching care options check Instagram before calling. Your site is running an older WordPress version without a live chat or analytics, which means tour inquiries may be slipping through.</p>
+                                <p class="text-white/80 mt-2">We work specifically with independent senior living operators in your revenue range and offer a <strong>discounted website refresh ($650 vs. $1,000)</strong> in exchange for a referral and testimonial once results come in.</p>
+                                <p class="text-white/80 mt-2">Would a 15-minute call this week make sense to walk through what we'd fix first?</p>
+                                <p class="text-white/80 mt-2">Best,<br>[Your Name]</p>
+                            </div>
+                        </div>
+
+                        <!-- Revenue Segments -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">Revenue-Based Service Segments</h3>
+                            <p class="mb-6">Facilities are segmented by annual revenue. Each tier receives discounted services in exchange for a referral and written testimonial upon delivery.</p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Segment</th>
+                                            <th>Annual Revenue</th>
+                                            <th>Discounted Services</th>
+                                            <th>Standard Price</th>
+                                            <th>Your Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-label="Segment" class="font-semibold text-cyan-accent">Segment A — Emerging</td>
+                                            <td data-label="Annual Revenue" class="text-white/80">$500K – $2M</td>
+                                            <td data-label="Discounted Services" class="text-white/70 text-sm">Basic website refresh, Google Business Profile setup, 1-page SEO fix</td>
+                                            <td data-label="Standard Price" class="text-white/50 line-through">$1,000</td>
+                                            <td data-label="Your Price" class="text-green-accent font-semibold">$650</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Segment" class="font-semibold text-cyan-accent">Segment B — Growth</td>
+                                            <td data-label="Annual Revenue" class="text-white/80">$2M – $10M</td>
+                                            <td data-label="Discounted Services" class="text-white/70 text-sm">Full website rebuild, social media setup, 3-month SEO package</td>
+                                            <td data-label="Standard Price" class="text-white/50 line-through">$3,500</td>
+                                            <td data-label="Your Price" class="text-green-accent font-semibold">$2,400</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Segment" class="font-semibold text-cyan-accent">Segment C — Enterprise</td>
+                                            <td data-label="Annual Revenue" class="text-white/80">$10M+</td>
+                                            <td data-label="Discounted Services" class="text-white/70 text-sm">Multi-location site, CRM integration, ongoing outreach automation, quarterly SEO</td>
+                                            <td data-label="Standard Price" class="text-white/50 line-through">$8,000</td>
+                                            <td data-label="Your Price" class="text-green-accent font-semibold">$5,500</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="disclaimer-box">
+                                <p><strong>Referral &amp; testimonial requirement:</strong> Discounted pricing applies when the facility agrees to provide a written testimonial and refer one peer facility within 90 days of project completion. Standard pricing applies otherwise.</p>
+                            </div>
+                        </div>
+
+                        <!-- Hard Cost Breakdown -->
+                        <div class="section-padding" id="hard-costs">
+                            <h3 class="text-2xl font-bold text-white mb-4">Hard Cost Breakdown (Tools &amp; APIs)</h3>
+                            <p class="mb-6">Estimated monthly and one-time costs for data collection, enrichment, and outreach infrastructure. Placeholder values marked for final vendor selection.</p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Tool / API</th>
+                                            <th>Purpose</th>
+                                            <th>Cost Type</th>
+                                            <th>Est. Cost</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-label="Tool / API" class="font-semibold">Apollo.io</td>
+                                            <td data-label="Purpose" class="text-white/70 text-sm">Firmographics, emails, employee count</td>
+                                            <td data-label="Cost Type" class="text-white/60 text-sm">Monthly</td>
+                                            <td data-label="Est. Cost" class="placeholder">$[___]/mo</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Tool / API" class="font-semibold">Google Places API</td>
+                                            <td data-label="Purpose" class="text-white/70 text-sm">Facility lookup, phone, address, reviews</td>
+                                            <td data-label="Cost Type" class="text-white/60 text-sm">Per-request</td>
+                                            <td data-label="Est. Cost" class="placeholder">$[___]/1K requests</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Tool / API" class="font-semibold">Apify / Bright Data</td>
+                                            <td data-label="Purpose" class="text-white/70 text-sm">Directory scraping (Caring.com, A Place for Mom)</td>
+                                            <td data-label="Cost Type" class="text-white/60 text-sm">Monthly</td>
+                                            <td data-label="Est. Cost" class="placeholder">$[___]/mo</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Tool / API" class="font-semibold">NeverBounce / ZeroBounce</td>
+                                            <td data-label="Purpose" class="text-white/70 text-sm">Email verification</td>
+                                            <td data-label="Cost Type" class="text-white/60 text-sm">Per-email</td>
+                                            <td data-label="Est. Cost" class="placeholder">$[___]/1K emails</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Tool / API" class="font-semibold">Ahrefs / SEMrush API</td>
+                                            <td data-label="Purpose" class="text-white/70 text-sm">SEO score, domain authority, keyword rankings</td>
+                                            <td data-label="Cost Type" class="text-white/60 text-sm">Monthly</td>
+                                            <td data-label="Est. Cost" class="placeholder">$[___]/mo</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Tool / API" class="font-semibold">BuiltWith / Wappalyzer</td>
+                                            <td data-label="Purpose" class="text-white/70 text-sm">Tech stack detection</td>
+                                            <td data-label="Cost Type" class="text-white/60 text-sm">Monthly</td>
+                                            <td data-label="Est. Cost" class="placeholder">$[___]/mo</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Tool / API" class="font-semibold">OpenAI / Claude API</td>
+                                            <td data-label="Purpose" class="text-white/70 text-sm">AI field interpretation + email body generation</td>
+                                            <td data-label="Cost Type" class="text-white/60 text-sm">Per-token</td>
+                                            <td data-label="Est. Cost" class="placeholder">~$[___]/1K records</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Tool / API" class="font-semibold">n8n / Make.com</td>
+                                            <td data-label="Purpose" class="text-white/70 text-sm">Pipeline orchestration (scrape ? enrich ? AI ? send)</td>
+                                            <td data-label="Cost Type" class="text-white/60 text-sm">Monthly</td>
+                                            <td data-label="Est. Cost" class="placeholder">$[___]/mo</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Tool / API" class="font-semibold">GoHighLevel / Instantly</td>
+                                            <td data-label="Purpose" class="text-white/70 text-sm">Email outreach delivery + sequencing</td>
+                                            <td data-label="Cost Type" class="text-white/60 text-sm">Monthly</td>
+                                            <td data-label="Est. Cost" class="placeholder">$[___]/mo</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Tool / API" class="font-semibold">Airtable / Supabase</td>
+                                            <td data-label="Purpose" class="text-white/70 text-sm">Enriched record storage and segmentation</td>
+                                            <td data-label="Cost Type" class="text-white/60 text-sm">Monthly</td>
+                                            <td data-label="Est. Cost" class="placeholder">$[___]/mo</td>
+                                        </tr>
+                                        <tr class="font-bold bg-white/5">
+                                            <td data-label="Tool / API">Estimated Monthly Hard Cost</td>
+                                            <td data-label="Purpose" class="text-white/60 text-sm">All tools combined (at scale)</td>
+                                            <td data-label="Cost Type"></td>
+                                            <td data-label="Est. Cost" class="text-green-accent placeholder">$[___]/mo</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="disclaimer-box">
+                                <p><strong>Note:</strong> Placeholder costs will be finalized once target geography, facility count, and enrichment depth are confirmed. Per-record AI cost scales linearly — batching and caching reduce repeat enrichment spend.</p>
+                            </div>
+                        </div>
+
+                        <!-- Deliverables & Service Pricing -->
+                        <div class="section-padding" id="deliverables-cost">
+                            <h3 class="text-2xl font-bold text-white mb-4">Deliverables &amp; Service Pricing</h3>
+                            <p class="mb-6">Fixed-cost build stages for the data pipeline, AI engine, and outreach system.</p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left proposal-table">
+                                    <thead class="bg-cyan-accent text-black">
+                                        <tr>
+                                            <th>Deliverable / Stage</th>
+                                            <th>Includes</th>
+                                            <th>Cost</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-label="Deliverable"><span class="phase-badge phase-1">Phase 1</span> Basic data pipeline</td>
+                                            <td data-label="Includes" class="text-white/80 text-sm">API integrations (Places, Apollo), directory scraping setup, record schema, deduplication, storage in Airtable/Supabase</td>
+                                            <td data-label="Cost" class="text-green-accent font-semibold whitespace-nowrap placeholder">$[___]</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Deliverable"><span class="phase-badge phase-2">Phase 2</span> Enrichment layer</td>
+                                            <td data-label="Includes" class="text-white/80 text-sm">SEO/DA/keyword enrichment, tech stack detection, social profile discovery, email/phone verification</td>
+                                            <td data-label="Cost" class="text-green-accent font-semibold whitespace-nowrap placeholder">$[___]</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Deliverable">AI personalization engine</td>
+                                            <td data-label="Includes" class="text-white/80 text-sm">Field-to-insight mapping, prompt templates per data point, email body generation, revenue segment routing</td>
+                                            <td data-label="Cost" class="text-green-accent font-semibold whitespace-nowrap placeholder">$[___]</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Deliverable">Outreach automation</td>
+                                            <td data-label="Includes" class="text-white/80 text-sm">GHL/Instantly integration, email sequencing, verification-based routing (email vs. phone), send tracking</td>
+                                            <td data-label="Cost" class="text-green-accent font-semibold whitespace-nowrap placeholder">$[___]</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Deliverable">Reporting dashboard</td>
+                                            <td data-label="Includes" class="text-white/80 text-sm">Enrichment coverage %, outreach sent/opened/replied, segment performance, cost-per-lead tracking</td>
+                                            <td data-label="Cost" class="text-green-accent font-semibold whitespace-nowrap placeholder">$[___]</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Deliverable">Program management &amp; QA</td>
+                                            <td data-label="Includes" class="text-white/80 text-sm">Cross-stage coordination, data quality audits, handoff documentation</td>
+                                            <td data-label="Cost" class="text-green-accent font-semibold whitespace-nowrap placeholder">$[___]</td>
+                                        </tr>
+                                        <tr class="font-bold bg-white/5">
+                                            <td data-label="Deliverable">Total (build)</td>
+                                            <td data-label="Includes" class="text-white/70">All stages above</td>
+                                            <td data-label="Cost" class="text-green-accent whitespace-nowrap placeholder">$[___]</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- What you provide -->
+                        <div class="section-padding">
+                            <h3 class="text-2xl font-bold text-white mb-4">What you provide</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-accent flex-shrink-0 mt-0.5"></i><span>Target geography (states, metros, or radius) for facility discovery.</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-accent flex-shrink-0 mt-0.5"></i><span>API account access or budget approval for data providers listed above.</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-accent flex-shrink-0 mt-0.5"></i><span>Outreach email domain, sender identity, and compliance preferences (CAN-SPAM, opt-out).</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-accent flex-shrink-0 mt-0.5"></i><span>Service catalog with standard pricing for each revenue segment (to populate discount table).</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-accent flex-shrink-0 mt-0.5"></i><span>Sample outreach emails or brand voice guidelines for AI prompt tuning.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-12 pt-12 border-t border-white/5">
+                        <button id="accept-agreement-btn" class="bg-cyan-accent text-black font-bold py-4 px-8 rounded-lg text-lg hover:bg-cyan-accent/80 transition-colors shadow-[0_0_25px_rgba(0,207,255,0.6)]">
+                            Accept Agreement
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script type="module" src="../footer.js"></script>
+        <refiniti-footer hide-product></refiniti-footer>
+    </div>
+
+    <div id="agreement-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h2 class="text-2xl font-bold mb-6 text-center">Accept Contract Agreement</h2>
+            <form id="agreement-form" class="space-y-4">
+                <div>
+                    <label for="full-name" class="block text-white text-sm font-semibold mb-2">Full Name</label>
+                    <input type="text" id="full-name" name="fullName" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent outline-none text-white" required>
+                </div>
+                <input type="hidden" id="initial-cost" name="initialCost" value="0">
+                <div class="flex items-start">
+                    <input type="checkbox" id="consent" name="consent" class="mt-1 mr-2 accent-cyan-accent" required>
+                    <label for="consent" class="text-sm text-white/80">I acknowledge and accept the proposal scope and costs listed above.</label>
+                </div>
+                <button type="submit" class="w-full bg-green-accent text-black font-bold py-3 rounded-lg mt-6 hover:bg-green-accent/80 transition-colors">Accept</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqTriggers = document.querySelectorAll('.faq-trigger');
+            faqTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const faqItem = trigger.closest('.faq-item');
+                    faqItem.classList.toggle('open');
+                });
+            });
+
+            const investmentRows = document.querySelectorAll('.investment-row');
+            investmentRows.forEach(row => {
+                row.addEventListener('click', () => {
+                    const breakdown = row.nextElementSibling;
+                    if (breakdown && breakdown.classList.contains('hidden-breakdown')) {
+                        breakdown.classList.toggle('hidden');
+                        const icon = row.querySelector('[data-lucide="chevron-down"]');
+                        if (icon) icon.style.transform = breakdown.classList.contains('hidden') ? '' : 'rotate(180deg)';
+                    }
+                });
+            });
+
+            const container = document.getElementById('background-container');
+            if (container) {
+                const icons = ['database', 'brain-circuit', 'mail', 'search', 'globe', 'bar-chart-2', 'shield-check', 'bot'];
+                for (let i = 0; i < 12; i++) {
+                    const iconWrapper = document.createElement('div');
+                    iconWrapper.classList.add('floating-icon');
+                    const iconEl = document.createElement('i');
+                    iconEl.setAttribute('data-lucide', icons[Math.floor(Math.random() * icons.length)]);
+                    iconWrapper.appendChild(iconEl);
+                    const size = Math.random() * 28 + 14;
+                    iconWrapper.style.width = size + 'px';
+                    iconWrapper.style.height = size + 'px';
+                    iconWrapper.style.top = Math.random() * 100 + 'vh';
+                    iconWrapper.style.left = Math.random() * 100 + 'vw';
+                    iconWrapper.style.animationDuration = (Math.random() * 20 + 18) + 's';
+                    iconWrapper.style.animationDelay = (Math.random() * -30) + 's';
+                    container.appendChild(iconWrapper);
+                }
+            }
+            lucide.createIcons();
+        });
+
+        window.initializeAgreementModal = () => {
+            const acceptBtn = document.getElementById('accept-agreement-btn');
+            const agreementModal = document.getElementById('agreement-modal');
+            const modalCloseBtn = document.querySelector('.modal-close-btn');
+            const agreementForm = document.getElementById('agreement-form');
+
+            if (acceptBtn) {
+                acceptBtn.addEventListener('click', () => {
+                    agreementModal.classList.remove('hidden');
+                });
+            }
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', () => agreementModal.classList.add('hidden'));
+            if (agreementModal) {
+                agreementModal.addEventListener('click', (e) => {
+                    if (e.target === agreementModal) agreementModal.classList.add('hidden');
+                });
+            }
+            if (agreementForm) {
+                agreementForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const fullName = document.getElementById('full-name').value;
+                    const email = document.getElementById('email').value;
+                    const consent = document.getElementById('consent').checked;
+
+                    if (!consent) {
+                        alert('You must agree to proceed.');
+                        return;
+                    }
+
+                    const webhookUrl = 'https://services.leadconnectorhq.com/hooks/itcUlMQJDKPVgPxLNDGk/webhook-trigger/d1ef27fc-6f13-47a1-8632-8af5962e0e3e';
+                    try {
+                        const response = await fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                fullName: fullName,
+                                email: email,
+                                initialCost: 'TBD',
+                                consent: consent,
+                                proposalType: 'Senior Living Data & Outreach'
+                            }),
+                        });
+                        if (response.ok) {
+                            alert('Agreement accepted successfully!');
+                            agreementModal.classList.add('hidden');
+                            agreementForm.reset();
+                        } else {
+                            alert('Failed to accept agreement. Please try again.');
+                        }
+                    } catch (err) {
+                        console.error(err);
+                        alert('An error occurred. Please try again later.');
+                    }
+                });
+            }
+        };
+    </script>
+</body>
+</html>

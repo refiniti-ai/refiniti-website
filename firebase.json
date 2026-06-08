@@ -52,6 +52,11 @@
         "source": "/proposal",
         "destination": "/proposals/proposal.html",
         "type": 301
+      },
+      {
+        "source": "/senior-living-proposal",
+        "destination": "/proposals/senior-living-proposal.html",
+        "type": 301
       }
     ],
     "rewrites": [
